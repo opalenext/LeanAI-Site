@@ -836,14 +836,29 @@ window.initMap=initMap;
   const shared = () => S.share !== false;
   const sig = () => F.questions.map(q => S.answers[q.id] || 0).join('');
   const newId = () => Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, '0')).join('');
+  // Returns true when the row is saved. A failed send is not marked as done, so it is tried again later.
   function post(step) {
     const r = scores(), answers = {}; F.questions.forEach(q => { answers[q.id] = S.answers[q.id]; });
     const body = { rid: S.rid, step, lang: window.LANG, answers, priorities: step === 'priorities' ? S.priorities : [],
       scores: { overall: r.overall, productivity: r.P, culture: r.C }, flags: r.flags.length };
-    try { fetch('/api/responses', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), keepalive: true }).catch(() => {}); } catch (x) {}
+    try { return fetch('/api/responses', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), keepalive: true }).then(r => r.ok, () => false); }
+    catch (x) { return Promise.resolve(false); }
   }
-  function sendReport() { if (!shared() || !done()) return; const s = sig(); if (S.sentSig === s) return; S.rid = newId(); S.sentSig = s; S.sentPrio = null; save(); post('report'); }
-  function sendPriorities() { if (!shared() || !hasPrios()) return; sendReport(); const p = S.priorities.slice().sort().join(','); if (S.sentPrio === p) return; S.sentPrio = p; save(); post('priorities'); }
+  async function sendReport() {
+    if (!shared() || !done()) return false;
+    const s = sig(); if (S.sentSig === s) return true;
+    if (S.ridSig !== s) { S.rid = newId(); S.ridSig = s; S.sentPrio = null; }
+    S.sentSig = s; save();
+    if (await post('report')) return true;
+    if (S.sentSig === s) { S.sentSig = null; save(); }
+    return false;
+  }
+  async function sendPriorities() {
+    if (!shared() || !hasPrios() || !(await sendReport())) return;
+    const p = S.priorities.slice().sort().join(','); if (S.sentPrio === p) return;
+    S.sentPrio = p; save();
+    if (!(await post('priorities')) && S.sentPrio === p) { S.sentPrio = null; save(); }
+  }
   const shareBox = () => `<label class="share no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities and scores, no name and no organization.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
   const bindShare = () => { const b = document.getElementById('share'); if (b) b.addEventListener('change', () => { S.share = b.checked; save(); }); };
 
@@ -1043,7 +1058,7 @@ window.initMap=initMap;
     }));
     document.getElementById('prev').onclick = () => { S.qi = Math.max(0, (S.qi || 0) - 1); save(); render(); };
     bindShare();
-    document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { S.editing = false; save(); ping('report'); sendReport(); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
+    document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { S.editing = false; save(); ping('report'); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
   }
   function report() {
     const r = scores();
@@ -1063,7 +1078,7 @@ window.initMap=initMap;
       <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">${T('Prepare your executive report-out')}</a><a class="btn s" href="#/priorities">${T('Next: your priorities →')}</a><button class="btn g" id="redo">${T('Change my answers')}</button></div>${shareBox()}</div>`;
   }
   function bindReport() {
-    bindShare();
+    bindShare(); sendReport();
     document.getElementById('redo').onclick = () => { S.qi = 0; S.editing = true; save(); render(); window.scrollTo(0, 0); };
   }
 
