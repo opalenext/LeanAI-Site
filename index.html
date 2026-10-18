@@ -106,6 +106,8 @@ h3{font-size:19px}
 .contact form{display:flex;gap:10px;flex-wrap:wrap}
 .contact input[type=email]{flex:1 1 240px;font:inherit;font-size:16px;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 13px;min-width:0}
 .contact .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.contact #cmsg:empty{display:none}
+.contact .assure{margin:12px 0 0;font-size:14.5px;color:var(--fg);border-left:3px solid var(--accent);padding-left:10px}
 /* diagnostic */
 .q-wrap{max-width:760px;display:flex;flex-direction:column;gap:22px}
 .progress{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
@@ -896,13 +898,14 @@ window.initMap=initMap;
           <input id="cemail" type="email" required maxlength="254" autocomplete="email" placeholder="${T('name@company.com')}">
           <input class="hp" id="cweb" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn s" type="submit">${T('Send')}</button></form>
-        <p class="note" id="cmsg" aria-live="polite">${T('Your email is stored apart from your answers, and nobody can link the two. It is deleted once the summary is sent.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
+        <p class="note" id="cmsg" aria-live="polite"></p>
+        <p class="assure">${T('Your email is stored separately from your diagnostic. Your answers stay anonymous: nobody can link them to your email. Your email is deleted once the summary is sent.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
   function bindContact() {
     const f = document.getElementById('cform'); if (!f) return;
     f.addEventListener('submit', async e => {
       e.preventDefault();
       const email = document.getElementById('cemail').value.trim(), msg = document.getElementById('cmsg'), btn = f.querySelector('button');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) { msg.textContent = T('This email address does not look valid.'); return; }
+      if (!/^[^\s@=+\-][^\s@]*@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) { msg.textContent = T('This email address does not look valid.'); return; }
       btn.disabled = true;
       let ok = false;
       try { const r = await fetch('/api/contact', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email, lang: window.LANG, website: document.getElementById('cweb').value }) }); ok = r.ok; } catch (x) {}

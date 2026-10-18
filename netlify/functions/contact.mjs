@@ -2,6 +2,7 @@
 // Nothing links this row to the answers: no response id, and the date is the day only.
 
 import { appendRow, CONTACTS_TAB, BackOfficeError } from '../lib/sheets.mjs';
+import { validEmail } from '../lib/email.mjs';
 
 const MAX_SIZE = 1_000;
 
@@ -18,10 +19,10 @@ function sameOrigin(req) {
 
 export function validate(input, now = new Date()) {
   if (!input || typeof input !== 'object') return 'Invalid body';
-  const email = typeof input.email === 'string' ? input.email.trim() : '';
-  if (email.length > 254 || !/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/.test(email)) return 'Invalid email';
+  const email = validEmail(input.email);
+  if (!email) return 'Invalid email';
   if (input.lang !== 'en' && input.lang !== 'fr') return 'Invalid language';
-  return [now.toISOString().slice(0, 10), email.toLowerCase(), input.lang];
+  return [now.toISOString().slice(0, 10), email, input.lang];
 }
 
 export default async (req) => {

@@ -68,8 +68,8 @@
     'When enough leaders have answered, we publish a summary of the results. Leave your email to receive it: one email, nothing else.':
       'Quand assez de dirigeants auront répondu, nous publierons une synthèse des résultats. Laissez votre email pour la recevoir : un seul email, rien d’autre.',
     'Your professional email': 'Votre email professionnel', 'name@company.com': 'nom@entreprise.com', 'Send': 'Envoyer',
-    'Your email is stored apart from your answers, and nobody can link the two. It is deleted once the summary is sent.':
-      'Votre email est conservé à part de vos réponses, et personne ne peut relier les deux. Il est supprimé une fois la synthèse envoyée.',
+    'Your email is stored separately from your diagnostic. Your answers stay anonymous: nobody can link them to your email. Your email is deleted once the summary is sent.':
+      'Votre email est enregistré à part de votre diagnostic. Vos réponses restent anonymes : personne ne peut les relier à votre email. Votre email est supprimé une fois la synthèse envoyée.',
     'Thank you. You will receive the summary of the results.': 'Merci. Vous recevrez la synthèse des résultats.',
     'This email address does not look valid.': 'Cette adresse email ne semble pas valide.',
     'Your email could not be saved. Please try again later.': 'Votre email n’a pas pu être enregistré. Réessayez plus tard.',
