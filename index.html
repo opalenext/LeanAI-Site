@@ -29,7 +29,10 @@ body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
 a{color:var(--accent)}
 .shell{max-width:1120px;margin:0 auto}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
+html{scroll-padding-top:calc(var(--head,72px) + 8px)}
+@media print{.top{position:static}}
+@media (max-width:1000px){.top{padding-block:10px;gap:6px}.top .steps{flex-wrap:nowrap;gap:2px}.top .steps a{padding:5px 7px}.top .steps a:not(.on) .t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 .brand{font-family:var(--display);font-weight:700;font-size:18px;color:var(--fg);text-decoration:none;letter-spacing:.01em}
 .brand span{color:var(--accent)}
 .brand{display:inline-flex;align-items:center;gap:10px}
@@ -391,7 +394,11 @@ h3{font-size:19px}
 .mapapp .tag.warn{background:var(--warn-bg);color:var(--warn)}
 .mapapp .tag.ok{background:var(--ok-bg);color:var(--ok)}
 .mapapp .contribs{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
-.panelhint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:10px 18px;min-height:44px;font:600 15px var(--display);box-shadow:0 6px 18px -6px rgba(0,0,0,.35);cursor:pointer}
+.panelhint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;width:min(560px,calc(100vw - 32px));display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 14px;text-align:left;background:var(--surface);color:var(--fg);border:1.5px solid var(--accent);border-radius:14px;padding:10px 16px;min-height:52px;font-family:var(--display);box-shadow:0 10px 28px -10px rgba(0,0,0,.45);cursor:pointer}
+.panelhint[hidden]{display:none}
+.panelhint .ph-k{grid-column:1;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.panelhint .ph-t{grid-column:1;font-size:16px;font-weight:600;line-height:1.2}
+.panelhint .ph-a{grid-column:2;grid-row:1 / span 2;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;white-space:nowrap}
 .panelhint:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 @media print{.panelhint{display:none!important}}
 .mapapp .contribs li{border-left:4px solid var(--c);padding:2px 0 2px 12px}
@@ -426,7 +433,14 @@ h3{font-size:19px}
 .mapapp .contribs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 22px}
 .mapapp .check dl{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 22px}
 .mapapp .scroll-hint{display:none;font-size:13.5px;color:var(--muted);margin:6px 4px 0}
-@media (max-width:760px){.mapapp .scroll-hint{display:block}}</style>
+@media (max-width:760px){.mapapp .scroll-hint{display:block}}
+@media (min-width:1360px){
+  .mapapp{width:min(1440px,calc(100vw - 48px));margin-left:calc(50% - min(720px,50vw - 24px))}
+  .mapapp .grid{grid-template-columns:minmax(0,1fr) 380px}
+  .mapapp .panel{position:sticky;top:calc(var(--head,72px) + 12px);max-height:calc(100vh - var(--head,72px) - 24px);overflow:auto;padding:20px 22px}
+  .mapapp .panel h2{font-size:21px}
+  .mapapp .contribs,.mapapp .check dl{grid-template-columns:1fr}
+}</style>
 <div class="shell">
   <header class="top no-print"><a class="brand" href="#/"><i class="hexa-o" aria-hidden="true">O</i>Future of Work · <span>4 Shifts</span></a><nav aria-label="Steps"><ol class="steps" id="steps"></ol></nav></header>
   <main id="view"></main>
@@ -739,8 +753,9 @@ function render(sel, fromPanel){
   // Keep the panel where the reader left it: same top position, or its top at the top of the screen
   // if the reader was already further down. The page never jumps by itself.
   if (window.__mapReady) {
-    const target = topBefore < 0 ? 0 : topBefore;
-    window.scrollBy(0, pn.getBoundingClientRect().top - target);
+    const head = document.querySelector('.top')?.offsetHeight || 0;
+    if (getComputedStyle(pn).position === 'sticky') pn.scrollTop = 0;
+    else { const target = topBefore < head ? head : topBefore; window.scrollBy(0, pn.getBoundingClientRect().top - target); }
     if (fromPanel) { const t = pn.querySelector('h2'); if (t) { t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); } }
   }
 }
@@ -748,13 +763,18 @@ function render(sel, fromPanel){
 function panelHint(){
   let b=document.getElementById('panelhint');
   if(!b){
-    b=document.createElement('button'); b.id='panelhint'; b.type='button'; b.className='panelhint'; b.textContent='Explanation below ↓'; b.hidden=true;
+    b=document.createElement('button'); b.id='panelhint'; b.type='button'; b.className='panelhint'; b.hidden=true;
     b.addEventListener('click',()=>{ b.hidden=true; const pn=document.getElementById('panel'); pn.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); });
     document.body.appendChild(b);
     const check=()=>{ const pn=document.getElementById('panel'); if(!pn||!document.body.contains(pn)){ b.hidden=true; return; } if(pn.getBoundingClientRect().top < window.innerHeight*0.85) b.hidden=true; };
     window.addEventListener('scroll',check,{passive:true}); window.addEventListener('hashchange',()=>{ b.hidden=true; });
   }
   const pn=document.getElementById('panel');
+  const kind=pn.querySelector('.kind')?.textContent.trim()||'', title=pn.querySelector('h2')?.textContent.trim()||'';
+  b.innerHTML=''; const k=document.createElement('span'); k.className='ph-k'; k.textContent=kind;
+  const t=document.createElement('span'); t.className='ph-t'; t.textContent=title;
+  const a=document.createElement('span'); a.className='ph-a'; a.textContent='Read ↓';
+  b.append(k,t,a); b.setAttribute('aria-label', `${title}. Read the explanation below.`);
   b.hidden = pn.getBoundingClientRect().top < window.innerHeight*0.85;
 }
 function select(sel, fromPanel){
@@ -912,7 +932,7 @@ window.initMap=initMap;
   const hasPaper = () => !!(S.paper && S.paper.lead && S.paper.lead.qa);
   function nav(route) {
     const ok = { '#/': true, '#/map': true, '#/diagnostic': true, '#/priorities': done(), '#/newsfix': hasPaper() };
-    document.getElementById('steps').innerHTML = STEPS.map(([h, t], i) => `<li><a href="${h}" class="${h === route ? 'on' : ''}" ${ok[h] ? '' : 'aria-disabled="true" tabindex="-1"'}><span class="n">${i + 1}</span>${t}</a></li>`).join('');
+    document.getElementById('steps').innerHTML = STEPS.map(([h, t], i) => `<li><a href="${h}" class="${h === route ? 'on' : ''}" ${ok[h] ? '' : 'aria-disabled="true" tabindex="-1"'}><span class="n">${i + 1}</span><span class="t">${t}</span></a></li>`).join('');
   }
 
   // ---------- SHARE CARD (1080 x 1350, the image people post) ----------
@@ -961,7 +981,7 @@ window.initMap=initMap;
 
   // ---------- 2. INTERACTIVE MAP ----------
   function mapView() {
-    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', '<div class="eyebrow">Step 2 · Interactive map</div>').replace('Click a link, a pillar or a challenge.', 'Click a link, a pillar or a challenge. The explanation appears below the map.').replace('<div class="scroll" id="mapview">', '<div class="scroll" id="mapview"><p class="scroll-hint">Scroll sideways to see the whole map.</p>');
+    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', '<div class="eyebrow">Step 2 · Interactive map</div>').replace('Click a link, a pillar or a challenge.', 'Click a link, a pillar or a challenge to see its explanation.').replace('<div class="scroll" id="mapview">', '<div class="scroll" id="mapview"><p class="scroll-hint">Scroll sideways to see the whole map.</p>');
     return `<div class="mapapp">${html}</div>` + nextBtn('#/diagnostic', done() ? 'See your diagnostic' : 'Start your diagnostic');
   }
 
@@ -1241,6 +1261,8 @@ window.initMap=initMap;
     fitCards();
   }
   let last = null;
+  const headVar = () => { const t = document.querySelector('.top'); if (t) document.documentElement.style.setProperty('--head', t.offsetHeight + 'px'); };
+  headVar(); window.addEventListener('resize', headVar);
   window.addEventListener('hashchange', () => { render(); if (location.hash !== last) window.scrollTo(0, 0); last = location.hash; });
   render();
   if (document.fonts) document.fonts.ready.then(fitCards);
