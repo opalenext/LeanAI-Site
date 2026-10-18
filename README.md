@@ -10,6 +10,8 @@ Projet personnel, sans lien avec un employeur.
 
 Les textes du modèle (shifts, niveaux, défis, questions, initiatives, règles, en anglais et en français) se modifient dans un classeur Google Sheets privé. `content.js` les charge par `/api/content` au démarrage et garde le modèle intégré à `index.html` si le classeur est indisponible ou si une partie ne passe pas les contrôles.
 
-Les réponses anonymes (niveaux, priorités, scores, sans nom ni organisation) sont ajoutées par `/api/responses` à l'onglet `responses` du même classeur, sauf si le visiteur décoche la case prévue.
+Les réponses anonymes (niveaux, priorités, scores et profil facultatif : secteur, taille, fonction, zone, sans nom ni organisation) sont ajoutées par `/api/responses` à l'onglet `responses` du même classeur, sauf si le visiteur décoche la case prévue.
+
+L'email facultatif pour recevoir la synthèse de l'étude est ajouté par `/api/contact` à l'onglet `contacts`, sans lien avec les réponses.
 
 Variables d'environnement Netlify : `GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY`. Sans elles, le site fonctionne avec son modèle intégré et n'enregistre rien.

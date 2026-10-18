@@ -57,8 +57,22 @@
       'Une interview par priorité : avant, aujourd’hui, et ce que vous avez fait pour y arriver. À partager en image.',
     'Your answers are saved in your browser. Unless you untick the box, your levels and priorities are added to the statistics, anonymously. Only what is needed to write the newspaper is sent to an AI model, and it is not stored.':
       'Vos réponses sont enregistrées dans votre navigateur. Sauf si vous décochez la case, vos niveaux et vos priorités sont ajoutés aux statistiques, de façon anonyme. Seul ce qui sert à écrire le journal est envoyé à un modèle d’IA, sans être conservé.',
-    'Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities and scores, no name and no organization.':
-      'Ajouter mes réponses, de façon anonyme, aux statistiques 4 Shifts : niveaux, priorités et scores, sans nom ni organisation.',
+    'Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.':
+      'Ajouter mes réponses, de façon anonyme, aux statistiques 4 Shifts : niveaux, priorités, scores et profil, sans nom ni organisation.',
+    // Profile and contact
+    'Compare with organizations like yours': 'Se comparer à des organisations proches de la vôtre',
+    'Four optional questions. They are used only in the anonymous statistics, to compare results by sector, size, role and region. Never your name or your organization.':
+      'Quatre questions facultatives. Elles servent uniquement aux statistiques anonymes, pour comparer les résultats par secteur, taille, fonction et zone. Jamais votre nom ni votre organisation.',
+    'Prefer not to say': 'Je préfère ne pas répondre',
+    'Get the results of the study': 'Recevoir les résultats de l’étude',
+    'When enough leaders have answered, we publish a summary of the results. Leave your email to receive it: one email, nothing else.':
+      'Quand assez de dirigeants auront répondu, nous publierons une synthèse des résultats. Laissez votre email pour la recevoir : un seul email, rien d’autre.',
+    'Your professional email': 'Votre email professionnel', 'name@company.com': 'nom@entreprise.com', 'Send': 'Envoyer',
+    'Your email is stored apart from your answers, and nobody can link the two. It is deleted once the summary is sent.':
+      'Votre email est conservé à part de vos réponses, et personne ne peut relier les deux. Il est supprimé une fois la synthèse envoyée.',
+    'Thank you. You will receive the summary of the results.': 'Merci. Vous recevrez la synthèse des résultats.',
+    'This email address does not look valid.': 'Cette adresse email ne semble pas valide.',
+    'Your email could not be saved. Please try again later.': 'Votre email n’a pas pu être enregistré. Réessayez plus tard.',
     // 2. Map
     'Step 2 · Interactive map': 'Étape 2 · Carte interactive', 'Four pillars, sixteen challenges': 'Quatre piliers, seize défis',
     'Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge to see its explanation.':
@@ -193,6 +207,13 @@
             line: 'Une gouvernance de confiance, un graphe de connaissance des collaborateurs, des services proactifs, et un plan piloté en cours d’année.' }
     },
     levels: ['Émergent', 'En développement', 'Avancé', 'Excellence · prêt pour 2030'],
+    profile: {
+      sector: ['Secteur', { industry: 'Industrie et manufacturing', mobility: 'Automobile, aéronautique, défense', energy: 'Énergie et utilities', finance: 'Banque et assurance',
+        health: 'Santé et pharma', tech: 'Tech et logiciel', retail: 'Distribution et biens de consommation', services: 'Services et conseil', public: 'Secteur public', other: 'Autre' }],
+      size: ['Taille de l’organisation', { xs: 'Moins de 250 personnes', s: '250 à 999', m: '1 000 à 4 999', l: '5 000 à 49 999', xl: '50 000 et plus' }],
+      role: ['Votre fonction', { ceo: 'Direction générale', hr: 'RH', ops: 'Opérations', transfo: 'Transformation, digital, IT', finance: 'Finance', other: 'Autre' }],
+      region: ['Où vous travaillez', { fr: 'France', europe: 'Europe (hors France)', namerica: 'Amérique du Nord', other: 'Autre' }]
+    },
     levelNote: 'Excellence · prêt pour 2030 : la pratique est ancrée, améliorée en continu et partagée dans toute l’organisation.',
     challenges: {
       fluid: { n: 'Équipes fluides', d: 'Le travail va plus vite que l’organigramme.', ex: 'Les équipes se forment en quelques jours, sans réorganisation' },
@@ -290,6 +311,7 @@
   };
   Object.keys(FR.shifts).forEach(function (s) { Object.assign(F.shifts[s], FR.shifts[s]); });
   F.levels = FR.levels; F.levelNote = FR.levelNote;
+  (F.profile || []).forEach(function (f) { var t = FR.profile[f.id]; if (t) { f.q = t[0]; f.o.forEach(function (o) { if (t[1][o[0]]) o[1] = t[1][o[0]]; }); } });
   Object.keys(FR.challenges).forEach(function (c) { Object.assign(F.challenges[c], FR.challenges[c]); });
   F.questions.forEach(function (q) { var t = FR.questions[q.id]; if (t) Object.assign(q, t); });
   F.initiatives.forEach(function (i) { var t = FR.initiatives[i.id]; if (t) { i.n = t[0]; i.d = t[1]; } });

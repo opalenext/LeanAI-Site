@@ -8,8 +8,9 @@ import { createSign } from 'node:crypto';
 
 const API = 'https://sheets.googleapis.com/v4/spreadsheets';
 
-export const MODEL_TABS = ['shifts', 'levels', 'texts', 'challenges', 'questions', 'initiatives', 'rules'];
+export const MODEL_TABS = ['shifts', 'levels', 'texts', 'challenges', 'questions', 'initiatives', 'rules', 'profile'];
 export const RESPONSES_TAB = 'responses';
+export const CONTACTS_TAB = 'contacts';
 
 // An error whose reason can be shown to the site owner: it never contains a secret.
 export class BackOfficeError extends Error {
@@ -100,10 +101,10 @@ export async function responsesHeader() {
   return (data.values?.[0] ?? []).map((h) => String(h).trim());
 }
 
-// Adds one row at the end of a tab. USER_ENTERED so that the date is a real date:
-// the caller only passes values it has validated (numbers, ids, fixed words), never free text.
-export async function appendRow(tab, row) {
-  const params = new URLSearchParams({ valueInputOption: 'USER_ENTERED', insertDataOption: 'INSERT_ROWS' });
+// Adds one row at the end of a tab. USER_ENTERED makes the date a real date: use it only for values
+// the caller has validated (numbers, ids, fixed words). raw = true stores text as typed, never as a formula.
+export async function appendRow(tab, row, { raw = false } = {}) {
+  const params = new URLSearchParams({ valueInputOption: raw ? 'RAW' : 'USER_ENTERED', insertDataOption: 'INSERT_ROWS' });
   await call(`/values/${encodeURIComponent(`${tab}!A1`)}:append?${params}`, {
     method: 'POST',
     body: JSON.stringify({ values: [row] }),
