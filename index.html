@@ -1,37 +1,42 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Future of Work 4 Shifts</title>
+<title>Future of Work 4 Shifts</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Measure how far your operating model is from the 2030 target, get a roadmap, and write the front page of The News Fix.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;1,400&family=UnifrakturMaguntia&display=swap">
-<style>/* Layout: one guided journey (model → diagnostic → report & roadmap → 2030 vision → The News Fix), one column of reading width with wider boards for report and roadmap. Series identity: navy, magenta, teal; Poppins display. The News Fix is printed paper in both themes. */
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;1,400&family=UnifrakturMaguntia&display=swap">
+<style>/* Layout: one guided journey (model → diagnostic → report & roadmap → 2030 vision → The News Fix), one column of reading width with wider boards for report and roadmap. Identity: shared charter (warm white, ink, emerald accent, brick, blue, violet; Space Grotesk and IBM Plex Sans) with the O hexagon mark. The News Fix is printed paper in both themes. */
 :root{
-  --bg:#F5F7FA; --surface:#FFFFFF; --fg:#12213F; --muted:#56667E; --line:#D7E0EA; --soft:#EAF0F6;
-  --accent:#E6007E; --accent-ink:#FFFFFF; --accent-soft:#FDE6F2; --teal:#0098B4; --prod:#12213F;
-  --ok:#1F8A63; --ok-bg:#E3F5EC; --warn:#A85F00; --warn-bg:#FFF1DA;
-  --s1:#0098B4; --s2:#3E9E83; --s3:#4B55C8; --s4:#D9661F; --on-bar:#FFFFFF;
-  --display:"Poppins","Segoe UI",Arial,sans-serif; --body:"Source Sans 3","Segoe UI",Arial,sans-serif;
+  --bg:#F5F5F1; --surface:#FFFFFF; --fg:#12161C; --muted:#5A6270; --line:#DADCD5; --soft:#ECEDE7;
+  --accent:#0F6E5D; --accent-ink:#FFFFFF; --accent-soft:#E1EEEA; --teal:#2C5687; --prod:#12161C;
+  --ok:#1F8A63; --ok-bg:#E3F5EC; --warn:#8F5100; --warn-bg:#FFF1DA;
+  --s1:#A74018; --s2:#0F6E5D; --s3:#2C5687; --s4:#8A4F9E; --on-bar:#FFFFFF;
+  --display:"Space Grotesk","Segoe UI",Arial,sans-serif; --body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
   --paper:#F7F3EA; --ink:#1B1B1B; --ink-soft:#4A4A4A; --rule:#1B1B1B;
   --news:"Playfair Display",Georgia,"Times New Roman",serif; --newsbody:"Source Serif 4",Georgia,serif; --black:"UnifrakturMaguntia","Old English Text MT",Georgia,serif;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --bg:#0D1526; --surface:#15203A; --fg:#E7EDF6; --muted:#9AA9BF; --line:#2A3A57; --soft:#1B2945;
-  --accent:#FF4FA6; --accent-ink:#1A0612; --accent-soft:#3A1428; --teal:#3CC7E0; --prod:#A9BEDF;
+  --bg:#101317; --surface:#181C21; --fg:#ECEBE6; --muted:#A3A8AE; --line:#2B3036; --soft:#1E2328;
+  --accent:#62B8AC; --accent-ink:#0B1512; --accent-soft:#16302B; --teal:#6FA0E6; --prod:#C9CDD2;
   --ok:#5FD3A5; --ok-bg:#12342A; --warn:#F2B04C; --warn-bg:#3A2A10;
-  --s1:#3CC7E0; --s2:#6FCDB0; --s3:#8E97F2; --s4:#F29A5C; --on-bar:#0D1526; color-scheme:dark } }
+  --s1:#E3916F; --s2:#5DBE9C; --s3:#6FA0E6; --s4:#D3A6E6; --on-bar:#101317; color-scheme:dark } }
 :root[data-theme="dark"]{
-  --bg:#0D1526; --surface:#15203A; --fg:#E7EDF6; --muted:#9AA9BF; --line:#2A3A57; --soft:#1B2945;
-  --accent:#FF4FA6; --accent-ink:#1A0612; --accent-soft:#3A1428; --teal:#3CC7E0; --prod:#A9BEDF;
+  --bg:#101317; --surface:#181C21; --fg:#ECEBE6; --muted:#A3A8AE; --line:#2B3036; --soft:#1E2328;
+  --accent:#62B8AC; --accent-ink:#0B1512; --accent-soft:#16302B; --teal:#6FA0E6; --prod:#C9CDD2;
   --ok:#5FD3A5; --ok-bg:#12342A; --warn:#F2B04C; --warn-bg:#3A2A10;
-  --s1:#3CC7E0; --s2:#6FCDB0; --s3:#8E97F2; --s4:#F29A5C; --on-bar:#0D1526; color-scheme:dark }
+  --s1:#E3916F; --s2:#5DBE9C; --s3:#6FA0E6; --s4:#D3A6E6; --on-bar:#101317; color-scheme:dark }
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;margin:0;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
 a{color:var(--accent)}
 .shell{max-width:1120px;margin:0 auto}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
+html{scroll-padding-top:calc(var(--head,72px) + 8px)}
+@media print{.top{position:static}}
+@media (max-width:1000px){.top{padding-block:10px;gap:6px}.top .steps{flex-wrap:nowrap;gap:2px}.top .steps a{padding:5px 7px}.top .steps a:not(.on) .t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 .brand{font-family:var(--display);font-weight:700;font-size:18px;color:var(--fg);text-decoration:none;letter-spacing:.01em}
 .brand span{color:var(--accent)}
+.brand{display:inline-flex;align-items:center;gap:10px}
+.hexa-o{display:inline-flex;align-items:center;justify-content:center;width:26px;height:30px;background:var(--accent);color:var(--accent-ink);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);font:700 14px var(--display);font-style:normal}
 .steps{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
 .steps a{display:inline-block;font:600 13px var(--display);padding:6px 12px;border-radius:999px;color:var(--muted);text-decoration:none;border:1.5px solid transparent}
 .steps a.on{color:var(--fg);border-color:var(--fg)}
@@ -39,6 +44,11 @@ a{color:var(--accent)}
 .steps a.on .n{background:var(--accent);color:var(--accent-ink)}
 .steps a.done{color:var(--fg)}
 .steps a[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.langs{display:flex;gap:2px;font:600 13px var(--display)}
+.langs button{font:inherit;background:transparent;border:1.5px solid transparent;border-radius:999px;padding:5px 9px;min-height:32px;min-width:40px;color:var(--muted);cursor:pointer}
+.langs button[aria-pressed="true"]{border-color:var(--fg);color:var(--fg)}
+.langs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:1000px){.top .brand{order:1}.top .langs{order:2;margin-left:auto}.top #stepsnav{order:3;flex-basis:100%}}
 main{padding-block:36px 0}
 h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
 h1{font-size:clamp(32px,5vw,54px);letter-spacing:-.01em}
@@ -111,10 +121,10 @@ h3{font-size:19px}
 .bar .v{font:700 15px var(--display);text-align:right;font-variant-numeric:tabular-nums}
 .heat{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
 .hc{border-radius:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:6px}
-.hc .t{display:flex;justify-content:space-between;gap:8px;font:600 14.5px var(--display)}
+.hc .t{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 8px;font:600 14.5px var(--display)}
 .hc .gap{font:700 13px var(--display);padding:2px 8px;border-radius:999px;white-space:nowrap}
 .hc .gap{flex:none;align-self:flex-start}
-.hc .t span:first-child{min-width:0}
+.hc .t span:first-child{min-width:0;overflow-wrap:break-word;hyphens:auto}
 .gap.hi{background:var(--accent);color:var(--accent-ink)}
 .gap.mid{background:var(--warn-bg);color:var(--warn)}
 .gap.lo{background:var(--ok-bg);color:var(--ok)}
@@ -236,37 +246,37 @@ h3{font-size:19px}
 /* executive report-out: two A4 pages, printed document look in both themes */
 .brief-tools{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
 .brief{display:flex;flex-direction:column;gap:28px;align-items:center}
-.b-page{background:#FFFFFF;color:#12213F;width:100%;max-width:820px;min-height:1120px;padding:44px 52px 36px;box-shadow:0 2px 0 rgba(0,0,0,.05),0 18px 40px -22px rgba(0,0,0,.35);display:flex;flex-direction:column;gap:22px;font-family:var(--body);font-size:15px;line-height:1.5}
+.b-page{background:#FFFFFF;color:#12161C;width:100%;max-width:820px;min-height:1120px;padding:44px 52px 36px;box-shadow:0 2px 0 rgba(0,0,0,.05),0 18px 40px -22px rgba(0,0,0,.35);display:flex;flex-direction:column;gap:22px;font-family:var(--body);font-size:15px;line-height:1.5}
 @media (max-width:700px){.b-page{padding:24px 18px;min-height:0}}
-.b-head{display:flex;justify-content:space-between;gap:16px;border-bottom:3px solid #12213F;padding-bottom:12px}
-.b-k{font:700 11.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#E6007E}
+.b-head{display:flex;justify-content:space-between;gap:16px;border-bottom:3px solid #12161C;padding-bottom:12px}
+.b-k{font:700 11.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#0F6E5D}
 .b-org{font:700 22px var(--display);margin-top:2px}
-.b-meta{font:500 12.5px var(--display);color:#56667E;text-align:right}
-.b-title{font:700 clamp(24px,3.2vw,30px)/1.15 var(--display);margin:0;color:#12213F}
+.b-meta{font:500 12.5px var(--display);color:#5A6270;text-align:right}
+.b-title{font:700 clamp(24px,3.2vw,30px)/1.15 var(--display);margin:0;color:#12161C}
 .b-sec{display:flex;flex-direction:column;gap:8px}
-.b-sec h3{font:700 13px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#12213F;border-bottom:1px solid #D7E0EA;padding-bottom:6px;margin:0}
-.b-sec p{margin:0;color:#12213F}
-.b-muted{color:#56667E}
+.b-sec h3{font:700 13px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#12161C;border-bottom:1px solid #DADCD5;padding-bottom:6px;margin:0}
+.b-sec p{margin:0;color:#12161C}
+.b-muted{color:#5A6270}
 .b-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
 @media (max-width:560px){.b-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.b-kpis div{border:1.5px solid #D7E0EA;border-radius:8px;padding:10px 12px}
-.b-kpis b{display:block;font:700 26px var(--display);font-variant-numeric:tabular-nums;color:#12213F}
-.b-kpis div:first-child b{color:#E6007E}
-.b-kpis span{font-size:12.5px;color:#56667E}
+.b-kpis div{border:1.5px solid #DADCD5;border-radius:8px;padding:10px 12px}
+.b-kpis b{display:block;font:700 26px var(--display);font-variant-numeric:tabular-nums;color:#12161C}
+.b-kpis div:first-child b{color:#0F6E5D}
+.b-kpis span{font-size:12.5px;color:#5A6270}
 .b-bars{display:flex;flex-direction:column;gap:6px;margin-top:4px}
-.b-bar{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr) 44px;gap:10px;align-items:center;font:600 13px var(--display);color:#12213F}
+.b-bar{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr) 44px;gap:10px;align-items:center;font:600 13px var(--display);color:#12161C}
 .b-bar b{text-align:right;font-variant-numeric:tabular-nums}
-.b-track{height:10px;border-radius:5px;background:#EAF0F6;overflow:hidden}
+.b-track{height:10px;border-radius:5px;background:#ECEDE7;overflow:hidden}
 .b-track i{display:block;height:100%;border-radius:5px}
-.b-table{width:100%;border-collapse:collapse;font-size:14px;color:#12213F}
-.b-table th{font:600 11.5px var(--display);letter-spacing:.08em;text-transform:uppercase;color:#56667E;text-align:left;border-bottom:1.5px solid #12213F;padding:6px 8px}
-.b-table td{border-bottom:1px solid #D7E0EA;padding:8px;vertical-align:top}
+.b-table{width:100%;border-collapse:collapse;font-size:14px;color:#12161C}
+.b-table th{font:600 11.5px var(--display);letter-spacing:.08em;text-transform:uppercase;color:#5A6270;text-align:left;border-bottom:1.5px solid #12161C;padding:6px 8px}
+.b-table td{border-bottom:1px solid #DADCD5;padding:8px;vertical-align:top}
 .b-num{font:700 15px var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
-.b-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:#12213F}
-.b-ask{background:#12213F;color:#FFFFFF;border-radius:10px;padding:16px 18px}
+.b-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:#12161C}
+.b-ask{background:#12161C;color:#FFFFFF;border-radius:10px;padding:16px 18px}
 .b-ask h3{color:#FFFFFF;border-bottom-color:rgba(255,255,255,.25)}
 .b-ask ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
-.b-foot{margin-top:auto;border-top:1px solid #D7E0EA;padding-top:8px;font-size:11.5px;color:#56667E}
+.b-foot{margin-top:auto;border-top:1px solid #DADCD5;padding-top:8px;font-size:11.5px;color:#5A6270}
 /* maturity profile: spider + practice list */
 .profile{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:start}
 @media (max-width:900px){.profile{grid-template-columns:minmax(0,1fr)}}
@@ -389,6 +399,13 @@ h3{font-size:19px}
 .mapapp .tag.warn{background:var(--warn-bg);color:var(--warn)}
 .mapapp .tag.ok{background:var(--ok-bg);color:var(--ok)}
 .mapapp .contribs{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.panelhint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;width:min(560px,calc(100vw - 32px));display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 14px;text-align:left;background:var(--surface);color:var(--fg);border:1.5px solid var(--accent);border-radius:14px;padding:10px 16px;min-height:52px;font-family:var(--display);box-shadow:0 10px 28px -10px rgba(0,0,0,.45);cursor:pointer}
+.panelhint[hidden]{display:none}
+.panelhint .ph-k{grid-column:1;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.panelhint .ph-t{grid-column:1;font-size:16px;font-weight:600;line-height:1.2}
+.panelhint .ph-a{grid-column:2;grid-row:1 / span 2;background:var(--accent);color:var(--accent-ink);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;white-space:nowrap}
+.panelhint:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+@media print{.panelhint{display:none!important}}
 .mapapp .contribs li{border-left:4px solid var(--c);padding:2px 0 2px 12px}
 .mapapp .contribs b{font-family:var(--display);font-size:13.5px;display:block;color:var(--c)}
 .mapapp .contribs button{all:unset;cursor:pointer;font-family:var(--display);font-size:13.5px;font-weight:600;color:var(--c)}
@@ -421,9 +438,16 @@ h3{font-size:19px}
 .mapapp .contribs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 22px}
 .mapapp .check dl{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 22px}
 .mapapp .scroll-hint{display:none;font-size:13.5px;color:var(--muted);margin:6px 4px 0}
-@media (max-width:760px){.mapapp .scroll-hint{display:block}}</style>
+@media (max-width:760px){.mapapp .scroll-hint{display:block}}
+@media (min-width:1360px){
+  .mapapp{width:min(1440px,calc(100vw - 48px));margin-left:calc(50% - min(720px,50vw - 24px))}
+  .mapapp .grid{grid-template-columns:minmax(0,1fr) 380px}
+  .mapapp .panel{position:sticky;top:calc(var(--head,72px) + 12px);max-height:calc(100vh - var(--head,72px) - 24px);overflow:auto;padding:20px 22px}
+  .mapapp .panel h2{font-size:21px}
+  .mapapp .contribs,.mapapp .check dl{grid-template-columns:1fr}
+}</style>
 <div class="shell">
-  <header class="top no-print"><a class="brand" href="#/">Future of Work · <span>4 Shifts</span></a><nav aria-label="Steps"><ol class="steps" id="steps"></ol></nav></header>
+  <header class="top no-print"><a class="brand" href="#/"><i class="hexa-o" aria-hidden="true">O</i>Future of Work · <span>4 Shifts</span></a><nav aria-label="Steps" id="stepsnav"><ol class="steps" id="steps"></ol></nav><div class="langs no-print" role="group" aria-label="Language"><button type="button" data-lang="fr" lang="fr">FR</button><button type="button" data-lang="en" lang="en">EN</button></div></header>
   <main id="view"></main>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -545,6 +569,7 @@ window.FOW = {
   ]
 };
 </script>
+<script src="i18n.js"></script>
 <script>window.MAP_HTML="\n\n<div class=\"wrap\">\n  <header>\n    <div>\n      <div class=\"eyebrow\">Future of Work \u00b7 4 shifts</div>\n      <h1>Four pillars, sixteen challenges</h1>\n      <p class=\"lede\">Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge.</p>\n    </div>\n  </header>\n  <div class=\"legend\" id=\"legend\"></div>\n  <div class=\"grid\">\n    <div class=\"board\">\n      <div class=\"scroll\" id=\"mapview\"><svg id=\"map\" viewBox=\"0 0 1120 645\" role=\"img\" aria-label=\"Map of the four pillars and the challenges they address\"></svg></div>\n      <div class=\"scroll\" id=\"matrixview\" hidden></div>\n    </div>\n    <aside class=\"panel\" id=\"panel\" aria-live=\"polite\"></aside>\n  </div>\n</div>\n\n";
 function initMap(){
 window.__mapReady=false;
@@ -646,6 +671,7 @@ const K = {
   augmented:{s:'warn', sum:'LeanAI puts people at the core of the redesign. The twin gives AI agents to managers and experts.', risk:'When simulations offer AI agents as an option next to hiring, they can read as replacement, the opposite of augmentation.', guard:'AI agents are framed as capacity added to teams. People keep the decision.'},
   global:{s:'single', sum:'Only the digital twin addresses this challenge.', risk:'No conflict between pillars, but no cumulative effect either. If the twin is late, nothing else covers it.', guard:'Consider which other pillar could contribute, for example missions across sites and functions.'}
 };
+window.I18N_MAP(P,C,L,K);
 const ORDER = ['fluid','agility','skills','knowledge','workplace','simplif','benefits','sovereignty','collective','recog','network','purpose','leadership','growth','augmented','global'];
 const SIDS = ['S1','S2','S3','S4'];
 const links = []; SIDS.forEach(s=>Object.keys(L[s]).forEach(c=>links.push({s,c})));
@@ -655,7 +681,7 @@ const esc = t => String(t).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&g
 
 document.getElementById('legend').innerHTML =
   SIDS.map(s=>`<span><i class="sw" style="background:${col(s)}"></i>${P[s].n}</span>`).join('') +
-  `<span><i class="dot"></i>Coherence watch-out</span>`;
+  `<span><i class="dot"></i>${T('Coherence watch-out')}</span>`;
 
 // ---------- MAP ----------
 const svg = document.getElementById('map'); const NS='http://www.w3.org/2000/svg';
@@ -665,8 +691,8 @@ const ppos={}; SIDS.forEach((s,i)=>{ ppos[s]={x:140+i*280, y:330}; });
 const el=(t,a,p=svg)=>{const e=document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); p.appendChild(e); return e;};
 el('rect',{x:8,y:10,width:W-16,height:118,rx:14,class:'band'});
 el('rect',{x:8,y:512,width:W-16,height:122,rx:14,class:'band'});
-let t=el('text',{x:W/2,y:34,'text-anchor':'middle',class:'band-label'}); t.innerHTML='Productivity <tspan class="light">challenges</tspan>';
-t=el('text',{x:W/2,y:620,'text-anchor':'middle',class:'band-label'}); t.innerHTML='Cultural <tspan class="light">challenges</tspan>';
+let t=el('text',{x:W/2,y:34,'text-anchor':'middle',class:'band-label'}); t.innerHTML=LANG==='fr'?'Défis de <tspan class="light">productivité</tspan>':'Productivity <tspan class="light">challenges</tspan>';
+t=el('text',{x:W/2,y:620,'text-anchor':'middle',class:'band-label'}); t.innerHTML=LANG==='fr'?'Défis <tspan class="light">culturels</tspan>':'Cultural <tspan class="light">challenges</tspan>';
 const gl=el('g',{});
 links.forEach(lk=>{
   const a=ppos[lk.s], b=pos[lk.c], up=C[lk.c].g==='P';
@@ -690,19 +716,19 @@ ORDER.forEach(c=>{
 SIDS.forEach((s,i)=>{
   const g=el('g',{class:'pill',tabindex:0,role:'button','aria-label':P[s].n}); const {x,y}=ppos[s];
   el('rect',{x:x-110,y:y-40,width:220,height:80,rx:14,stroke:col(s)},g);
-  const k=el('text',{x,y:y-12,'text-anchor':'middle',class:'k'},g); k.textContent=`SHIFT ${i+1} · EPISODE ${P[s].ep}`;
+  const k=el('text',{x,y:y-12,'text-anchor':'middle',class:'k'},g); k.textContent=T('SHIFT {n} · EPISODE {e}',{n:i+1,e:P[s].ep});
   const words=P[s].n; const n=el('text',{x,y:y+14,'text-anchor':'middle',class:'n',fill:col(s)},g); n.textContent=words; n.style.fill=col(s);
-  const cnt=el('text',{x,y:y+31,'text-anchor':'middle',class:'k'},g); cnt.textContent=`${Object.keys(L[s]).length} CHALLENGES`;
+  const cnt=el('text',{x,y:y+31,'text-anchor':'middle',class:'k'},g); cnt.textContent=T('{n} CHALLENGES',{n:Object.keys(L[s]).length});
   g.addEventListener('click',()=>select({type:'pillar',s})); g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select({type:'pillar',s});}});
   P[s].g_=g;
 });
 
 // ---------- MATRIX ----------
 function matrix(){
-  const head=`<thead><tr><th>Challenge</th>${SIDS.map((s,i)=>`<th class="p" style="color:${col(s)}">Shift ${i+1}<br>${esc(P[s].n)}</th>`).join('')}<th class="p">Pillars</th><th>Coherence</th></tr></thead>`;
-  const row=c=>{ const st=K[c].s; const tag=st==='warn'?'<span class="tag warn">Watch-out</span>':st==='single'?'<span class="tag warn">Single pillar</span>':'<span class="tag ok">Aligned</span>';
+  const head=`<thead><tr><th>${T('Challenge')}</th>${SIDS.map((s,i)=>`<th class="p" style="color:${col(s)}">Shift ${i+1}<br>${esc(P[s].n)}</th>`).join('')}<th class="p">${T('Pillars')}</th><th>${T('Coherence')}</th></tr></thead>`;
+  const row=c=>{ const st=K[c].s; const tag=st==='warn'?`<span class="tag warn">${T('Watch-out')}</span>`:st==='single'?`<span class="tag warn">${T('Single pillar')}</span>`:`<span class="tag ok">${T('Aligned')}</span>`;
     return `<tr class="row" data-c="${c}"><td tabindex="0" data-c="${c}">${esc(C[c].n)}</td>${SIDS.map(s=>L[s][c]?`<td class="cell" tabindex="0" data-s="${s}" data-c="${c}" style="--c:${col(s)}" aria-label="${esc(P[s].n)} to ${esc(C[c].n)}"><i></i></td>`:'<td></td>').join('')}<td style="text-align:center;font-variant-numeric:tabular-nums">${byC(c).length}</td><td>${tag}</td></tr>`; };
-  const body=`<tbody><tr class="grp"><td colspan="7">Productivity challenges</td></tr>${ORDER.filter(c=>C[c].g==='P').map(row).join('')}<tr class="grp"><td colspan="7">Cultural challenges</td></tr>${ORDER.filter(c=>C[c].g==='C').map(row).join('')}</tbody>`;
+  const body=`<tbody><tr class="grp"><td colspan="7">${T('Productivity challenges')}</td></tr>${ORDER.filter(c=>C[c].g==='P').map(row).join('')}<tr class="grp"><td colspan="7">${T('Cultural challenges')}</td></tr>${ORDER.filter(c=>C[c].g==='C').map(row).join('')}</tbody>`;
   const box=document.getElementById('matrixview'); box.innerHTML=`<table>${head}${body}</table>`;
   box.querySelectorAll('[data-c]').forEach(td=>{ const go=()=>{ if(td.dataset.s) select({type:'link',s:td.dataset.s,c:td.dataset.c}); else select({type:'ch',c:td.dataset.c}); };
     if(td.tagName==='TD'){ td.addEventListener('click',e=>{e.stopPropagation();go();}); td.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}}); } });
@@ -710,35 +736,62 @@ function matrix(){
 
 
 // ---------- PANEL ----------
-function checkBlock(c){ const k=K[c]; const tag=k.s==='warn'?'<span class="tag warn">Watch-out</span>':k.s==='single'?'<span class="tag warn">Single pillar</span>':'<span class="tag ok">Aligned</span>';
-  return `<div class="check"><h3>Coherence check ${tag}</h3><dl><div><dt>Combined effect</dt><dd>${esc(k.sum)}</dd></div><div><dt>Risk of opposite effects</dt><dd>${esc(k.risk)}</dd></div><div><dt>Guardrail</dt><dd>${esc(k.guard)}</dd></div></dl></div>`; }
-function chTag(c){ return `<span class="tag ${C[c].g}">${C[c].g==='P'?'Productivity':'Cultural'} challenge</span>`; }
-function render(sel){
+function checkBlock(c){ const k=K[c]; const tag=k.s==='warn'?`<span class="tag warn">${T('Watch-out')}</span>`:k.s==='single'?`<span class="tag warn">${T('Single pillar')}</span>`:`<span class="tag ok">${T('Aligned')}</span>`;
+  return `<div class="check"><h3>${T('Coherence check')} ${tag}</h3><dl><div><dt>${T('Combined effect')}</dt><dd>${esc(k.sum)}</dd></div><div><dt>${T('Risk of opposite effects')}</dt><dd>${esc(k.risk)}</dd></div><div><dt>${T('Guardrail')}</dt><dd>${esc(k.guard)}</dd></div></dl></div>`; }
+function chTag(c){ return `<span class="tag ${C[c].g}">${T(C[c].g==='P'?'Productivity challenge':'Cultural challenge')}</span>`; }
+function render(sel, fromPanel){
   const pn=document.getElementById('panel'); let h='';
+  const topBefore=pn.getBoundingClientRect().top;
   if(sel.type==='link'){ const {s,c}=sel; const others=byC(c).filter(x=>x!==s);
-    h=`<div class="kind" style="color:${col(s)}">${esc(P[s].n)} → challenge</div><h2>${esc(C[c].n)}</h2><div>${chTag(c)}</div>
-      <ul class="contribs"><li style="--c:${col(s)}"><b>How ${esc(P[s].n)} contributes</b>${esc(L[s][c])}</li></ul>
-      ${others.length?`<div><div class="kind" style="margin-bottom:8px">Other pillars acting on this challenge</div><ul class="contribs">${others.map(o=>`<li style="--c:${col(o)}"><button data-s="${o}" data-c="${c}">${esc(P[o].n)}</button><br>${esc(L[o][c])}</li>`).join('')}</ul></div>`:''}
+    h=`<div class="kind" style="color:${col(s)}">${esc(T('{p} → challenge',{p:P[s].n}))}</div><h2>${esc(C[c].n)}</h2><div>${chTag(c)}</div>
+      <ul class="contribs"><li style="--c:${col(s)}"><b>${esc(T('How {p} contributes',{p:P[s].n}))}</b>${esc(L[s][c])}</li></ul>
+      ${others.length?`<div><div class="kind" style="margin-bottom:8px">${T('Other pillars acting on this challenge')}</div><ul class="contribs">${others.map(o=>`<li style="--c:${col(o)}"><button data-s="${o}" data-c="${c}">${esc(P[o].n)}</button><br>${esc(L[o][c])}</li>`).join('')}</ul></div>`:''}
       ${checkBlock(c)}`; }
   else if(sel.type==='ch'){ const {c}=sel; const ps=byC(c);
-    h=`<div class="kind">Challenge · ${ps.length} of 4 pillars</div><h2>${esc(C[c].n)}</h2><div>${chTag(c)}</div><p class="muted">${esc(C[c].d)}</p>
+    h=`<div class="kind">${T(ps.length>1?'Challenge · {n} of 4 pillars':'Challenge · {n} of 4 pillars ',{n:ps.length})}</div><h2>${esc(C[c].n)}</h2><div>${chTag(c)}</div><p class="muted">${esc(C[c].d)}</p>
       <ul class="contribs">${ps.map(s=>`<li style="--c:${col(s)}"><button data-s="${s}" data-c="${c}">${esc(P[s].n)}</button><br>${esc(L[s][c])}</li>`).join('')}</ul>${checkBlock(c)}`; }
   else if(sel.type==='pillar'){ const {s}=sel; const cs=ORDER.filter(c=>L[s][c]); const w=cs.filter(c=>K[c].s==='warn').length;
-    h=`<div class="kind" style="color:${col(s)}">Shift ${SIDS.indexOf(s)+1} · Episode ${P[s].ep}</div><h2>${esc(P[s].full)}</h2>
-      <p class="muted">Addresses ${cs.filter(c=>C[c].g==='P').length} productivity and ${cs.filter(c=>C[c].g==='C').length} cultural challenges. ${w} of them have a coherence watch-out.</p>
+    h=`<div class="kind" style="color:${col(s)}">${T('Shift {n} · Episode {e}',{n:SIDS.indexOf(s)+1,e:P[s].ep})}</div><h2>${esc(P[s].full)}</h2>
+      <p class="muted">${T('Addresses {p} productivity and {c} cultural challenges. {w} of them have a coherence watch-out.',{p:cs.filter(c=>C[c].g==='P').length,c:cs.filter(c=>C[c].g==='C').length,w})}</p>
       <ul class="contribs">${cs.map(c=>`<li style="--c:${col(s)}"><button data-s="${s}" data-c="${c}">${esc(C[c].n)}${K[c].s==='warn'?' <i class="dot"></i>':''}</button><br>${esc(L[s][c])}</li>`).join('')}</ul>`; }
-  h+=`<p class="note">Draft for review. Contributions and checks are written from the episode content and should be validated pillar by pillar.</p>`;
+  h+=`<p class="note">${T('Draft for review. Contributions and checks are written from the episode content and should be validated pillar by pillar.')}</p>`;
   pn.innerHTML=h;
-  pn.querySelectorAll('button[data-s]').forEach(b=>b.addEventListener('click',()=>select({type:'link',s:b.dataset.s,c:b.dataset.c})));
+  pn.querySelectorAll('button[data-s]').forEach(b=>b.addEventListener('click',()=>select({type:'link',s:b.dataset.s,c:b.dataset.c},true)));
+  // Keep the panel where the reader left it: same top position, or its top at the top of the screen
+  // if the reader was already further down. The page never jumps by itself.
+  if (window.__mapReady) {
+    const head = document.querySelector('.top')?.offsetHeight || 0;
+    if (getComputedStyle(pn).position === 'sticky') pn.scrollTop = 0;
+    else { const target = topBefore < head ? head : topBefore; window.scrollBy(0, pn.getBoundingClientRect().top - target); }
+    if (fromPanel) { const t = pn.querySelector('h2'); if (t) { t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); } }
+  }
 }
-function select(sel){
+// Discreet button that points to the explanation when it is below the screen, instead of scrolling for the reader.
+function panelHint(){
+  let b=document.getElementById('panelhint');
+  if(!b){
+    b=document.createElement('button'); b.id='panelhint'; b.type='button'; b.className='panelhint'; b.hidden=true;
+    b.addEventListener('click',()=>{ b.hidden=true; const pn=document.getElementById('panel'); pn.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); });
+    document.body.appendChild(b);
+    const check=()=>{ const pn=document.getElementById('panel'); if(!pn||!document.body.contains(pn)){ b.hidden=true; return; } if(pn.getBoundingClientRect().top < window.innerHeight*0.85) b.hidden=true; };
+    window.addEventListener('scroll',check,{passive:true}); window.addEventListener('hashchange',()=>{ b.hidden=true; });
+  }
+  const pn=document.getElementById('panel');
+  const kind=pn.querySelector('.kind')?.textContent.trim()||'', title=pn.querySelector('h2')?.textContent.trim()||'';
+  b.innerHTML=''; const k=document.createElement('span'); k.className='ph-k'; k.textContent=kind;
+  const t=document.createElement('span'); t.className='ph-t'; t.textContent=title;
+  const a=document.createElement('span'); a.className='ph-a'; a.textContent=T('Read ↓');
+  b.append(k,t,a); b.setAttribute('aria-label', T('{t}. Read the explanation below.',{t:title}));
+  b.hidden = pn.getBoundingClientRect().top < window.innerHeight*0.85;
+}
+function select(sel, fromPanel){
   svg.classList.add('focus');
   links.forEach(lk=>{ const on= sel.type==='link'?(lk.s===sel.s&&lk.c===sel.c): sel.type==='ch'?lk.c===sel.c : lk.s===sel.s; lk.p.classList.toggle('on',on); });
   ORDER.forEach(c=>{ const on= sel.type==='pillar'?!!L[sel.s][c] : c===sel.c; C[c].g_.classList.toggle('dim',!on); });
   SIDS.forEach(s=>{ const on= sel.type==='pillar'?s===sel.s : sel.type==='link'?s===sel.s : !!L[s][sel.c]; P[s].g_.classList.toggle('dim',!on); });
   document.querySelectorAll('#matrixview tr.row').forEach(tr=>tr.classList.toggle('sel', sel.c===tr.dataset.c || (sel.type==='pillar'&&!!L[sel.s][tr.dataset.c])));
-  render(sel);
-  if (window.__mapReady) { const pn=document.getElementById('panel'); if (pn.getBoundingClientRect().top > window.innerHeight*0.75) pn.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); }
+  render(sel, fromPanel);
+  if (window.__mapReady) panelHint();
 }
 function view(v){ const m=v==='map'; document.getElementById('mapview').hidden=!m; document.getElementById('matrixview').hidden=m;
   
@@ -754,11 +807,14 @@ window.initMap=initMap;
 </script>
 <script>(function () {
   const F = window.FOW;
+  const FRL = window.LANG === 'fr';
+  const L_ = window.locale;
+  const pc = v => window.num(Math.round(v));
   const SIDS = ['S1', 'S2', 'S3', 'S4'];
   const YEARS = [2027, 2028, 2029, 2030];
   const KEY = 'fow4_state_v2';
   const MINP = 3, MAXP = 5;
-  const QS = ['What was it like before?', 'What is it like today?', 'What did you do to get there?'];
+  const QS = ['What was it like before?', 'What is it like today?', 'What did you do to get there?'].map(x => T(x));
   const col = s => `var(--${s.toLowerCase()})`;
   const esc = t => String(t == null ? '' : t).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
   const pct = v => Math.round(v);
@@ -805,10 +861,10 @@ window.initMap=initMap;
     return { items, byYear: y => items.filter(x => x.start === y) };
   }
   const gapClass = v => v < 34 ? 'hi' : v < 67 ? 'mid' : 'lo';
-  const gapLabel = v => v < 34 ? 'Large gap' : v < 67 ? 'Gap' : 'Close';
+  const gapLabel = v => T(v < 34 ? 'Large gap' : v < 67 ? 'Gap' : 'Close');
 
   // ---------- SPIDER GRAPH (14 practices, grouped by shift) ----------
-  const PAPER = { S1: '#0098B4', S2: '#3E9E83', S3: '#4B55C8', S4: '#D9661F', fg: '#12213F', muted: '#56667E', line: '#C9D4E0', accent: '#E6007E' };
+  const PAPER = { S1: '#A74018', S2: '#0F6E5D', S3: '#2C5687', S4: '#8A4F9E', fg: '#12161C', muted: '#5A6270', line: '#DADCD5', accent: '#0F6E5D' };
   function wrap2(t) { if (t.length <= 15) return [t]; const w = t.split(' '); let best = [t], bd = 1e9;
     for (let k = 1; k < w.length; k++) { const a = w.slice(0, k).join(' '), b = w.slice(k).join(' '), d = Math.abs(a.length - b.length); if (d < bd) { bd = d; best = [a, b]; } } return best; }
   function spider(paper) {
@@ -825,7 +881,7 @@ window.initMap=initMap;
     [1, 2, 3, 4].forEach(l => { const pts = qs.map((q, i) => pt(i, R * l / 4).map(f).join(',')).join(' ');
       g += `<polygon points="${pts}" fill="none" stroke="${c.line}" stroke-width="${l === 4 ? 1.6 : 1}"${l === 4 ? ' stroke-dasharray="5 4"' : ''}/>`; });
     qs.forEach((q, i) => { const [x, y] = pt(i, R); g += `<line x1="${cx}" y1="${cy}" x2="${f(x)}" y2="${f(y)}" stroke="${c.line}" stroke-width="1"/>`; });
-    F.levels.forEach((L, k) => { const y = cy - R * (k + 1) / 4; g += `<text x="${cx + 7}" y="${f(y + 13)}" font-size="10.5" fill="${c.muted}">${esc(k === 3 ? '2030-ready' : L)}</text>`; });
+    F.levels.forEach((L, k) => { const y = cy - R * (k + 1) / 4; g += `<text x="${cx + 7}" y="${f(y + 13)}" font-size="10.5" fill="${c.muted}">${esc(k === 3 ? T('2030-ready') : L)}</text>`; });
     const dp = qs.map((q, i) => pt(i, R * (a[q.id] || 0) / 4).map(f).join(',')).join(' ');
     g += `<polygon points="${dp}" fill="${c.accent}" fill-opacity="0.15" stroke="${c.accent}" stroke-width="2.4" stroke-linejoin="round"/>`;
     qs.forEach((q, i) => { const [x, y] = pt(i, R * (a[q.id] || 0) / 4); g += `<circle cx="${f(x)}" cy="${f(y)}" r="5" fill="${c.s(q.s)}" stroke="#FFFFFF" stroke-width="1.5"/>`; });
@@ -833,11 +889,11 @@ window.initMap=initMap;
       const anchor = Math.abs(cs) < 0.25 ? 'middle' : cs > 0 ? 'start' : 'end';
       const dy = sn < -0.6 ? -(lines.length - 1) * 15 : sn > 0.6 ? 11 : -(lines.length - 1) * 7.5 + 4;
       g += `<text x="${f(x)}" y="${f(y + dy)}" text-anchor="${anchor}" font-size="14" font-weight="600" fill="${c.s(q.s)}">${lines.map((ln, k) => `<tspan x="${f(x)}" dy="${k ? 15 : 0}">${esc(ln)}</tspan>`).join('')}</text>`; });
-    return `<svg class="spider" viewBox="0 0 ${W} ${H}" role="img" aria-label="Maturity profile on the 14 practices, from Emerging to Excellence · 2030-ready">${g}</svg>`;
+    return `<svg class="spider" viewBox="-80 0 ${W + 160} ${H}" role="img" aria-label="${T('Maturity profile on the 14 practices, from Emerging to Excellence · 2030-ready')}">${g}</svg>`;
   }
   function practiceList() {
     const a = S.answers, r = scores();
-    return SIDS.map((s, i) => `<div class="pr-grp"><div class="pr-h" style="--c:${col(s)}"><span>Shift ${i + 1} · ${esc(F.shifts[s].n)}</span><b>${pct(r.pillars[s])}%</b></div>` +
+    return SIDS.map((s, i) => `<div class="pr-grp"><div class="pr-h" style="--c:${col(s)}"><span>Shift ${i + 1} · ${esc(F.shifts[s].n)}</span><b>${pc(r.pillars[s])}</b></div>` +
       F.questions.filter(q => q.s === s).map(q => `<div class="pr-row"><span>${esc(q.t)}</span><span class="lvl l${a[q.id]}">${esc(F.levels[a[q.id] - 1])}</span></div>`).join('') + '</div>').join('');
   }
   // System effect: how many shifts a set of priorities mobilizes, and how many initiatives are linked across shifts
@@ -848,6 +904,7 @@ window.initMap=initMap;
   }
   function systemSentence(rm, k) {
     const st = systemStats(rm);
+    if (FRL) return `Vos ${k} priorités mobilisent ${st.shifts === 4 ? 'les 4 shifts' : st.shifts + ' des 4 shifts'} : ${st.n} initiative${st.n > 1 ? 's' : ''}, dont ${st.linked} reliée${st.linked > 1 ? 's' : ''} entre shifts.`;
     return `Your ${k} priorities mobilize ${st.shifts === 4 ? 'all 4 shifts' : st.shifts + ' of the 4 shifts'}: ${st.n} initiative${st.n > 1 ? 's' : ''}, ${st.linked} of them linked across shifts.`;
   }
   // Gantt dependency arrows, drawn after layout
@@ -882,27 +939,30 @@ window.initMap=initMap;
   window.addEventListener('resize', () => { if (document.querySelector('.gantt')) drawArrows(); });
 
   // ---------- NAV ----------
-  const STEPS = [['#/', 'Introduction'], ['#/map', 'Interactive map'], ['#/diagnostic', 'Your Diagnostic'], ['#/priorities', 'Your Priorities'], ['#/newsfix', 'Your News Fix']];
+  const STEPS = [['#/', 'Introduction'], ['#/map', 'Interactive map'], ['#/diagnostic', 'Your Diagnostic'], ['#/priorities', 'Your Priorities'], ['#/newsfix', 'Your News Fix']].map(([h, t]) => [h, T(t)]);
   const hasPaper = () => !!(S.paper && S.paper.lead && S.paper.lead.qa);
   function nav(route) {
     const ok = { '#/': true, '#/map': true, '#/diagnostic': true, '#/priorities': done(), '#/newsfix': hasPaper() };
-    document.getElementById('steps').innerHTML = STEPS.map(([h, t], i) => `<li><a href="${h}" class="${h === route ? 'on' : ''}" ${ok[h] ? '' : 'aria-disabled="true" tabindex="-1"'}><span class="n">${i + 1}</span>${t}</a></li>`).join('');
+    document.getElementById('stepsnav').setAttribute('aria-label', T('Steps'));
+    document.querySelectorAll('.langs button').forEach(b => { b.setAttribute('aria-pressed', String(b.dataset.lang === window.LANG)); b.onclick = () => window.setLang(b.dataset.lang); });
+    document.querySelector('.langs').setAttribute('aria-label', T('Language'));
+    document.getElementById('steps').innerHTML = STEPS.map(([h, t], i) => `<li><a href="${h}" class="${h === route ? 'on' : ''}" ${ok[h] ? '' : 'aria-disabled="true" tabindex="-1"'}><span class="n">${i + 1}</span><span class="t">${t}</span></a></li>`).join('');
   }
 
   // ---------- SHARE CARD (1080 x 1350, the image people post) ----------
-  const SAMPLE = { company: 'Horizon Aero', lead: { headline: 'Admin is history. Work is human again.', deck: 'Four years after its diagnostic, the leadership team explains how it redesigned its flows before automating them, and where the time went.' },
-    stories: [{ headline: 'AI agents prepare. Humans decide.' }, { headline: 'Office days are now team days' }, { headline: 'Retirement wave passes. Know-how stays.' }] };
-  function paperDate() { const d = new Date(); d.setFullYear(2030); return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); }
+  const SAMPLE = { company: 'Horizon Aero', lead: { headline: F.challenges.simplif.ex, deck: T('Four years after its diagnostic, the leadership team explains how it redesigned its flows before automating them, and where the time went.') },
+    stories: [{ headline: F.challenges.augmented.ex }, { headline: F.challenges.workplace.ex }, { headline: F.challenges.knowledge.ex }] };
+  function paperDate() { const d = new Date(); d.setFullYear(2030); return d.toLocaleDateString(L_, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); }
   function shareCard(p, company, url) {
     return `<div class="share-card">
-      <div class="sc-top"><span>Serving the sky, the moon and the stars</span><span>The human edition</span></div>
+      <div class="sc-top"><span>${T('Serving the sky, the moon and the stars')}</span><span>${T('The human edition')}</span></div>
       <div class="sc-mast">The News Fix</div>
-      <div class="sc-date"><span>${esc(paperDate())}</span><span class="red">Fictional front page</span><span>${esc(company || 'Our organization')}</span></div>
-      <div class="sc-kicker">Interview</div>
+      <div class="sc-date"><span>${esc(paperDate())}</span><span class="red">${T('Fictional front page')}</span><span>${esc(company || T('Our organization'))}</span></div>
+      <div class="sc-kicker">${T('Interview')}</div>
       <div class="sc-lead">${esc(p.lead.headline)}</div>
       ${p.lead.deck ? `<div class="sc-deck">${esc(p.lead.deck)}</div>` : ''}
-      ${p.stories && p.stories.length ? `<div class="sc-also"><div class="sc-also-t">Also in this edition</div>${p.stories.slice(0, 4).map(s => `<div class="sc-story">${esc(s.headline)}</div>`).join('')}</div>` : ''}
-      <div class="sc-foot"><span>More human. More digital.<br>Not a trade-off. AND.</span><span class="sc-cta">Write your own 2030 front page<br><b>${esc(url)}</b></span></div>
+      ${p.stories && p.stories.length ? `<div class="sc-also"><div class="sc-also-t">${T('Also in this edition')}</div>${p.stories.slice(0, 4).map(s => `<div class="sc-story">${esc(s.headline)}</div>`).join('')}</div>` : ''}
+      <div class="sc-foot"><span>${T('More human. More digital.')}<br>${T('Not a trade-off. AND.')}</span><span class="sc-cta">${T('Write your own 2030 front page')}<br><b>${esc(url)}</b></span></div>
     </div>`;
   }
   function fitCards() { document.querySelectorAll('.sc-frame').forEach(f => { const c = f.querySelector('.share-card'); if (c) c.style.transform = `scale(${f.clientWidth / 1080})`; }); }
@@ -912,31 +972,36 @@ window.initMap=initMap;
 
   // ---------- 1. INTRODUCTION ----------
   function home() {
-    const pillars = SIDS.map((s, i) => `<div class="card pillar" style="--c:${col(s)}"><div class="k">Shift ${i + 1}</div><h3>${esc(F.shifts[s].full)}</h3><p>${esc(F.shifts[s].line)}</p></div>`).join('');
+    const pillars = SIDS.map((s, i) => `<div class="card pillar" style="--c:${col(s)}"><div class="k">${T('Shift {n}', { n: i + 1 })}</div><h3>${esc(F.shifts[s].full)}</h3><p>${esc(F.shifts[s].line)}</p></div>`).join('');
     return `<div class="section"><div class="hero"><div class="stack">
         <div class="eyebrow">Future of Work · 4 shifts</div>
-        <h1>What will your 2030 front page say?</h1>
-        <p class="lede">A generational crossover, a new relationship to work, the AI reset, and constant uncertainty: four forces are reshaping work at the same time. Fragmented answers will not be enough.</p>
-        <p class="lede">In about ten minutes, see how far your operating model has come on the way to 2030, build a roadmap for your priorities, and get the front page of The News Fix, written for your organization.</p>
-        <div class="and">More human. More digital. <b>Not a trade-off. AND.</b></div>
-        <div class="row"><a class="btn p" href="#/diagnostic">${done() ? 'See your diagnostic' : 'Start your diagnostic'}</a><a class="btn s" href="#/map">Explore the interactive map</a></div>
+        <h1>${T('What will your 2030 front page say?')}</h1>
+        <p class="lede">${T('A generational crossover, a new relationship to work, the AI reset, and constant uncertainty: four forces are reshaping work at the same time. Fragmented answers will not be enough.')}</p>
+        <p class="lede">${T('In about ten minutes, see how far your operating model has come on the way to 2030, build a roadmap for your priorities, and get the front page of The News Fix, written for your organization.')}</p>
+        <div class="and">${T('More human. More digital.')} <b>${T('Not a trade-off. AND.')}</b></div>
+        <div class="row"><a class="btn p" href="#/diagnostic">${T(done() ? 'See your diagnostic' : 'Start your diagnostic')}</a><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div>
       </div>
-      <figure class="sample"><div class="sc-frame">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>Example front page for a fictional company</figcaption></figure></div></div>
-      <div class="section"><div class="stack"><div class="eyebrow">The model</div><h2>Four shifts, one operating system</h2>
-        <p class="lede">Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.</p></div>
+      <figure class="sample"><div class="sc-frame">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>${T('Example front page for a fictional company')}</figcaption></figure></div></div>
+      <div class="section"><div class="stack"><div class="eyebrow">${T('The model')}</div><h2>${T('Four shifts, one operating system')}</h2>
+        <p class="lede">${T('Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.')}</p></div>
         <div class="cards">${pillars}</div></div>
-      <div class="section"><div class="stack"><div class="eyebrow">Your journey</div><h2>Five steps, three deliverables</h2></div>
-        <ol class="how"><li><h3>Interactive map</h3><p>Optional. See how each shift contributes to each challenge, and where shifts could cancel each other out.</p></li>
-        <li><h3>Your Diagnostic</h3><p>Fourteen questions. Your maturity profile, and an executive report-out to share with your ExCom.</p></li>
-        <li><h3>Your Priorities</h3><p>Choose 3 to 5 challenges. Your roadmap builds itself, with its prerequisites, in a list or a Gantt chart.</p></li>
-        <li><h3>Your News Fix</h3><p>An interview per priority: before, today, and what you did to get there. Share it as an image.</p></li></ol>
-        <p class="note">Your answers stay in your browser. Nothing is stored on a server. Only what is needed to write the newspaper is sent to an AI model, and it is not stored. <a href="privacy.html">Privacy</a></p></div>`;
+      <div class="section"><div class="stack"><div class="eyebrow">${T('Your journey')}</div><h2>${T('Five steps, three deliverables')}</h2></div>
+        <ol class="how"><li><h3>${T('Interactive map')}</h3><p>${T('Optional. See how each shift contributes to each challenge, and where shifts could cancel each other out.')}</p></li>
+        <li><h3>${T('Your Diagnostic')}</h3><p>${T('Fourteen questions. Your maturity profile, and an executive report-out to share with your ExCom.')}</p></li>
+        <li><h3>${T('Your Priorities')}</h3><p>${T('Choose 3 to 5 challenges. Your roadmap builds itself, with its prerequisites, in a list or a Gantt chart.')}</p></li>
+        <li><h3>${T('Your News Fix')}</h3><p>${T('An interview per priority: before, today, and what you did to get there. Share it as an image.')}</p></li></ol>
+        <p class="note">${T('Your answers stay in your browser. Nothing is stored on a server. Only what is needed to write the newspaper is sent to an AI model, and it is not stored.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
   }
 
   // ---------- 2. INTERACTIVE MAP ----------
   function mapView() {
-    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', '<div class="eyebrow">Step 2 · Interactive map</div>').replace('Click a link, a pillar or a challenge.', 'Click a link, a pillar or a challenge. The explanation appears below the map.').replace('<div class="scroll" id="mapview">', '<div class="scroll" id="mapview"><p class="scroll-hint">Scroll sideways to see the whole map.</p>');
-    return `<div class="mapapp">${html}</div>` + nextBtn('#/diagnostic', done() ? 'See your diagnostic' : 'Start your diagnostic');
+    const lede = 'Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge to see its explanation.';
+    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', `<div class="eyebrow">${T('Step 2 · Interactive map')}</div>`)
+      .replace('<h1>Four pillars, sixteen challenges</h1>', `<h1>${T('Four pillars, sixteen challenges')}</h1>`)
+      .replace(/<p class="lede">[^<]*<\/p>/, `<p class="lede">${T(lede)}</p>`)
+      .replace('aria-label="Map of the four pillars and the challenges they address"', `aria-label="${T('Map of the four pillars and the challenges they address')}"`)
+      .replace('<div class="scroll" id="mapview">', `<div class="scroll" id="mapview"><p class="scroll-hint">${T('Scroll sideways to see the whole map.')}</p>`);
+    return `<div class="mapapp">${html}</div>` + nextBtn('#/diagnostic', T(done() ? 'See your diagnostic' : 'Start your diagnostic'));
   }
 
   // ---------- 3. YOUR DIAGNOSTIC (questions, then the report on the same step) ----------
@@ -944,14 +1009,14 @@ window.initMap=initMap;
     const i = Math.min(S.qi || 0, F.questions.length - 1), q = F.questions[i], v = S.answers[q.id];
     const n = F.questions.length, answered = F.questions.filter(x => S.answers[x.id]).length;
     return `<div class="q-wrap">
-      <div class="eyebrow">Step 3 · Your Diagnostic</div>
+      <div class="eyebrow">${T('Step 3 · Your Diagnostic')}</div>
       <div class="progress" aria-hidden="true"><i style="width:${answered / n * 100}%"></i></div>
-      <div class="qmeta"><span>Question ${i + 1} of ${n}</span><span class="pl" style="--c:${col(q.s)}">Shift ${SIDS.indexOf(q.s) + 1} · ${esc(F.shifts[q.s].n)}</span></div>
+      <div class="qmeta"><span>${T('Question {i} of {n}', { i: i + 1, n })}</span><span class="pl" style="--c:${col(q.s)}">Shift ${SIDS.indexOf(q.s) + 1} · ${esc(F.shifts[q.s].n)}</span></div>
       <h2 id="qtitle">${esc(q.q)}</h2>
       <div class="opts" role="radiogroup" aria-labelledby="qtitle">${q.o.map((o, k) => `<label class="opt ${v === k + 1 ? 'sel' : ''}"><input type="radio" name="${q.id}" id="${q.id}_${k + 1}" value="${k + 1}" ${v === k + 1 ? 'checked' : ''}><span class="lv">${k + 1}</span><span>${esc(o)}</span></label>`).join('')}</div>
-      <div class="scale"><span>1 · Typical today</span><span>4 · Target 2030</span></div>
-      <div class="row"><button class="btn g" id="prev" ${i === 0 ? 'disabled' : ''}>← Back</button>
-        <button class="btn p" id="next" ${v ? '' : 'disabled'}>${i === n - 1 ? 'See my report' : 'Next →'}</button></div></div>`;
+      <div class="scale"><span>${T('1 · Typical today')}</span><span>${T('4 · Target 2030')}</span></div>
+      <div class="row"><button class="btn g" id="prev" ${i === 0 ? 'disabled' : ''}>${T('← Back')}</button>
+        <button class="btn p" id="next" ${v ? '' : 'disabled'}>${T(i === n - 1 ? 'See my report' : 'Next →')}</button></div></div>`;
   }
   function bindQuestions() {
     document.querySelectorAll('.opt input').forEach(r => r.addEventListener('change', () => {
@@ -963,29 +1028,30 @@ window.initMap=initMap;
   }
   function report() {
     const r = scores();
-    const heat = g => Object.keys(F.challenges).filter(c => F.challenges[c].g === g).sort((x, y) => r.ch[x] - r.ch[y]).map(c => `<div class="hc"><div class="t"><span>${esc(F.challenges[c].n)}</span><span class="gap ${gapClass(r.ch[c])}">${gapLabel(r.ch[c])}</span></div><small>${esc(F.challenges[c].d)} · Maturity ${pct(r.ch[c])}%</small></div>`).join('');
-    const flags = r.flags.length ? `<div class="flags">${r.flags.map(f => `<div class="flag ${f.kind === 'limit' ? 'limit' : ''}"><b>${f.kind === 'limit' ? 'Limit · ' : ''}${esc(f.t)}</b><p>${esc(f.d)}</p><p class="note"><b>Guardrail:</b> ${esc(f.fix || '')} · Challenges affected: ${f.ch.map(c => esc(F.challenges[c].n)).join(', ')}</p></div>`).join('')}</div>`
-      : `<div class="ok-box">No contradiction detected between your practices. The shifts you invest in push in the same direction.</div>`;
-    return `<div class="section"><div class="stack"><div class="eyebrow">Step 3 · Your Diagnostic</div><h1>Your operating model today, against the 2030 target</h1>
-        <p class="lede">Maturity is 0% when a practice is typical of today, and 100% when it matches the 2030 target state of the model.</p></div>
-        <div class="kpis"><div class="kpi main"><b>${pct(r.overall)}%</b><span>Of the way to the 2030 target state</span><span class="kbar" aria-hidden="true"><i style="width:${Math.max(2, r.overall)}%"></i></span><span class="kto">${pct(r.distance)}% still to go</span></div>
-          <div class="kpi"><b>${pct(r.P)}%</b><span>Productivity maturity</span></div><div class="kpi"><b>${pct(r.C)}%</b><span>Culture maturity</span></div>
-          <div class="kpi"><b>${pct(r.and)}%</b><span>AND score: the lower of the two</span></div></div>
-        <p class="note">The AND score keeps the lower of productivity and culture. A strong result on one side does not make up for a weak one on the other.</p></div>
-      <div class="section"><div class="stack"><h2>Your maturity profile</h2><p class="lede">Your 14 practices, from Emerging to Excellence · 2030-ready. The dashed outer ring is the 2030 target.</p></div>
+    const heat = g => Object.keys(F.challenges).filter(c => F.challenges[c].g === g).sort((x, y) => r.ch[x] - r.ch[y]).map(c => `<div class="hc"><div class="t"><span>${esc(F.challenges[c].n)}</span><span class="gap ${gapClass(r.ch[c])}">${gapLabel(r.ch[c])}</span></div><small>${esc(F.challenges[c].d)} · ${T('Maturity {v}%', { v: pct(r.ch[c]) })}</small></div>`).join('');
+    const flags = r.flags.length ? `<div class="flags">${r.flags.map(f => `<div class="flag ${f.kind === 'limit' ? 'limit' : ''}"><b>${f.kind === 'limit' ? T('Limit · ') : ''}${esc(f.t)}</b><p>${esc(f.d)}</p><p class="note"><b>${T('Guardrail:')}</b> ${esc(f.fix || '')} · ${T('Challenges affected:')} ${f.ch.map(c => esc(F.challenges[c].n)).join(', ')}</p></div>`).join('')}</div>`
+      : `<div class="ok-box">${T('No contradiction detected between your practices. The shifts you invest in push in the same direction.')}</div>`;
+    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 3 · Your Diagnostic')}</div><h1>${T('Your operating model today, against the 2030 target')}</h1>
+        <p class="lede">${T('Maturity is 0% when a practice is typical of today, and 100% when it matches the 2030 target state of the model.')}</p></div>
+        <div class="kpis"><div class="kpi main"><b>${pc(r.overall)}</b><span>${T('Of the way to the 2030 target state')}</span><span class="kbar" aria-hidden="true"><i style="width:${Math.max(2, r.overall)}%"></i></span><span class="kto">${T('{v}% still to go', { v: pct(r.distance) })}</span></div>
+          <div class="kpi"><b>${pc(r.P)}</b><span>${T('Productivity maturity')}</span></div><div class="kpi"><b>${pc(r.C)}</b><span>${T('Culture maturity')}</span></div>
+          <div class="kpi"><b>${pc(r.and)}</b><span>${T('AND score: the lower of the two')}</span></div></div>
+        <p class="note">${T('The AND score keeps the lower of productivity and culture. A strong result on one side does not make up for a weak one on the other.')}</p></div>
+      <div class="section"><div class="stack"><h2>${T('Your maturity profile')}</h2><p class="lede">${T('Your 14 practices, from Emerging to Excellence · 2030-ready. The dashed outer ring is the 2030 target.')}</p></div>
         <div class="profile"><div class="spider-wrap">${spider(false)}</div><div class="pr-list">${practiceList()}<p class="note">${esc(F.levelNote)}</p></div></div></div>
-      <div class="section"><div class="stack"><h2>Coherence check</h2><p class="lede">Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.</p></div>${flags}</div>
-      <div class="section"><h2>Where the gaps are</h2><div class="band-l">Productivity challenges</div><div class="heat">${heat('P')}</div><div class="band-l">Cultural challenges</div><div class="heat">${heat('C')}</div></div>
-      <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">Prepare your executive report-out</a><a class="btn s" href="#/priorities">Next: your priorities →</a><button class="btn g" id="redo">Change my answers</button></div></div>`;
+      <div class="section"><div class="stack"><h2>${T('Coherence check')}</h2><p class="lede">${T('Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.')}</p></div>${flags}</div>
+      <div class="section"><h2>${T('Where the gaps are')}</h2><div class="band-l">${T('Productivity challenges')}</div><div class="heat">${heat('P')}</div><div class="band-l">${T('Cultural challenges')}</div><div class="heat">${heat('C')}</div></div>
+      <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">${T('Prepare your executive report-out')}</a><a class="btn s" href="#/priorities">${T('Next: your priorities →')}</a><button class="btn g" id="redo">${T('Change my answers')}</button></div></div>`;
   }
   function bindReport() {
     document.getElementById('redo').onclick = () => { S.qi = 0; S.editing = true; save(); render(); window.scrollTo(0, 0); };
   }
 
   // ---------- EXECUTIVE REPORT-OUT (deliverable of step 3, for the ExCom) ----------
-  const joinAnd = xs => xs.length < 2 ? xs.join('') : xs.slice(0, -1).join(', ') + ' and ' + xs[xs.length - 1];
+  const joinAnd = xs => xs.length < 2 ? xs.join('') : xs.slice(0, -1).join(', ') + (FRL ? ' et ' : ' and ') + xs[xs.length - 1];
+  const theseThree = t => FRL ? t.replace('Vos 3 priorités', 'Ces 3 priorités') : t.replace('Your 3 priorities', 'These 3 priorities');
   function briefData() {
-    const r = scores(), co = S.company || 'Our organization';
+    const r = scores(), co = S.company || T('Our organization');
     const order = Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]);
     const top = order.slice(0, 3);
     const rm = roadmap(top);
@@ -993,14 +1059,26 @@ window.initMap=initMap;
     const contra = r.flags.filter(f => f.kind !== 'limit'), sys = systemSentence(rm, top.length);
     const ranked = SIDS.slice().sort((x, y) => r.pillars[y] - r.pillars[x]);
     const weaker = r.P < r.C ? 'productivity' : r.C < r.P ? 'culture' : null;
-    const summary = [
+    const pl = (k, a, b) => k > 1 ? b : a;
+    const summary = FRL ? [
+      `${co} a parcouru ${pct(r.overall)} % du chemin vers la cible 2030 du modèle Future of Work. La maturité productivité est de ${pct(r.P)} % et la maturité culture de ${pct(r.C)} %.` +
+        (weaker ? ` ${weaker === 'productivity' ? 'La productivité' : 'La culture'} est la contrainte : le score ET retient le plus faible des deux, et un progrès d’un côté ne compense pas l’autre.` : ' Les deux côtés sont au même niveau, condition pour que les progrès s’additionnent.'),
+      `Le shift le plus avancé est ${F.shifts[ranked[0]].n} (${pct(r.pillars[ranked[0]])} %). Le moins avancé est ${F.shifts[ranked[3]].n} (${pct(r.pillars[ranked[3]])} %).`,
+      contra.length ? `${contra.length} contradiction${pl(contra.length, '', 's')} entre les pratiques actuelles ${pl(contra.length, 'annule', 'annulent')} une partie de l’effort, à commencer par : ${lc(contra[0].t)}.` : 'Aucune contradiction entre les pratiques actuelles : les shifts déjà engagés vont dans le même sens.',
+      `Nous recommandons de se concentrer sur trois priorités, ${joinAnd(top.map(c => F.challenges[c].n.toLowerCase()))}, et de commencer en 2027 par ${first.length} initiative${pl(first.length, '', 's')}. ${theseThree(sys)}`
+    ] : [
       `${co} is ${pct(r.overall)}% of the way to the 2030 target state of the Future of Work model. Productivity maturity is ${pct(r.P)}% and culture maturity is ${pct(r.C)}%.` +
         (weaker ? ` ${weaker.charAt(0).toUpperCase() + weaker.slice(1)} is the constraint: the AND score keeps the lower of the two, so progress on one side does not make up for the other.` : ' Both sides are at the same level, which is the condition for progress to add up.'),
       `The most advanced shift is ${F.shifts[ranked[0]].n} (${pct(r.pillars[ranked[0]])}%). The least advanced is ${F.shifts[ranked[3]].n} (${pct(r.pillars[ranked[3]])}%).`,
       contra.length ? `${contra.length} contradiction${contra.length > 1 ? 's' : ''} between current practices cancel${contra.length > 1 ? '' : 's'} part of the effort, starting with: ${lc(contra[0].t)}.` : 'No contradiction was found between current practices: the shifts already in motion push in the same direction.',
-      `We recommend focusing on three priorities, ${joinAnd(top.map(c => F.challenges[c].n.toLowerCase()))}, and starting in 2027 with ${first.length} initiative${first.length > 1 ? 's' : ''}. ${sys.replace('Your 3 priorities', 'These 3 priorities')}`
+      `We recommend focusing on three priorities, ${joinAnd(top.map(c => F.challenges[c].n.toLowerCase()))}, and starting in 2027 with ${first.length} initiative${first.length > 1 ? 's' : ''}. ${theseThree(sys)}`
     ];
-    const decisions = [
+    const decisions = FRL ? [
+      `Confirmer les défis prioritaires pour 2027 à 2030. Proposition : ${joinAnd(top.map(c => F.challenges[c].n))}.`,
+      'Nommer un sponsor au comité exécutif pour chacun des quatre shifts.',
+      contra.length ? `Résoudre ${pl(contra.length, 'la contradiction listée', `les ${contra.length} contradictions listées`)} dans ce rapport avant d’étendre de nouvelles initiatives.` : 'Garder les shifts alignés : vérifier la cohérence à chaque lancement d’initiative.',
+      `Lancer les premières actions de 2027, en commençant par : ${first.length ? lc(first[0].n) : 'écrire et partager les titres de 2030'}.`
+    ] : [
       `Confirm the priority challenges for 2027 to 2030. Proposed: ${joinAnd(top.map(c => F.challenges[c].n))}.`,
       'Name one ExCom sponsor for each of the four shifts.',
       contra.length ? `Resolve the ${contra.length} contradiction${contra.length > 1 ? 's' : ''} listed in this report before scaling new initiatives.` : 'Keep the shifts aligned: review coherence each time a new initiative starts.',
@@ -1009,87 +1087,90 @@ window.initMap=initMap;
     return { r, co, top, first, summary, decisions, sys };
   }
   function briefText(b) {
-    return `Future of Work 2030 · Executive report-out · ${b.co}\n\nSummary\n${b.summary.join('\n')}\n\nDecisions requested from the ExCom\n${b.decisions.map((d, i) => `${i + 1}. ${d}`).join('\n')}\n\nPrepared with the Future of Work · 4 Shifts diagnostic. ${siteHost()}`;
+    return `${T('Future of Work 2030 · Executive report-out')} · ${b.co}\n\n${T('Summary')}\n${b.summary.join('\n')}\n\n${T('Decisions requested from the ExCom')}\n${b.decisions.map((d, i) => `${i + 1}. ${d}`).join('\n')}\n\n${FRL ? 'Préparé avec le diagnostic Future of Work · 4 Shifts.' : 'Prepared with the Future of Work · 4 Shifts diagnostic.'} ${siteHost()}`;
   }
   function brief() {
-    const b = briefData(), r = b.r, today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
-    const bars = SIDS.map((s, i) => `<div class="b-bar"><span>Shift ${i + 1} · ${esc(F.shifts[s].n)}</span><span class="b-track"><i style="width:${Math.max(2, r.pillars[s])}%;background:${PAPER[s]}"></i></span><b>${pct(r.pillars[s])}%</b></div>`).join('');
-    const gaps = b.top.map(c => `<tr><td><b>${esc(F.challenges[c].n)}</b><br><span class="b-muted">${esc(F.challenges[c].d)}</span></td><td class="b-num">${pct(r.ch[c])}%</td><td>${SIDS.filter(s => F.addresses[s].includes(c)).map(s => esc(F.shifts[s].n)).join(', ')}</td></tr>`).join('');
-    const flags = r.flags.length ? `<table class="b-table"><thead><tr><th>Contradiction</th><th>Why it matters</th><th>Guardrail</th></tr></thead><tbody>${r.flags.map(f => `<tr><td><b>${esc(f.t)}</b>${f.kind === 'limit' ? '<br><span class="b-muted">Limit</span>' : ''}</td><td>${esc(f.d)}</td><td>${esc(f.fix || '')}</td></tr>`).join('')}</tbody></table>`
-      : '<p>No contradiction was found between current practices. The shifts already in motion push in the same direction.</p>';
-    const moves = b.first.length ? `<ul class="b-list">${b.first.slice(0, 6).map(i => `<li><b>${esc(i.n)}</b> · <span class="b-muted">${esc(F.shifts[i.s].n)}</span> · ${esc(i.d)}</li>`).join('')}</ul>` : '<p>Your practices already match the 2030 target on these challenges.</p>';
-    const head = n => `<header class="b-head"><div><div class="b-k">Future of Work 2030 · Executive report-out</div><div class="b-org">${esc(b.co)}</div></div><div class="b-meta">${esc(today)}<br>Page ${n} of 2</div></header>`;
-    const foot = `<footer class="b-foot">Prepared with the Future of Work · 4 Shifts diagnostic (${esc(siteHost())}). 14-question self-assessment: an indication to open the discussion, not a benchmark.</footer>`;
-    return `<div class="no-print brief-tools"><div class="stack"><div class="eyebrow">Step 3 · Your Diagnostic</div><h1>Your executive report-out</h1>
-        <p class="lede">Two pages for your ExCom: where you stand, what blocks progress, and the decisions to take. Print it or save it as PDF, or copy the summary into an email.</p></div>
-        <div class="field" style="max-width:520px"><label for="company_b">Organization name</label><input id="company_b" maxlength="60" value="${esc(S.company)}" placeholder="Our organization"></div>
-        <div class="row"><button class="btn p" id="bprint">Print or save as PDF</button><button class="btn s" id="bcopy">Copy the summary</button><a class="btn g" href="#/diagnostic">Back to your diagnostic</a><a class="btn g" href="#/priorities">Next: your priorities →</a></div>
+    const b = briefData(), r = b.r, today = new Date().toLocaleDateString(L_, { day: 'numeric', month: 'long', year: 'numeric' });
+    const bars = SIDS.map((s, i) => `<div class="b-bar"><span>Shift ${i + 1} · ${esc(F.shifts[s].n)}</span><span class="b-track"><i style="width:${Math.max(2, r.pillars[s])}%;background:${PAPER[s]}"></i></span><b>${pc(r.pillars[s])}</b></div>`).join('');
+    const gaps = b.top.map(c => `<tr><td><b>${esc(F.challenges[c].n)}</b><br><span class="b-muted">${esc(F.challenges[c].d)}</span></td><td class="b-num">${pc(r.ch[c])}</td><td>${SIDS.filter(s => F.addresses[s].includes(c)).map(s => esc(F.shifts[s].n)).join(', ')}</td></tr>`).join('');
+    const flags = r.flags.length ? `<table class="b-table"><thead><tr><th>${T('Contradiction')}</th><th>${T('Why it matters')}</th><th>${T('Guardrail')}</th></tr></thead><tbody>${r.flags.map(f => `<tr><td><b>${esc(f.t)}</b>${f.kind === 'limit' ? `<br><span class="b-muted">${T('Limit')}</span>` : ''}</td><td>${esc(f.d)}</td><td>${esc(f.fix || '')}</td></tr>`).join('')}</tbody></table>`
+      : `<p>${T('No contradiction was found between current practices. The shifts already in motion push in the same direction.')}</p>`;
+    const moves = b.first.length ? `<ul class="b-list">${b.first.slice(0, 6).map(i => `<li><b>${esc(i.n)}</b> · <span class="b-muted">${esc(F.shifts[i.s].n)}</span> · ${esc(i.d)}</li>`).join('')}</ul>` : `<p>${T('Your practices already match the 2030 target on these challenges.')}</p>`;
+    const head = n => `<header class="b-head"><div><div class="b-k">${T('Future of Work 2030 · Executive report-out')}</div><div class="b-org">${esc(b.co)}</div></div><div class="b-meta">${esc(today)}<br>${T('Page {n} of 2', { n })}</div></header>`;
+    const foot = `<footer class="b-foot">${esc(T('Prepared with the Future of Work · 4 Shifts diagnostic ({h}). 14-question self-assessment: an indication to open the discussion, not a benchmark.', { h: siteHost() }))}</footer>`;
+    return `<div class="no-print brief-tools"><div class="stack"><div class="eyebrow">${T('Step 3 · Your Diagnostic')}</div><h1>${T('Your executive report-out')}</h1>
+        <p class="lede">${T('Two pages for your ExCom: where you stand, what blocks progress, and the decisions to take. Print it or save it as PDF, or copy the summary into an email.')}</p></div>
+        <div class="field" style="max-width:520px"><label for="company_b">${T('Organization name')}</label><input id="company_b" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our organization')}"></div>
+        <div class="row"><button class="btn p" id="bprint">${T('Print or save as PDF')}</button><button class="btn s" id="bcopy">${T('Copy the summary')}</button><a class="btn g" href="#/diagnostic">${T('Back to your diagnostic')}</a><a class="btn g" href="#/priorities">${T('Next: your priorities →')}</a></div>
         <p class="note" id="bmsg"></p></div>
       <div class="brief">
       <section class="b-page">${head(1)}
-        <h2 class="b-title">Our operating model is ${pct(r.overall)}% of the way to 2030</h2>
-        <div class="b-sec"><h3>Summary</h3>${b.summary.map(x => `<p>${esc(x)}</p>`).join('')}</div>
-        <div class="b-sec"><h3>Where we stand</h3>
-          <div class="b-kpis"><div><b>${pct(r.overall)}%</b><span>of the way to the 2030 target</span></div><div><b>${pct(r.P)}%</b><span>productivity maturity</span></div><div><b>${pct(r.C)}%</b><span>culture maturity</span></div><div><b>${pct(r.and)}%</b><span>AND score, the lower of the two</span></div></div>
-          <div class="b-profile"><div class="b-spider">${spider(true)}</div><div class="b-bars">${bars}<p class="b-muted b-lv">Levels: ${F.levels.map((l, k) => `${k + 1} ${esc(l)}`).join(' · ')}</p></div></div></div>
-        <div class="b-sec"><h3>Our three largest gaps</h3><table class="b-table"><thead><tr><th>Challenge</th><th>Maturity</th><th>Shifts that address it</th></tr></thead><tbody>${gaps}</tbody></table></div>
+        <h2 class="b-title">${T('Our operating model is {v}% of the way to 2030', { v: pct(r.overall) })}</h2>
+        <div class="b-sec"><h3>${T('Summary')}</h3>${b.summary.map(x => `<p>${esc(x)}</p>`).join('')}</div>
+        <div class="b-sec"><h3>${T('Where we stand')}</h3>
+          <div class="b-kpis"><div><b>${pc(r.overall)}</b><span>${T('of the way to the 2030 target')}</span></div><div><b>${pc(r.P)}</b><span>${T('productivity maturity')}</span></div><div><b>${pc(r.C)}</b><span>${T('culture maturity')}</span></div><div><b>${pc(r.and)}</b><span>${T('AND score, the lower of the two')}</span></div></div>
+          <div class="b-profile"><div class="b-spider">${spider(true)}</div><div class="b-bars">${bars}<p class="b-muted b-lv">${T('Levels:')} ${F.levels.map((l, k) => `${k + 1} ${esc(l)}`).join(' · ')}</p></div></div></div>
+        <div class="b-sec"><h3>${T('Our three largest gaps')}</h3><table class="b-table"><thead><tr><th>${T('Challenge')}</th><th>${T('Maturity')}</th><th>${T('Shifts that address it')}</th></tr></thead><tbody>${gaps}</tbody></table></div>
         ${foot}</section>
       <section class="b-page">${head(2)}
-        <div class="b-sec"><h3>Contradictions to resolve</h3><p class="b-muted">One practice pushes a challenge forward while another pushes it back, and the effects cancel out.</p>${flags}</div>
-        <div class="b-sec"><h3>First moves for 2027</h3><p class="b-muted">For the three largest gaps, with the prerequisites they need. ${esc(b.sys.replace('Your 3 priorities', 'These 3 priorities'))}</p>${moves}</div>
-        <div class="b-sec b-ask"><h3>Decisions requested from the ExCom</h3><ol>${b.decisions.map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
+        <div class="b-sec"><h3>${T('Contradictions to resolve')}</h3><p class="b-muted">${T('One practice pushes a challenge forward while another pushes it back, and the effects cancel out.')}</p>${flags}</div>
+        <div class="b-sec"><h3>${T('First moves for 2027')}</h3><p class="b-muted">${T('For the three largest gaps, with the prerequisites they need.')} ${esc(theseThree(b.sys))}</p>${moves}</div>
+        <div class="b-sec b-ask"><h3>${T('Decisions requested from the ExCom')}</h3><ol>${b.decisions.map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
         ${foot}</section></div>`;
   }
   function bindBrief() {
     document.getElementById('bprint').onclick = () => { ping('brief'); window.print(); };
     document.getElementById('company_b').addEventListener('change', e => { S.company = e.target.value.trim(); save(); const y = window.scrollY; render(); window.scrollTo(0, y); });
     document.getElementById('bcopy').onclick = async () => { const t = briefText(briefData()), msg = document.getElementById('bmsg');
-      try { await navigator.clipboard.writeText(t); msg.textContent = 'Summary copied. Paste it into your email to the ExCom.'; }
-      catch (e) { msg.textContent = 'Copy is not available here. Select the summary in the report and copy it with your keyboard.'; } };
+      try { await navigator.clipboard.writeText(t); msg.textContent = T('Summary copied. Paste it into your email to the ExCom.'); }
+      catch (e) { msg.textContent = T('Copy is not available here. Select the summary in the report and copy it with your keyboard.'); } };
   }
 
   // ---------- 4. YOUR PRIORITIES (selection, then the roadmap, updated live) ----------
   function defaultPriorities() { const r = scores(); return Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]).slice(0, MINP); }
   function roadmapBlock() {
     const rm = roadmap(), pr = S.priorities;
-    const tag = i => i.direct ? i.serves.map(c => `<span class="for">${esc(F.challenges[c].n)}</span>`).join('') : '<span class="for pre">Prerequisite</span>';
+    const tag = i => i.direct ? i.serves.map(c => `<span class="for">${esc(F.challenges[c].n)}</span>`).join('') : `<span class="for pre">${T('Prerequisite')}</span>`;
     const span = i => i.start === i.end ? String(i.start) : `${i.start}–${i.end}`;
     const byId = Object.fromEntries(rm.items.map(i => [i.id, i]));
     const links = (i, ids) => ids.map(id => { const x = byId[id], cross = x.s !== i.s; return `<span class="lk ${cross ? 'x' : ''}" style="--c:${col(x.s)}">${cross ? '⇄ ' : ''}${esc(x.n)}</span>`; }).join('');
     const card = i => `<div class="ini" style="--c:${col(i.s)}"><span class="k">${esc(F.shifts[i.s].n)} · ${span(i)}</span><b>${esc(i.n)}</b><p>${esc(i.d)}</p>
-      <div class="fors">${tag(i)}</div>${i.reqIds.length ? `<div class="nu"><span class="nl">Needs</span>${links(i, i.reqIds)}</div>` : ''}${i.unlocks.length ? `<div class="nu"><span class="nl">Unlocks</span>${links(i, i.unlocks)}</div>` : ''}</div>`;
-    const list = `<div class="road-scroll"><div class="road">${YEARS.map(y => `<div class="yr"><h3>${y}</h3>${rm.byYear(y).map(card).join('') || '<p class="empty-yr">Consolidate and scale what is in place.</p>'}</div>`).join('')}</div></div>`;
+      <div class="fors">${tag(i)}</div>${i.reqIds.length ? `<div class="nu"><span class="nl">${T('Needs')}</span>${links(i, i.reqIds)}</div>` : ''}${i.unlocks.length ? `<div class="nu"><span class="nl">${T('Unlocks')}</span>${links(i, i.unlocks)}</div>` : ''}</div>`;
+    const list = `<div class="road-scroll"><div class="road">${YEARS.map(y => `<div class="yr"><h3>${y}</h3>${rm.byYear(y).map(card).join('') || `<p class="empty-yr">${T('Consolidate and scale what is in place.')}</p>`}</div>`).join('')}</div></div>`;
     const rows = SIDS.map(s => { const its = rm.items.filter(i => i.s === s); if (!its.length) return '';
       return `<div class="g-grp" style="--c:${col(s)}">${esc(F.shifts[s].n)}</div>` + its.map(i => `<div class="g-row"><div class="g-name"><b>${esc(i.n)}</b><div class="fors">${tag(i)}</div></div>
-        <div class="g-track">${YEARS.map(() => '<span class="g-cell"></span>').join('')}<span class="g-bar" data-id="${i.id}" data-s="${i.s}" data-req="${i.reqIds.join(' ')}" style="--c:${col(i.s)};grid-column:${i.start - 2026} / ${i.end - 2026 + 1}" title="${esc(i.after.length ? 'Needs: ' + i.after.join(' · ') : '')}">${span(i)}</span></div></div>`).join(''); }).join('');
+        <div class="g-track">${YEARS.map(() => '<span class="g-cell"></span>').join('')}<span class="g-bar" data-id="${i.id}" data-s="${i.s}" data-req="${i.reqIds.join(' ')}" style="--c:${col(i.s)};grid-column:${i.start - 2026} / ${i.end - 2026 + 1}" title="${esc(i.after.length ? T('Needs: ') + i.after.join(' · ') : '')}">${span(i)}</span></div></div>`).join(''); }).join('');
     const gantt = `<div class="road-scroll"><div class="gantt"><div class="g-row g-head"><div class="g-name"></div><div class="g-track">${YEARS.map(y => `<span class="g-y">${y}</span>`).join('')}</div></div>${rows}</div></div>`;
     const legend = SIDS.map(s => `<span style="--c:${col(s)}"><i class="sw"></i>${esc(F.shifts[s].n)}</span>`).join('');
     const nPre = rm.items.filter(i => !i.direct).length;
-    if (pr.length < MINP) return `<div class="section" id="roadmap"><h2>Your roadmap, 2027 to 2030</h2><p class="note">Select ${MINP - pr.length} more challenge${MINP - pr.length > 1 ? 's' : ''} to build your roadmap.</p></div>`;
-    return `<div class="section" id="roadmap"><div class="stack"><h2>Your roadmap, 2027 to 2030</h2>
-        <p class="lede">${esc(systemSentence(rm, pr.length))} ${nPre ? `${nPre} of them ${nPre > 1 ? 'are prerequisites' : 'is a prerequisite'}. ` : ''}They are ordered by dependencies: vision before redesign, redesign before automation, trusted governance before connecting data.</p></div>
+    if (pr.length < MINP) { const k = MINP - pr.length; return `<div class="section" id="roadmap"><h2>${T('Your roadmap, 2027 to 2030')}</h2><p class="note">${FRL ? `Sélectionnez encore ${k} défi${k > 1 ? 's' : ''} pour construire votre feuille de route.` : `Select ${k} more challenge${k > 1 ? 's' : ''} to build your roadmap.`}</p></div>`; }
+    const preTxt = !nPre ? '' : FRL ? `${nPre > 1 ? `${nPre} d’entre elles sont des prérequis` : 'L’une d’elles est un prérequis'}. ` : `${nPre} of them ${nPre > 1 ? 'are prerequisites' : 'is a prerequisite'}. `;
+    const order = FRL ? 'Elles sont ordonnées par dépendances : la vision avant la refonte, la refonte avant l’automatisation, une gouvernance de confiance avant de connecter les données.'
+      : 'They are ordered by dependencies: vision before redesign, redesign before automation, trusted governance before connecting data.';
+    return `<div class="section" id="roadmap"><div class="stack"><h2>${T('Your roadmap, 2027 to 2030')}</h2>
+        <p class="lede">${esc(systemSentence(rm, pr.length))} ${preTxt}${order}</p></div>
         <div class="row" style="justify-content:space-between"><div class="legend">${legend}</div>
-          <div class="tabs no-print" role="group" aria-label="Roadmap view"><button id="rv-list" aria-pressed="${S.roadView !== 'gantt'}">List</button><button id="rv-gantt" aria-pressed="${S.roadView === 'gantt'}">Gantt</button></div></div>
-        ${rm.items.length && S.roadView === 'gantt' ? '<p class="note arrow-key"><span class="ak x"></span>Dependency across shifts <span class="ak i"></span>Dependency within a shift · Hover or tap a bar to isolate its links</p>' : ''}
-        ${rm.items.length ? (S.roadView === 'gantt' ? gantt : list) : '<div class="ok-box">Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.</div>'}</div>
-      <div class="section no-print"><div class="row"><button class="btn p" id="gen">Print your 2030 front page →</button><button class="btn s" id="print">Print or save as PDF</button></div>
-        <p class="note" id="genmsg">The News Fix interviews you on each priority, from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored. <a href="privacy.html">Privacy</a></p></div>`;
+          <div class="tabs no-print" role="group" aria-label="${T('Roadmap view')}"><button id="rv-list" aria-pressed="${S.roadView !== 'gantt'}">${T('List')}</button><button id="rv-gantt" aria-pressed="${S.roadView === 'gantt'}">${T('Gantt')}</button></div></div>
+        ${rm.items.length && S.roadView === 'gantt' ? `<p class="note arrow-key"><span class="ak x"></span>${T('Dependency across shifts')} <span class="ak i"></span>${T('Dependency within a shift · Hover or tap a bar to isolate its links')}</p>` : ''}
+        ${rm.items.length ? (S.roadView === 'gantt' ? gantt : list) : `<div class="ok-box">${T('Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.')}</div>`}</div>
+      <div class="section no-print"><div class="row"><button class="btn p" id="gen">${T('Print your 2030 front page →')}</button><button class="btn s" id="print">${T('Print or save as PDF')}</button></div>
+        <p class="note" id="genmsg">${T('The News Fix interviews you on each priority, from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
   }
   function priorities() {
     if (!Array.isArray(S.priorities)) { S.priorities = defaultPriorities(); save(); }
     const r = scores(), n = S.priorities.length;
     const pick = Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]).map(c => { const k = S.priorities.indexOf(c), on = k >= 0;
-      return `<label class="pk ${on ? 'sel' : ''}"><input type="checkbox" value="${c}" id="pk_${c}" ${on ? 'checked' : ''}><span><span class="t">${esc(F.challenges[c].n)}</span><small>${F.challenges[c].g === 'P' ? 'Productivity' : 'Culture'} · maturity ${pct(r.ch[c])}%${k === 0 ? ' · lead story' : ''}</small></span></label>`; }).join('');
-    return `<div class="section"><div class="stack"><div class="eyebrow">Step 4 · Your Priorities</div><h1>Never transform everything at once</h1>
-        <p class="lede">Choose ${MINP} to ${MAXP} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.</p></div>
-        <div class="pick">${pick}</div><p class="note" id="pickmsg">${n} selected · choose ${MINP} to ${MAXP}</p>
-        <div class="field" style="max-width:520px"><label for="company">Organization name, for your front page (optional)</label><input id="company" maxlength="60" value="${esc(S.company)}" placeholder="Our company"></div></div>
+      return `<label class="pk ${on ? 'sel' : ''}"><input type="checkbox" value="${c}" id="pk_${c}" ${on ? 'checked' : ''}><span><span class="t">${esc(F.challenges[c].n)}</span><small>${T(F.challenges[c].g === 'P' ? 'Productivity' : 'Culture')} · ${T('maturity {v}%', { v: pct(r.ch[c]) })}${k === 0 ? ' · ' + T('lead story') : ''}</small></span></label>`; }).join('');
+    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 4 · Your Priorities')}</div><h1>${T('Never transform everything at once')}</h1>
+        <p class="lede">${T('Choose {a} to {b} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.', { a: MINP, b: MAXP })}</p></div>
+        <div class="pick">${pick}</div><p class="note" id="pickmsg">${T(n > 1 ? '{n} selected · choose {a} to {b}' : '{n} selected · choose {a} to {b} ', { n, a: MINP, b: MAXP })}</p>
+        <div class="field" style="max-width:520px"><label for="company">${T('Organization name, for your front page (optional)')}</label><input id="company" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our company')}"></div></div>
       ${roadmapBlock()}`;
   }
   function bindPriorities() {
     document.querySelectorAll('.pk input').forEach(cb => cb.addEventListener('change', () => {
       const c = cb.value;
-      if (cb.checked) { if (S.priorities.length >= MAXP) { cb.checked = false; document.getElementById('pickmsg').textContent = `${MAXP} challenges at most. Unselect one first.`; return; } S.priorities.push(c); }
+      if (cb.checked) { if (S.priorities.length >= MAXP) { cb.checked = false; document.getElementById('pickmsg').textContent = T('{n} challenges at most. Unselect one first.', { n: MAXP }); return; } S.priorities.push(c); }
       else S.priorities = S.priorities.filter(x => x !== c);
       S.paper = null; save(); const y = window.scrollY; render(); window.scrollTo(0, y);
     }));
@@ -1113,13 +1194,13 @@ window.initMap=initMap;
   }
   function payload() {
     const r = scores(), rm = roadmap();
-    return { company: S.company || 'the organization', date: paperDate(),
+    return { lang: window.LANG, company: S.company || (FRL ? 'l’organisation' : 'the organization'), date: paperDate(),
       items: S.priorities.map(c => Object.assign({ challenge: F.challenges[c].n, problem: F.challenges[c].d, example: F.challenges[c].ex }, interview(c, rm))),
       context: { progress: pct(r.overall), distance: pct(r.distance), productivity: pct(r.P), culture: pct(r.C), and: pct(r.and), initiatives: rm.items.length } };
   }
   async function generate() {
     const btn = document.getElementById('gen'), msg = document.getElementById('genmsg');
-    btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Printing…'; msg.textContent = 'The newsroom is interviewing you. It takes about 30 seconds.';
+    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.textContent = T('The newsroom is interviewing you. It takes about 30 seconds.');
     const body = payload();
     try {
       const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 60000);
@@ -1135,65 +1216,68 @@ window.initMap=initMap;
   const valid = d => d && okQA(d.lead) && Array.isArray(d.stories) && d.stories.every(okQA);
   // Without AI: the interviews are laid out directly from the diagnostic, the 2030 target and the roadmap
   function offline(p) {
-    const list = xs => xs.map(x => `${x.topic}: ${lc(x.text)}`).join(' ');
+    const list = xs => xs.map(x => `${x.topic}${FRL ? ' :' : ':'} ${lc(x.text)}`).join(' ');
     const qa = x => [
       { q: QS[0], a: `${x.problem} ${list(x.before)}` },
       { q: QS[1], a: list(x.after) },
-      { q: QS[2], a: x.actions.length ? 'Step by step. ' + x.actions.map(i => `${i.year}: ${i.name}.`).join(' ') : 'We kept what was already in place and scaled it.' }];
+      { q: QS[2], a: x.actions.length ? (FRL ? 'Étape par étape. ' : 'Step by step. ') + x.actions.map(i => `${i.year}${FRL ? ' :' : ':'} ${i.name}.`).join(' ') : T('We kept what was already in place and scaled it.') }];
     const [a, ...rest] = p.items, co = p.company;
-    return { lead: { headline: a.example, deck: `Four years after its diagnostic, the leadership team of ${co} answers three questions: what was it like before, what is it like today, and what did they do to get there.`, qa: qa(a) },
-      stories: rest.map(x => ({ headline: x.example, qa: qa(x) })), quote: { text: 'We did not automate yesterday. We redesigned tomorrow.', who: 'A member of the leadership team' } };
+    const deck = FRL ? `Quatre ans après son diagnostic, l’équipe de direction de ${co} répond à trois questions : comment était-ce avant, comment est-ce aujourd’hui, et qu’a-t-elle fait pour y arriver.`
+      : `Four years after its diagnostic, the leadership team of ${co} answers three questions: what was it like before, what is it like today, and what did they do to get there.`;
+    return { lead: { headline: a.example, deck, qa: qa(a) },
+      stories: rest.map(x => ({ headline: x.example, qa: qa(x) })), quote: { text: T('We did not automate yesterday. We redesigned tomorrow.'), who: T('A member of the leadership team') } };
   }
   function postText() {
+    if (FRL) return `Je viens d’écrire la Une 2030 de ${S.company || 'mon organisation'} avec le diagnostic Future of Work · 4 Shifts de Vincent Dupuis.\n\nArticle principal : « ${S.paper.lead.headline} »\n\nQuatorze questions, une feuille de route pour vos priorités, et votre propre Une. Que dira la vôtre ?\n${siteHost()}\n\n#FutureOfWork`;
     return `I just wrote the 2030 front page of ${S.company || 'my organization'} with the Future of Work · 4 Shifts diagnostic by Vincent Dupuis.\n\nLead story: "${S.paper.lead.headline}"\n\nFourteen questions, a roadmap for your priorities, and your own front page. What will yours say?\n${siteHost()}\n\n#FutureOfWork`;
   }
   function qaHtml(list) { return list.map((x, i) => `<p class="qa"><b class="q">${esc(x.q || QS[i] || '')}</b> ${esc(x.a)}</p>`).join(''); }
   function newsfix() {
-    const p = S.paper; if (!p || !p.lead || !p.lead.qa) return `<p>No front page yet. <a href="#/priorities">Back to your priorities</a>.</p>`;
-    const co = S.company || 'Your organization', ctx = S.paperContext || {};
-    const nums = [[`${ctx.progress != null ? ctx.progress : 100 - ctx.distance}%`, 'of the way to the 2030 target in the 2026 diagnostic'], [`${ctx.and}%`, 'AND score in 2026: the lower of productivity and culture'], [String(ctx.initiatives), 'initiatives on the 2027–2030 roadmap']]
+    const p = S.paper; if (!p || !p.lead || !p.lead.qa) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
+    const co = S.company || T('Your organization'), ctx = S.paperContext || {};
+    const nums = [[window.num(ctx.progress != null ? ctx.progress : 100 - ctx.distance), T('of the way to the 2030 target in the 2026 diagnostic')], [window.num(ctx.and), T('AND score in 2026: the lower of productivity and culture')], [String(ctx.initiatives), T('initiatives on the 2027–2030 roadmap')]]
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
-    return `<div class="share no-print"><div class="stack"><div class="eyebrow">Step 5 · Your News Fix</div><h1>Your 2030 front page is printed</h1><h2>Share it on LinkedIn</h2>
-        <p class="lede">The image shows your 2030 headlines only. Your diagnostic figures stay private.</p>
-        <div class="row"><button class="btn p" id="dl">Download the image</button><button class="btn s" id="cp">Copy the post text</button><a class="btn g" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">Open LinkedIn ↗</a></div>
-        <textarea id="posttext" class="post" readonly rows="7" aria-label="Suggested post text">${esc(postText())}</textarea>
-        <p class="note" id="sharemsg">Download the image, copy the text, then create a post on LinkedIn and add the image.</p></div>
+    return `<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 5 · Your News Fix')}</div><h1>${T('Your 2030 front page is printed')}</h1><h2>${T('Share it on LinkedIn')}</h2>
+        <p class="lede">${T('The image shows your 2030 headlines only. Your diagnostic figures stay private.')}</p>
+        <div class="row"><button class="btn p" id="dl">${T('Download the image')}</button><button class="btn s" id="cp">${T('Copy the post text')}</button><a class="btn g" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">${T('Open LinkedIn ↗')}</a></div>
+        <textarea id="posttext" class="post" readonly rows="7" aria-label="${T('Suggested post text')}">${esc(postText())}</textarea>
+        <p class="note" id="sharemsg">${T('Download the image, copy the text, then create a post on LinkedIn and add the image.')}</p></div>
         <div class="sc-frame">${shareCard(p, S.company, siteHost())}</div></div>
       <div class="paper" id="paper">
-      <div class="np-top"><span>Serving the sky, the moon and the stars</span><span>Special edition · The human edition</span></div>
+      <div class="np-top"><span>${T('Serving the sky, the moon and the stars')}</span><span>${T('Special edition · The human edition')}</span></div>
       <div class="masthead">The News Fix</div>
-      <div class="np-sub">The future of work, as ${esc(S.company || 'you')} wrote it</div>
-      <div class="np-date"><span>${esc(paperDate())}</span><span class="red">Fictional front page</span><span>${esc(co)}</span></div>
-      <div class="lead"><div class="kicker">Interview</div><h2>${esc(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${esc(p.lead.deck)}</p>` : ''}</div>
-      <div class="np-cols"><div><div class="byline">Interview by the News Fix newsroom</div><div class="np-body lead-body">${qaHtml(p.lead.qa)}</div></div>
-        <div>${p.quote && p.quote.text ? `<div class="quote">"${esc(p.quote.text)}"<small>${esc(p.quote.who || '')}</small></div>` : ''}
-          ${nums ? `<div class="numbers"><h4>From the 2026 diagnostic</h4><ul>${nums}</ul></div>` : ''}</div></div>
-      ${p.stories.length ? `<div class="np-stories ${p.stories.length % 3 === 0 ? 'c3' : 'c2'}">${p.stories.map(s => `<article class="story"><div class="kicker">Interview</div><h3>${esc(s.headline)}</h3><div class="np-body">${qaHtml(s.qa)}</div></article>`).join('')}</div>` : ''}
-      <div class="np-foot"><span>Written with the Future of Work · 4 Shifts model</span><span>More human. More digital. Not a trade-off. AND.</span></div></div>
-      <div class="section no-print" style="margin-top:24px"><div class="row"><button class="btn s" id="print">Print or save as PDF</button><a class="btn g" href="#/priorities">Back to your priorities and roadmap</a></div>
-      ${S.paperSource === 'template' ? '<p class="note">The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.</p>' : ''}</div>
+      <div class="np-sub">${esc(FRL ? (S.company ? `Le futur du travail, tel que ${S.company} l’a écrit` : 'Le futur du travail, tel que vous l’avez écrit') : `The future of work, as ${S.company || 'you'} wrote it`)}</div>
+      <div class="np-date"><span>${esc(paperDate())}</span><span class="red">${T('Fictional front page')}</span><span>${esc(co)}</span></div>
+      <div class="lead"><div class="kicker">${T('Interview')}</div><h2>${esc(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${esc(p.lead.deck)}</p>` : ''}</div>
+      <div class="np-cols"><div><div class="byline">${T('Interview by the News Fix newsroom')}</div><div class="np-body lead-body">${qaHtml(p.lead.qa)}</div></div>
+        <div>${p.quote && p.quote.text ? `<div class="quote">${FRL ? `« ${esc(p.quote.text)} »` : `"${esc(p.quote.text)}"`}<small>${esc(p.quote.who || '')}</small></div>` : ''}
+          ${nums ? `<div class="numbers"><h4>${T('From the 2026 diagnostic')}</h4><ul>${nums}</ul></div>` : ''}</div></div>
+      ${p.stories.length ? `<div class="np-stories ${p.stories.length % 3 === 0 ? 'c3' : 'c2'}">${p.stories.map(s => `<article class="story"><div class="kicker">${T('Interview')}</div><h3>${esc(s.headline)}</h3><div class="np-body">${qaHtml(s.qa)}</div></article>`).join('')}</div>` : ''}
+      <div class="np-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>${T('More human. More digital. Not a trade-off. AND.')}</span></div></div>
+      <div class="section no-print" style="margin-top:24px"><div class="row"><button class="btn s" id="print">${T('Print or save as PDF')}</button><a class="btn g" href="#/priorities">${T('Back to your priorities and roadmap')}</a></div>
+      ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}</p>` : ''}</div>
       <div id="capture" aria-hidden="true">${shareCard(p, S.company, siteHost())}</div>`;
   }
   async function downloadImage() {
     const msg = document.getElementById('sharemsg'), btn = document.getElementById('dl');
-    if (typeof window.html2canvas !== 'function') { msg.textContent = 'The image tool did not load. Check your connection and reload the page.'; return; }
-    btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Preparing…';
+    if (typeof window.html2canvas !== 'function') { msg.textContent = T('The image tool did not load. Check your connection and reload the page.'); return; }
+    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Preparing…')}`;
     try {
       await document.fonts.ready;
       const canvas = await window.html2canvas(document.querySelector('#capture .share-card'), { scale: 1, width: 1080, height: 1350, backgroundColor: '#F7F3EA', logging: false });
       const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'the-news-fix-2030.png'; document.body.appendChild(a); a.click();
       setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
-      msg.textContent = 'Image downloaded: the-news-fix-2030.png. Now copy the text and create your LinkedIn post.'; ping('image');
-    } catch (e) { msg.textContent = 'The image could not be created. Try again, or take a screenshot of the preview.'; }
-    btn.disabled = false; btn.textContent = 'Download the image';
+      msg.textContent = T('Image downloaded: the-news-fix-2030.png. Now copy the text and create your LinkedIn post.'); ping('image');
+    } catch (e) { msg.textContent = T('The image could not be created. Try again, or take a screenshot of the preview.'); }
+    btn.disabled = false; btn.textContent = T('Download the image');
   }
   function bindNewsfix() {
     document.getElementById('print').onclick = () => window.print();
     document.getElementById('dl').onclick = downloadImage;
     document.getElementById('cp').onclick = async () => { const ta = document.getElementById('posttext'), msg = document.getElementById('sharemsg');
-      try { await navigator.clipboard.writeText(ta.value); msg.textContent = 'Text copied. Paste it in your LinkedIn post.'; }
-      catch (e) { ta.focus(); ta.select(); msg.textContent = 'Select the text and copy it with your keyboard.'; } };
+      try { await navigator.clipboard.writeText(ta.value); msg.textContent = T('Text copied. Paste it in your LinkedIn post.'); }
+      catch (e) { ta.focus(); ta.select(); msg.textContent = T('Select the text and copy it with your keyboard.'); } };
   }
 
   // ---------- RENDER ----------
@@ -1215,6 +1299,8 @@ window.initMap=initMap;
     fitCards();
   }
   let last = null;
+  const headVar = () => { const t = document.querySelector('.top'); if (t) document.documentElement.style.setProperty('--head', t.offsetHeight + 'px'); };
+  headVar(); window.addEventListener('resize', headVar);
   window.addEventListener('hashchange', () => { render(); if (location.hash !== last) window.scrollTo(0, 0); last = location.hash; });
   render();
   if (document.fonts) document.fonts.ready.then(fitCards);

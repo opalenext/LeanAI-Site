@@ -4,27 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}</style>
-<title>Privacy · Future of Work 4 Shifts</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<title>Privacy · Future of Work 4 Shifts</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=IBM+Plex+Sans:wght@400;600&display=swap">
 <style>
-:root{--bg:#F5F7FA;--fg:#12213F;--muted:#56667E;--accent:#E6007E;--line:#D7E0EA}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0D1526;--fg:#E7EDF6;--muted:#9AA9BF;--accent:#FF4FA6;--line:#2A3A57;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0D1526;--fg:#E7EDF6;--muted:#9AA9BF;--accent:#FF4FA6;--line:#2A3A57;color-scheme:dark}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 "Source Sans 3","Segoe UI",Arial,sans-serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 48px}
+:root{--bg:#F5F5F1;--fg:#12161C;--muted:#5A6270;--accent:#0F6E5D;--line:#DADCD5}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#101317;--fg:#ECEBE6;--muted:#A3A8AE;--accent:#62B8AC;--line:#2B3036;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101317;--fg:#ECEBE6;--muted:#A3A8AE;--accent:#62B8AC;--line:#2B3036;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 "IBM Plex Sans","Segoe UI",Arial,sans-serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 48px}
 main{max-width:680px;margin:0 auto}
-h1,h2{font-family:"Poppins","Segoe UI",Arial,sans-serif;line-height:1.2}
+h1,h2{font-family:"Space Grotesk","Segoe UI",Arial,sans-serif;line-height:1.2}
 h1{font-size:32px}h2{font-size:20px;margin-top:28px}
 a{color:var(--accent)} p,li{color:var(--fg)} .muted{color:var(--muted)}
 </style>
 </head>
 <body>
 
-<main>
+<main lang="en" id="en">
 <p><a href="index.html#/">← Back to the tool</a></p>
 <h1>Privacy</h1>
 <p class="muted">Future of Work · 4 Shifts is a personal project by Vincent Dupuis. It is not linked to any employer.</p>
 <h2>Your diagnostic answers</h2>
-<p>Your answers, your organization name and your priorities are saved only in your own browser (local storage), so you can come back to your report. They are not sent to a server and we do not store them. You can delete them at any time by clearing your browser data for this site.</p>
+<p>Your answers, your organization name and your priorities are saved only in your own browser (local storage), so you can come back to your report. They are not sent to a server and we do not store them. You can delete them at any time by clearing your browser data for this site. Your language choice is also saved in your browser.</p>
 <h2>The News Fix front page</h2>
 <p>When you print the front page, your organization name, your priority challenges, your diagnostic answers on these challenges and the related roadmap initiatives are sent to a server function, which sends them to the Anthropic API (Claude) to write the articles and headlines. We do not store this content.</p>
 <h2>Hosting</h2>
@@ -34,6 +34,27 @@ a{color:var(--accent)} p,li{color:var(--fg)} .muted{color:var(--muted)}
 <h2>Contact</h2>
 <p>[Contact address to add]</p>
 </main>
+<main lang="fr" id="fr" hidden>
+<p><a href="index.html?lang=fr#/">← Retour à l’outil</a></p>
+<h1>Confidentialité</h1>
+<p class="muted">Future of Work · 4 Shifts est un projet personnel de Vincent Dupuis. Il n’est lié à aucun employeur.</p>
+<h2>Vos réponses au diagnostic</h2>
+<p>Vos réponses, le nom de votre organisation et vos priorités sont enregistrés uniquement dans votre navigateur (stockage local), pour que vous puissiez revenir à votre rapport. Ils ne sont pas envoyés à un serveur et nous ne les conservons pas. Vous pouvez les supprimer à tout moment en effaçant les données de navigation de ce site. Votre choix de langue est aussi enregistré dans votre navigateur.</p>
+<h2>La Une de The News Fix</h2>
+<p>Quand vous imprimez la Une, le nom de votre organisation, vos défis prioritaires, vos réponses au diagnostic sur ces défis et les initiatives de la feuille de route correspondantes sont envoyés à une fonction serveur, qui les transmet à l’API d’Anthropic (Claude) pour écrire les articles et les titres. Nous ne conservons pas ce contenu.</p>
+<h2>Hébergement</h2>
+<p>Le site est hébergé par Netlify. Comme tout hébergeur, Netlify traite des données techniques comme les adresses IP pour servir le site et le protéger. Un comptage temporaire des requêtes par adresse IP limite le nombre de Unes par heure. Les polices sont servies par ce site, pas par un tiers.</p>
+<h2>Pas de compte, pas de suivi</h2>
+<p>Il n’y a ni compte, ni cookie, ni outil de mesure d’audience. Le site compte seulement, par mois, combien de fois chaque étape est atteinte (rapport, feuille de route, Une, image). Ce comptage ne contient ni adresse IP ni identifiant.</p>
+<h2>Contact</h2>
+<p>[Adresse de contact à ajouter]</p>
+</main>
+<script>(function () {
+  var l = new URLSearchParams(location.search).get('lang');
+  if (l !== 'fr' && l !== 'en') { try { l = localStorage.getItem('fow4_lang'); } catch (e) { l = null; } }
+  if (l !== 'fr' && l !== 'en') { var ls = navigator.languages || [navigator.language || '']; for (var i = 0; i < ls.length; i++) { var c = String(ls[i]).slice(0, 2).toLowerCase(); if (c === 'fr' || c === 'en') { l = c; break; } } }
+  if (l === 'fr') { document.documentElement.lang = 'fr'; document.title = 'Confidentialité · Future of Work · 4 Shifts'; document.getElementById('en').hidden = true; document.getElementById('fr').hidden = false; }
+})();</script>
 
 </body>
 </html>
