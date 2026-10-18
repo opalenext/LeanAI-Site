@@ -101,6 +101,20 @@
         out.push(x);
       }
       F.rules = out;
+    },
+    profile: function (m) {
+      var v = m.profile, ids = (F.profile || []).map(function (f) { return f.id; });
+      if (!Array.isArray(v) || !sameSet(v.map(function (f) { return f.id; }), ids)) return 'the profile fields must stay ' + ids.join(', ');
+      for (var k = 0; k < v.length; k++) {
+        var f = v[k], seen = {};
+        if (!str(f.q) || !Array.isArray(f.o) || f.o.length < 2) return f.id + ': a question and at least 2 options are needed';
+        for (var j = 0; j < f.o.length; j++) {
+          var o = f.o[j];
+          if (!/^[a-z0-9]{1,20}$/.test(o[0]) || seen[o[0]] || !str(o[1])) return f.id + ': option ids must be short, unique, in lower case, with a label';
+          seen[o[0]] = 1;
+        }
+      }
+      F.profile = ids.map(function (id) { var f = v.filter(function (x) { return x.id === id; })[0]; return { id: id, q: f.q, o: f.o.map(function (o) { return [o[0], o[1]]; }) }; });
     }
   };
 

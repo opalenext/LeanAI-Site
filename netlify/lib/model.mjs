@@ -26,5 +26,12 @@ export function shapeModel(tabs, lang) {
     if (String(r.kind).trim().toLowerCase() === 'limit') x.kind = 'limit';
     return x;
   });
-  return { lang, shifts, levels, levelNote: texts.levelNote || '', challenges, questions, initiatives, rules };
+  // Profile: one row per option (field, id, labels); the row with id "question" holds the question.
+  const profile = [];
+  for (const r of tabs.profile || []) {
+    let f = profile.find((x) => x.id === r.field);
+    if (!f) { f = { id: r.field, q: '', o: [] }; profile.push(f); }
+    if (String(r.id) === 'question') f.q = tx(r, 'label'); else f.o.push([String(r.id), tx(r, 'label')]);
+  }
+  return { lang, shifts, levels, levelNote: texts.levelNote || '', challenges, questions, initiatives, rules, profile };
 }

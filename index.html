@@ -88,8 +88,26 @@ h3{font-size:19px}
 .how li::before{content:counter(s);font:700 15px var(--display);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--fg);color:var(--bg)}
 .how p{margin:0;color:var(--muted)}
 .note{font-size:14.5px;color:var(--muted)}
-.share{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:14.5px;color:var(--muted);max-width:640px;cursor:pointer}
-.share input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:var(--accent)}
+.optin{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:14.5px;color:var(--muted);max-width:640px;cursor:pointer}
+.optin input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:var(--accent)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.prof{border:0;padding:0;margin:0 0 24px;min-width:0}
+.prof legend{font:600 16px var(--display);margin-bottom:10px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;width:1px;height:1px}
+.chip span{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;background:var(--surface);cursor:pointer;font-size:15px;line-height:1.3}
+.chip input:checked+span{border-color:var(--accent);background:var(--accent-soft);font-weight:600}
+.chip input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.chip.none span{color:var(--muted)}
+.contact{margin-top:28px;padding:20px 22px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);max-width:640px}
+.contact h3{margin:0 0 6px;font:600 18px var(--display)}
+.contact p{margin:0 0 12px}
+.contact form{display:flex;gap:10px;flex-wrap:wrap}
+.contact input[type=email]{flex:1 1 240px;font:inherit;font-size:16px;color:var(--fg);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 13px;min-width:0}
+.contact .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.contact #cmsg:empty{display:none}
+.contact .assure{margin:12px 0 0;font-size:14.5px;color:var(--fg);border-left:3px solid var(--accent);padding-left:10px}
 /* diagnostic */
 .q-wrap{max-width:760px;display:flex;flex-direction:column;gap:22px}
 .progress{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
@@ -467,6 +485,15 @@ window.FOW = {
   },
   levels: ['Emerging', 'Developing', 'Advanced', 'Excellence · 2030-ready'],
   levelNote: 'Excellence · 2030-ready: the practice is embedded, continuously improved and shared across the organization.',
+  // Optional profile, asked before the report, for the anonymous statistics only. Ids are stored in the back-office.
+  profile: [
+    { id: 'sector', q: 'Sector', o: [['industry', 'Industry and manufacturing'], ['mobility', 'Automotive, aerospace, defense'], ['energy', 'Energy and utilities'],
+      ['finance', 'Banking and insurance'], ['health', 'Health and pharma'], ['tech', 'Tech and software'], ['retail', 'Retail and consumer goods'],
+      ['services', 'Services and consulting'], ['public', 'Public sector'], ['other', 'Other']] },
+    { id: 'size', q: 'Size of the organization', o: [['xs', 'Fewer than 250 people'], ['s', '250 to 999'], ['m', '1,000 to 4,999'], ['l', '5,000 to 49,999'], ['xl', '50,000 or more']] },
+    { id: 'role', q: 'Your role', o: [['ceo', 'General management'], ['hr', 'HR'], ['ops', 'Operations'], ['transfo', 'Transformation, digital, IT'], ['finance', 'Finance'], ['other', 'Other']] },
+    { id: 'region', q: 'Where you work', o: [['fr', 'France'], ['europe', 'Europe (outside France)'], ['namerica', 'North America'], ['other', 'Other']] }
+  ],
   challenges: {
     fluid:      { g: 'P', n: 'Fluid teams', d: 'Work moves faster than the org chart.', ex: 'Teams now form in days, not reorganizations' },
     agility:    { g: 'P', n: 'Organizational agility', d: 'Programs ramp up faster than structures adapt.', ex: 'New program fully staffed in three weeks' },
@@ -834,13 +861,14 @@ window.initMap=initMap;
   // Anonymous statistics, unless the visitor unticks the box: a random id, the 14 levels, the priorities and the scores.
   // No name, no organization. A new id for each new set of answers.
   const shared = () => S.share !== false;
-  const sig = () => F.questions.map(q => S.answers[q.id] || 0).join('');
+  const prof = () => { const p = {}; (F.profile || []).forEach(f => { const v = S.profile && S.profile[f.id]; if (v && f.o.some(o => o[0] === v)) p[f.id] = v; }); return p; };
+  const sig = () => F.questions.map(q => S.answers[q.id] || 0).join('') + '|' + JSON.stringify(prof());
   const newId = () => Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, '0')).join('');
   // Returns true when the row is saved. A failed send is not marked as done, so it is tried again later.
   function post(step) {
     const r = scores(), answers = {}; F.questions.forEach(q => { answers[q.id] = S.answers[q.id]; });
     const body = { rid: S.rid, step, lang: window.LANG, answers, priorities: step === 'priorities' ? S.priorities : [],
-      scores: { overall: r.overall, productivity: r.P, culture: r.C }, flags: r.flags.length };
+      scores: { overall: r.overall, productivity: r.P, culture: r.C }, flags: r.flags.length, profile: prof() };
     try { return fetch('/api/responses', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), keepalive: true }).then(r => r.ok, () => false); }
     catch (x) { return Promise.resolve(false); }
   }
@@ -859,8 +887,32 @@ window.initMap=initMap;
     S.sentPrio = p; save();
     if (!(await post('priorities')) && S.sentPrio === p) { S.sentPrio = null; save(); }
   }
-  const shareBox = () => `<label class="share no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities and scores, no name and no organization.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
+  const shareBox = () => `<label class="optin no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
   const bindShare = () => { const b = document.getElementById('share'); if (b) b.addEventListener('change', () => { S.share = b.checked; save(); }); };
+  // Optional email to receive the summary of the study. Stored apart from the answers, with no link to them.
+  const contactBox = () => S.contactDone
+    ? `<div class="contact no-print"><h3>${T('Get the results of the study')}</h3><p>${T('Thank you. You will receive the summary of the results.')}</p></div>`
+    : `<div class="contact no-print"><h3>${T('Get the results of the study')}</h3>
+        <p>${T('When enough leaders have answered, we publish a summary of the results. Leave your email to receive it: one email, nothing else.')}</p>
+        <form id="cform" novalidate><label class="vh" for="cemail">${T('Your professional email')}</label>
+          <input id="cemail" type="email" required maxlength="254" autocomplete="email" placeholder="${T('name@company.com')}">
+          <input class="hp" id="cweb" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn s" type="submit">${T('Send')}</button></form>
+        <p class="note" id="cmsg" aria-live="polite"></p>
+        <p class="assure">${T('Your email is stored separately from your diagnostic. Your answers stay anonymous: nobody can link them to your email. Your email is deleted once the summary is sent.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
+  function bindContact() {
+    const f = document.getElementById('cform'); if (!f) return;
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const email = document.getElementById('cemail').value.trim(), msg = document.getElementById('cmsg'), btn = f.querySelector('button');
+      if (!/^[^\s@=+\-][^\s@]*@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 254) { msg.textContent = T('This email address does not look valid.'); return; }
+      btn.disabled = true;
+      let ok = false;
+      try { const r = await fetch('/api/contact', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email, lang: window.LANG, website: document.getElementById('cweb').value }) }); ok = r.ok; } catch (x) {}
+      if (ok) { S.contactDone = true; save(); const y = window.scrollY; render(); window.scrollTo(0, y); }
+      else { btn.disabled = false; msg.textContent = T('Your email could not be saved. Please try again later.'); }
+    });
+  }
 
   // ---------- SCORING ----------
   function scores() {
@@ -1060,6 +1112,23 @@ window.initMap=initMap;
     bindShare();
     document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { S.editing = false; save(); ping('report'); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
   }
+  // ---------- PROFILE (optional, before the report, for the anonymous statistics) ----------
+  function profile() {
+    const p = S.profile || {};
+    const fs = (F.profile || []).map(f => `<fieldset class="prof"><legend>${esc(f.q)}</legend><div class="chips">` +
+      f.o.map(o => `<label class="chip"><input type="radio" name="pf_${f.id}" value="${esc(o[0])}" ${p[f.id] === o[0] ? 'checked' : ''}><span>${esc(o[1])}</span></label>`).join('') +
+      `<label class="chip none"><input type="radio" name="pf_${f.id}" value="" ${p[f.id] ? '' : 'checked'}><span>${T('Prefer not to say')}</span></label></div></fieldset>`).join('');
+    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 3 · Your Diagnostic')}</div><h1>${T('Compare with organizations like yours')}</h1>
+        <p class="lede">${T('Four optional questions. They are used only in the anonymous statistics, to compare results by sector, size, role and region. Never your name or your organization.')}</p></div>
+      ${fs}<div class="row"><button class="btn g" id="pback">${T('← Back')}</button><button class="btn p" id="pnext">${T('See my report')}</button></div></div>`;
+  }
+  function bindProfile() {
+    document.querySelectorAll('.prof input').forEach(r => r.addEventListener('change', () => {
+      S.profile = Object.assign({}, S.profile, { [r.name.slice(3)]: r.value || null }); save();
+    }));
+    document.getElementById('pback').onclick = () => { S.editing = true; S.qi = F.questions.length - 1; save(); render(); };
+    document.getElementById('pnext').onclick = () => { S.profileSeen = true; save(); render(); window.scrollTo(0, 0); };
+  }
   function report() {
     const r = scores();
     const heat = g => Object.keys(F.challenges).filter(c => F.challenges[c].g === g).sort((x, y) => r.ch[x] - r.ch[y]).map(c => `<div class="hc"><div class="t"><span>${esc(F.challenges[c].n)}</span><span class="gap ${gapClass(r.ch[c])}">${gapLabel(r.ch[c])}</span></div><small>${esc(F.challenges[c].d)} · ${T('Maturity {v}%', { v: pct(r.ch[c]) })}</small></div>`).join('');
@@ -1075,11 +1144,11 @@ window.initMap=initMap;
         <div class="profile"><div class="spider-wrap">${spider(false)}</div><div class="pr-list">${practiceList()}<p class="note">${esc(F.levelNote)}</p></div></div></div>
       <div class="section"><div class="stack"><h2>${T('Coherence check')}</h2><p class="lede">${T('Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.')}</p></div>${flags}</div>
       <div class="section"><h2>${T('Where the gaps are')}</h2><div class="band-l">${T('Productivity challenges')}</div><div class="heat">${heat('P')}</div><div class="band-l">${T('Cultural challenges')}</div><div class="heat">${heat('C')}</div></div>
-      <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">${T('Prepare your executive report-out')}</a><a class="btn s" href="#/priorities">${T('Next: your priorities →')}</a><button class="btn g" id="redo">${T('Change my answers')}</button></div>${shareBox()}</div>`;
+      <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">${T('Prepare your executive report-out')}</a><a class="btn s" href="#/priorities">${T('Next: your priorities →')}</a><button class="btn g" id="redo">${T('Change my answers')}</button></div>${shareBox()}${contactBox()}</div>`;
   }
   function bindReport() {
-    bindShare(); sendReport();
-    document.getElementById('redo').onclick = () => { S.qi = 0; S.editing = true; save(); render(); window.scrollTo(0, 0); };
+    bindShare(); bindContact(); sendReport();
+    document.getElementById('redo').onclick = () => { S.qi = 0; S.editing = true; S.profileSeen = false; save(); render(); window.scrollTo(0, 0); };
   }
 
   // ---------- EXECUTIVE REPORT-OUT (deliverable of step 3, for the ExCom) ----------
@@ -1290,7 +1359,7 @@ window.initMap=initMap;
       ${p.stories.length ? `<div class="np-stories ${p.stories.length % 3 === 0 ? 'c3' : 'c2'}">${p.stories.map(s => `<article class="story"><div class="kicker">${T('Interview')}</div><h3>${esc(s.headline)}</h3><div class="np-body">${qaHtml(s.qa)}</div></article>`).join('')}</div>` : ''}
       <div class="np-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>${T('More human. More digital. Not a trade-off. AND.')}</span></div></div>
       <div class="section no-print" style="margin-top:24px"><div class="row"><button class="btn s" id="print">${T('Print or save as PDF')}</button><a class="btn g" href="#/priorities">${T('Back to your priorities and roadmap')}</a></div>
-      ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}</p>` : ''}</div>
+      ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}</p>` : ''}${contactBox()}</div>
       <div id="capture" aria-hidden="true">${shareCard(p, S.company, siteHost())}</div>`;
   }
   async function downloadImage() {
@@ -1308,6 +1377,7 @@ window.initMap=initMap;
     btn.disabled = false; btn.textContent = T('Download the image');
   }
   function bindNewsfix() {
+    bindContact();
     document.getElementById('print').onclick = () => window.print();
     document.getElementById('dl').onclick = downloadImage;
     document.getElementById('cp').onclick = async () => { const ta = document.getElementById('posttext'), msg = document.getElementById('sharemsg');
@@ -1326,7 +1396,7 @@ window.initMap=initMap;
     nav(route === '#/brief' ? '#/diagnostic' : route);
     const v = document.getElementById('view');
     if (route === '#/map') { v.innerHTML = mapView(); window.initMap(); }
-    else if (route === '#/diagnostic') { if (done() && !S.editing) { v.innerHTML = report(); bindReport(); } else { v.innerHTML = questions(); bindQuestions(); } }
+    else if (route === '#/diagnostic') { if (done() && !S.editing && shared() && !S.profileSeen) { v.innerHTML = profile(); bindProfile(); } else if (done() && !S.editing) { v.innerHTML = report(); bindReport(); } else { v.innerHTML = questions(); bindQuestions(); } }
     else if (route === '#/brief') { v.innerHTML = brief(); bindBrief(); }
     else if (route === '#/priorities') { v.innerHTML = priorities(); bindPriorities(); }
     else if (route === '#/newsfix') { v.innerHTML = newsfix(); bindNewsfix(); }
