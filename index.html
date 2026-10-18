@@ -391,6 +391,9 @@ h3{font-size:19px}
 .mapapp .tag.warn{background:var(--warn-bg);color:var(--warn)}
 .mapapp .tag.ok{background:var(--ok-bg);color:var(--ok)}
 .mapapp .contribs{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.panelhint{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:20;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:10px 18px;min-height:44px;font:600 15px var(--display);box-shadow:0 6px 18px -6px rgba(0,0,0,.35);cursor:pointer}
+.panelhint:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+@media print{.panelhint{display:none!important}}
 .mapapp .contribs li{border-left:4px solid var(--c);padding:2px 0 2px 12px}
 .mapapp .contribs b{font-family:var(--display);font-size:13.5px;display:block;color:var(--c)}
 .mapapp .contribs button{all:unset;cursor:pointer;font-family:var(--display);font-size:13.5px;font-weight:600;color:var(--c)}
@@ -715,8 +718,9 @@ function matrix(){
 function checkBlock(c){ const k=K[c]; const tag=k.s==='warn'?'<span class="tag warn">Watch-out</span>':k.s==='single'?'<span class="tag warn">Single pillar</span>':'<span class="tag ok">Aligned</span>';
   return `<div class="check"><h3>Coherence check ${tag}</h3><dl><div><dt>Combined effect</dt><dd>${esc(k.sum)}</dd></div><div><dt>Risk of opposite effects</dt><dd>${esc(k.risk)}</dd></div><div><dt>Guardrail</dt><dd>${esc(k.guard)}</dd></div></dl></div>`; }
 function chTag(c){ return `<span class="tag ${C[c].g}">${C[c].g==='P'?'Productivity':'Cultural'} challenge</span>`; }
-function render(sel){
+function render(sel, fromPanel){
   const pn=document.getElementById('panel'); let h='';
+  const topBefore=pn.getBoundingClientRect().top;
   if(sel.type==='link'){ const {s,c}=sel; const others=byC(c).filter(x=>x!==s);
     h=`<div class="kind" style="color:${col(s)}">${esc(P[s].n)} → challenge</div><h2>${esc(C[c].n)}</h2><div>${chTag(c)}</div>
       <ul class="contribs"><li style="--c:${col(s)}"><b>How ${esc(P[s].n)} contributes</b>${esc(L[s][c])}</li></ul>
@@ -731,16 +735,36 @@ function render(sel){
       <ul class="contribs">${cs.map(c=>`<li style="--c:${col(s)}"><button data-s="${s}" data-c="${c}">${esc(C[c].n)}${K[c].s==='warn'?' <i class="dot"></i>':''}</button><br>${esc(L[s][c])}</li>`).join('')}</ul>`; }
   h+=`<p class="note">Draft for review. Contributions and checks are written from the episode content and should be validated pillar by pillar.</p>`;
   pn.innerHTML=h;
-  pn.querySelectorAll('button[data-s]').forEach(b=>b.addEventListener('click',()=>select({type:'link',s:b.dataset.s,c:b.dataset.c})));
+  pn.querySelectorAll('button[data-s]').forEach(b=>b.addEventListener('click',()=>select({type:'link',s:b.dataset.s,c:b.dataset.c},true)));
+  // Keep the panel where the reader left it: same top position, or its top at the top of the screen
+  // if the reader was already further down. The page never jumps by itself.
+  if (window.__mapReady) {
+    const target = topBefore < 0 ? 0 : topBefore;
+    window.scrollBy(0, pn.getBoundingClientRect().top - target);
+    if (fromPanel) { const t = pn.querySelector('h2'); if (t) { t.setAttribute('tabindex','-1'); t.focus({preventScroll:true}); } }
+  }
 }
-function select(sel){
+// Discreet button that points to the explanation when it is below the screen, instead of scrolling for the reader.
+function panelHint(){
+  let b=document.getElementById('panelhint');
+  if(!b){
+    b=document.createElement('button'); b.id='panelhint'; b.type='button'; b.className='panelhint'; b.textContent='Explanation below ↓'; b.hidden=true;
+    b.addEventListener('click',()=>{ b.hidden=true; const pn=document.getElementById('panel'); pn.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); });
+    document.body.appendChild(b);
+    const check=()=>{ const pn=document.getElementById('panel'); if(!pn||!document.body.contains(pn)){ b.hidden=true; return; } if(pn.getBoundingClientRect().top < window.innerHeight*0.85) b.hidden=true; };
+    window.addEventListener('scroll',check,{passive:true}); window.addEventListener('hashchange',()=>{ b.hidden=true; });
+  }
+  const pn=document.getElementById('panel');
+  b.hidden = pn.getBoundingClientRect().top < window.innerHeight*0.85;
+}
+function select(sel, fromPanel){
   svg.classList.add('focus');
   links.forEach(lk=>{ const on= sel.type==='link'?(lk.s===sel.s&&lk.c===sel.c): sel.type==='ch'?lk.c===sel.c : lk.s===sel.s; lk.p.classList.toggle('on',on); });
   ORDER.forEach(c=>{ const on= sel.type==='pillar'?!!L[sel.s][c] : c===sel.c; C[c].g_.classList.toggle('dim',!on); });
   SIDS.forEach(s=>{ const on= sel.type==='pillar'?s===sel.s : sel.type==='link'?s===sel.s : !!L[s][sel.c]; P[s].g_.classList.toggle('dim',!on); });
   document.querySelectorAll('#matrixview tr.row').forEach(tr=>tr.classList.toggle('sel', sel.c===tr.dataset.c || (sel.type==='pillar'&&!!L[sel.s][tr.dataset.c])));
-  render(sel);
-  if (window.__mapReady) { const pn=document.getElementById('panel'); if (pn.getBoundingClientRect().top > window.innerHeight*0.75) pn.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); }
+  render(sel, fromPanel);
+  if (window.__mapReady) panelHint();
 }
 function view(v){ const m=v==='map'; document.getElementById('mapview').hidden=!m; document.getElementById('matrixview').hidden=m;
   
