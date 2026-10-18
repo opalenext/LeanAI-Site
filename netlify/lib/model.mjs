@@ -4,6 +4,17 @@
 
 const list = (v) => String(v ?? '').split(/[,;\s]+/).map((x) => x.trim()).filter(Boolean);
 const num = (v) => { const n = Number(String(v).replace(',', '.')); return Number.isFinite(n) ? n : null; };
+const cell = (v) => String(v ?? '').trim();
+
+// Duration of a video as m:ss. Google Sheets may turn "2:35" into a time (a fraction of a day):
+// a value with no seconds was typed as m:ss, a value with seconds was typed as h:mm:ss.
+function duration(v) {
+  if (typeof v !== 'number') return cell(v);
+  const t = Math.round(v * 86400);
+  if (!(t > 0)) return '';
+  const [h, m, s] = [Math.floor(t / 3600), Math.floor(t / 60) % 60, t % 60];
+  return s === 0 ? `${h}:${String(m).padStart(2, '0')}` : `${h * 60 + m}:${String(s).padStart(2, '0')}`;
+}
 
 export function shapeModel(tabs, lang) {
   const tx = (row, key) => String((lang === 'fr' && row[`${key}_fr`]) || row[`${key}_en`] || '');
@@ -33,5 +44,11 @@ export function shapeModel(tabs, lang) {
     if (!f) { f = { id: r.field, q: '', o: [] }; profile.push(f); }
     if (String(r.id) === 'question') f.q = tx(r, 'label'); else f.o.push([String(r.id), tx(r, 'label')]);
   }
-  return { lang, shifts, levels, levelNote: texts.levelNote || '', challenges, questions, initiatives, rules, profile };
+  // Episodes of the LinkedIn series (tab media). Only what the page shows: never the source columns.
+  const episodes = Array.isArray(tabs.media) ? tabs.media.map((r) => ({
+    id: cell(r.id), shift: cell(r.shift), title: tx(r, 'title'), summary: tx(r, 'summary'),
+    linkedin_url: cell(r.linkedin_url), video_url: cell(r.video_url), poster_url: cell(r.poster_url),
+    captions_url: cell(r.captions_url), duration: duration(r.duration),
+  })) : undefined;
+  return { lang, shifts, levels, levelNote: texts.levelNote || '', challenges, questions, initiatives, rules, profile, ...(episodes ? { episodes } : {}) };
 }

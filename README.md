@@ -10,6 +10,8 @@ Projet personnel, sans lien avec un employeur.
 
 Les textes du modèle (shifts, niveaux, défis, questions, initiatives, règles, en anglais et en français) se modifient dans un classeur Google Sheets privé. `content.js` les charge par `/api/content` au démarrage et garde le modèle intégré à `index.html` si le classeur est indisponible ou si une partie ne passe pas les contrôles.
 
+L'onglet `media` décrit les 5 épisodes de la série LinkedIn affichés sur l'accueil (une ligne par épisode, `ep1` à `ep5`). Le site n'utilise que `id`, `shift` (vide pour l'épisode 1, sinon `S1` à `S4`), `title_en`/`title_fr`, `summary_en`/`summary_fr` (extrait du post affiché sous la vidéo), `linkedin_url`, `video_url`, `poster_url`, `captions_url` et `duration`. Les colonnes `source_video` et `source_poster` ne sortent jamais du back-office. Une cellule française vide reprend le texte anglais. Les liens sont des adresses `https://…` ou des fichiers du site sous `media/` (par exemple `media/ep2.mp4`). `video_url` vide : l'affiche s'affiche sans bouton lecture. `linkedin_url` vide : pas de lien « Comment on LinkedIn ». `duration` au format `m:ss` (saisir `'2:35` ou mettre la colonne au format texte), vide : pas de durée affichée. Si l'onglet manque ou ne passe pas les contrôles, le reste du modèle s'applique et l'accueil garde les épisodes intégrés à `index.html`.
+
 Les réponses anonymes (niveaux, priorités, scores et profil facultatif : secteur, taille, fonction, zone, sans nom ni organisation) sont ajoutées par `/api/responses` à l'onglet `responses` du même classeur, sauf si le visiteur décoche la case prévue.
 
 L'email facultatif pour recevoir la synthèse de l'étude est ajouté par `/api/contact` à l'onglet `contacts`, sans lien avec les réponses.

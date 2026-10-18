@@ -36,27 +36,53 @@
     'Fictional front page': 'Une fictive', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
     'Also in this edition': 'Aussi dans cette édition', 'More human. More digital.': 'Plus humain. Plus digital.',
     'Not a trade-off. AND.': 'Pas un compromis. ET.', 'Write your own 2030 front page': 'Écrivez votre Une 2030',
-    'Example front page for a fictional company': 'Exemple de Une pour une entreprise fictive',
-    // 1. Introduction
-    'Future of Work · 4 shifts': 'Future of Work · 4 shifts', 'What will your 2030 front page say?': 'Que dira votre Une de 2030 ?',
-    'A generational crossover, a new relationship to work, the AI reset, and constant uncertainty: four forces are reshaping work at the same time. Fragmented answers will not be enough.':
-      'Un croisement des générations, un nouveau rapport au travail, la remise à zéro par l’IA et une incertitude permanente : quatre forces transforment le travail en même temps. Des réponses fragmentées ne suffiront pas.',
-    'In about ten minutes, see how far your operating model has come on the way to 2030, build a roadmap for your priorities, and get the front page of The News Fix, written for your organization.':
-      'En dix minutes environ, mesurez le chemin parcouru par votre modèle opérationnel vers 2030, construisez une feuille de route pour vos priorités, et obtenez la Une de The News Fix, écrite pour votre organisation.',
-    'The model': 'Le modèle', 'Four shifts, one operating system': 'Quatre shifts, un seul système',
+    // Introduction
+    'From the LinkedIn series {t}, by Vincent Dupuis': 'Tiré de la série LinkedIn {t}, de Vincent Dupuis',
+    'Measure the gap between your operating model and 2030': 'Mesurez l’écart entre votre modèle opérationnel et 2030',
+    'You get an executive report-out for your ExCom, a roadmap for your priorities, and the 2030 front page of The News Fix, written for your organization.':
+      'Vous obtenez une synthèse pour votre comité exécutif, une feuille de route pour vos priorités et la Une 2030 de The News Fix, écrite pour votre organisation.',
+    'Fourteen questions · About ten minutes · No account': 'Quatorze questions · Dix minutes environ · Sans compte',
+    'Example front page of The News Fix for a fictional company. Lead story: “{t}”': 'Exemple de Une de The News Fix pour une entreprise fictive. Article principal : « {t} »',
+    'The model · The LinkedIn series': 'Le modèle · La série LinkedIn', 'Four shifts, one operating system': 'Quatre shifts, un seul système',
+    'Five episodes of the series “{t}”. Episode 1 explains why. Episodes 2 to 5 present one shift each.':
+      'Cinq épisodes de la série « {t} ». L’épisode 1 pose le constat. Les épisodes 2 à 5 présentent chacun un shift.',
+    'Episode {e}/{t} · Introduction': 'Épisode {e}/{t} · Introduction', 'Shift {n} · Episode {e}/{t}': 'Shift {n} · Épisode {e}/{t}',
+    'Four forces reshape work at the same time:': 'Quatre forces transforment le travail en même temps :',
+    'A generational crossover': 'Un croisement des générations', 'A new relationship to work': 'Un nouveau rapport au travail',
+    'The AI reset': 'La remise à zéro par l’IA', 'Constant uncertainty': 'Une incertitude permanente',
+    // Episode summaries (quoted from the LinkedIn posts)
+    "Many companies are deploying AI to solve yesterday's problems. I believe we should start from tomorrow instead.": 'Beaucoup d’entreprises déploient l’IA pour résoudre les problèmes d’hier. Je pense qu’il faut plutôt partir de demain.',
+    'Our HR processes are built around individual talent. Yet work is done by teams.': 'Nos processus RH sont construits autour du talent individuel. Pourtant, le travail se fait en équipe.',
+    'Simplify the transaction. Elevate the moment. Let AI handle the admin, so people get back to what makes the difference.': 'Simplifier la transaction. Valoriser le moment. Laisser l’IA gérer l’administratif, pour que chacun revienne à ce qui fait la différence.',
+    'The gap is not the technology. It is the method.': 'L’écart ne vient pas de la technologie. Il vient de la méthode.',
+    "What our HR systems currently see of an employee's life is just the tip of the iceberg.": 'Ce que nos systèmes RH voient aujourd’hui de la vie d’un salarié n’est que la partie émergée de l’iceberg.',
+    'Fragmented answers will not be enough. Work needs a new operating system.': 'Des réponses fragmentées ne suffiront pas. Le travail a besoin d’un nouveau système d’exploitation.',
+    'Play episode {e}: {t}': 'Lire l’épisode {e} : {t}', 'Episode {e}: {t}': 'Épisode {e} : {t}', 'Duration:': 'Durée :',
+    'This video is not available.': 'Cette vidéo n’est pas disponible.',
+    'Comment on LinkedIn': 'Commenter sur LinkedIn', 'Comment on episode {e} on LinkedIn (opens in a new tab)': 'Commenter l’épisode {e} sur LinkedIn (nouvel onglet)',
     'Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.':
       'Chaque shift répond à plusieurs défis de productivité et de culture à la fois. Leurs effets s’additionnent, à condition d’aller dans le même sens.',
-    'Your journey': 'Votre parcours', 'Five steps, three deliverables': 'Cinq étapes, trois livrables',
-    'Optional. See how each shift contributes to each challenge, and where shifts could cancel each other out.':
-      'Facultatif. Voyez comment chaque shift contribue à chaque défi, et où des shifts pourraient s’annuler.',
-    'Fourteen questions. Your maturity profile, and an executive report-out to share with your ExCom.':
-      'Quatorze questions. Votre profil de maturité, et une synthèse à partager avec votre comité exécutif.',
-    'Choose 3 to 5 challenges. Your roadmap builds itself, with its prerequisites, in a list or a Gantt chart.':
-      'Choisissez 3 à 5 défis. Votre feuille de route se construit seule, avec ses prérequis, en liste ou en Gantt.',
-    'An interview per priority: before, today, and what you did to get there. Share it as an image.':
-      'Une interview par priorité : avant, aujourd’hui, et ce que vous avez fait pour y arriver. À partager en image.',
-    'Your answers are saved in your browser. Unless you untick the box, your levels and priorities are added to the statistics, anonymously. Only what is needed to write the newspaper is sent to an AI model, and it is not stored.':
-      'Vos réponses sont enregistrées dans votre navigateur. Sauf si vous décochez la case, vos niveaux et vos priorités sont ajoutés aux statistiques, de façon anonyme. Seul ce qui sert à écrire le journal est envoyé à un modèle d’IA, sans être conservé.',
+    'Your journey': 'Votre parcours', 'Three steps, three deliverables': 'Trois étapes, trois livrables',
+    'About ten minutes in total. Your answers are saved in your browser, so you can continue later.': 'Dix minutes environ au total. Vos réponses sont enregistrées dans votre navigateur : vous pouvez reprendre plus tard.',
+    'Step {n}:': 'Étape {n} :', 'You get': 'Vous obtenez',
+    'Fourteen questions on the four shifts. Each one has four levels, from Emerging to Excellence.': 'Quatorze questions sur les quatre shifts, chacune sur quatre niveaux, d’Emerging à Excellence.',
+    'Your maturity profile and a two-page executive report-out for your ExCom.': 'Votre profil de maturité et une synthèse de deux pages pour votre comité exécutif.',
+    'Choose 3 to 5 challenges. The roadmap builds itself, with its prerequisites.': 'Choisissez 3 à 5 défis. La feuille de route se construit seule, avec ses prérequis.',
+    'A roadmap from 2027 to 2030, as a list or a Gantt chart.': 'Une feuille de route de 2027 à 2030, en liste ou en Gantt.',
+    'Each priority becomes a 2030 interview: before, today, and what you did to get there.': 'Chaque priorité devient une interview de 2030 : avant, aujourd’hui, et ce que vous avez fait pour y arriver.',
+    'Your 2030 front page, as an image to share on LinkedIn.': 'Votre Une 2030, en image à partager sur LinkedIn.',
+    'Optional, before you start.': 'Facultatif, avant de commencer.',
+    'The interactive map shows how each shift acts on the sixteen challenges, and where shifts could cancel each other out.':
+      'La carte interactive montre comment chaque shift agit sur les seize défis, et où des shifts pourraient s’annuler.',
+    'The author': 'L’auteur',
+    'Engineer and innovator, with more than 25 years of experience and over 30 patents. Vincent makes breakthrough technology deliver real value: first in products, now in data and AI. He incubated a world-first product in startup mode and brought it to launch with a premium car maker. He then led Lean product development at very large scale. Since 2021, he applies the same discipline to data and AI: vision first, then reinvent the process before automating it, with value stream redesign and AI agents.': 'Ingénieur et innovateur, plus de 25 ans d’expérience et plus de 30 brevets. Vincent transforme les technologies de rupture en valeur réelle : d’abord dans les produits, aujourd’hui dans la data et l’IA. Il a incubé en mode startup un produit inédit au monde, jusqu’à son lancement avec un constructeur automobile premium. Il a ensuite dirigé le développement produit Lean à très grande échelle. Depuis 2021, il applique la même discipline à la data et à l’IA : la vision d’abord, puis réinventer le processus avant de l’automatiser, par la refonte des flux de valeur et des agents IA.',
+    'Vincent Dupuis on stage, speaking about AI': 'Vincent Dupuis sur scène, en train de parler d’IA',
+    'Future of Work · 4 Shifts is a personal project. It is not linked to any employer.': 'Future of Work · 4 Shifts est un projet personnel. Il n’est lié à aucun employeur.',
+    'Your 2030 front page starts with fourteen questions': 'Votre Une 2030 commence par quatorze questions',
+    'About ten minutes. No account. Your report-out, your roadmap and your front page at the end.': 'Dix minutes environ. Sans compte. À la fin : votre synthèse, votre feuille de route et votre Une.',
+    'Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.':
+      'Vos réponses sont enregistrées dans votre navigateur. Par défaut, vos niveaux et vos priorités sont aussi ajoutés à des statistiques anonymes, sans nom ni organisation. Pour ne pas y figurer, décochez la case après la dernière question. Les questions de profil et l’email pour recevoir les résultats de l’étude sont facultatifs.',
+    'Read the privacy page': 'Lire la page Confidentialité',
     'Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.':
       'Ajouter mes réponses, de façon anonyme, aux statistiques 4 Shifts : niveaux, priorités, scores et profil, sans nom ni organisation.',
     // Profile and contact
@@ -73,8 +99,8 @@
     'Thank you. You will receive the summary of the results.': 'Merci. Vous recevrez la synthèse des résultats.',
     'This email address does not look valid.': 'Cette adresse email ne semble pas valide.',
     'Your email could not be saved. Please try again later.': 'Votre email n’a pas pu être enregistré. Réessayez plus tard.',
-    // 2. Map
-    'Step 2 · Interactive map': 'Étape 2 · Carte interactive', 'Four pillars, sixteen challenges': 'Quatre piliers, seize défis',
+    // Map
+    'Optional · Interactive map': 'Facultatif · Carte interactive', 'Four pillars, sixteen challenges': 'Quatre piliers, seize défis',
     'Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge to see its explanation.':
       'Chaque pilier contribue aux défis qu’il traite. Quand plusieurs piliers agissent sur le même défi, leurs effets s’additionnent, à condition d’aller tous dans le même sens. Cliquez sur un lien, un pilier ou un défi pour voir son explication.',
     'Map of the four pillars and the challenges they address': 'Carte des quatre piliers et des défis qu’ils traitent',
@@ -91,11 +117,11 @@
       'Version de travail. Les contributions et les contrôles sont rédigés à partir des épisodes et restent à valider pilier par pilier.',
     'Challenge': 'Défi', 'Pillars': 'Piliers', 'Coherence': 'Cohérence', 'Read ↓': 'Lire ↓',
     '{t}. Read the explanation below.': '{t}. Lire l’explication plus bas.',
-    // 3. Questions
-    'Step 3 · Your Diagnostic': 'Étape 3 · Votre diagnostic', 'Question {i} of {n}': 'Question {i} sur {n}',
+    // 1. Diagnostic: questions
+    'Step 1 · Your Diagnostic': 'Étape 1 · Votre diagnostic', 'Question {i} of {n}': 'Question {i} sur {n}',
     '1 · Typical today': '1 · Typique aujourd’hui', '4 · Target 2030': '4 · Cible 2030', '← Back': '← Retour',
     'See my report': 'Voir mon rapport', 'Next →': 'Suivant →',
-    // 3. Report
+    // 1. Diagnostic: report
     'Large gap': 'Écart fort', 'Gap': 'Écart', 'Close': 'Proche', 'Maturity {v}%': 'Maturité {v} %',
     'Limit · ': 'Limite · ', 'Guardrail:': 'Garde-fou :', 'Challenges affected:': 'Défis concernés :',
     'No contradiction detected between your practices. The shifts you invest in push in the same direction.':
@@ -139,7 +165,7 @@
     'Decisions requested from the ExCom': 'Décisions demandées au comité exécutif',
     'Summary copied. Paste it into your email to the ExCom.': 'Synthèse copiée. Collez-la dans votre email au comité exécutif.',
     'Copy is not available here. Select the summary in the report and copy it with your keyboard.': 'La copie n’est pas disponible ici. Sélectionnez la synthèse dans le rapport et copiez-la au clavier.',
-    // 4. Priorities and roadmap
+    // 2. Priorities and roadmap
     'Prerequisite': 'Prérequis', 'Needs': 'Nécessite', 'Unlocks': 'Débloque', 'Consolidate and scale what is in place.': 'Consolider et étendre ce qui est en place.',
     'Needs: ': 'Nécessite : ', 'Your roadmap, 2027 to 2030': 'Votre feuille de route, 2027 à 2030',
     'Roadmap view': 'Vue de la feuille de route', 'List': 'Liste', 'Gantt': 'Gantt',
@@ -150,13 +176,13 @@
     'The News Fix interviews you on each priority, from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.':
       'The News Fix vous interviewe sur chaque priorité, à partir de votre diagnostic et de cette feuille de route. Le nom de votre organisation, ces réponses et cette feuille de route sont envoyés à un modèle d’IA et ne sont pas conservés.',
     'lead story': 'article principal', 'maturity {v}%': 'maturité {v} %',
-    'Step 4 · Your Priorities': 'Étape 4 · Vos priorités', 'Never transform everything at once': 'Ne jamais tout transformer à la fois',
+    'Step 2 · Your Priorities': 'Étape 2 · Vos priorités', 'Never transform everything at once': 'Ne jamais tout transformer à la fois',
     'Choose {a} to {b} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.':
       'Choisissez {a} à {b} défis prioritaires. Nous proposons ceux qui ont le plus grand écart. Votre feuille de route se met à jour plus bas à chaque choix. Le premier devient l’article principal de votre Une.',
     '{n} selected · choose {a} to {b}': '{n} sélectionnés · choisissez-en {a} à {b}', '{n} selected · choose {a} to {b} ': '{n} sélectionné · choisissez-en {a} à {b}',
     'Organization name, for your front page (optional)': 'Nom de l’organisation, pour votre Une (facultatif)', 'Our company': 'Notre entreprise',
     '{n} challenges at most. Unselect one first.': '{n} défis au maximum. Retirez-en un d’abord.',
-    // 5. News Fix
+    // 3. News Fix
     'Printing…': 'Impression…', 'The newsroom is interviewing you. It takes about 30 seconds.': 'La rédaction vous interviewe. Cela prend environ 30 secondes.',
     'What was it like before?': 'Comment était-ce avant ?', 'What is it like today?': 'Comment est-ce aujourd’hui ?', 'What did you do to get there?': 'Qu’avez-vous fait pour y arriver ?',
     'We kept what was already in place and scaled it.': 'Nous avons gardé ce qui était en place et nous l’avons étendu.',
@@ -166,7 +192,7 @@
     'of the way to the 2030 target in the 2026 diagnostic': 'du chemin vers la cible 2030 au diagnostic de 2026',
     'AND score in 2026: the lower of productivity and culture': 'score ET en 2026 : le plus faible de la productivité et de la culture',
     'initiatives on the 2027–2030 roadmap': 'initiatives sur la feuille de route 2027–2030',
-    'Step 5 · Your News Fix': 'Étape 5 · Votre News Fix', 'Your 2030 front page is printed': 'Votre Une 2030 est imprimée', 'Share it on LinkedIn': 'Partagez-la sur LinkedIn',
+    'Step 3 · Your News Fix': 'Étape 3 · Votre News Fix', 'Your 2030 front page is printed': 'Votre Une 2030 est imprimée', 'Share it on LinkedIn': 'Partagez-la sur LinkedIn',
     'The image shows your 2030 headlines only. Your diagnostic figures stay private.': 'L’image ne montre que vos titres de 2030. Les chiffres de votre diagnostic restent privés.',
     'Download the image': 'Télécharger l’image', 'Copy the post text': 'Copier le texte du post', 'Open LinkedIn ↗': 'Ouvrir LinkedIn ↗', 'Suggested post text': 'Texte de post proposé',
     'Download the image, copy the text, then create a post on LinkedIn and add the image.': 'Téléchargez l’image, copiez le texte, puis créez un post sur LinkedIn et ajoutez l’image.',
