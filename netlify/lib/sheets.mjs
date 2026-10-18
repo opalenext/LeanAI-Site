@@ -8,7 +8,9 @@ import { createSign } from 'node:crypto';
 
 const API = 'https://sheets.googleapis.com/v4/spreadsheets';
 
-export const MODEL_TABS = ['shifts', 'levels', 'texts', 'challenges', 'questions', 'initiatives', 'rules', 'profile'];
+export const MODEL_TABS = ['shifts', 'levels', 'texts', 'challenges', 'questions', 'initiatives', 'rules', 'profile', 'media'];
+// Tabs the model can do without: if one is missing or cannot be read, it is null and the rest still applies.
+export const OPTIONAL_TABS = ['media'];
 export const RESPONSES_TAB = 'responses';
 export const CONTACTS_TAB = 'contacts';
 
@@ -87,12 +89,20 @@ export function rowsToObjects(rows = []) {
     .map((r) => Object.fromEntries(cols.map((c, i) => [c, typeof r[i] === 'string' ? r[i].trim() : r[i] ?? '']).filter(([c]) => c)));
 }
 
-// Reads every model tab in one call.
+// Reads the required model tabs in one call, and each optional tab on its own,
+// so that a missing optional tab never blocks the rest of the model.
 export async function readModel() {
+  const required = MODEL_TABS.filter((t) => !OPTIONAL_TABS.includes(t));
   const params = new URLSearchParams({ valueRenderOption: 'UNFORMATTED_VALUE' });
-  for (const t of MODEL_TABS) params.append('ranges', t);
-  const { valueRanges } = await call(`/values:batchGet?${params}`);
-  return Object.fromEntries(MODEL_TABS.map((t, i) => [t, rowsToObjects(valueRanges[i].values)]));
+  for (const t of required) params.append('ranges', t);
+  const optional = (t) => call(`/values/${encodeURIComponent(t)}?${new URLSearchParams({ valueRenderOption: 'UNFORMATTED_VALUE' })}`)
+    .then((r) => rowsToObjects(r.values))
+    .catch((e) => { console.warn(`Optional tab ${t} not read: ${e instanceof BackOfficeError ? e.reason : 'unexpected error'}`); return null; });
+  const [{ valueRanges }, ...extra] = await Promise.all([call(`/values:batchGet?${params}`), ...OPTIONAL_TABS.map(optional)]);
+  return {
+    ...Object.fromEntries(required.map((t, i) => [t, rowsToObjects(valueRanges[i].values)])),
+    ...Object.fromEntries(OPTIONAL_TABS.map((t, i) => [t, extra[i]])),
+  };
 }
 
 export async function responsesHeader() {

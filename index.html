@@ -1,5 +1,5 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Future of Work 4 Shifts</title><link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Future of Work 4 Shifts</title></head><body>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Measure how far your operating model is from the 2030 target, get a roadmap, and write the front page of The News Fix.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@ a{color:var(--accent)}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
 html{scroll-padding-top:calc(var(--head,72px) + 8px)}
 @media print{.top{position:static}}
-@media (max-width:1000px){.top{padding-block:10px;gap:6px}.top .steps{flex-wrap:nowrap;gap:2px}.top .steps a{padding:5px 7px}.top .steps a:not(.on) .t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+@media (max-width:1000px){.top{padding-block:10px;gap:6px}.top .steps{flex-wrap:nowrap;gap:2px}.top .steps a{padding:5px 7px}.top .steps a.u{padding-inline:10px}.top .steps a:not(.on):not(.u) .t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
 .brand{font-family:var(--display);font-weight:700;font-size:18px;color:var(--fg);text-decoration:none;letter-spacing:.01em}
 .brand span{color:var(--accent)}
 .brand{display:inline-flex;align-items:center;gap:10px}
@@ -83,10 +83,56 @@ h3{font-size:19px}
 .card.pillar{border-top:5px solid var(--c)}
 .card .k{font:600 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--c,var(--muted))}
 .card p{margin:0;color:var(--muted)}
-.how{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;list-style:none;padding:0;margin:0}
-.how li{counter-increment:s;display:flex;flex-direction:column;gap:6px}
-.how li::before{content:counter(s);font:700 15px var(--display);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--fg);color:var(--bg)}
-.how p{margin:0;color:var(--muted)}
+/* Home: hero, model and episodes, journey, author, final call to action */
+.home h1{font-size:clamp(30px,4.2vw,46px)}
+.series-line{margin:0;font-size:15px;color:var(--muted);max-width:52ch}
+.series-line a{color:var(--fg);font-weight:600;text-decoration-color:var(--line);text-underline-offset:3px}
+.series-line a:hover{text-decoration-color:var(--fg)}
+.facts{margin:0;font:600 14px var(--display);color:var(--muted)}
+@media (max-width:860px){.home{padding-top:0}.hero .stack{gap:14px}.hero .sample{max-width:360px}}
+.forces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;list-style:none;margin:0;padding:0}
+.forces li{border-top:2px solid var(--fg);padding-top:10px;font:600 17px/1.25 var(--display)}
+.forces-l{color:var(--muted)}
+.closing{font:600 17px/1.4 var(--display);margin:0;max-width:52ch}
+.vid.ep-intro{display:grid;grid-template-columns:minmax(0,58fr) minmax(0,42fr);gap:32px;align-items:center}
+@media (max-width:860px){.vid.ep-intro{grid-template-columns:minmax(0,1fr);gap:14px}}
+.shift-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:700px){.shift-grid{grid-template-columns:minmax(0,1fr)}}
+.shift-grid .card{gap:10px}
+.shift-grid .vlinks{margin-top:auto}
+.shift-grid .vframe{margin-bottom:4px}
+.vframe{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#12161C;box-shadow:0 0 0 1.5px var(--line)}
+.vframe.open{background:#000}
+.vframe video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.vframe .vmsg{position:absolute;left:10px;right:10px;bottom:10px;margin:0;text-align:center;font:600 13.5px var(--display);color:#FFFFFF;background:rgba(18,22,28,.85);border-radius:6px;padding:6px 10px}
+.play{all:unset;box-sizing:border-box;position:absolute;inset:0;cursor:pointer;display:block}
+.play:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pbtn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#FFFFFF;color:#12161C;box-shadow:0 4px 18px rgba(0,0,0,.3)}
+.play:hover .pbtn{transform:translate(-50%,-50%) scale(1.06)}
+.dur{position:absolute;right:10px;bottom:10px;font:600 12.5px var(--display);color:#FFFFFF;background:rgba(18,22,28,.85);border-radius:6px;padding:3px 8px}
+.vmeta{display:flex;flex-direction:column;gap:10px;min-width:0;border-top:3px solid var(--c);padding-top:12px}
+.vmeta .k{font:600 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--c)}
+.vmeta h3{font-size:clamp(19px,2vw,23px)}
+.vmeta p{margin:0}
+.vlinks{margin:0;font:600 14.5px var(--display)}
+.journey{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;list-style:none;margin:0;padding:0}
+@media (max-width:860px){.journey{grid-template-columns:minmax(0,1fr)}}
+.journey .card{gap:10px}
+.journey .num{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--fg);color:var(--bg);font:700 15px var(--display)}
+.journey .card p.get{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);color:var(--fg)}
+.get b{display:block;font:600 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.optional{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;background:var(--soft);border-radius:14px;padding:14px 18px}
+.optional p{margin:0;max-width:70ch}
+.optional .btn{padding:10px 16px;font-size:14.5px}
+.author{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 28px}
+.author h3{font-size:21px}
+.author p{margin:0;color:var(--muted);flex:1 1 320px;min-width:0}
+.final{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:clamp(22px,4vw,40px);display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.final .lede{max-width:56ch}
+.privacy{margin:0;max-width:90ch}
+h2[tabindex="-1"]:focus{outline:none}
+.site-foot{margin-top:8px;border-top:1px solid var(--line);padding-block:20px 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;font-size:14px;color:var(--muted)}
 .note{font-size:14.5px;color:var(--muted)}
 .optin{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:14.5px;color:var(--muted);max-width:640px;cursor:pointer}
 .optin input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:var(--accent)}
@@ -483,6 +529,16 @@ window.FOW = {
     S4: { n: 'Workforce digital twin', full: 'From resource management to workforce digital twin', ep: 5,
           line: 'Trusted governance, a workforce knowledge graph, proactive services, and a plan steered during the year.' }
   },
+  // Episodes of the LinkedIn series, shown on the home page. Titles stay in English in every language.
+  // video_url: MP4 file on this site (media/epN.mp4). Empty = poster only, no play button.
+  // linkedin_url empty = no "Comment on LinkedIn" link. duration (m:ss) empty = no badge.
+  episodes: [
+    { id: 'ep1', shift: '', title: 'Why the Future of Work Needs a New Operating System', summary: '', linkedin_url: 'https://www.linkedin.com/feed/update/urn:li:activity:7515286497734836225/', video_url: '', poster_url: 'media/ep1-poster.jpg', captions_url: '', duration: '' },
+    { id: 'ep2', shift: 'S1', title: 'From Talented Individuals to Talented Teams', summary: '', linkedin_url: 'https://lnkd.in/p/e9R-bYgv', video_url: '', poster_url: 'media/ep2-poster.jpg', captions_url: '', duration: '' },
+    { id: 'ep3', shift: 'S2', title: 'From Transactions to Moments that Matter', summary: '', linkedin_url: 'https://www.linkedin.com/posts/vincentdupuis_futureofwork-ai-leadership-activity-7516011174790975489-GsHB', video_url: '', poster_url: 'media/ep3-poster.jpg', captions_url: '', duration: '' },
+    { id: 'ep4', shift: 'S3', title: 'From Tech Magic to LeanAI Transformation', summary: '', linkedin_url: '', video_url: '', poster_url: 'media/ep4-poster.jpg', captions_url: '', duration: '' },
+    { id: 'ep5', shift: 'S4', title: 'From Resource Management to Workforce Digital Twin', summary: '', linkedin_url: '', video_url: '', poster_url: 'media/ep5-poster.jpg', captions_url: '', duration: '' }
+  ],
   levels: ['Emerging', 'Developing', 'Advanced', 'Excellence · 2030-ready'],
   levelNote: 'Excellence · 2030-ready: the practice is embedded, continuously improved and shared across the organization.',
   // Optional profile, asked before the report, for the anonymous statistics only. Ids are stored in the back-office.
@@ -1031,7 +1087,7 @@ window.initMap=initMap;
     document.getElementById('stepsnav').setAttribute('aria-label', T('Steps'));
     document.querySelectorAll('.langs button').forEach(b => { b.setAttribute('aria-pressed', String(b.dataset.lang === window.LANG)); b.onclick = () => window.setLang(b.dataset.lang); });
     document.querySelector('.langs').setAttribute('aria-label', T('Language'));
-    document.getElementById('steps').innerHTML = STEPS.map(([h, t], i) => `<li><a href="${h}" class="${h === route ? 'on' : ''}" ${ok[h] ? '' : 'aria-disabled="true" tabindex="-1"'}><span class="n">${i + 1}</span><span class="t">${t}</span></a></li>`).join('');
+    document.getElementById('steps').innerHTML = STEPS.map(([h, t], i) => `<li><a href="${h}" class="${[h === route ? 'on' : '', i < 2 ? 'u' : ''].join(' ').trim()}" ${h === route ? 'aria-current="page"' : ''} ${ok[h] ? '' : 'aria-disabled="true" tabindex="-1"'}>${i < 2 ? '' : `<span class="n">${i - 1}</span>`}<span class="t">${t}</span></a></li>`).join('');
   }
 
   // ---------- SHARE CARD (1080 x 1350, the image people post) ----------
@@ -1055,33 +1111,95 @@ window.initMap=initMap;
   const siteHost = () => (location.protocol.startsWith('http') && !/claude|localhost|127\.0\.0\.1/.test(location.host)) ? location.host : 'your-site.netlify.app';
   const nextBtn = (href, label) => `<div class="section no-print"><div class="row"><a class="btn p" href="${href}">${label} →</a></div></div>`;
 
-  // ---------- 1. INTRODUCTION ----------
+  // ---------- INTRODUCTION ----------
+  // Episode players: poster and play button first, the <video> is created on click (nothing is loaded before).
+  const EPS = () => F.episodes || [];
+  const epNum = e => Number(String(e.id).replace(/\D/g, '')) || EPS().indexOf(e) + 1;
+  const PLAY_ICON = '<span class="pbtn" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>';
+  function epFrame(e) {
+    if (!e.poster_url && !e.video_url) return '';
+    const n = epNum(e);
+    const poster = e.poster_url ? `<img class="poster" src="${esc(e.poster_url)}" alt="" width="1280" height="720" loading="lazy" decoding="async">` : '';
+    const dur = e.duration ? `<span class="dur"><span class="vh">${T('Duration:')} </span>${esc(e.duration)}</span>` : '';
+    if (!e.video_url) return `<div class="vframe">${poster}${dur}</div>`;
+    return `<div class="vframe" data-ep="${esc(e.id)}"><button type="button" class="play" aria-label="${esc(T('Play episode {e}: {t}', { e: n, t: e.title }))}">${poster}${PLAY_ICON}${dur}</button></div>`;
+  }
+  const epLink = e => e.linkedin_url ? `<p class="vlinks"><a href="${esc(e.linkedin_url)}" target="_blank" rel="noopener" aria-label="${esc(T('Comment on episode {e} on LinkedIn (opens in a new tab)', { e: epNum(e) }))}">${T('Comment on LinkedIn')}</a></p>` : '';
+  function playEpisode(frame) {
+    const e = EPS().find(x => x.id === frame.dataset.ep); if (!e || !e.video_url) return;
+    const v = document.createElement('video');
+    v.controls = true; v.playsInline = true; v.preload = 'none'; v.setAttribute('playsinline', '');
+    if (e.poster_url) v.poster = e.poster_url;
+    v.setAttribute('aria-label', T('Episode {e}: {t}', { e: epNum(e), t: e.title }));
+    const src = document.createElement('source'); src.src = e.video_url; src.type = 'video/mp4';
+    src.addEventListener('error', () => { if (v.readyState > 0 || frame.querySelector('.vmsg')) return; const m = document.createElement('p'); m.className = 'vmsg'; m.setAttribute('role', 'status'); m.textContent = T('This video is not available.'); frame.appendChild(m); });
+    v.appendChild(src);
+    if (e.captions_url) { const tr = document.createElement('track'); tr.kind = 'captions'; tr.src = e.captions_url; tr.srclang = 'en'; tr.label = 'English'; v.appendChild(tr); }
+    frame.innerHTML = ''; frame.classList.add('open'); frame.appendChild(v);
+    v.focus();
+    const p = v.play(); if (p && p.catch) p.catch(() => {});
+  }
+  function bindHome() {
+    document.querySelectorAll('.vframe[data-ep] .play').forEach(b => { b.onclick = () => playEpisode(b.parentElement); });
+    // In-page link: the router uses the hash, so scroll without changing it.
+    document.querySelectorAll('a[data-scroll]').forEach(a => { a.onclick = ev => { const t = document.getElementById(a.dataset.scroll); if (!t) return; ev.preventDefault(); t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); const h = t.querySelector('h2'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); } }; });
+  }
   function home() {
-    const pillars = SIDS.map((s, i) => `<div class="card pillar" style="--c:${col(s)}"><div class="k">${T('Shift {n}', { n: i + 1 })}</div><h3>${esc(F.shifts[s].full)}</h3><p>${esc(F.shifts[s].line)}</p></div>`).join('');
-    return `<div class="section"><div class="hero"><div class="stack">
-        <div class="eyebrow">Future of Work · 4 shifts</div>
-        <h1>${T('What will your 2030 front page say?')}</h1>
-        <p class="lede">${T('A generational crossover, a new relationship to work, the AI reset, and constant uncertainty: four forces are reshaping work at the same time. Fragmented answers will not be enough.')}</p>
-        <p class="lede">${T('In about ten minutes, see how far your operating model has come on the way to 2030, build a roadmap for your priorities, and get the front page of The News Fix, written for your organization.')}</p>
-        <div class="and">${T('More human. More digital.')} <b>${T('Not a trade-off. AND.')}</b></div>
-        <div class="row"><a class="btn p" href="#/diagnostic">${T(done() ? 'See your diagnostic' : 'Start your diagnostic')}</a><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div>
+    const start = T(done() ? 'See your diagnostic' : 'Start your diagnostic');
+    const series = 'Why the Future of Work Needs a New Operating System';
+    const intro = EPS().find(e => !e.shift);
+    const introHtml = intro ? `<article class="vid ep-intro" style="--c:var(--accent)" aria-labelledby="ep-${esc(intro.id)}-t">${epFrame(intro)}
+        <div class="vmeta"><div class="k">${T('Episode {e}/{t} · Introduction', { e: epNum(intro), t: EPS().length })}</div>
+          <h3 id="ep-${esc(intro.id)}-t">${esc(intro.title)}</h3>
+          <p class="forces-l">${T('Four forces reshape work at the same time:')}</p>
+          <ul class="forces"><li>${T('A generational crossover')}</li><li>${T('A new relationship to work')}</li><li>${T('The AI reset')}</li><li>${T('Constant uncertainty')}</li></ul>
+          <p class="closing">${T('Fragmented answers will not be enough. Work needs a new operating system.')}</p>${epLink(intro)}</div></article>` : '';
+    const shiftCards = SIDS.map((s, i) => {
+      const e = EPS().find(x => x.shift === s);
+      const k = e ? T('Shift {n} · Episode {e}/{t}', { n: i + 1, e: epNum(e), t: EPS().length }) : T('Shift {n}', { n: i + 1 });
+      return `<article class="card pillar vid" style="--c:${col(s)}" aria-labelledby="sh-${s}-t">${e ? epFrame(e) : ''}<div class="k">${k}</div><h3 id="sh-${s}-t">${esc(F.shifts[s].full)}</h3><p>${esc(F.shifts[s].line)}</p>${e ? epLink(e) : ''}</article>`;
+    }).join('');
+    return `<div class="section home"><div class="hero"><div class="stack">
+        <p class="series-line">${T('From the LinkedIn series {t}, by Vincent Dupuis', { t: `<a href="#model" data-scroll="model">${series}</a>` })}</p>
+        <h1>${T('Measure the gap between your operating model and 2030')}</h1>
+        <p class="lede">${T('You get an executive report-out for your ExCom, a roadmap for your priorities, and the 2030 front page of The News Fix, written for your organization.')}</p>
+        <div class="row"><a class="btn p" href="#/diagnostic">${start}</a><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div>
+        <p class="facts">${T('Fourteen questions · About ten minutes · No account')}</p>
       </div>
-      <figure class="sample"><div class="sc-frame">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>${T('Example front page for a fictional company')}</figcaption></figure></div></div>
-      <div class="section"><div class="stack"><div class="eyebrow">${T('The model')}</div><h2>${T('Four shifts, one operating system')}</h2>
-        <p class="lede">${T('Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.')}</p></div>
-        <div class="cards">${pillars}</div></div>
-      <div class="section"><div class="stack"><div class="eyebrow">${T('Your journey')}</div><h2>${T('Five steps, three deliverables')}</h2></div>
-        <ol class="how"><li><h3>${T('Interactive map')}</h3><p>${T('Optional. See how each shift contributes to each challenge, and where shifts could cancel each other out.')}</p></li>
-        <li><h3>${T('Your Diagnostic')}</h3><p>${T('Fourteen questions. Your maturity profile, and an executive report-out to share with your ExCom.')}</p></li>
-        <li><h3>${T('Your Priorities')}</h3><p>${T('Choose 3 to 5 challenges. Your roadmap builds itself, with its prerequisites, in a list or a Gantt chart.')}</p></li>
-        <li><h3>${T('Your News Fix')}</h3><p>${T('An interview per priority: before, today, and what you did to get there. Share it as an image.')}</p></li></ol>
-        <p class="note">${T('Your answers are saved in your browser. Unless you untick the box, your levels and priorities are added to the statistics, anonymously. Only what is needed to write the newspaper is sent to an AI model, and it is not stored.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
+      <figure class="sample"><div class="sc-frame" aria-hidden="true">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>${T('Example front page of The News Fix for a fictional company. Lead story: “{t}”', { t: esc(SAMPLE.lead.headline) })}</figcaption></figure></div></div>
+      <section class="section" id="model" aria-labelledby="h-model"><div class="stack"><div class="eyebrow">${T('The model · The LinkedIn series')}</div><h2 id="h-model">${T('Four shifts, one operating system')}</h2>
+        <p class="lede">${T('Five episodes of the series “{t}”. Episode 1 sets out the case. Episodes 2 to 5 present one shift each.', { t: series })}</p></div>
+        ${introHtml}
+        <div class="shift-grid">${shiftCards}</div>
+        <p class="lede">${T('Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.')}</p>
+        <div class="and">${T('More human. More digital.')} <b>${T('Not a trade-off. AND.')}</b></div></section>
+      <section class="section" aria-labelledby="h-journey"><div class="stack"><div class="eyebrow">${T('Your journey')}</div><h2 id="h-journey">${T('Three steps, three deliverables')}</h2>
+        <p class="lede">${T('About ten minutes in total. Your answers are saved in your browser, so you can continue later.')}</p></div>
+        <ol class="journey">
+          <li class="card"><span class="num" aria-hidden="true">1</span><h3><span class="vh">${T('Step {n}:', { n: 1 })} </span>${T('Your Diagnostic')}</h3>
+            <p>${T('Fourteen questions on the four shifts. Each one has four levels, from Emerging to Excellence.')}</p>
+            <p class="get"><b>${T('You get')}</b>${T('Your maturity profile and a two-page executive report-out for your ExCom.')}</p></li>
+          <li class="card"><span class="num" aria-hidden="true">2</span><h3><span class="vh">${T('Step {n}:', { n: 2 })} </span>${T('Your Priorities')}</h3>
+            <p>${T('Choose 3 to 5 challenges. The roadmap builds itself, with its prerequisites.')}</p>
+            <p class="get"><b>${T('You get')}</b>${T('A roadmap from 2027 to 2030, as a list or a Gantt chart.')}</p></li>
+          <li class="card"><span class="num" aria-hidden="true">3</span><h3><span class="vh">${T('Step {n}:', { n: 3 })} </span>${T('Your News Fix')}</h3>
+            <p>${T('Each priority becomes a 2030 interview: before, today, and what you did to get there.')}</p>
+            <p class="get"><b>${T('You get')}</b>${T('Your 2030 front page, as an image to share on LinkedIn.')}</p></li>
+        </ol>
+        <div class="optional"><p><b>${T('Optional, before you start.')}</b> ${T('The interactive map shows how each shift acts on the sixteen challenges, and where shifts could cancel each other out.')}</p><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div></section>
+      <section class="section" aria-labelledby="h-author"><div class="author"><div><div class="eyebrow">${T('The author')}</div><h3 id="h-author">Vincent Dupuis</h3></div>
+        <p>${T('Future of Work · 4 Shifts is a personal project. It is not linked to any employer.')}</p></div></section>
+      <section class="section" aria-labelledby="h-final"><div class="final"><h2 id="h-final">${T('Your 2030 front page starts with fourteen questions')}</h2>
+        <p class="lede">${T('About ten minutes. No account. Your report-out, your roadmap and your front page at the end.')}</p>
+        <a class="btn p" href="#/diagnostic">${start}</a></div>
+        <p class="note privacy">${T('Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. To stay out, untick the box after the last question. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
+      <footer class="site-foot"><span>Future of Work · 4 Shifts · Vincent Dupuis</span><a href="privacy.html">${T('Privacy')}</a></footer>`;
   }
 
-  // ---------- 2. INTERACTIVE MAP ----------
+  // ---------- INTERACTIVE MAP (optional) ----------
   function mapView() {
     const lede = 'Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge to see its explanation.';
-    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', `<div class="eyebrow">${T('Step 2 · Interactive map')}</div>`)
+    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', `<div class="eyebrow">${T('Optional · Interactive map')}</div>`)
       .replace('<h1>Four pillars, sixteen challenges</h1>', `<h1>${T('Four pillars, sixteen challenges')}</h1>`)
       .replace(/<p class="lede">[^<]*<\/p>/, `<p class="lede">${T(lede)}</p>`)
       .replace('aria-label="Map of the four pillars and the challenges they address"', `aria-label="${T('Map of the four pillars and the challenges they address')}"`)
@@ -1089,12 +1207,12 @@ window.initMap=initMap;
     return `<div class="mapapp">${html}</div>` + nextBtn('#/diagnostic', T(done() ? 'See your diagnostic' : 'Start your diagnostic'));
   }
 
-  // ---------- 3. YOUR DIAGNOSTIC (questions, then the report on the same step) ----------
+  // ---------- 1. YOUR DIAGNOSTIC (questions, then the report on the same step) ----------
   function questions() {
     const i = Math.min(S.qi || 0, F.questions.length - 1), q = F.questions[i], v = S.answers[q.id];
     const n = F.questions.length, answered = F.questions.filter(x => S.answers[x.id]).length;
     return `<div class="q-wrap">
-      <div class="eyebrow">${T('Step 3 · Your Diagnostic')}</div>
+      <div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div>
       <div class="progress" aria-hidden="true"><i style="width:${answered / n * 100}%"></i></div>
       <div class="qmeta"><span>${T('Question {i} of {n}', { i: i + 1, n })}</span><span class="pl" style="--c:${col(q.s)}">Shift ${SIDS.indexOf(q.s) + 1} · ${esc(F.shifts[q.s].n)}</span></div>
       <h2 id="qtitle">${esc(q.q)}</h2>
@@ -1118,7 +1236,7 @@ window.initMap=initMap;
     const fs = (F.profile || []).map(f => `<fieldset class="prof"><legend>${esc(f.q)}</legend><div class="chips">` +
       f.o.map(o => `<label class="chip"><input type="radio" name="pf_${f.id}" value="${esc(o[0])}" ${p[f.id] === o[0] ? 'checked' : ''}><span>${esc(o[1])}</span></label>`).join('') +
       `<label class="chip none"><input type="radio" name="pf_${f.id}" value="" ${p[f.id] ? '' : 'checked'}><span>${T('Prefer not to say')}</span></label></div></fieldset>`).join('');
-    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 3 · Your Diagnostic')}</div><h1>${T('Compare with organizations like yours')}</h1>
+    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Compare with organizations like yours')}</h1>
         <p class="lede">${T('Four optional questions. They are used only in the anonymous statistics, to compare results by sector, size, role and region. Never your name or your organization.')}</p></div>
       ${fs}<div class="row"><button class="btn g" id="pback">${T('← Back')}</button><button class="btn p" id="pnext">${T('See my report')}</button></div></div>`;
   }
@@ -1134,7 +1252,7 @@ window.initMap=initMap;
     const heat = g => Object.keys(F.challenges).filter(c => F.challenges[c].g === g).sort((x, y) => r.ch[x] - r.ch[y]).map(c => `<div class="hc"><div class="t"><span>${esc(F.challenges[c].n)}</span><span class="gap ${gapClass(r.ch[c])}">${gapLabel(r.ch[c])}</span></div><small>${esc(F.challenges[c].d)} · ${T('Maturity {v}%', { v: pct(r.ch[c]) })}</small></div>`).join('');
     const flags = r.flags.length ? `<div class="flags">${r.flags.map(f => `<div class="flag ${f.kind === 'limit' ? 'limit' : ''}"><b>${f.kind === 'limit' ? T('Limit · ') : ''}${esc(f.t)}</b><p>${esc(f.d)}</p><p class="note"><b>${T('Guardrail:')}</b> ${esc(f.fix || '')} · ${T('Challenges affected:')} ${f.ch.map(c => esc(F.challenges[c].n)).join(', ')}</p></div>`).join('')}</div>`
       : `<div class="ok-box">${T('No contradiction detected between your practices. The shifts you invest in push in the same direction.')}</div>`;
-    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 3 · Your Diagnostic')}</div><h1>${T('Your operating model today, against the 2030 target')}</h1>
+    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Your operating model today, against the 2030 target')}</h1>
         <p class="lede">${T('Maturity is 0% when a practice is typical of today, and 100% when it matches the 2030 target state of the model.')}</p></div>
         <div class="kpis"><div class="kpi main"><b>${pc(r.overall)}</b><span>${T('Of the way to the 2030 target state')}</span><span class="kbar" aria-hidden="true"><i style="width:${Math.max(2, r.overall)}%"></i></span><span class="kto">${T('{v}% still to go', { v: pct(r.distance) })}</span></div>
           <div class="kpi"><b>${pc(r.P)}</b><span>${T('Productivity maturity')}</span></div><div class="kpi"><b>${pc(r.C)}</b><span>${T('Culture maturity')}</span></div>
@@ -1151,7 +1269,7 @@ window.initMap=initMap;
     document.getElementById('redo').onclick = () => { S.qi = 0; S.editing = true; S.profileSeen = false; save(); render(); window.scrollTo(0, 0); };
   }
 
-  // ---------- EXECUTIVE REPORT-OUT (deliverable of step 3, for the ExCom) ----------
+  // ---------- EXECUTIVE REPORT-OUT (deliverable of step 1, for the ExCom) ----------
   const joinAnd = xs => xs.length < 2 ? xs.join('') : xs.slice(0, -1).join(', ') + (FRL ? ' et ' : ' and ') + xs[xs.length - 1];
   const theseThree = t => FRL ? t.replace('Vos 3 priorités', 'Ces 3 priorités') : t.replace('Your 3 priorities', 'These 3 priorities');
   function briefData() {
@@ -1202,7 +1320,7 @@ window.initMap=initMap;
     const moves = b.first.length ? `<ul class="b-list">${b.first.slice(0, 6).map(i => `<li><b>${esc(i.n)}</b> · <span class="b-muted">${esc(F.shifts[i.s].n)}</span> · ${esc(i.d)}</li>`).join('')}</ul>` : `<p>${T('Your practices already match the 2030 target on these challenges.')}</p>`;
     const head = n => `<header class="b-head"><div><div class="b-k">${T('Future of Work 2030 · Executive report-out')}</div><div class="b-org">${esc(b.co)}</div></div><div class="b-meta">${esc(today)}<br>${T('Page {n} of 2', { n })}</div></header>`;
     const foot = `<footer class="b-foot">${esc(T('Prepared with the Future of Work · 4 Shifts diagnostic ({h}). 14-question self-assessment: an indication to open the discussion, not a benchmark.', { h: siteHost() }))}</footer>`;
-    return `<div class="no-print brief-tools"><div class="stack"><div class="eyebrow">${T('Step 3 · Your Diagnostic')}</div><h1>${T('Your executive report-out')}</h1>
+    return `<div class="no-print brief-tools"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Your executive report-out')}</h1>
         <p class="lede">${T('Two pages for your ExCom: where you stand, what blocks progress, and the decisions to take. Print it or save it as PDF, or copy the summary into an email.')}</p></div>
         <div class="field" style="max-width:520px"><label for="company_b">${T('Organization name')}</label><input id="company_b" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our organization')}"></div>
         <div class="row"><button class="btn p" id="bprint">${T('Print or save as PDF')}</button><button class="btn s" id="bcopy">${T('Copy the summary')}</button><a class="btn g" href="#/diagnostic">${T('Back to your diagnostic')}</a><a class="btn g" href="#/priorities">${T('Next: your priorities →')}</a></div>
@@ -1230,7 +1348,7 @@ window.initMap=initMap;
       catch (e) { msg.textContent = T('Copy is not available here. Select the summary in the report and copy it with your keyboard.'); } };
   }
 
-  // ---------- 4. YOUR PRIORITIES (selection, then the roadmap, updated live) ----------
+  // ---------- 2. YOUR PRIORITIES (selection, then the roadmap, updated live) ----------
   function defaultPriorities() { const r = scores(); return Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]).slice(0, MINP); }
   function roadmapBlock() {
     const rm = roadmap(), pr = S.priorities;
@@ -1265,7 +1383,7 @@ window.initMap=initMap;
     const r = scores(), n = S.priorities.length;
     const pick = Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]).map(c => { const k = S.priorities.indexOf(c), on = k >= 0;
       return `<label class="pk ${on ? 'sel' : ''}"><input type="checkbox" value="${c}" id="pk_${c}" ${on ? 'checked' : ''}><span><span class="t">${esc(F.challenges[c].n)}</span><small>${T(F.challenges[c].g === 'P' ? 'Productivity' : 'Culture')} · ${T('maturity {v}%', { v: pct(r.ch[c]) })}${k === 0 ? ' · ' + T('lead story') : ''}</small></span></label>`; }).join('');
-    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 4 · Your Priorities')}</div><h1>${T('Never transform everything at once')}</h1>
+    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 2 · Your Priorities')}</div><h1>${T('Never transform everything at once')}</h1>
         <p class="lede">${T('Choose {a} to {b} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.', { a: MINP, b: MAXP })}</p></div>
         <div class="pick">${pick}</div><p class="note" id="pickmsg">${T(n > 1 ? '{n} selected · choose {a} to {b}' : '{n} selected · choose {a} to {b} ', { n, a: MINP, b: MAXP })}</p>
         <div class="field" style="max-width:520px"><label for="company">${T('Organization name, for your front page (optional)')}</label><input id="company" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our company')}"></div></div>
@@ -1287,7 +1405,7 @@ window.initMap=initMap;
       if (S.roadView === 'gantt') requestAnimationFrame(drawArrows); }
   }
 
-  // ---------- THE NEWS FIX ----------
+  // ---------- 3. THE NEWS FIX ----------
   function interview(c, rm) {
     const a = S.answers, qs = F.questions.filter(q => q.ch.includes(c));
     const own = rm.items.filter(i => i.serves.includes(c));
@@ -1341,7 +1459,7 @@ window.initMap=initMap;
     const co = S.company || T('Your organization'), ctx = S.paperContext || {};
     const nums = [[window.num(ctx.progress != null ? ctx.progress : 100 - ctx.distance), T('of the way to the 2030 target in the 2026 diagnostic')], [window.num(ctx.and), T('AND score in 2026: the lower of productivity and culture')], [String(ctx.initiatives), T('initiatives on the 2027–2030 roadmap')]]
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
-    return `<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 5 · Your News Fix')}</div><h1>${T('Your 2030 front page is printed')}</h1><h2>${T('Share it on LinkedIn')}</h2>
+    return `<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 3 · Your News Fix')}</div><h1>${T('Your 2030 front page is printed')}</h1><h2>${T('Share it on LinkedIn')}</h2>
         <p class="lede">${T('The image shows your 2030 headlines only. Your diagnostic figures stay private.')}</p>
         <div class="row"><button class="btn p" id="dl">${T('Download the image')}</button><button class="btn s" id="cp">${T('Copy the post text')}</button><a class="btn g" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">${T('Open LinkedIn ↗')}</a></div>
         <textarea id="posttext" class="post" readonly rows="7" aria-label="${T('Suggested post text')}">${esc(postText())}</textarea>
@@ -1400,7 +1518,7 @@ window.initMap=initMap;
     else if (route === '#/brief') { v.innerHTML = brief(); bindBrief(); }
     else if (route === '#/priorities') { v.innerHTML = priorities(); bindPriorities(); }
     else if (route === '#/newsfix') { v.innerHTML = newsfix(); bindNewsfix(); }
-    else v.innerHTML = home();
+    else { v.innerHTML = home(); bindHome(); }
     fitCards();
   }
   let last = location.hash;

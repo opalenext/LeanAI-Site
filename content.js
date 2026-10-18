@@ -1,7 +1,7 @@
 // Future of Work · 4 Shifts — content from the back-office spreadsheet.
 // The model in index.html (and its French translation in i18n.js) is the built-in version.
 // At load, /api/content gives the version of the spreadsheet in the page language. Each part
-// (shifts, levels, challenges, questions, initiatives, rules) replaces the built-in part only
+// (shifts, levels, challenges, questions, initiatives, rules, profile, episodes) replaces the built-in part only
 // if it passes the checks below. Otherwise the built-in part stays, and a warning goes to the console.
 // The app starts when the answer arrives, or after 2.5 seconds at most.
 (function () {
@@ -12,6 +12,14 @@
   var QIDS = F.questions.map(function (q) { return q.id; });
   var str = function (v) { return typeof v === 'string' && v.trim() !== ''; };
   var sameSet = function (a, b) { return a.length === b.length && a.every(function (x) { return b.indexOf(x) >= 0; }); };
+  var EIDS = (F.episodes || []).map(function (e) { return e.id; });
+  // A link the page may use: http(s), or a file of this site under media/ (no "..", no other scheme).
+  var safeUrl = function (v, mediaOk) {
+    if (v === '' || v === undefined || v === null) return true;
+    if (typeof v !== 'string' || /[\s"'<>\\]/.test(v)) return false;
+    if (/^https?:\/\/[^/]/i.test(v)) return true;
+    return !!mediaOk && /^media\/[A-Za-z0-9._\-\/]+$/.test(v) && v.indexOf('..') < 0;
+  };
   var warn = function (part, why) { try { console.warn('[content] ' + part + ' from the spreadsheet not used: ' + why); } catch (e) {} };
 
   // A rule condition such as "q21 >= 3 && q33 <= 2". Allowed: qNN, numbers, comparisons, && || ( ),
@@ -116,6 +124,29 @@
       }
       F.profile = ids.map(function (id) { var f = v.filter(function (x) { return x.id === id; })[0]; return { id: id, q: f.q, o: f.o.map(function (o) { return [o[0], o[1]]; }) }; });
     }
+  };
+
+  checks.episodes = function (m) {
+    var v = m.episodes;
+    if (v === undefined) return 'no episode list (tab media missing or not readable)';
+    if (!Array.isArray(v) || !sameSet(v.map(function (e) { return e.id; }), EIDS)) return 'the episode ids must stay ' + EIDS.join(', ');
+    var seen = {};
+    for (var k = 0; k < v.length; k++) {
+      var e = v[k];
+      if (e.shift !== '' && SIDS.indexOf(e.shift) < 0) return e.id + ': shift must be empty or one of ' + SIDS.join(', ');
+      if (e.shift && seen[e.shift]) return e.id + ': two episodes for ' + e.shift;
+      seen[e.shift] = 1;
+      if (!str(e.title)) return e.id + ': no title';
+      if (!safeUrl(e.linkedin_url, false)) return e.id + ': linkedin_url must start with http:// or https://';
+      if (!['video_url', 'poster_url', 'captions_url'].every(function (f) { return safeUrl(e[f], true); })) return e.id + ': a file link must be http(s) or media/...';
+    }
+    F.episodes = EIDS.map(function (id) {
+      var e = v.filter(function (x) { return x.id === id; })[0];
+      var d = String(e.duration || '').trim();
+      if (d && !/^\d{1,3}:[0-5]\d$/.test(d)) { try { console.warn('[content] ' + e.id + ': duration ' + d + ' from the spreadsheet not shown, write it as m:ss'); } catch (x) {} d = ''; }
+      return { id: id, shift: e.shift, title: e.title.trim(), summary: str(e.summary) ? e.summary : '', linkedin_url: e.linkedin_url || '',
+        video_url: e.video_url || '', poster_url: e.poster_url || '', captions_url: e.captions_url || '', duration: d };
+    });
   };
 
   function apply(m) {
