@@ -50,6 +50,12 @@
     'Four forces reshape work at the same time:': 'Quatre forces transforment le travail en même temps :',
     'A generational crossover': 'Un croisement des générations', 'A new relationship to work': 'Un nouveau rapport au travail',
     'The AI reset': 'La remise à zéro par l’IA', 'Constant uncertainty': 'Une incertitude permanente',
+    // Episode summaries (quoted from the LinkedIn posts)
+    "Many companies are deploying AI to solve yesterday's problems. I believe we should start from tomorrow instead.": 'Beaucoup d’entreprises déploient l’IA pour résoudre les problèmes d’hier. Je pense qu’il faut plutôt partir de demain.',
+    'Our HR processes are built around individual talent. Yet work is done by teams.': 'Nos processus RH sont construits autour du talent individuel. Pourtant, le travail se fait en équipe.',
+    'Simplify the transaction. Elevate the moment. Let AI handle the admin, so people get back to what makes the difference.': 'Simplifier la transaction. Valoriser le moment. Laisser l’IA gérer l’administratif, pour que chacun revienne à ce qui fait la différence.',
+    'The gap is not the technology. It is the method.': 'L’écart ne vient pas de la technologie. Il vient de la méthode.',
+    "What our HR systems currently see of an employee's life is just the tip of the iceberg.": 'Ce que nos systèmes RH voient aujourd’hui de la vie d’un salarié n’est que la partie émergée de l’iceberg.',
     'Fragmented answers will not be enough. Work needs a new operating system.': 'Des réponses fragmentées ne suffiront pas. Le travail a besoin d’un nouveau système d’exploitation.',
     'Play episode {e}: {t}': 'Lire l’épisode {e} : {t}', 'Episode {e}: {t}': 'Épisode {e} : {t}', 'Duration:': 'Durée :',
     'This video is not available.': 'Cette vidéo n’est pas disponible.',

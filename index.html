@@ -93,6 +93,7 @@ h3{font-size:19px}
 .forces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;list-style:none;margin:0;padding:0}
 .forces li{border-top:2px solid var(--fg);padding-top:10px;font:600 17px/1.25 var(--display)}
 .forces-l{color:var(--muted)}
+.vid .quote{font-style:italic}
 .closing{font:600 17px/1.4 var(--display);margin:0;max-width:52ch}
 .vid.ep-intro{display:grid;grid-template-columns:minmax(0,58fr) minmax(0,42fr);gap:32px;align-items:center}
 @media (max-width:860px){.vid.ep-intro{grid-template-columns:minmax(0,1fr);gap:14px}}
@@ -533,11 +534,11 @@ window.FOW = {
   // video_url: MP4 file on this site (media/epN.mp4). Empty = poster only, no play button.
   // linkedin_url empty = no "Comment on LinkedIn" link. duration (m:ss) empty = no badge.
   episodes: [
-    { id: 'ep1', shift: '', title: 'Why the Future of Work Needs a New Operating System', summary: '', linkedin_url: 'https://www.linkedin.com/feed/update/urn:li:activity:7515286497734836225/', video_url: 'media/ep1.mp4', poster_url: 'media/ep1-poster.jpg', captions_url: 'media/ep1.en.vtt', duration: '2:04' },
-    { id: 'ep2', shift: 'S1', title: 'From Talented Individuals to Talented Teams', summary: '', linkedin_url: 'https://lnkd.in/p/e9R-bYgv', video_url: 'media/ep2.mp4', poster_url: 'media/ep2-poster.jpg', captions_url: 'media/ep2.en.vtt', duration: '2:34' },
-    { id: 'ep3', shift: 'S2', title: 'From Transactions to Moments that Matter', summary: '', linkedin_url: 'https://www.linkedin.com/posts/vincentdupuis_futureofwork-ai-leadership-activity-7516011174790975489-GsHB', video_url: 'media/ep3.mp4', poster_url: 'media/ep3-poster.jpg', captions_url: 'media/ep3.en.vtt', duration: '2:29' },
-    { id: 'ep4', shift: 'S3', title: 'From Tech Magic to LeanAI Transformation', summary: '', linkedin_url: '', video_url: 'media/ep4.mp4', poster_url: 'media/ep4-poster.jpg', captions_url: 'media/ep4.en.vtt', duration: '2:38' },
-    { id: 'ep5', shift: 'S4', title: 'From Resource Management to Workforce Digital Twin', summary: '', linkedin_url: '', video_url: 'media/ep5.mp4', poster_url: 'media/ep5-poster.jpg', captions_url: 'media/ep5.en.vtt', duration: '2:49' }
+    { id: 'ep1', shift: '', title: 'Why the Future of Work Needs a New Operating System', summary: "Many companies are deploying AI to solve yesterday's problems. I believe we should start from tomorrow instead.", linkedin_url: 'https://www.linkedin.com/feed/update/urn:li:activity:7515286497734836225/', video_url: 'media/ep1.mp4', poster_url: 'media/ep1-poster.jpg', captions_url: 'media/ep1.en.vtt', duration: '2:04' },
+    { id: 'ep2', shift: 'S1', title: 'From Talented Individuals to Talented Teams', summary: 'Our HR processes are built around individual talent. Yet work is done by teams.', linkedin_url: 'https://lnkd.in/p/e9R-bYgv', video_url: 'media/ep2.mp4', poster_url: 'media/ep2-poster.jpg', captions_url: 'media/ep2.en.vtt', duration: '2:34' },
+    { id: 'ep3', shift: 'S2', title: 'From Transactions to Moments that Matter', summary: 'Simplify the transaction. Elevate the moment. Let AI handle the admin, so people get back to what makes the difference.', linkedin_url: 'https://www.linkedin.com/posts/vincentdupuis_futureofwork-ai-leadership-activity-7516011174790975489-GsHB', video_url: 'media/ep3.mp4', poster_url: 'media/ep3-poster.jpg', captions_url: 'media/ep3.en.vtt', duration: '2:29' },
+    { id: 'ep4', shift: 'S3', title: 'From Tech Magic to LeanAI Transformation', summary: 'The gap is not the technology. It is the method.', linkedin_url: '', video_url: 'media/ep4.mp4', poster_url: 'media/ep4-poster.jpg', captions_url: 'media/ep4.en.vtt', duration: '2:38' },
+    { id: 'ep5', shift: 'S4', title: 'From Resource Management to Workforce Digital Twin', summary: "What our HR systems currently see of an employee's life is just the tip of the iceberg.", linkedin_url: '', video_url: 'media/ep5.mp4', poster_url: 'media/ep5-poster.jpg', captions_url: 'media/ep5.en.vtt', duration: '2:49' }
   ],
   levels: ['Emerging', 'Developing', 'Advanced', 'Excellence · 2030-ready'],
   levelNote: 'Excellence · 2030-ready: the practice is embedded, continuously improved and shared across the organization.',
@@ -1151,13 +1152,14 @@ window.initMap=initMap;
     const introHtml = intro ? `<article class="vid ep-intro" style="--c:var(--accent)" aria-labelledby="ep-${esc(intro.id)}-t">${epFrame(intro)}
         <div class="vmeta"><div class="k">${T('Episode {e}/{t} · Introduction', { e: epNum(intro), t: EPS().length })}</div>
           <h3 id="ep-${esc(intro.id)}-t">${esc(intro.title)}</h3>
+          ${intro.summary ? `<p class="quote">${esc(T(intro.summary))}</p>` : ''}
           <p class="forces-l">${T('Four forces reshape work at the same time:')}</p>
           <ul class="forces"><li>${T('A generational crossover')}</li><li>${T('A new relationship to work')}</li><li>${T('The AI reset')}</li><li>${T('Constant uncertainty')}</li></ul>
           <p class="closing">${T('Fragmented answers will not be enough. Work needs a new operating system.')}</p>${epLink(intro)}</div></article>` : '';
     const shiftCards = SIDS.map((s, i) => {
       const e = EPS().find(x => x.shift === s);
       const k = e ? T('Shift {n} · Episode {e}/{t}', { n: i + 1, e: epNum(e), t: EPS().length }) : T('Shift {n}', { n: i + 1 });
-      return `<article class="card pillar vid" style="--c:${col(s)}" aria-labelledby="sh-${s}-t">${e ? epFrame(e) : ''}<div class="k">${k}</div><h3 id="sh-${s}-t">${esc(F.shifts[s].full)}</h3><p>${esc(F.shifts[s].line)}</p>${e ? epLink(e) : ''}</article>`;
+      return `<article class="card pillar vid" style="--c:${col(s)}" aria-labelledby="sh-${s}-t">${e ? epFrame(e) : ''}<div class="k">${k}</div><h3 id="sh-${s}-t">${esc(F.shifts[s].full)}</h3><p${e && e.summary ? ' class="quote"' : ''}>${esc(e && e.summary ? T(e.summary) : F.shifts[s].line)}</p>${e ? epLink(e) : ''}</article>`;
     }).join('');
     return `<div class="section home"><div class="hero"><div class="stack">
         <p class="series-line">${T('From the LinkedIn series {t}, by Vincent Dupuis', { t: `<a href="#model" data-scroll="model">${series}</a>` })}</p>
