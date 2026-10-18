@@ -44,7 +44,7 @@
     'Fourteen questions · About ten minutes · No account': 'Quatorze questions · Dix minutes environ · Sans compte',
     'Example front page of The News Fix for a fictional company. Lead story: “{t}”': 'Exemple de Une de The News Fix pour une entreprise fictive. Article principal : « {t} »',
     'The model · The LinkedIn series': 'Le modèle · La série LinkedIn', 'Four shifts, one operating system': 'Quatre shifts, un seul système',
-    'Five episodes of the series “{t}”. Episode 1 sets out the case. Episodes 2 to 5 present one shift each.':
+    'Five episodes of the series “{t}”. Episode 1 explains why. Episodes 2 to 5 present one shift each.':
       'Cinq épisodes de la série « {t} ». L’épisode 1 pose le constat. Les épisodes 2 à 5 présentent chacun un shift.',
     'Episode {e}/{t} · Introduction': 'Épisode {e}/{t} · Introduction', 'Shift {n} · Episode {e}/{t}': 'Shift {n} · Épisode {e}/{t}',
     'Four forces reshape work at the same time:': 'Quatre forces transforment le travail en même temps :',
@@ -78,7 +78,7 @@
     'Future of Work · 4 Shifts is a personal project. It is not linked to any employer.': 'Future of Work · 4 Shifts est un projet personnel. Il n’est lié à aucun employeur.',
     'Your 2030 front page starts with fourteen questions': 'Votre Une 2030 commence par quatorze questions',
     'About ten minutes. No account. Your report-out, your roadmap and your front page at the end.': 'Dix minutes environ. Sans compte. À la fin : votre synthèse, votre feuille de route et votre Une.',
-    'Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. To stay out, untick the box after the last question. The profile questions and the email for the study results are optional.':
+    'Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.':
       'Vos réponses sont enregistrées dans votre navigateur. Par défaut, vos niveaux et vos priorités sont aussi ajoutés à des statistiques anonymes, sans nom ni organisation. Pour ne pas y figurer, décochez la case après la dernière question. Les questions de profil et l’email pour recevoir les résultats de l’étude sont facultatifs.',
     'Read the privacy page': 'Lire la page Confidentialité',
     'Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.':

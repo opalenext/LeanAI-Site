@@ -93,7 +93,7 @@ h3{font-size:19px}
 .forces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px;list-style:none;margin:0;padding:0}
 .forces li{border-top:2px solid var(--fg);padding-top:10px;font:600 17px/1.25 var(--display)}
 .forces-l{color:var(--muted)}
-.vid .quote{font-style:italic}
+.ep-quote{font-style:italic;color:var(--fg);margin:6px 0 10px}
 .closing{font:600 17px/1.4 var(--display);margin:0;max-width:52ch}
 .vid.ep-intro{display:grid;grid-template-columns:minmax(0,58fr) minmax(0,42fr);gap:32px;align-items:center}
 @media (max-width:860px){.vid.ep-intro{grid-template-columns:minmax(0,1fr);gap:14px}}
@@ -1128,6 +1128,7 @@ window.initMap=initMap;
   const epLink = e => e.linkedin_url ? `<p class="vlinks"><a href="${esc(e.linkedin_url)}" target="_blank" rel="noopener" aria-label="${esc(T('Comment on episode {e} on LinkedIn (opens in a new tab)', { e: epNum(e) }))}">${T('Comment on LinkedIn')}</a></p>` : '';
   function playEpisode(frame) {
     const e = EPS().find(x => x.id === frame.dataset.ep); if (!e || !e.video_url) return;
+    document.querySelectorAll('.vframe video').forEach(o => o.pause()); // one episode plays at a time
     const v = document.createElement('video');
     v.controls = true; v.playsInline = true; v.preload = 'none'; v.setAttribute('playsinline', '');
     if (e.poster_url) v.poster = e.poster_url;
@@ -1135,6 +1136,7 @@ window.initMap=initMap;
     const src = document.createElement('source'); src.src = e.video_url; src.type = 'video/mp4';
     src.addEventListener('error', () => { if (v.readyState > 0 || frame.querySelector('.vmsg')) return; const m = document.createElement('p'); m.className = 'vmsg'; m.setAttribute('role', 'status'); m.textContent = T('This video is not available.'); frame.appendChild(m); });
     v.appendChild(src);
+    v.addEventListener('play', () => document.querySelectorAll('.vframe video').forEach(o => { if (o !== v) o.pause(); }));
     if (e.captions_url) { const tr = document.createElement('track'); tr.kind = 'captions'; tr.src = e.captions_url; tr.srclang = 'en'; tr.label = 'English'; v.appendChild(tr); }
     frame.innerHTML = ''; frame.classList.add('open'); frame.appendChild(v);
     v.focus();
@@ -1152,14 +1154,14 @@ window.initMap=initMap;
     const introHtml = intro ? `<article class="vid ep-intro" style="--c:var(--accent)" aria-labelledby="ep-${esc(intro.id)}-t">${epFrame(intro)}
         <div class="vmeta"><div class="k">${T('Episode {e}/{t} · Introduction', { e: epNum(intro), t: EPS().length })}</div>
           <h3 id="ep-${esc(intro.id)}-t">${esc(intro.title)}</h3>
-          ${intro.summary ? `<p class="quote">${esc(T(intro.summary))}</p>` : ''}
+          ${intro.summary ? `<p class="ep-quote">${esc(T(intro.summary))}</p>` : ''}
           <p class="forces-l">${T('Four forces reshape work at the same time:')}</p>
           <ul class="forces"><li>${T('A generational crossover')}</li><li>${T('A new relationship to work')}</li><li>${T('The AI reset')}</li><li>${T('Constant uncertainty')}</li></ul>
           <p class="closing">${T('Fragmented answers will not be enough. Work needs a new operating system.')}</p>${epLink(intro)}</div></article>` : '';
     const shiftCards = SIDS.map((s, i) => {
       const e = EPS().find(x => x.shift === s);
       const k = e ? T('Shift {n} · Episode {e}/{t}', { n: i + 1, e: epNum(e), t: EPS().length }) : T('Shift {n}', { n: i + 1 });
-      return `<article class="card pillar vid" style="--c:${col(s)}" aria-labelledby="sh-${s}-t">${e ? epFrame(e) : ''}<div class="k">${k}</div><h3 id="sh-${s}-t">${esc(F.shifts[s].full)}</h3><p${e && e.summary ? ' class="quote"' : ''}>${esc(e && e.summary ? T(e.summary) : F.shifts[s].line)}</p>${e ? epLink(e) : ''}</article>`;
+      return `<article class="card pillar vid" style="--c:${col(s)}" aria-labelledby="sh-${s}-t">${e ? epFrame(e) : ''}<div class="k">${k}</div><h3 id="sh-${s}-t">${esc(F.shifts[s].full)}</h3><p${e && e.summary ? ' class="ep-quote"' : ''}>${esc(e && e.summary ? T(e.summary) : F.shifts[s].line)}</p>${e ? epLink(e) : ''}</article>`;
     }).join('');
     return `<div class="section home"><div class="hero"><div class="stack">
         <p class="series-line">${T('From the LinkedIn series {t}, by Vincent Dupuis', { t: `<a href="#model" data-scroll="model">${series}</a>` })}</p>
@@ -1170,7 +1172,7 @@ window.initMap=initMap;
       </div>
       <figure class="sample"><div class="sc-frame" aria-hidden="true">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>${T('Example front page of The News Fix for a fictional company. Lead story: “{t}”', { t: esc(SAMPLE.lead.headline) })}</figcaption></figure></div></div>
       <section class="section" id="model" aria-labelledby="h-model"><div class="stack"><div class="eyebrow">${T('The model · The LinkedIn series')}</div><h2 id="h-model">${T('Four shifts, one operating system')}</h2>
-        <p class="lede">${T('Five episodes of the series “{t}”. Episode 1 sets out the case. Episodes 2 to 5 present one shift each.', { t: series })}</p></div>
+        <p class="lede">${T('Five episodes of the series “{t}”. Episode 1 explains why. Episodes 2 to 5 present one shift each.', { t: series })}</p></div>
         ${introHtml}
         <div class="shift-grid">${shiftCards}</div>
         <p class="lede">${T('Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.')}</p>
@@ -1194,7 +1196,7 @@ window.initMap=initMap;
       <section class="section" aria-labelledby="h-final"><div class="final"><h2 id="h-final">${T('Your 2030 front page starts with fourteen questions')}</h2>
         <p class="lede">${T('About ten minutes. No account. Your report-out, your roadmap and your front page at the end.')}</p>
         <a class="btn p" href="#/diagnostic">${start}</a></div>
-        <p class="note privacy">${T('Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. To stay out, untick the box after the last question. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
+        <p class="note privacy">${T('Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
       <footer class="site-foot"><span>Future of Work · 4 Shifts · Vincent Dupuis</span><a href="privacy.html">${T('Privacy')}</a></footer>`;
   }
 
