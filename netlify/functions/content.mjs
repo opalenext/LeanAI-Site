@@ -1,7 +1,7 @@
 // GET /api/content?lang=en|fr → the model (questions, levels, initiatives, rules...) from the back-office spreadsheet.
 // The CDN keeps the answer one minute: a change in the spreadsheet reaches the site in a minute at most.
 
-import { readModel } from '../lib/sheets.mjs';
+import { readModel, BackOfficeError } from '../lib/sheets.mjs';
 import { shapeModel } from '../lib/model.mjs';
 
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), {
@@ -22,7 +22,7 @@ export default async (req) => {
   } catch (e) {
     console.error(e);
     // The site then uses its built-in model.
-    return json({ error: 'Back-office unavailable' }, 503);
+    return json({ error: 'Back-office unavailable', reason: e instanceof BackOfficeError ? e.reason : 'Unexpected error' }, 503);
   }
 };
 

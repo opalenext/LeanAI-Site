@@ -11,13 +11,21 @@ const API = 'https://sheets.googleapis.com/v4/spreadsheets';
 export const MODEL_TABS = ['shifts', 'levels', 'texts', 'challenges', 'questions', 'initiatives', 'rules'];
 export const RESPONSES_TAB = 'responses';
 
+// An error whose reason can be shown to the site owner: it never contains a secret.
+export class BackOfficeError extends Error {
+  constructor(reason) { super(reason); this.reason = reason; }
+}
+
 function settings() {
-  const id = process.env.GOOGLE_SHEET_ID;
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const key = process.env.GOOGLE_PRIVATE_KEY;
-  if (!id || !email || !key) throw new Error('GOOGLE_SHEET_ID, GOOGLE_SERVICE_ACCOUNT_EMAIL or GOOGLE_PRIVATE_KEY is missing');
-  // Netlify sometimes keeps the line breaks of the key as \n.
-  return { id, email, key: key.replace(/\\n/g, '\n') };
+  const env = (k) => (process.env[k] || '').trim();
+  const missing = ['GOOGLE_SHEET_ID', 'GOOGLE_SERVICE_ACCOUNT_EMAIL', 'GOOGLE_PRIVATE_KEY'].filter((k) => !env(k));
+  if (missing.length) throw new BackOfficeError(`Missing variable: ${missing.join(', ')}`);
+  // The key is pasted from the JSON file: its line breaks are written \n, and it may keep its quotes.
+  const key = env('GOOGLE_PRIVATE_KEY').replace(/^"|",?$/g, '').replace(/\\n/g, '\n');
+  if (!key.includes('-----BEGIN PRIVATE KEY-----') || !key.includes('-----END PRIVATE KEY-----')) {
+    throw new BackOfficeError('GOOGLE_PRIVATE_KEY must contain the whole private_key value, from -----BEGIN PRIVATE KEY----- to -----END PRIVATE KEY-----');
+  }
+  return { id: env('GOOGLE_SHEET_ID'), email: env('GOOGLE_SERVICE_ACCOUNT_EMAIL'), key };
 }
 
 let token = null;
@@ -35,13 +43,19 @@ async function accessToken() {
     iat: now,
     exp: now + 3600,
   })}`;
-  const signature = createSign('RSA-SHA256').update(unsigned).sign(key, 'base64url');
+  let signature;
+  try { signature = createSign('RSA-SHA256').update(unsigned).sign(key, 'base64url'); } catch {
+    throw new BackOfficeError('GOOGLE_PRIVATE_KEY cannot be read: copy the private_key value again, in full');
+  }
   const res = await fetch('https://oauth2.googleapis.com/token', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams({ grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer', assertion: `${unsigned}.${signature}` }),
   });
-  if (!res.ok) throw new Error(`Google OAuth ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  if (!res.ok) {
+    const e = await res.json().catch(() => ({}));
+    throw new BackOfficeError(`Google sign-in refused (${res.status}): ${[e.error, e.error_description].filter(Boolean).join(', ').slice(0, 200)}`);
+  }
   const data = await res.json();
   token = { value: data.access_token, expires: Date.now() + data.expires_in * 1000 };
   return token.value;
@@ -53,7 +67,10 @@ async function call(path, options = {}) {
     ...options,
     headers: { Authorization: `Bearer ${await accessToken()}`, 'Content-Type': 'application/json', ...options.headers },
   });
-  if (!res.ok) throw new Error(`Google Sheets ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  if (!res.ok) {
+    const e = await res.json().catch(() => ({}));
+    throw new BackOfficeError(`Google Sheets refused (${res.status}): ${String(e.error?.message || '').slice(0, 200)}`);
+  }
   return res.json();
 }
 

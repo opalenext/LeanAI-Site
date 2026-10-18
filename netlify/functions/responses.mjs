@@ -2,7 +2,7 @@
 // Stored: date, a random id of the diagnostic, the step (report or priorities), the language,
 // the 14 levels, the priority challenges and the scores. No name, no organization, no IP address.
 
-import { responsesHeader, appendRow, RESPONSES_TAB } from '../lib/sheets.mjs';
+import { responsesHeader, appendRow, RESPONSES_TAB, BackOfficeError } from '../lib/sheets.mjs';
 
 const MAX_SIZE = 4_000;
 
@@ -56,7 +56,7 @@ export default async (req) => {
     await appendRow(RESPONSES_TAB, head.map((h) => row[h] ?? ''));
   } catch (e) {
     console.error(e);
-    return json({ saved: false }, 503);
+    return json({ saved: false, reason: e instanceof BackOfficeError ? e.reason : 'Unexpected error' }, 503);
   }
   return json({ saved: true });
 };
