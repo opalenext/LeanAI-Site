@@ -5,3 +5,11 @@ Site public du diagnostic « Future of Work · 4 Shifts » de Vincent Dupuis : m
 Site statique, déployé par Netlify à chaque push sur `main`. Le pilotage du projet (specs, backlog, agents) est dans le dépôt privé `LeanAI-Studio`.
 
 Projet personnel, sans lien avec un employeur.
+
+## Back-office
+
+Les textes du modèle (shifts, niveaux, défis, questions, initiatives, règles, en anglais et en français) se modifient dans un classeur Google Sheets privé. `content.js` les charge par `/api/content` au démarrage et garde le modèle intégré à `index.html` si le classeur est indisponible ou si une partie ne passe pas les contrôles.
+
+Les réponses anonymes (niveaux, priorités, scores, sans nom ni organisation) sont ajoutées par `/api/responses` à l'onglet `responses` du même classeur, sauf si le visiteur décoche la case prévue.
+
+Variables d'environnement Netlify : `GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY`. Sans elles, le site fonctionne avec son modèle intégré et n'enregistre rien.

@@ -88,6 +88,8 @@ h3{font-size:19px}
 .how li::before{content:counter(s);font:700 15px var(--display);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--fg);color:var(--bg)}
 .how p{margin:0;color:var(--muted)}
 .note{font-size:14.5px;color:var(--muted)}
+.share{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:14.5px;color:var(--muted);max-width:640px;cursor:pointer}
+.share input{width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:var(--accent)}
 /* diagnostic */
 .q-wrap{max-width:760px;display:flex;flex-direction:column;gap:22px}
 .progress{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
@@ -570,6 +572,7 @@ window.FOW = {
 };
 </script>
 <script src="i18n.js"></script>
+<script src="content.js"></script>
 <script>window.MAP_HTML="\n\n<div class=\"wrap\">\n  <header>\n    <div>\n      <div class=\"eyebrow\">Future of Work \u00b7 4 shifts</div>\n      <h1>Four pillars, sixteen challenges</h1>\n      <p class=\"lede\">Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge.</p>\n    </div>\n  </header>\n  <div class=\"legend\" id=\"legend\"></div>\n  <div class=\"grid\">\n    <div class=\"board\">\n      <div class=\"scroll\" id=\"mapview\"><svg id=\"map\" viewBox=\"0 0 1120 645\" role=\"img\" aria-label=\"Map of the four pillars and the challenges they address\"></svg></div>\n      <div class=\"scroll\" id=\"matrixview\" hidden></div>\n    </div>\n    <aside class=\"panel\" id=\"panel\" aria-live=\"polite\"></aside>\n  </div>\n</div>\n\n";
 function initMap(){
 window.__mapReady=false;
@@ -805,7 +808,7 @@ window.__mapReady=true;
 }
 window.initMap=initMap;
 </script>
-<script>(function () {
+<script>window.FOW_START(function () {
   const F = window.FOW;
   const FRL = window.LANG === 'fr';
   const L_ = window.locale;
@@ -828,6 +831,21 @@ window.initMap=initMap;
   const hasPrios = () => done() && Array.isArray(S.priorities) && S.priorities.length >= MINP;
   // anonymous usage counter: no cookie, no identifier, only the name of the step reached
   const ping = e => { try { fetch('/api/count', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ e }), keepalive: true }).catch(() => {}); } catch (x) {} };
+  // Anonymous statistics, unless the visitor unticks the box: a random id, the 14 levels, the priorities and the scores.
+  // No name, no organization. A new id for each new set of answers.
+  const shared = () => S.share !== false;
+  const sig = () => F.questions.map(q => S.answers[q.id] || 0).join('');
+  const newId = () => Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, '0')).join('');
+  function post(step) {
+    const r = scores(), answers = {}; F.questions.forEach(q => { answers[q.id] = S.answers[q.id]; });
+    const body = { rid: S.rid, step, lang: window.LANG, answers, priorities: step === 'priorities' ? S.priorities : [],
+      scores: { overall: r.overall, productivity: r.P, culture: r.C }, flags: r.flags.length };
+    try { fetch('/api/responses', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), keepalive: true }).catch(() => {}); } catch (x) {}
+  }
+  function sendReport() { if (!shared() || !done()) return; const s = sig(); if (S.sentSig === s) return; S.rid = newId(); S.sentSig = s; S.sentPrio = null; save(); post('report'); }
+  function sendPriorities() { if (!shared() || !hasPrios()) return; sendReport(); const p = S.priorities.slice().sort().join(','); if (S.sentPrio === p) return; S.sentPrio = p; save(); post('priorities'); }
+  const shareBox = () => `<label class="share no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities and scores, no name and no organization.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
+  const bindShare = () => { const b = document.getElementById('share'); if (b) b.addEventListener('change', () => { S.share = b.checked; save(); }); };
 
   // ---------- SCORING ----------
   function scores() {
@@ -990,7 +1008,7 @@ window.initMap=initMap;
         <li><h3>${T('Your Diagnostic')}</h3><p>${T('Fourteen questions. Your maturity profile, and an executive report-out to share with your ExCom.')}</p></li>
         <li><h3>${T('Your Priorities')}</h3><p>${T('Choose 3 to 5 challenges. Your roadmap builds itself, with its prerequisites, in a list or a Gantt chart.')}</p></li>
         <li><h3>${T('Your News Fix')}</h3><p>${T('An interview per priority: before, today, and what you did to get there. Share it as an image.')}</p></li></ol>
-        <p class="note">${T('Your answers stay in your browser. Nothing is stored on a server. Only what is needed to write the newspaper is sent to an AI model, and it is not stored.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
+        <p class="note">${T('Your answers are saved in your browser. Unless you untick the box, your levels and priorities are added to the statistics, anonymously. Only what is needed to write the newspaper is sent to an AI model, and it is not stored.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
   }
 
   // ---------- 2. INTERACTIVE MAP ----------
@@ -1016,7 +1034,7 @@ window.initMap=initMap;
       <div class="opts" role="radiogroup" aria-labelledby="qtitle">${q.o.map((o, k) => `<label class="opt ${v === k + 1 ? 'sel' : ''}"><input type="radio" name="${q.id}" id="${q.id}_${k + 1}" value="${k + 1}" ${v === k + 1 ? 'checked' : ''}><span class="lv">${k + 1}</span><span>${esc(o)}</span></label>`).join('')}</div>
       <div class="scale"><span>${T('1 · Typical today')}</span><span>${T('4 · Target 2030')}</span></div>
       <div class="row"><button class="btn g" id="prev" ${i === 0 ? 'disabled' : ''}>${T('← Back')}</button>
-        <button class="btn p" id="next" ${v ? '' : 'disabled'}>${T(i === n - 1 ? 'See my report' : 'Next →')}</button></div></div>`;
+        <button class="btn p" id="next" ${v ? '' : 'disabled'}>${T(i === n - 1 ? 'See my report' : 'Next →')}</button></div>${i === n - 1 ? shareBox() : ''}</div>`;
   }
   function bindQuestions() {
     document.querySelectorAll('.opt input').forEach(r => r.addEventListener('change', () => {
@@ -1024,7 +1042,8 @@ window.initMap=initMap;
       document.getElementById('next')?.focus();
     }));
     document.getElementById('prev').onclick = () => { S.qi = Math.max(0, (S.qi || 0) - 1); save(); render(); };
-    document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { S.editing = false; save(); ping('report'); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
+    bindShare();
+    document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { S.editing = false; save(); ping('report'); sendReport(); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
   }
   function report() {
     const r = scores();
@@ -1041,9 +1060,10 @@ window.initMap=initMap;
         <div class="profile"><div class="spider-wrap">${spider(false)}</div><div class="pr-list">${practiceList()}<p class="note">${esc(F.levelNote)}</p></div></div></div>
       <div class="section"><div class="stack"><h2>${T('Coherence check')}</h2><p class="lede">${T('Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.')}</p></div>${flags}</div>
       <div class="section"><h2>${T('Where the gaps are')}</h2><div class="band-l">${T('Productivity challenges')}</div><div class="heat">${heat('P')}</div><div class="band-l">${T('Cultural challenges')}</div><div class="heat">${heat('C')}</div></div>
-      <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">${T('Prepare your executive report-out')}</a><a class="btn s" href="#/priorities">${T('Next: your priorities →')}</a><button class="btn g" id="redo">${T('Change my answers')}</button></div></div>`;
+      <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">${T('Prepare your executive report-out')}</a><a class="btn s" href="#/priorities">${T('Next: your priorities →')}</a><button class="btn g" id="redo">${T('Change my answers')}</button></div>${shareBox()}</div>`;
   }
   function bindReport() {
+    bindShare();
     document.getElementById('redo').onclick = () => { S.qi = 0; S.editing = true; save(); render(); window.scrollTo(0, 0); };
   }
 
@@ -1210,7 +1230,7 @@ window.initMap=initMap;
       if (!res.ok || !valid(data)) throw new Error('newsroom');
       S.paper = data; S.paperSource = 'ai';
     } catch (e) { S.paper = offline(body); S.paperSource = 'template'; }
-    S.paperContext = body.context; save(); ping('frontpage'); location.hash = '#/newsfix';
+    S.paperContext = body.context; save(); ping('frontpage'); sendPriorities(); location.hash = '#/newsfix';
   }
   const okQA = x => x && typeof x.headline === 'string' && Array.isArray(x.qa) && x.qa.length >= 3 && x.qa.every(y => y && typeof y.a === 'string');
   const valid = d => d && okQA(d.lead) && Array.isArray(d.stories) && d.stories.every(okQA);
@@ -1298,13 +1318,14 @@ window.initMap=initMap;
     else v.innerHTML = home();
     fitCards();
   }
-  let last = null;
+  let last = location.hash;
   const headVar = () => { const t = document.querySelector('.top'); if (t) document.documentElement.style.setProperty('--head', t.offsetHeight + 'px'); };
   headVar(); window.addEventListener('resize', headVar);
-  window.addEventListener('hashchange', () => { render(); if (location.hash !== last) window.scrollTo(0, 0); last = location.hash; });
+  window.addEventListener('hashchange', () => { if (last === '#/priorities') sendPriorities(); render(); if (location.hash !== last) window.scrollTo(0, 0); last = location.hash; });
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && location.hash === '#/priorities') sendPriorities(); });
   render();
   if (document.fonts) document.fonts.ready.then(fitCards);
-})();
+});
 </script>
 
 </body></html>

@@ -55,8 +55,10 @@
       'Choisissez 3 à 5 défis. Votre feuille de route se construit seule, avec ses prérequis, en liste ou en Gantt.',
     'An interview per priority: before, today, and what you did to get there. Share it as an image.':
       'Une interview par priorité : avant, aujourd’hui, et ce que vous avez fait pour y arriver. À partager en image.',
-    'Your answers stay in your browser. Nothing is stored on a server. Only what is needed to write the newspaper is sent to an AI model, and it is not stored.':
-      'Vos réponses restent dans votre navigateur. Rien n’est stocké sur un serveur. Seul ce qui sert à écrire le journal est envoyé à un modèle d’IA, sans être conservé.',
+    'Your answers are saved in your browser. Unless you untick the box, your levels and priorities are added to the statistics, anonymously. Only what is needed to write the newspaper is sent to an AI model, and it is not stored.':
+      'Vos réponses sont enregistrées dans votre navigateur. Sauf si vous décochez la case, vos niveaux et vos priorités sont ajoutés aux statistiques, de façon anonyme. Seul ce qui sert à écrire le journal est envoyé à un modèle d’IA, sans être conservé.',
+    'Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities and scores, no name and no organization.':
+      'Ajouter mes réponses, de façon anonyme, aux statistiques 4 Shifts : niveaux, priorités et scores, sans nom ni organisation.',
     // 2. Map
     'Step 2 · Interactive map': 'Étape 2 · Carte interactive', 'Four pillars, sixteen challenges': 'Quatre piliers, seize défis',
     'Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge to see its explanation.':
