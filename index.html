@@ -126,9 +126,13 @@ h3{font-size:19px}
 .optional{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;background:var(--soft);border-radius:14px;padding:14px 18px}
 .optional p{margin:0;max-width:70ch}
 .optional .btn{padding:10px 16px;font-size:14.5px}
-.author{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 28px}
-.author h3{font-size:21px}
-.author p{margin:0;color:var(--muted);flex:1 1 320px;min-width:0}
+.author{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:20px;display:flex;align-items:flex-start;gap:20px}
+.author-photo{width:112px;height:112px;border-radius:50%;object-fit:cover;flex:0 0 auto}
+.author-txt{flex:1;min-width:0}
+.author h3{font-size:21px;margin-bottom:8px}
+.author p{margin:0 0 8px;color:var(--muted);max-width:70ch}
+.author p.bio{color:var(--fg)}
+@media (max-width:560px){.author{flex-direction:column}.author-photo{width:96px;height:96px}}
 .final{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:clamp(22px,4vw,40px);display:flex;flex-direction:column;gap:16px;align-items:flex-start}
 .final .lede{max-width:56ch}
 .privacy{margin:0;max-width:90ch}
@@ -1191,8 +1195,10 @@ window.initMap=initMap;
             <p class="get"><b>${T('You get')}</b>${T('Your 2030 front page, as an image to share on LinkedIn.')}</p></li>
         </ol>
         <div class="optional"><p><b>${T('Optional, before you start.')}</b> ${T('The interactive map shows how each shift acts on the sixteen challenges, and where shifts could cancel each other out.')}</p><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div></section>
-      <section class="section" aria-labelledby="h-author"><div class="author"><div><div class="eyebrow">${T('The author')}</div><h3 id="h-author">Vincent Dupuis</h3></div>
-        <p>${T('Future of Work · 4 Shifts is a personal project. It is not linked to any employer.')}</p></div></section>
+      <section class="section" aria-labelledby="h-author"><div class="author"><img class="author-photo" src="media/vincent.jpg" width="112" height="112" loading="lazy" alt="${T('Vincent Dupuis on stage, speaking about AI')}">
+        <div class="author-txt"><div class="eyebrow">${T('The author')}</div><h3 id="h-author">Vincent Dupuis</h3>
+        <p class="bio">${T('Engineer and innovator, with more than 25 years of experience and over 30 patents. Vincent makes breakthrough technology deliver real value: first in products, now in data and AI. He incubated a world-first product in startup mode and brought it to launch with a premium car maker. He then led Lean product development at very large scale. Since 2021, he applies the same discipline to data and AI: vision first, then reinvent the process before automating it, with value stream redesign and AI agents.')}</p>
+        <p>${T('Future of Work · 4 Shifts is a personal project. It is not linked to any employer.')}</p></div></div></section>
       <section class="section" aria-labelledby="h-final"><div class="final"><h2 id="h-final">${T('Your 2030 front page starts with fourteen questions')}</h2>
         <p class="lede">${T('About ten minutes. No account. Your report-out, your roadmap and your front page at the end.')}</p>
         <a class="btn p" href="#/diagnostic">${start}</a></div>
