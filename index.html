@@ -1,0 +1,1224 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Future of Work 4 Shifts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Measure how far your operating model is from the 2030 target, get a roadmap, and write the front page of The News Fix.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;1,400&family=UnifrakturMaguntia&display=swap">
+<style>/* Layout: one guided journey (model → diagnostic → report & roadmap → 2030 vision → The News Fix), one column of reading width with wider boards for report and roadmap. Series identity: navy, magenta, teal; Poppins display. The News Fix is printed paper in both themes. */
+:root{
+  --bg:#F5F7FA; --surface:#FFFFFF; --fg:#12213F; --muted:#56667E; --line:#D7E0EA; --soft:#EAF0F6;
+  --accent:#E6007E; --accent-ink:#FFFFFF; --accent-soft:#FDE6F2; --teal:#0098B4; --prod:#12213F;
+  --ok:#1F8A63; --ok-bg:#E3F5EC; --warn:#A85F00; --warn-bg:#FFF1DA;
+  --s1:#0098B4; --s2:#3E9E83; --s3:#4B55C8; --s4:#D9661F; --on-bar:#FFFFFF;
+  --display:"Poppins","Segoe UI",Arial,sans-serif; --body:"Source Sans 3","Segoe UI",Arial,sans-serif;
+  --paper:#F7F3EA; --ink:#1B1B1B; --ink-soft:#4A4A4A; --rule:#1B1B1B;
+  --news:"Playfair Display",Georgia,"Times New Roman",serif; --newsbody:"Source Serif 4",Georgia,serif; --black:"UnifrakturMaguntia","Old English Text MT",Georgia,serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0D1526; --surface:#15203A; --fg:#E7EDF6; --muted:#9AA9BF; --line:#2A3A57; --soft:#1B2945;
+  --accent:#FF4FA6; --accent-ink:#1A0612; --accent-soft:#3A1428; --teal:#3CC7E0; --prod:#A9BEDF;
+  --ok:#5FD3A5; --ok-bg:#12342A; --warn:#F2B04C; --warn-bg:#3A2A10;
+  --s1:#3CC7E0; --s2:#6FCDB0; --s3:#8E97F2; --s4:#F29A5C; --on-bar:#0D1526; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0D1526; --surface:#15203A; --fg:#E7EDF6; --muted:#9AA9BF; --line:#2A3A57; --soft:#1B2945;
+  --accent:#FF4FA6; --accent-ink:#1A0612; --accent-soft:#3A1428; --teal:#3CC7E0; --prod:#A9BEDF;
+  --ok:#5FD3A5; --ok-bg:#12342A; --warn:#F2B04C; --warn-bg:#3A2A10;
+  --s1:#3CC7E0; --s2:#6FCDB0; --s3:#8E97F2; --s4:#F29A5C; --on-bar:#0D1526; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+a{color:var(--accent)}
+.shell{max-width:1120px;margin:0 auto}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--display);font-weight:700;font-size:18px;color:var(--fg);text-decoration:none;letter-spacing:.01em}
+.brand span{color:var(--accent)}
+.steps{display:flex;gap:6px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.steps a{display:inline-block;font:600 13px var(--display);padding:6px 12px;border-radius:999px;color:var(--muted);text-decoration:none;border:1.5px solid transparent}
+.steps a.on{color:var(--fg);border-color:var(--fg)}
+.steps .n{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--soft);font-size:11px;margin-right:6px}
+.steps a.on .n{background:var(--accent);color:var(--accent-ink)}
+.steps a.done{color:var(--fg)}
+.steps a[aria-disabled="true"]{opacity:.45;pointer-events:none}
+main{padding-block:36px 0}
+h1,h2,h3{font-family:var(--display);line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(32px,5vw,54px);letter-spacing:-.01em}
+h2{font-size:clamp(24px,3vw,32px)}
+h3{font-size:19px}
+.eyebrow{font:600 12.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:clamp(18px,2vw,21px);color:var(--muted);max-width:62ch;margin:0}
+.stack{display:flex;flex-direction:column;gap:16px}
+.section{display:flex;flex-direction:column;gap:20px;padding-block:40px;border-top:1px solid var(--line)}
+.section:first-child{border-top:0;padding-top:0}
+.btn{font:600 15.5px var(--display);border:0;border-radius:10px;padding:13px 22px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.p{background:var(--accent);color:var(--accent-ink)}
+.btn.s{background:transparent;color:var(--fg);border:1.5px solid var(--fg)}
+.btn.g{background:transparent;color:var(--muted);padding-inline:6px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn:focus-visible,.opt:focus-within,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.and{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.6vw,28px)}
+.and b{color:var(--accent);white-space:nowrap}
+.hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:36px;align-items:center}
+@media (max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}}
+.hero-art{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:22px;display:grid;gap:10px}
+.mini{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mini div{border:2px solid var(--c);border-radius:10px;padding:10px 8px;font:600 12.5px/1.25 var(--display);color:var(--c);min-height:70px;display:flex;align-items:flex-end}
+.band{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:600 12.5px var(--display);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.chip.P{border:1.5px solid var(--prod);color:var(--prod)}
+.chip.C{background:var(--accent);color:var(--accent-ink)}
+.band-l{font:600 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card.pillar{border-top:5px solid var(--c)}
+.card .k{font:600 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--c,var(--muted))}
+.card p{margin:0;color:var(--muted)}
+.how{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;list-style:none;padding:0;margin:0}
+.how li{counter-increment:s;display:flex;flex-direction:column;gap:6px}
+.how li::before{content:counter(s);font:700 15px var(--display);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--fg);color:var(--bg)}
+.how p{margin:0;color:var(--muted)}
+.note{font-size:14.5px;color:var(--muted)}
+/* diagnostic */
+.q-wrap{max-width:760px;display:flex;flex-direction:column;gap:22px}
+.progress{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent);transition:width .3s}
+.qmeta{display:flex;justify-content:space-between;gap:10px;font:600 13px var(--display);color:var(--muted)}
+.qmeta .pl{color:var(--c)}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer}
+.opt:hover{border-color:var(--fg)}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt .lv{font:700 15px var(--display);width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);color:var(--muted)}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel .lv{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.scale{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted)}
+/* report */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.kpi{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px}
+.kpi b{display:block;font:700 34px var(--display);font-variant-numeric:tabular-nums}
+.kpi span{color:var(--muted);font-size:15px}
+.kpi.main{border-color:var(--accent)}
+.kpi.main b{color:var(--accent)}
+.kpi .kbar{display:block;height:8px;border-radius:4px;background:var(--soft);margin:10px 0 6px;overflow:hidden}
+.kpi .kbar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.kpi .kto{display:block;font-size:13.5px}
+.bars{display:flex;flex-direction:column;gap:12px}
+.bar{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) 52px;gap:12px;align-items:center}
+@media (max-width:560px){.bar{grid-template-columns:minmax(0,1fr) 48px}.bar .track{grid-column:1 / -1;grid-row:2}}
+.bar .nm{font:600 15px var(--display);color:var(--c)}
+.track{height:14px;border-radius:7px;background:var(--soft);position:relative;overflow:hidden}
+.track i{position:absolute;inset:0 auto 0 0;border-radius:7px;background:var(--c)}
+.bar .v{font:700 15px var(--display);text-align:right;font-variant-numeric:tabular-nums}
+.heat{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.hc{border-radius:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:6px}
+.hc .t{display:flex;justify-content:space-between;gap:8px;font:600 14.5px var(--display)}
+.hc .gap{font:700 13px var(--display);padding:2px 8px;border-radius:999px;white-space:nowrap}
+.hc .gap{flex:none;align-self:flex-start}
+.hc .t span:first-child{min-width:0}
+.gap.hi{background:var(--accent);color:var(--accent-ink)}
+.gap.mid{background:var(--warn-bg);color:var(--warn)}
+.gap.lo{background:var(--ok-bg);color:var(--ok)}
+.hc small{color:var(--muted);font-size:13.5px}
+.flags{display:flex;flex-direction:column;gap:10px}
+.flag{background:var(--warn-bg);border-radius:12px;padding:14px 16px}
+.flag b{font-family:var(--display);color:var(--warn);display:block;margin-bottom:2px}
+.flag p{margin:0}
+.ok-box{background:var(--ok-bg);color:var(--ok);border-radius:12px;padding:14px 16px;font-weight:600}
+.road-scroll{overflow-x:auto}
+.road{display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));gap:12px;min-width:900px}
+.yr{display:flex;flex-direction:column;gap:10px}
+.yr h3{font-size:22px;padding-bottom:8px;border-bottom:3px solid var(--fg)}
+.ini{background:var(--surface);border:1.5px solid var(--line);border-left:5px solid var(--c);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.ini .k{font:600 11.5px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--c)}
+.ini b{font-family:var(--display);font-size:15px;line-height:1.25}
+.ini p{margin:0;font-size:14.5px;color:var(--muted)}
+.ini .req{font-size:13px;color:var(--muted)}
+.empty-yr{color:var(--muted);font-size:14.5px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14.5px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;background:var(--c)}
+/* vision */
+.pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.pk{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+.pk input{margin-top:4px;accent-color:var(--accent);width:18px;height:18px;flex:none}
+.pk.sel{border-color:var(--accent);background:var(--accent-soft)}
+.pk .t{font:600 14.5px var(--display)}
+.pk small{display:block;color:var(--muted);font-size:13.5px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font:600 14.5px var(--display)}
+.field input,.field textarea{font:inherit;font-size:16px;color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;width:100%}
+.field textarea{min-height:76px;resize:vertical}
+.field small{color:var(--muted);font-size:13.5px}
+.hl{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.err{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:12px 14px}
+.spinner{display:inline-block;width:18px;height:18px;border:3px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* The News Fix — printed paper, same in both themes */
+.paper{background:var(--paper);color:var(--ink);max-width:980px;margin:0 auto;padding:28px clamp(16px,4vw,44px) 36px;border-radius:4px;box-shadow:0 2px 0 rgba(0,0,0,.06),0 18px 40px -20px rgba(0,0,0,.35);font-family:var(--newsbody)}
+.np-top{display:flex;justify-content:space-between;gap:10px;font:600 11px var(--display);letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--rule);padding-bottom:6px;color:var(--ink)}
+.masthead{font-family:var(--black);font-size:clamp(46px,9vw,92px);text-align:center;line-height:1;margin:14px 0 4px;color:var(--ink)}
+.np-sub{text-align:center;font:italic 15px var(--newsbody);color:var(--ink-soft)}
+.np-date{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:3px double var(--rule);border-bottom:1px solid var(--rule);padding:6px 0;margin:10px 0 18px;font:600 12.5px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.np-date .red{color:#C8102E}
+.lead h2{font-family:var(--news);font-weight:900;font-size:clamp(34px,5.6vw,60px);line-height:1.02;text-align:center;color:var(--ink)}
+.lead .deck{font:italic 20px/1.4 var(--newsbody);text-align:center;color:var(--ink-soft);margin:10px auto 0;max-width:46ch}
+.np-cols{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:26px;margin-top:22px;border-top:1px solid var(--rule);padding-top:18px}
+@media (max-width:760px){.np-cols{grid-template-columns:minmax(0,1fr)}}
+.np-body p{margin:0 0 12px;font-size:16.5px;line-height:1.55;color:var(--ink)}
+.kicker{font:700 11.5px var(--display);letter-spacing:.18em;text-transform:uppercase;color:#C8102E;text-align:center;margin-bottom:6px}
+.story .kicker{text-align:left}
+.qa{margin:0 0 12px}
+.qa .q{display:block;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:3px}
+.lead-body{column-count:2;column-gap:26px;column-rule:1px solid rgba(0,0,0,.18)}
+.lead-body .qa{break-inside:avoid-column}
+@media (max-width:760px){.lead-body{column-count:1}}
+.np-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px;border-top:3px double var(--rule);margin-top:22px;padding-top:16px}
+.np-stories.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.np-stories,.np-stories.c3{grid-template-columns:minmax(0,1fr)}}
+.story{border-bottom:1px solid var(--rule);padding:4px 0 14px;margin-bottom:14px}
+.story h3{font-family:var(--news);font-weight:700;font-size:24px;line-height:1.12;color:var(--ink);margin-bottom:10px}
+.story .qa{font-size:15.5px;line-height:1.5}
+.story .qa .q{font-size:12px}
+.byline{font:600 12px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px}
+.side-story{border-bottom:1px solid var(--rule);padding-bottom:14px;margin-bottom:14px}
+.side-story:last-child{border-bottom:0}
+.side-story h3{font-family:var(--news);font-weight:700;font-size:22px;line-height:1.15;color:var(--ink)}
+.side-story p{margin:8px 0 0;font-size:15.5px;line-height:1.5;color:var(--ink)}
+.numbers{border:2px solid var(--ink);padding:12px 14px;margin-top:6px}
+.numbers h4{margin:0 0 8px;font:700 12px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.numbers ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.numbers li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;color:var(--ink)}
+.numbers li b{font-family:var(--news);font-size:26px;color:#C8102E}
+.quote{font:italic 19px/1.4 var(--news);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:12px 0;margin:6px 0 14px;color:var(--ink)}
+.quote small{display:block;font:600 11.5px var(--display);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:var(--ink-soft);margin-top:6px}
+.np-foot{border-top:3px double var(--rule);margin-top:20px;padding-top:8px;font:12px var(--display);color:var(--ink-soft);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+/* sample + share card (1080 x 1350, posted on LinkedIn) */
+.sample{margin:0;display:flex;flex-direction:column;gap:8px;width:100%;max-width:420px;justify-self:center}
+.sample figcaption{font-size:13.5px;color:var(--muted);text-align:center}
+.sc-frame{width:100%;aspect-ratio:4/5;position:relative;overflow:hidden;border-radius:4px;box-shadow:0 2px 0 rgba(0,0,0,.06),0 18px 40px -20px rgba(0,0,0,.35);background:#F7F3EA}
+.sc-frame .share-card{position:absolute;top:0;left:0}
+#capture{position:fixed;left:-20000px;top:0;pointer-events:none}
+.share-card{width:1080px;height:1350px;background:#F7F3EA;color:#1B1B1B;padding:60px 72px 56px;display:flex;flex-direction:column;transform-origin:0 0;font-family:var(--newsbody);overflow:hidden}
+.sc-top{display:flex;justify-content:space-between;font:600 17px var(--display);letter-spacing:.18em;text-transform:uppercase;border-bottom:2px solid #1B1B1B;padding-bottom:12px}
+.sc-mast{font-family:var(--black);font-size:150px;line-height:1;text-align:center;margin:26px 0 12px}
+.sc-date{display:flex;justify-content:space-between;border-top:6px double #1B1B1B;border-bottom:2px solid #1B1B1B;padding:12px 0;font:600 19px var(--display);letter-spacing:.06em;text-transform:uppercase}
+.sc-date .red,.sc-kicker{color:#C8102E}
+.sc-kicker{text-align:center;font:700 22px var(--display);letter-spacing:.22em;text-transform:uppercase;margin-top:52px}
+.sc-lead{font:900 94px/1.02 var(--news);text-align:center;margin:16px 0 22px;text-wrap:balance}
+.sc-deck{font:italic 31px/1.4 var(--newsbody);text-align:center;color:#4A4A4A;max-width:860px;margin:0 auto}
+.sc-also{margin-top:auto;border-top:6px double #1B1B1B;padding-top:20px}
+.sc-also-t{font:700 18px var(--display);letter-spacing:.18em;text-transform:uppercase;margin-bottom:4px}
+.sc-story{font:700 37px/1.15 var(--news);padding:14px 0;border-bottom:1px solid rgba(0,0,0,.25)}
+.sc-cta{text-align:right}
+.sc-cta b{color:#1B1B1B;font-weight:700;white-space:nowrap}
+.sc-foot{margin-top:24px;display:flex;justify-content:space-between;gap:20px;font:600 18px var(--display);color:#4A4A4A;border-top:2px solid #1B1B1B;padding-top:14px}
+.share{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:28px;align-items:start;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line)}
+@media (max-width:860px){.share{grid-template-columns:minmax(0,1fr)}.share .sc-frame{max-width:420px}}
+.post{font:15px/1.5 var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;resize:vertical}
+.btn.off{opacity:.4;pointer-events:none}
+.tabs{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
+.tabs button{font:600 14px var(--display);border:0;background:transparent;color:var(--muted);padding:8px 16px;border-radius:999px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.fors{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.for{font:600 11.5px var(--display);padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--fg)}
+.for.pre{background:var(--warn-bg);color:var(--warn)}
+/* gantt */
+.gantt{min-width:780px;display:flex;flex-direction:column}
+.g-row{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.g-head{border-bottom:2px solid var(--fg);padding-bottom:6px}
+.g-name{min-width:0}
+.g-name b{font-family:var(--display);font-size:14.5px;line-height:1.25;display:block}
+.g-track{display:grid;grid-template-columns:repeat(4,1fr);min-height:34px}
+.g-y{font:700 17px var(--display);text-align:center}
+.g-cell{grid-row:1;border-left:1px dashed var(--line)}
+.g-bar{grid-row:1;align-self:center;height:28px;border-radius:7px;background:var(--c);color:var(--on-bar);font:600 12.5px var(--display);display:flex;align-items:center;padding:0 10px;margin:0 4px;white-space:nowrap}
+.g-grp{font:700 13px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--c);padding:18px 0 4px}
+/* executive report-out: two A4 pages, printed document look in both themes */
+.brief-tools{display:flex;flex-direction:column;gap:16px;margin-bottom:28px}
+.brief{display:flex;flex-direction:column;gap:28px;align-items:center}
+.b-page{background:#FFFFFF;color:#12213F;width:100%;max-width:820px;min-height:1120px;padding:44px 52px 36px;box-shadow:0 2px 0 rgba(0,0,0,.05),0 18px 40px -22px rgba(0,0,0,.35);display:flex;flex-direction:column;gap:22px;font-family:var(--body);font-size:15px;line-height:1.5}
+@media (max-width:700px){.b-page{padding:24px 18px;min-height:0}}
+.b-head{display:flex;justify-content:space-between;gap:16px;border-bottom:3px solid #12213F;padding-bottom:12px}
+.b-k{font:700 11.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:#E6007E}
+.b-org{font:700 22px var(--display);margin-top:2px}
+.b-meta{font:500 12.5px var(--display);color:#56667E;text-align:right}
+.b-title{font:700 clamp(24px,3.2vw,30px)/1.15 var(--display);margin:0;color:#12213F}
+.b-sec{display:flex;flex-direction:column;gap:8px}
+.b-sec h3{font:700 13px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#12213F;border-bottom:1px solid #D7E0EA;padding-bottom:6px;margin:0}
+.b-sec p{margin:0;color:#12213F}
+.b-muted{color:#56667E}
+.b-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.b-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.b-kpis div{border:1.5px solid #D7E0EA;border-radius:8px;padding:10px 12px}
+.b-kpis b{display:block;font:700 26px var(--display);font-variant-numeric:tabular-nums;color:#12213F}
+.b-kpis div:first-child b{color:#E6007E}
+.b-kpis span{font-size:12.5px;color:#56667E}
+.b-bars{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+.b-bar{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr) 44px;gap:10px;align-items:center;font:600 13px var(--display);color:#12213F}
+.b-bar b{text-align:right;font-variant-numeric:tabular-nums}
+.b-track{height:10px;border-radius:5px;background:#EAF0F6;overflow:hidden}
+.b-track i{display:block;height:100%;border-radius:5px}
+.b-table{width:100%;border-collapse:collapse;font-size:14px;color:#12213F}
+.b-table th{font:600 11.5px var(--display);letter-spacing:.08em;text-transform:uppercase;color:#56667E;text-align:left;border-bottom:1.5px solid #12213F;padding:6px 8px}
+.b-table td{border-bottom:1px solid #D7E0EA;padding:8px;vertical-align:top}
+.b-num{font:700 15px var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.b-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:#12213F}
+.b-ask{background:#12213F;color:#FFFFFF;border-radius:10px;padding:16px 18px}
+.b-ask h3{color:#FFFFFF;border-bottom-color:rgba(255,255,255,.25)}
+.b-ask ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.b-foot{margin-top:auto;border-top:1px solid #D7E0EA;padding-top:8px;font-size:11.5px;color:#56667E}
+/* maturity profile: spider + practice list */
+.profile{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:900px){.profile{grid-template-columns:minmax(0,1fr)}}
+.spider-wrap{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:8px;min-width:0}
+.spider{display:block;width:100%;height:auto}
+.spider text{font-family:var(--display)}
+.pr-list{display:flex;flex-direction:column;gap:12px;min-width:0}
+.pr-grp{display:flex;flex-direction:column;gap:4px}
+.pr-h{display:flex;justify-content:space-between;gap:10px;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--c);border-bottom:2px solid var(--c);padding-bottom:4px}
+.pr-row{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:15px;padding:2px 0}
+.lvl{font:600 12px var(--display);padding:3px 9px;border-radius:999px;white-space:nowrap}
+.lvl.l1{background:var(--accent-soft);color:var(--accent)}
+.lvl.l2{background:var(--warn-bg);color:var(--warn)}
+.lvl.l3{background:var(--soft);color:var(--fg)}
+.lvl.l4{background:var(--ok-bg);color:var(--ok)}
+.flag.limit{background:var(--soft)}
+.flag.limit b{color:var(--fg)}
+/* needs / unlocks */
+.nu{display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:4px}
+.nl{font:700 11px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+.lk{font:600 11.5px var(--display);padding:2px 8px;border-radius:999px;border:1.5px solid var(--line);color:var(--fg)}
+.lk.x{border-color:var(--accent);color:var(--accent)}
+/* gantt arrows */
+.gantt{position:relative}
+.g-arrows{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
+.g-arrows path.x{fill:none;stroke:var(--accent);stroke-width:1.6;opacity:.75;transition:opacity .15s}
+.gantt.focus .g-arrows path[data-a]{opacity:.06}
+.gantt.focus .g-arrows path.on{opacity:1;stroke-width:2.2}
+.g-bar{transition:opacity .15s;cursor:default}
+.gantt.focus .g-bar.dim{opacity:.3}
+.g-arrows path.i{fill:none;stroke:var(--muted);stroke-width:1.2;opacity:.55;transition:opacity .15s}
+.g-arrows .xm{fill:var(--accent)}
+.g-arrows .im{fill:var(--muted)}
+.arrow-key{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ak{display:inline-block;width:26px;height:0;border-top:2px solid var(--accent);margin-left:6px}
+.ak.i{border-top:2px solid var(--muted);opacity:.6;margin-left:14px}
+/* report-out spider */
+.b-profile{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:14px;align-items:center}
+.b-profile .b-bar{grid-template-columns:minmax(0,1fr) 64px 38px;font-size:12px}
+@media (max-width:620px){.b-profile{grid-template-columns:minmax(0,1fr)}}
+.b-spider svg{display:block;width:100%;height:auto}
+.b-spider text{font-family:var(--display)}
+.b-lv{font-size:11.5px;margin-top:6px}
+@media print{
+  body{background:#fff;padding:0}
+  .top,.no-print{display:none!important}
+  main{padding:0}
+  .paper{box-shadow:none;max-width:none}
+  .section{break-inside:avoid}
+  .road{min-width:0}
+  .gantt{min-width:0}
+  @page{size:A4;margin:10mm}
+  .brief{gap:0}
+  .b-spider{max-width:110mm}
+  .b-page{box-shadow:none;max-width:none;min-height:0;padding:2mm 4mm;gap:12px;font-size:12.5px;line-height:1.42;break-after:page}
+  .b-title{font-size:23px}
+  .b-kpis b{font-size:21px}
+  .b-table{font-size:12px}
+  .b-table td{padding:5px 6px}
+  .b-list{gap:3px}
+  .b-ask{padding:10px 14px}
+  .b-sec{gap:5px}
+  .b-foot{margin-top:6px}
+  .b-page:last-child{break-after:auto}
+  .b-ask{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .b-track i,.b-kpis{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
+.mapapp .wrap{max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.mapapp header{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between}
+.mapapp .eyebrow{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.mapapp h1{font-family:var(--display);font-size:clamp(26px,3.4vw,38px);line-height:1.1;margin:4px 0 6px;text-wrap:balance}
+.mapapp .lede{margin:0;color:var(--muted);max-width:68ch}
+.mapapp .tabs{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
+.mapapp .tabs button{font:600 14px var(--display);border:0;background:transparent;color:var(--muted);padding:8px 16px;border-radius:999px;cursor:pointer}
+.mapapp .tabs button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.mapapp button:focus-visible,.mapapp .cell:focus-visible,.mapapp [tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mapapp .legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--muted)}
+.mapapp .legend span{display:inline-flex;align-items:center;gap:6px}
+.mapapp .sw{width:14px;height:14px;border-radius:4px;display:inline-block}
+.mapapp .dot{width:9px;height:9px;border-radius:50%;background:var(--warn);display:inline-block}
+.mapapp .grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:start}
+@media (max-width:1050px){.mapapp .grid{grid-template-columns:minmax(0,1fr)}}
+.mapapp .board{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:10px;min-width:0}
+.mapapp .scroll{overflow-x:auto}
+.mapapp svg#map{display:block;width:100%;min-width:780px;height:auto}
+.mapapp svg text{font-family:var(--display)}
+.mapapp .band-label{font-size:15px;font-weight:600;fill:var(--fg)}
+.mapapp .band-label tspan.light{font-weight:500;fill:var(--muted)}
+.mapapp .band{fill:none;stroke:var(--line);stroke-width:1.5}
+.mapapp .chip{cursor:pointer}
+.mapapp .chip rect{stroke-width:1.5;transition:opacity .2s}
+.mapapp .chip.P rect{fill:var(--surface);stroke:var(--prod)}
+.mapapp .chip.P text{fill:var(--prod)}
+.mapapp .chip.C rect{fill:var(--accent);stroke:var(--accent)}
+.mapapp .chip:not(.dim) rect{stroke-width:2.5}
+.mapapp .chip.C text{fill:var(--accent-ink)}
+.mapapp .chip text{font-size:13px;font-weight:600;pointer-events:none}
+.mapapp .chip .wd{fill:var(--warn);stroke:var(--surface);stroke-width:2}
+.mapapp .pill{cursor:pointer}
+.mapapp .pill rect{fill:var(--surface);stroke-width:2.5}
+.mapapp .pill .k{font-size:11px;font-weight:600;letter-spacing:.12em;fill:var(--muted)}
+.mapapp .pill .n{font-size:14px;font-weight:700;fill:var(--fg)}
+.mapapp .link{fill:none;stroke-width:2.2;opacity:.55;cursor:pointer;transition:opacity .2s,stroke-width .2s}
+.mapapp .link-hit{fill:none;stroke:transparent;stroke-width:12;cursor:pointer}
+.mapapp svg.focus .link{opacity:.07}
+.mapapp svg.focus .link.on{opacity:1;stroke-width:3.6}
+.mapapp svg.focus .chip.dim,.mapapp svg.focus .pill.dim{opacity:.28}
+.mapapp .chip,.mapapp .pill{transition:opacity .2s}
+.mapapp .panel{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:20px 22px;display:flex;flex-direction:column;gap:14px;min-width:0;position:sticky;top:max(12px,env(safe-area-inset-top,0px))}
+@media (max-width:1050px){.mapapp .panel{position:static}}
+.mapapp .panel h2{font-family:var(--display);font-size:21px;line-height:1.2;margin:0;text-wrap:balance}
+.mapapp .panel .kind{font-family:var(--display);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mapapp .panel p{margin:0}
+.mapapp .muted{color:var(--muted)}
+.mapapp .tag{display:inline-flex;align-items:center;gap:6px;font:600 12px var(--display);padding:3px 10px;border-radius:999px}
+.mapapp .tag.P{border:1.5px solid var(--prod);color:var(--prod)}
+.mapapp .tag.C{background:var(--accent);color:var(--accent-ink)}
+.mapapp .tag.warn{background:var(--warn-bg);color:var(--warn)}
+.mapapp .tag.ok{background:var(--ok-bg);color:var(--ok)}
+.mapapp .contribs{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none}
+.mapapp .contribs li{border-left:4px solid var(--c);padding:2px 0 2px 12px}
+.mapapp .contribs b{font-family:var(--display);font-size:13.5px;display:block;color:var(--c)}
+.mapapp .contribs button{all:unset;cursor:pointer;font-family:var(--display);font-size:13.5px;font-weight:600;color:var(--c)}
+.mapapp .contribs button:hover{text-decoration:underline}
+.mapapp .check{background:var(--soft);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.mapapp .check h3{font-family:var(--display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin:0;color:var(--muted)}
+.mapapp .check dl{margin:0;display:grid;gap:8px}
+.mapapp .check dt{font-family:var(--display);font-weight:600;font-size:13.5px}
+.mapapp .check dd{margin:0}
+.mapapp .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mapapp .stats div{background:var(--soft);border-radius:12px;padding:10px 12px}
+.mapapp .stats b{display:block;font-family:var(--display);font-size:24px;font-variant-numeric:tabular-nums}
+.mapapp .stats span{font-size:13px;color:var(--muted)}
+.mapapp .note{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.mapapp table{border-collapse:separate;border-spacing:0;width:100%;min-width:640px;font-size:14.5px}
+.mapapp th,.mapapp td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+.mapapp thead th{font-family:var(--display);font-size:12.5px;font-weight:600;letter-spacing:.06em;color:var(--muted)}
+.mapapp thead th.p{text-align:center}
+.mapapp td.cell{text-align:center}
+.mapapp .cell{cursor:pointer}
+.mapapp .cell i{display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--c)}
+.mapapp .grp td{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;background:var(--soft)}
+.mapapp tr.row:hover td{background:var(--soft)}
+.mapapp tr.row td:first-child{cursor:pointer;font-weight:600}
+.mapapp tr.sel td{background:var(--soft)}
+.mapapp .grid{grid-template-columns:minmax(0,1fr)}
+.mapapp svg#map{min-width:700px}
+.mapapp .panel{position:static;padding:24px 26px}
+.mapapp .panel h2{font-size:24px}
+.mapapp .contribs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px 22px}
+.mapapp .check dl{grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 22px}
+.mapapp .scroll-hint{display:none;font-size:13.5px;color:var(--muted);margin:6px 4px 0}
+@media (max-width:760px){.mapapp .scroll-hint{display:block}}</style>
+<div class="shell">
+  <header class="top no-print"><a class="brand" href="#/">Future of Work · <span>4 Shifts</span></a><nav aria-label="Steps"><ol class="steps" id="steps"></ol></nav></header>
+  <main id="view"></main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>// Future of Work · 4 Shifts — model data, diagnostic specification v2 (validated 15 Oct 2026)
+window.FOW = {
+  shifts: {
+    S1: { n: 'Talented teams', full: 'From talented individuals to talented teams', ep: 2,
+          line: 'HR systems that operate every team model, missions open to all, and performance that is individual and collective.' },
+    S2: { n: 'Moments that matter', full: 'From HR transactions to moments that matter', ep: 3,
+          line: 'AI takes the admin, on-site time is designed for collective work, and leaders act as coaches.' },
+    S3: { n: 'LeanAI transformation', full: 'From tech magic to LeanAI transformation', ep: 4,
+          line: 'Vision first, focus where value is ready, redesign the whole flow before automating it, and plan the human role.' },
+    S4: { n: 'Workforce digital twin', full: 'From resource management to workforce digital twin', ep: 5,
+          line: 'Trusted governance, a workforce knowledge graph, proactive services, and a plan steered during the year.' }
+  },
+  levels: ['Emerging', 'Developing', 'Advanced', 'Excellence · 2030-ready'],
+  levelNote: 'Excellence · 2030-ready: the practice is embedded, continuously improved and shared across the organization.',
+  challenges: {
+    fluid:      { g: 'P', n: 'Fluid teams', d: 'Work moves faster than the org chart.', ex: 'Teams now form in days, not reorganizations' },
+    agility:    { g: 'P', n: 'Organizational agility', d: 'Programs ramp up faster than structures adapt.', ex: 'New program fully staffed in three weeks' },
+    skills:     { g: 'P', n: 'Fast-changing skill fit', d: 'Skills age faster than any annual plan.', ex: 'Half of our new skills are now learned on missions' },
+    knowledge:  { g: 'P', n: 'Knowledge', d: 'Experts retire. Their know-how must pass to the next generation.', ex: 'Retirement wave passes. Know-how stays.' },
+    workplace:  { g: 'P', n: 'Efficient workplace', d: 'Office days are full, but people do not work together.', ex: 'Office days are now team days' },
+    simplif:    { g: 'P', n: 'Simplification', d: 'Admin takes the time of managers and employees.', ex: 'Admin is history. Work is human again.' },
+    benefits:   { g: 'P', n: 'Tangible benefits', d: 'AI pilots everywhere, value nowhere.', ex: 'AI pays back: value proven before every scale-up' },
+    sovereignty:{ g: 'P', n: 'Sovereignty', d: 'Control over critical data, AI and know-how.', ex: 'Our critical know-how stays under our control' },
+    collective: { g: 'C', n: 'Individualism vs collective work', d: 'Individual goals weaken teamwork.', ex: 'Team results now count as much as individual ones' },
+    recog:      { g: 'C', n: 'Recognition levers', d: 'People feel recognized once a year, if at all.', ex: 'Recognition every week, not once a year' },
+    network:    { g: 'C', n: 'Real/virtual social network', d: 'Hybrid work weakens the sense of belonging.', ex: 'Hybrid, and closer than ever' },
+    purpose:    { g: 'C', n: 'Purpose at work', d: 'People ask why, not only what.', ex: 'People know why their work matters' },
+    leadership: { g: 'C', n: 'New leadership', d: 'Legacy leadership drains engagement.', ex: 'Our managers became coaches' },
+    growth:     { g: 'C', n: 'Growth mindset', d: 'Fear of AI freezes people instead of growing them.', ex: 'From fear of AI to appetite for learning' },
+    augmented:  { g: 'C', n: 'Augmented employees', d: 'Will AI replace me, or make my work better?', ex: 'AI agents prepare. Humans decide.' },
+    global:     { g: 'C', n: 'Global thinking', d: 'Constant change needs people who see the whole system.', ex: 'Leaders now see the whole system before they decide' }
+  },
+  // Which challenges each shift addresses (from the "4 shifts at a glance" slides)
+  addresses: {
+    S1: ['fluid', 'agility', 'skills', 'knowledge', 'workplace', 'collective', 'recog', 'network', 'purpose', 'leadership'],
+    S2: ['knowledge', 'workplace', 'simplif', 'benefits', 'collective', 'recog', 'network', 'purpose', 'leadership', 'growth'],
+    S3: ['knowledge', 'workplace', 'simplif', 'benefits', 'sovereignty', 'agility', 'skills', 'recog', 'purpose', 'network', 'augmented', 'leadership', 'growth'],
+    S4: ['fluid', 'knowledge', 'benefits', 'sovereignty', 'agility', 'skills', 'augmented', 'leadership', 'growth', 'global']
+  },
+  questions: [
+    { id: 'q11', s: 'S1', t: 'Every team model in HR', topic: 'Team models in HR processes', q: 'Which team models do your HR processes see and support?', ch: ['fluid', 'agility'],
+      o: ['Only the hierarchy.', 'Matrix and project roles are recorded in the HR system, but no process uses them.', 'Projects and agile teams are visible, and some processes cover them (staffing, objectives).', 'Staffing, objectives, reviews and budgets work for hierarchy, matrix, network and agile teams.'] },
+    { id: 'q12', s: 'S1', t: 'Open mission mobility', topic: 'Mobility and missions', q: 'How do people grow and move across the organization?', ch: ['skills', 'knowledge', 'purpose', 'network', 'agility'],
+      o: ['Through job postings only.', 'Some projects are open internally, informally.', 'A mission marketplace exists in part of the company.', 'Missions are open to all, mix generations and sites, and are a recognized way to build skills on the job.'] },
+    { id: 'q13', s: 'S1', t: 'Individual & team performance', topic: 'Team performance and recognition', q: 'How is team performance managed and recognized?', ch: ['collective', 'recog', 'leadership', 'workplace'],
+      o: ['Individual objectives only, reviewed once a year.', 'Some team objectives, with little weight.', 'Individual and team performance both count in reviews and rewards.', 'Individual and collective performance are combined, the how counts as much as the what, and teams run hot and cold debriefs after every important moment.'] },
+    { id: 'q21', s: 'S2', t: 'Human time over admin', topic: 'Time in people processes', q: 'Where does the time go in your key people processes (reviews, onboarding, development)?', ch: ['simplif', 'benefits', 'recog'],
+      o: ['Mostly forms and admin.', 'Half admin, half conversation.', 'Part of the admin is automated, and some of the time saved goes to conversations.', 'AI handles the admin, and the time goes to conversations about contribution and growth.'] },
+    { id: 'q22', s: 'S2', t: 'Purposeful on-site time', topic: 'On-site time', q: 'What is on-site time designed for?', ch: ['workplace', 'knowledge', 'network', 'collective', 'purpose'],
+      o: ['A number of days of presence.', 'Team days are set, but people mostly work individually.', 'Some on-site days are planned for collective work.', 'On-site time is designed around what needs people together: knowledge transfer between generations, problem solving and team moments.'] },
+    { id: 'q23', s: 'S2', t: 'Leaders as coaches', topic: 'The role of leaders', q: 'What is the role of leaders?', ch: ['leadership', 'growth'],
+      o: ['Leaders mainly manage tasks and results.', 'Coaching is encouraged, but not supported.', 'Leaders are trained as coaches, and coaching is part of how they are assessed.', 'Leaders act as team coaches: they use the engagement levers of new generations, and dare to unlearn and reinvent.'] },
+    { id: 'q31', s: 'S3', t: 'Shared 2030 vision', topic: 'How AI transformations start', q: 'Vision: how do your AI transformations start?', ch: ['growth', 'leadership', 'purpose'],
+      o: ['From a tool or a vendor offer.', 'From use cases collected bottom-up, without a shared vision.', "Top-down: leaders target specific processes to fix today's problems.", 'From 2030 headlines written and shared with leaders and employees, then working backwards to the processes impacted.'] },
+    { id: 'q32', s: 'S3', t: 'Value-based focus', topic: 'Choosing where to start', q: 'Focus: how do you choose where to start?', ch: ['benefits'],
+      o: ['Each team starts its own pilots.', 'Use cases are ranked by expected gains.', 'Use cases are ranked on data maturity and change complexity, not only on gains.', 'Opportunities are positioned on data/AI maturity, change complexity and opportunity size, and value is proven before scaling.'] },
+    { id: 'q33', s: 'S3', t: 'Flow redesign before AI', topic: 'Process redesign before AI', q: 'Reinvent: before automating with AI, do you redesign the process?', ch: ['simplif', 'knowledge', 'purpose', 'workplace', 'network'],
+      o: ['Existing processes are automated as they are.', 'Some simplification comes first.', 'Value stream mapping on key processes.', 'Every AI project redesigns the whole flow first, with people at the core: freed time goes to human time, and expert knowledge is captured in the flow.'] },
+    { id: 'q34', s: 'S3', t: 'Skills & roles for AI', topic: 'Roles and skills with AI', q: 'How do roles and skills evolve with AI?', ch: ['augmented', 'skills', 'agility'],
+      o: ['Roles adapt on their own as AI is deployed.', 'Training on AI tools.', 'Roles are redesigned on some processes, with an upskilling plan.', 'Work is described by skills, not by job boxes; each redesign defines the human contribution, and people are upskilled before deployment.'] },
+    { id: 'q41', s: 'S4', t: 'Trusted data governance', topic: 'Workforce data governance', q: 'Trust: how is workforce data governed, and do employees trust it?', ch: ['growth', 'sovereignty'],
+      o: ['No specific governance beyond access rights to the HR system.', 'Rules exist, but employees do not know what is collected or why.', 'Governance defines which data stays individual and which is aggregated, and the rules are shared with employee representatives.', 'Trusted and transparent governance: data beyond HR is always aggregated, critical data stays under company control, and employees can check, in self-service or by asking an AI agent, which of their data is used and for what purpose.'] },
+    { id: 'q42', s: 'S4', t: 'Workforce knowledge graph', topic: 'Connected workforce data', q: 'Knowledge graph: how connected is your workforce data?', ch: ['knowledge', 'skills', 'fluid', 'augmented'],
+      o: ['Data sits in separate systems (HR, learning, projects), with no link between them.', 'Some systems are linked by employee ID, and reports combine them by hand.', 'A skills graph links people, skills, roles and projects in part of the company.', 'A workforce knowledge graph connects people, skills, projects, knowledge bases and collaboration patterns, infers skills and expertise without asking employees for more data, and stays up to date automatically.'] },
+    { id: 'q43', s: 'S4', t: 'Proactive workforce services', topic: 'Use of workforce intelligence', q: 'Use: how does workforce intelligence support decisions?', ch: ['benefits', 'leadership', 'fluid', 'augmented', 'skills'],
+      o: ['Reports and dashboards, mainly used by HR.', 'Self-service: HR and business teams analyze HR data, combined with their own data, to support their decisions.', 'Data is built into some key decisions, such as staffing, succession or workforce planning, with defined rules.', 'Proactive services: signals are detected early and turned into proposals for managers and the business (risk identification, dynamic staffing, emerging skills). People decide.'] },
+    { id: 'q44', s: 'S4', t: 'Continuous workforce steering', topic: 'Workforce planning', q: 'Steering: how is the workforce plan built and steered?', ch: ['agility', 'global', 'skills'],
+      o: ['An annual or multi-year plan, reviewed once a year.', 'A quarterly forecast, mainly on headcount, with action plans to close the gap between actuals and target.', 'A quarterly forecast that goes beyond headcount: skills, job families, diversity.', 'Steered continuously: signals raise alerts, their impact is simulated, and corrective actions (upskill, hire, redeploy, AI agents) are tested before deciding.'] }
+  ],
+  // Initiatives: 'a' is the next step (shown when level <= 2), 'b' the target step (shown when level <= 3). req may cross shifts.
+  initiatives: [
+    { id: 'I1.1a', q: 'q11', step: 'a', s: 'S1', year: 2027, n: 'Map the real team models', d: 'Make matrix, project and agile teams visible in HR systems.' },
+    { id: 'I1.1b', q: 'q11', step: 'b', s: 'S1', year: 2028, req: ['I1.1a'], n: 'HR processes for every team model', d: 'Staffing, objectives, reviews and budgets work for every team model.' },
+    { id: 'I1.2a', q: 'q12', step: 'a', s: 'S1', year: 2027, req: ['I1.1a'], n: 'Pilot a mission marketplace', d: 'Open missions in one area, mixing generations and sites.' },
+    { id: 'I1.2b', q: 'q12', step: 'b', s: 'S1', year: 2029, req: ['I1.2a', 'I4.2b'], n: 'Missions open to all, linked to skills', d: 'Missions become a recognized way to build skills, across the company.' },
+    { id: 'I1.3a', q: 'q13', step: 'a', s: 'S1', year: 2027, req: ['I1.1a'], n: 'Add team objectives and team recognition', d: 'Team results count next to individual performance.' },
+    { id: 'I1.3b', q: 'q13', step: 'b', s: 'S1', year: 2028, req: ['I1.3a', 'I2.3a'], n: 'Individual and collective performance, with debriefs', d: 'The how counts as much as the what, and teams run hot and cold debriefs.' },
+    { id: 'I2.1a', q: 'q21', step: 'a', s: 'S2', year: 2028, req: ['I3.3a'], n: 'AI takes the admin of people processes', d: 'On flows redesigned first, never on the old forms.' },
+    { id: 'I2.1b', q: 'q21', step: 'b', s: 'S2', year: 2028, req: ['I2.1a', 'I2.3a'], n: 'Reviews become growth conversations', d: 'The time saved goes to conversations about contribution and growth.' },
+    { id: 'I2.2a', q: 'q22', step: 'a', s: 'S2', year: 2027, n: 'Each team defines what on-site time is for', d: 'Purpose instead of a number of days of presence.' },
+    { id: 'I2.2b', q: 'q22', step: 'b', s: 'S2', year: 2028, req: ['I2.2a'], n: 'Design on-site moments', d: 'Knowledge transfer between generations, problem solving and team moments.' },
+    { id: 'I2.3a', q: 'q23', step: 'a', s: 'S2', year: 2027, n: 'Train leaders as team coaches', d: 'Coaching skills and the engagement levers of new generations.' },
+    { id: 'I2.3b', q: 'q23', step: 'b', s: 'S2', year: 2028, req: ['I2.3a'], n: 'Coaching in leader selection and assessment', d: 'Leaders are chosen and assessed on how they coach their teams.' },
+    { id: 'I3.1a', q: 'q31', step: 'a', s: 'S3', year: 2027, n: 'Write and share the 2030 headlines', d: 'With leaders and employees: start with the vision, not the technology.' },
+    { id: 'I3.1b', q: 'q31', step: 'b', s: 'S3', year: 2027, req: ['I3.1a'], n: 'Work backwards to the processes impacted', d: 'Map which processes the 2030 vision changes.' },
+    { id: 'I3.2a', q: 'q32', step: 'a', s: 'S3', year: 2027, req: ['I3.1b'], n: 'Position opportunities on the LeanAI matrix', d: 'Data/AI maturity, change complexity and opportunity size.' },
+    { id: 'I3.2b', q: 'q32', step: 'b', s: 'S3', year: 2028, req: ['I3.2a'], n: 'Prove value before scaling', d: 'Measured pilots, then scale decisions.' },
+    { id: 'I3.3a', q: 'q33', step: 'a', s: 'S3', year: 2027, req: ['I3.2a'], n: 'Value stream mapping on key flows', d: 'Redesign two or three flows end to end, with people at the core.' },
+    { id: 'I3.3b', q: 'q33', step: 'b', s: 'S3', year: 2029, req: ['I3.3a', 'I3.4a', 'I2.2b'], n: 'Wave 2: reinvent the flows with AI agents', d: 'Freed time goes to human time, and expert knowledge is captured in the flow.' },
+    { id: 'I3.4a', q: 'q34', step: 'a', s: 'S3', year: 2028, req: ['I3.3a'], n: 'Define the human contribution in each redesigned flow', d: 'With an upskilling plan before deployment.' },
+    { id: 'I3.4b', q: 'q34', step: 'b', s: 'S3', year: 2029, req: ['I3.4a', 'I4.2a'], n: 'Skills-based organization', d: 'Work is described by skills, not by job boxes.' },
+    { id: 'I4.1a', q: 'q41', step: 'a', s: 'S4', year: 2027, n: 'Set and share data governance rules', d: 'What stays individual, what is aggregated, shared with employee representatives.' },
+    { id: 'I4.1b', q: 'q41', step: 'b', s: 'S4', year: 2028, req: ['I4.1a'], n: 'Employee transparency on data use', d: 'Self-service or an AI agent shows each employee which data is used and why.' },
+    { id: 'I4.2a', q: 'q42', step: 'a', s: 'S4', year: 2028, req: ['I4.1a'], n: 'Link HR, learning and project data into a skills graph', d: 'One connected view of people, skills, roles and projects.' },
+    { id: 'I4.2b', q: 'q42', step: 'b', s: 'S4', year: 2029, req: ['I4.2a', 'I4.1b'], n: 'Workforce knowledge graph', d: 'Add knowledge bases and collaboration patterns, and infer skills without asking for more data.' },
+    { id: 'I4.3a', q: 'q43', step: 'a', s: 'S4', year: 2028, req: ['I4.2a'], n: 'Self-service workforce analytics', d: 'HR and business teams combine HR data with their own data.' },
+    { id: 'I4.3b', q: 'q43', step: 'b', s: 'S4', year: 2029, req: ['I4.3a', 'I4.2b', 'I2.3b'], n: 'Proactive services for managers', d: 'Risk identification, dynamic staffing, emerging skills. People decide.' },
+    { id: 'I4.4a', q: 'q44', step: 'a', s: 'S4', year: 2028, req: ['I4.2a'], n: 'Quarterly forecast beyond headcount', d: 'Skills, job families and diversity, not only headcount.' },
+    { id: 'I4.4b', q: 'q44', step: 'b', s: 'S4', year: 2030, req: ['I4.4a', 'I4.2b'], n: 'Workforce digital twin', d: 'Signals raise alerts, impact is simulated, corrective actions are tested before deciding.' }
+  ],
+  // Coherence rules: answers that push the same challenge in opposite directions (kind 'limit' = a limit, not a contradiction)
+  rules: [
+    { when: a => a.q21 >= 3 && a.q33 <= 2, t: 'Admin automated before the flow is redesigned', d: 'People-process admin is automated on flows that were not redesigned. This is tech magic: faster tasks, no new value.', fix: 'Redesign the flow with value stream mapping before automating the admin.', ch: ['simplif', 'benefits'] },
+    { when: a => a.q31 === 4 && a.q33 <= 2, t: 'Vision without redesign', d: 'The 2030 vision is shared, but processes are automated as they are. The vision will not reach the work.', fix: 'Start value stream mapping on the processes the vision impacts.', ch: ['simplif', 'purpose'] },
+    { when: a => a.q31 === 3 && a.q33 >= 3, kind: 'limit', t: 'Redesign that fixes the present', d: "Processes are redesigned well, but to fix today's problems. Without a 2030 vision, redesign optimizes the existing instead of building the future.", fix: 'Write the 2030 headlines first, then choose which flows to redesign.', ch: ['purpose', 'growth'] },
+    { when: a => a.q33 >= 3 && a.q34 <= 2, t: 'Redesign without a plan for roles', d: 'Flows are redesigned with AI, but nobody defines the human contribution. Fear of replacement grows.', fix: 'Define the human contribution and an upskilling plan in every redesign.', ch: ['augmented', 'growth'] },
+    { when: a => a.q33 >= 3 && a.q22 <= 2, t: 'Time freed, no collective moments to use it', d: 'Redesign frees time, but on-site time is not designed for collective work. The time saved is lost.', fix: 'Decide, team by team, what on-site time is for.', ch: ['network', 'workplace'] },
+    { when: a => a.q12 >= 3 && a.q13 === 1, t: 'Missions build the collective, assessment stays individual', d: 'Missions push people to work as teams, but only individual performance is assessed. The two effects cancel out.', fix: 'Add team objectives and team recognition next to individual performance.', ch: ['collective', 'recog'] },
+    { when: a => a.q11 >= 3 && a.q23 <= 2, t: 'Fluid teams without coach leaders', d: 'Teams form and change fast, but leaders still manage tasks. Fluid teams need leaders who bond them.', fix: 'Train leaders as team coaches before scaling fluid teams.', ch: ['fluid', 'leadership'] },
+    { when: a => a.q41 === 2, t: 'Data rules employees do not know', d: 'Rules exist, but employees do not know what is collected or why. Without trust, data gets weaker, or even deliberately tweaked.', fix: 'Share the rules with employee representatives, and make data use visible to employees.', ch: ['growth', 'sovereignty'] },
+    { when: a => a.q42 >= 3 && a.q41 <= 2, t: 'A rich graph without trusted governance', d: 'Workforce data is connected faster than trust is built. Culture weakens and data quality drops.', fix: 'Set trusted, transparent governance before connecting more data.', ch: ['growth', 'knowledge'] },
+    { when: a => a.q43 >= 3 && a.q42 <= 1, t: 'Decisions on the tip of the iceberg', d: 'Decisions are data-driven, but on HR system data only: a small part of what people really know and do.', fix: 'Link HR, learning and project data before building more decisions on it.', ch: ['knowledge', 'benefits'] },
+    { when: a => a.q44 >= 3 && a.q42 <= 1, t: 'Planning skills without skills data', d: 'The plan goes beyond headcount, but no data links people to their skills. The plan rests on assumptions.', fix: 'Build the skills graph that the plan needs.', ch: ['skills', 'agility'] },
+    { when: a => (a.q43 >= 3 || a.q44 >= 3) && a.q23 <= 2, t: 'Signals in the hands of control-oriented leaders', d: 'Workforce signals used by leaders who control can be seen as surveillance. Fear grows instead of trust.', fix: 'Train leaders to use signals for coaching, at team level.', ch: ['growth', 'leadership'] },
+    { when: a => a.q43 >= 3 && a.q11 <= 1, t: 'Data-driven staffing in a hierarchy-only system', d: 'Staffing is driven by data, but HR systems only see the hierarchy. Teams that do the work stay invisible.', fix: 'Make the real team models visible in HR systems.', ch: ['fluid', 'agility'] }
+  ]
+};
+</script>
+<script>window.MAP_HTML="\n\n<div class=\"wrap\">\n  <header>\n    <div>\n      <div class=\"eyebrow\">Future of Work \u00b7 4 shifts</div>\n      <h1>Four pillars, sixteen challenges</h1>\n      <p class=\"lede\">Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge.</p>\n    </div>\n  </header>\n  <div class=\"legend\" id=\"legend\"></div>\n  <div class=\"grid\">\n    <div class=\"board\">\n      <div class=\"scroll\" id=\"mapview\"><svg id=\"map\" viewBox=\"0 0 1120 645\" role=\"img\" aria-label=\"Map of the four pillars and the challenges they address\"></svg></div>\n      <div class=\"scroll\" id=\"matrixview\" hidden></div>\n    </div>\n    <aside class=\"panel\" id=\"panel\" aria-live=\"polite\"></aside>\n  </div>\n</div>\n\n";
+function initMap(){
+window.__mapReady=false;
+
+const P = {
+  S1:{n:'Talented teams', full:'From talented individuals to talented teams', ep:2},
+  S2:{n:'Moments that matter', full:'From HR transactions to moments that matter', ep:3},
+  S3:{n:'LeanAI transformation', full:'From tech magic to LeanAI transformation', ep:4},
+  S4:{n:'Workforce digital twin', full:'From resource management to workforce digital twin', ep:5}
+};
+const C = {
+  fluid:{g:'P', n:'Fluid teams', l:['Fluid','teams'], d:'Work moves faster than the org chart.'},
+  agility:{g:'P', n:'Organizational agility', l:['Organizational','agility'], d:'Programs ramp up faster than structures adapt.'},
+  skills:{g:'P', n:'Fast-changing skill fit', l:['Fast-changing','skill fit'], d:'Skills age faster than any annual plan.'},
+  knowledge:{g:'P', n:'Knowledge', l:['Knowledge'], d:'Experts retire. Their know-how must pass from one generation to the next.'},
+  workplace:{g:'P', n:'Efficient workplace', l:['Efficient','workplace'], d:'Office days are full, but people do not work together.'},
+  simplif:{g:'P', n:'Simplification', l:['Simplification'], d:'Admin takes the time of managers and employees.'},
+  benefits:{g:'P', n:'Tangible benefits', l:['Tangible','benefits'], d:'AI pilots everywhere, value nowhere.'},
+  sovereignty:{g:'P', n:'Sovereignty', l:['Sovereignty'], d:'Control over critical data, AI and know-how.'},
+  collective:{g:'C', n:'Individualism vs collective work', l:['Individualism vs','collective work'], d:'Individual goals weaken teamwork.'},
+  recog:{g:'C', n:'Recognition levers', l:['Recognition','levers'], d:'People feel recognized once a year, if at all.'},
+  network:{g:'C', n:'Real/virtual social network', l:['Real/virtual','social network'], d:'Hybrid work weakens the sense of belonging.'},
+  purpose:{g:'C', n:'Purpose at work', l:['Purpose','at work'], d:'People ask why, not only what.'},
+  leadership:{g:'C', n:'New leadership', l:['New','leadership'], d:'Legacy leadership drains engagement.'},
+  growth:{g:'C', n:'Growth mindset', l:['Growth','mindset'], d:'Fear of AI freezes people instead of growing them.'},
+  augmented:{g:'C', n:'Augmented employees', l:['Augmented','employees'], d:'Will AI replace me, or make my work better?'},
+  global:{g:'C', n:'Global thinking', l:['Global','thinking'], d:'Constant change needs people who see the whole system.'}
+};
+// Contribution of each pillar to each challenge it addresses (mechanism, then outcome)
+const L = {
+  S1:{
+    fluid:'HR systems operate every team model: hierarchy, matrix, network and agile teams. People join and leave teams without the org chart blocking them.',
+    agility:'A mission marketplace staffs projects from the whole company. Capacity follows priorities in weeks, without a reorganization.',
+    skills:'Lifelong learning through missions: people build new skills by doing new work, at the pace of the business.',
+    knowledge:'Missions mix generations in the same team, so experts transfer know-how on the job.',
+    workplace:'Team rituals such as planning and debriefs give on-site days a collective reason.',
+    collective:'High-performing teamwork, with rituals of elite sport teams (hot and cold debriefs), counters the individualism trend.',
+    recog:'Recognize the how, not only the what: team results and collaboration count in reviews and rewards, next to individual performance.',
+    network:'Missions across sites and functions create real ties that hold in hybrid work.',
+    purpose:'A mission with a clear team goal shows each person why their work matters.',
+    leadership:'Leaders build and bond teams, not only manage individuals one by one.'
+  },
+  S2:{
+    knowledge:'On-site days are redesigned for knowledge transfer between generations and quick problem solving.',
+    workplace:'Redesign what on-site is for: collective work, not presence.',
+    simplif:'AI takes the notes and prepares people reviews. Managers spend that time on the conversation.',
+    benefits:'Admin time saved is measurable, and it is reinvested in the moments that create value.',
+    collective:'Debriefs turn individual experience into team improvement.',
+    recog:'People reviews become real conversations about contribution, not box-ticking forms.',
+    network:'Real-life team moments restore the sense of belonging in hybrid work.',
+    purpose:'People come to the office for a reason. Presence becomes purpose.',
+    leadership:'Leaders act as coaches: they match the engagement levers of new generations and bond their teams like elite sport coaches.',
+    growth:'Debriefs turn mistakes into learning, so people grow instead of fearing failure.'
+  },
+  S3:{
+    knowledge:'Knowledge capture: AI agents capture expert know-how inside the redesigned flow.',
+    workplace:'The redesigned flow shows which steps need people together, so on-site time is planned for them.',
+    simplif:'Reinvent before automating: value stream mapping removes steps and hand-offs, then AI accelerates what remains.',
+    benefits:'Tangible ROI: Focus starts where data is mature and change is simple, and value is proven before scaling.',
+    sovereignty:'Sovereign AI where needed: processes with critical data or know-how stay on AI the company controls.',
+    agility:'A skills-based organization: redesigned flows describe work by skills, not by job boxes, so people can move where needed.',
+    skills:'The 2030 headlines show which skills the redesigned work needs. The gap becomes a learning plan.',
+    recog:'The future process defines where human value lies, and recognizes it at individual and team level.',
+    purpose:'AI augments human work. Admin time becomes human time, which gives work more purpose.',
+    network:'Fewer hand-offs can mean fewer contacts. The redesign sends the time it frees to collective moments.',
+    augmented:'People are at the core of every redesign. AI augments the human part of the work, it does not remove it.',
+    leadership:'Leaders guide the change as coaches, starting with the vision, not the technology.',
+    growth:'Vision first: shared 2030 headlines turn fear of AI into a future people want to build.'
+  },
+  S4:{
+    fluid:'Dynamic project staffing: the twin sees skills and availability, so teams form fast around new work.',
+    knowledge:'Data beyond HR (knowledge bases, collaboration patterns) shows where know-how sits and where it is at risk.',
+    benefits:'Strategic HR services with measurable business value: succession planning, project staffing, health and safety prevention.',
+    sovereignty:'Workforce data stays governed and transparent, under company control.',
+    agility:'Fly the plan: signals raise alerts, and corrective actions are simulated during the year, not once a year.',
+    skills:'Emerging and declining skills are detected early. Upskilling, hiring, redeployment and AI agents are simulated before deciding.',
+    augmented:'Manager co-pilot and business expert AI agents support decisions. People decide.',
+    leadership:'Managers receive team-level signals to coach their teams, not to control individuals.',
+    growth:'Several scenarios instead of one forecast: uncertainty becomes something to explore, not to fear.',
+    global:'The twin connects business, skills and people data. Leaders see the whole system and the impact of each decision.'
+  }
+};
+// Coherence check per challenge: combined effect, risk of opposite effects, guardrail
+const K = {
+  fluid:{s:'ok', sum:'Talented teams opens every team model and missions. The digital twin staffs them with data.', risk:'Staffing optimized by data alone could reshuffle people constantly and break the stable teams that Talented teams relies on.', guard:'The twin staffs teams, not only individuals. Team stability is a constraint in every simulation.'},
+  agility:{s:'ok', sum:'Three pillars act together: HR systems for every team model, a skills-based organization, and a plan corrected during the year.', risk:'A plan corrected every month has no effect if the redesigned flows still assume fixed job boxes.', guard:'One shared skills language for missions, process redesign and the twin.'},
+  skills:{s:'ok', sum:'The twin detects the gap, LeanAI defines the skills the future work needs, missions build them on the job.', risk:'If simulations favor hiring or AI agents, they contradict the promise of growth through missions.', guard:'Every simulation includes the internal option (missions, upskilling) and compares it with the others.'},
+  knowledge:{s:'warn', sum:'All four pillars act: transfer on the job, on-site days for transfer, AI knowledge capture, and a map of knowledge at risk. The strongest cumulative effect of the system.', risk:'If AI knowledge agents are used to replace transfer between people, the on-site transfer moments lose their reason.', guard:'Agents capture, people transfer. The agent supports the mentor, it does not replace the mentoring moment.'},
+  workplace:{s:'ok', sum:'Team rituals, on-site days redesigned for collective work, and flows that show which steps need people together.', risk:'A redesign optimized for individual remote productivity would empty the on-site days.', guard:'Redesigned flows explicitly mark the steps that need people together.'},
+  simplif:{s:'warn', sum:'Moments that matter removes admin from reviews. LeanAI redesigns the whole flow.', risk:'Automating today’s review form without the redesign only accelerates a task without meaning.', guard:'Reinvent before you automate. No AI on a process that has not been redesigned.'},
+  benefits:{s:'warn', sum:'Time saved, ROI proven before scaling, and strategic HR services.', risk:'If benefits are measured only as hours saved, the pressure is to cut human time, the opposite of what Moments that matter wants.', guard:'Count human time reinvested as a benefit, not only cost saved.'},
+  sovereignty:{s:'ok', sum:'LeanAI keeps critical processes on controlled AI. The twin keeps workforce data governed.', risk:'Data beyond HR can push toward more external platforms, against the sovereign AI choice.', guard:'One classification of critical data, shared by LeanAI and the twin.'},
+  collective:{s:'ok', sum:'Teamwork rituals and debriefs push in the same direction.', risk:'People reviews that look only at individual goals would keep individualism first.', guard:'Reviews assess both individual performance and the contribution to the team.'},
+  recog:{s:'warn', sum:'Team recognition, reviews that become conversations, and human value defined in the redesigned flow.', risk:'If LeanAI recognizes human value only person by person, it works against the team recognition of Talented teams.', guard:'In every pillar, recognition combines individual and collective performance. No pillar recognizes only the individual.'},
+  network:{s:'warn', sum:'Missions across sites and real-life team moments build belonging.', risk:'LeanAI removes hand-offs. When these exchanges were also human contact, it weakens what Moments that matter builds.', guard:'The time freed by the redesign goes to collective moments. Simplify the transaction, elevate the moment.'},
+  purpose:{s:'ok', sum:'Clear team goals, a reason to come on site, and more human time in the work.', risk:'Automation could remove meaningful tasks, not only admin.', guard:'The Vision step names the human tasks that must stay human.'},
+  leadership:{s:'warn', sum:'All four pillars act. Leaders bond teams, coach, guide the change and use team-level signals.', risk:'Twin dashboards can tempt managers to control individuals, the opposite of the coach posture.', guard:'The twin gives team-level signals to coach. Always aggregated, never individual.'},
+  growth:{s:'warn', sum:'Debriefs, a shared vision and scenarios turn fear into learning.', risk:'If employees see the twin’s signals as surveillance, fear grows instead.', guard:'Trusted governance: transparent, aggregated, never individual, explained to employees.'},
+  augmented:{s:'warn', sum:'LeanAI puts people at the core of the redesign. The twin gives AI agents to managers and experts.', risk:'When simulations offer AI agents as an option next to hiring, they can read as replacement, the opposite of augmentation.', guard:'AI agents are framed as capacity added to teams. People keep the decision.'},
+  global:{s:'single', sum:'Only the digital twin addresses this challenge.', risk:'No conflict between pillars, but no cumulative effect either. If the twin is late, nothing else covers it.', guard:'Consider which other pillar could contribute, for example missions across sites and functions.'}
+};
+const ORDER = ['fluid','agility','skills','knowledge','workplace','simplif','benefits','sovereignty','collective','recog','network','purpose','leadership','growth','augmented','global'];
+const SIDS = ['S1','S2','S3','S4'];
+const links = []; SIDS.forEach(s=>Object.keys(L[s]).forEach(c=>links.push({s,c})));
+const byC = c => SIDS.filter(s=>L[s][c]);
+const col = s => `var(--${s.toLowerCase()})`;
+const esc = t => String(t).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+
+document.getElementById('legend').innerHTML =
+  SIDS.map(s=>`<span><i class="sw" style="background:${col(s)}"></i>${P[s].n}</span>`).join('') +
+  `<span><i class="dot"></i>Coherence watch-out</span>`;
+
+// ---------- MAP ----------
+const svg = document.getElementById('map'); const NS='http://www.w3.org/2000/svg';
+const W=1120, CW=130, CH=50, step=(W-40)/8;
+const pos={}; ORDER.forEach((c,i)=>{ const k=i%8; const x=20+step*k+step/2; pos[c]={x, y: C[c].g==='P'?86:548}; });
+const ppos={}; SIDS.forEach((s,i)=>{ ppos[s]={x:140+i*280, y:330}; });
+const el=(t,a,p=svg)=>{const e=document.createElementNS(NS,t); for(const k in a) e.setAttribute(k,a[k]); p.appendChild(e); return e;};
+el('rect',{x:8,y:10,width:W-16,height:118,rx:14,class:'band'});
+el('rect',{x:8,y:512,width:W-16,height:122,rx:14,class:'band'});
+let t=el('text',{x:W/2,y:34,'text-anchor':'middle',class:'band-label'}); t.innerHTML='Productivity <tspan class="light">challenges</tspan>';
+t=el('text',{x:W/2,y:620,'text-anchor':'middle',class:'band-label'}); t.innerHTML='Cultural <tspan class="light">challenges</tspan>';
+const gl=el('g',{});
+links.forEach(lk=>{
+  const a=ppos[lk.s], b=pos[lk.c], up=C[lk.c].g==='P';
+  const idx=byC(lk.c).indexOf(lk.s), n=byC(lk.c).length;
+  const bx=b.x+(idx-(n-1)/2)*12, by=up?b.y+CH/2:b.y-CH/2;
+  const pl=Object.keys(L[lk.s]).filter(c=>C[c].g===C[lk.c].g); const j=pl.indexOf(lk.c);
+  const ax=a.x+(j-(pl.length-1)/2)*14, ay=up?a.y-40:a.y+40;
+  const my=(ay+by)/2, d=`M${ax},${ay} C${ax},${my} ${bx},${my} ${bx},${by}`;
+  lk.p=el('path',{d,class:'link',stroke:col(lk.s)},gl);
+  const h=el('path',{d,class:'link-hit'},gl); h.addEventListener('click',()=>select({type:'link',s:lk.s,c:lk.c}));
+  const tt=el('title',{},h); tt.textContent=`${P[lk.s].n} → ${C[lk.c].n}`;
+});
+ORDER.forEach(c=>{
+  const g=el('g',{class:`chip ${C[c].g}`,tabindex:0,role:'button','aria-label':C[c].n}); const {x,y}=pos[c];
+  el('rect',{x:x-CW/2,y:y-CH/2,width:CW,height:CH,rx:10},g);
+  const ls=C[c].l; ls.forEach((ln,i)=>{ const tx=el('text',{x,y:y+4.5+(i-(ls.length-1)/2)*15,'text-anchor':'middle'},g); tx.textContent=ln; });
+  if(K[c].s==='warn') el('circle',{cx:x+CW/2-4,cy:y-CH/2+4,r:6,class:'wd'},g);
+  g.addEventListener('click',()=>select({type:'ch',c})); g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select({type:'ch',c});}});
+  C[c].g_=g;
+});
+SIDS.forEach((s,i)=>{
+  const g=el('g',{class:'pill',tabindex:0,role:'button','aria-label':P[s].n}); const {x,y}=ppos[s];
+  el('rect',{x:x-110,y:y-40,width:220,height:80,rx:14,stroke:col(s)},g);
+  const k=el('text',{x,y:y-12,'text-anchor':'middle',class:'k'},g); k.textContent=`SHIFT ${i+1} · EPISODE ${P[s].ep}`;
+  const words=P[s].n; const n=el('text',{x,y:y+14,'text-anchor':'middle',class:'n',fill:col(s)},g); n.textContent=words; n.style.fill=col(s);
+  const cnt=el('text',{x,y:y+31,'text-anchor':'middle',class:'k'},g); cnt.textContent=`${Object.keys(L[s]).length} CHALLENGES`;
+  g.addEventListener('click',()=>select({type:'pillar',s})); g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select({type:'pillar',s});}});
+  P[s].g_=g;
+});
+
+// ---------- MATRIX ----------
+function matrix(){
+  const head=`<thead><tr><th>Challenge</th>${SIDS.map((s,i)=>`<th class="p" style="color:${col(s)}">Shift ${i+1}<br>${esc(P[s].n)}</th>`).join('')}<th class="p">Pillars</th><th>Coherence</th></tr></thead>`;
+  const row=c=>{ const st=K[c].s; const tag=st==='warn'?'<span class="tag warn">Watch-out</span>':st==='single'?'<span class="tag warn">Single pillar</span>':'<span class="tag ok">Aligned</span>';
+    return `<tr class="row" data-c="${c}"><td tabindex="0" data-c="${c}">${esc(C[c].n)}</td>${SIDS.map(s=>L[s][c]?`<td class="cell" tabindex="0" data-s="${s}" data-c="${c}" style="--c:${col(s)}" aria-label="${esc(P[s].n)} to ${esc(C[c].n)}"><i></i></td>`:'<td></td>').join('')}<td style="text-align:center;font-variant-numeric:tabular-nums">${byC(c).length}</td><td>${tag}</td></tr>`; };
+  const body=`<tbody><tr class="grp"><td colspan="7">Productivity challenges</td></tr>${ORDER.filter(c=>C[c].g==='P').map(row).join('')}<tr class="grp"><td colspan="7">Cultural challenges</td></tr>${ORDER.filter(c=>C[c].g==='C').map(row).join('')}</tbody>`;
+  const box=document.getElementById('matrixview'); box.innerHTML=`<table>${head}${body}</table>`;
+  box.querySelectorAll('[data-c]').forEach(td=>{ const go=()=>{ if(td.dataset.s) select({type:'link',s:td.dataset.s,c:td.dataset.c}); else select({type:'ch',c:td.dataset.c}); };
+    if(td.tagName==='TD'){ td.addEventListener('click',e=>{e.stopPropagation();go();}); td.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}}); } });
+}
+
+
+// ---------- PANEL ----------
+function checkBlock(c){ const k=K[c]; const tag=k.s==='warn'?'<span class="tag warn">Watch-out</span>':k.s==='single'?'<span class="tag warn">Single pillar</span>':'<span class="tag ok">Aligned</span>';
+  return `<div class="check"><h3>Coherence check ${tag}</h3><dl><div><dt>Combined effect</dt><dd>${esc(k.sum)}</dd></div><div><dt>Risk of opposite effects</dt><dd>${esc(k.risk)}</dd></div><div><dt>Guardrail</dt><dd>${esc(k.guard)}</dd></div></dl></div>`; }
+function chTag(c){ return `<span class="tag ${C[c].g}">${C[c].g==='P'?'Productivity':'Cultural'} challenge</span>`; }
+function render(sel){
+  const pn=document.getElementById('panel'); let h='';
+  if(sel.type==='link'){ const {s,c}=sel; const others=byC(c).filter(x=>x!==s);
+    h=`<div class="kind" style="color:${col(s)}">${esc(P[s].n)} → challenge</div><h2>${esc(C[c].n)}</h2><div>${chTag(c)}</div>
+      <ul class="contribs"><li style="--c:${col(s)}"><b>How ${esc(P[s].n)} contributes</b>${esc(L[s][c])}</li></ul>
+      ${others.length?`<div><div class="kind" style="margin-bottom:8px">Other pillars acting on this challenge</div><ul class="contribs">${others.map(o=>`<li style="--c:${col(o)}"><button data-s="${o}" data-c="${c}">${esc(P[o].n)}</button><br>${esc(L[o][c])}</li>`).join('')}</ul></div>`:''}
+      ${checkBlock(c)}`; }
+  else if(sel.type==='ch'){ const {c}=sel; const ps=byC(c);
+    h=`<div class="kind">Challenge · ${ps.length} of 4 pillars</div><h2>${esc(C[c].n)}</h2><div>${chTag(c)}</div><p class="muted">${esc(C[c].d)}</p>
+      <ul class="contribs">${ps.map(s=>`<li style="--c:${col(s)}"><button data-s="${s}" data-c="${c}">${esc(P[s].n)}</button><br>${esc(L[s][c])}</li>`).join('')}</ul>${checkBlock(c)}`; }
+  else if(sel.type==='pillar'){ const {s}=sel; const cs=ORDER.filter(c=>L[s][c]); const w=cs.filter(c=>K[c].s==='warn').length;
+    h=`<div class="kind" style="color:${col(s)}">Shift ${SIDS.indexOf(s)+1} · Episode ${P[s].ep}</div><h2>${esc(P[s].full)}</h2>
+      <p class="muted">Addresses ${cs.filter(c=>C[c].g==='P').length} productivity and ${cs.filter(c=>C[c].g==='C').length} cultural challenges. ${w} of them have a coherence watch-out.</p>
+      <ul class="contribs">${cs.map(c=>`<li style="--c:${col(s)}"><button data-s="${s}" data-c="${c}">${esc(C[c].n)}${K[c].s==='warn'?' <i class="dot"></i>':''}</button><br>${esc(L[s][c])}</li>`).join('')}</ul>`; }
+  h+=`<p class="note">Draft for review. Contributions and checks are written from the episode content and should be validated pillar by pillar.</p>`;
+  pn.innerHTML=h;
+  pn.querySelectorAll('button[data-s]').forEach(b=>b.addEventListener('click',()=>select({type:'link',s:b.dataset.s,c:b.dataset.c})));
+}
+function select(sel){
+  svg.classList.add('focus');
+  links.forEach(lk=>{ const on= sel.type==='link'?(lk.s===sel.s&&lk.c===sel.c): sel.type==='ch'?lk.c===sel.c : lk.s===sel.s; lk.p.classList.toggle('on',on); });
+  ORDER.forEach(c=>{ const on= sel.type==='pillar'?!!L[sel.s][c] : c===sel.c; C[c].g_.classList.toggle('dim',!on); });
+  SIDS.forEach(s=>{ const on= sel.type==='pillar'?s===sel.s : sel.type==='link'?s===sel.s : !!L[s][sel.c]; P[s].g_.classList.toggle('dim',!on); });
+  document.querySelectorAll('#matrixview tr.row').forEach(tr=>tr.classList.toggle('sel', sel.c===tr.dataset.c || (sel.type==='pillar'&&!!L[sel.s][tr.dataset.c])));
+  render(sel);
+  if (window.__mapReady) { const pn=document.getElementById('panel'); if (pn.getBoundingClientRect().top > window.innerHeight*0.75) pn.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); }
+}
+function view(v){ const m=v==='map'; document.getElementById('mapview').hidden=!m; document.getElementById('matrixview').hidden=m;
+  
+  try{localStorage.setItem('fsm_view',v);}catch(e){} }
+
+let v0=null; try{v0=localStorage.getItem('fsm_view');}catch(e){}
+view('map');
+select({type:'ch',c:'knowledge'});
+
+window.__mapReady=true;
+}
+window.initMap=initMap;
+</script>
+<script>(function () {
+  const F = window.FOW;
+  const SIDS = ['S1', 'S2', 'S3', 'S4'];
+  const YEARS = [2027, 2028, 2029, 2030];
+  const KEY = 'fow4_state_v2';
+  const MINP = 3, MAXP = 5;
+  const QS = ['What was it like before?', 'What is it like today?', 'What did you do to get there?'];
+  const col = s => `var(--${s.toLowerCase()})`;
+  const esc = t => String(t == null ? '' : t).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+  const pct = v => Math.round(v);
+  const lc = s => s.charAt(0).toLowerCase() + s.slice(1);
+
+  let S = load() || {};
+  S = Object.assign({ answers: {}, qi: 0, company: '', priorities: null, paper: null, paperSource: null, roadView: 'list' }, S);
+  function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+  const done = () => F.questions.every(q => S.answers[q.id]);
+  const hasPrios = () => done() && Array.isArray(S.priorities) && S.priorities.length >= MINP;
+  // anonymous usage counter: no cookie, no identifier, only the name of the step reached
+  const ping = e => { try { fetch('/api/count', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ e }), keepalive: true }).catch(() => {}); } catch (x) {} };
+
+  // ---------- SCORING ----------
+  function scores() {
+    const a = S.answers, m = l => (l - 1) / 3 * 100;
+    const pillars = {}; SIDS.forEach(s => { const qs = F.questions.filter(q => q.s === s); pillars[s] = qs.reduce((t, q) => t + m(a[q.id]), 0) / qs.length; });
+    const ch = {}; Object.keys(F.challenges).forEach(c => { const qs = F.questions.filter(q => q.ch.includes(c)); ch[c] = qs.length ? qs.reduce((t, q) => t + m(a[q.id]), 0) / qs.length : null; });
+    const avgOf = g => { const v = Object.keys(ch).filter(c => F.challenges[c].g === g && ch[c] != null).map(c => ch[c]); return v.reduce((t, x) => t + x, 0) / v.length; };
+    const P = avgOf('P'), C = avgOf('C');
+    const overall = F.questions.reduce((t, q) => t + m(a[q.id]), 0) / F.questions.length;
+    return { pillars, ch, P, C, and: Math.min(P, C), overall, distance: 100 - overall, flags: F.rules.filter(r => r.when(S.answers)) };
+  }
+  const QBY = Object.fromEntries(F.questions.map(q => [q.id, q]));
+  const IBY = Object.fromEntries(F.initiatives.map(i => [i.id, i]));
+  const needed = i => (i.step === 'a' && S.answers[i.q] <= 2) || (i.step === 'b' && S.answers[i.q] <= 3);
+  // Roadmap for the selected priorities: initiatives that serve them, plus the prerequisites they need
+  function roadmap(prios) {
+    prios = prios || S.priorities || [];
+    const serves = i => QBY[i.q].ch.filter(c => prios.includes(c));
+    const set = {};
+    const add = (i, direct) => { if (!needed(i)) return; if (set[i.id]) { if (direct) set[i.id].direct = true; return; } set[i.id] = { i, direct }; (i.req || []).forEach(r => add(IBY[r], false)); };
+    F.initiatives.forEach(i => { if (serves(i).length) add(i, true); });
+    const ids = Object.keys(set), start = {}, depth = {};
+    const calc = id => { if (start[id]) return; const i = IBY[id]; let y = i.year, d = 0;
+      (i.req || []).forEach(r => { if (set[r]) { calc(r); y = Math.max(y, start[r]); d = Math.max(d, depth[r] + 1); } }); start[id] = Math.min(y, 2030); depth[id] = d; };
+    ids.forEach(calc);
+    const items = ids.map(id => { const i = IBY[id], dur = i.dur || (i.step === 'a' ? 1 : 2);
+      return Object.assign({}, i, { start: start[id], end: Math.min(2030, start[id] + dur - 1), depth: depth[id], direct: set[id].direct, serves: serves(i),
+        reqIds: (i.req || []).filter(r => set[r]), after: (i.req || []).filter(r => set[r]).map(r => IBY[r].n) }); })
+      .sort((x, y) => x.start - y.start || x.depth - y.depth || SIDS.indexOf(x.s) - SIDS.indexOf(y.s));
+    items.forEach(i => { i.unlocks = items.filter(x => x.reqIds.includes(i.id)).map(x => x.id); });
+    return { items, byYear: y => items.filter(x => x.start === y) };
+  }
+  const gapClass = v => v < 34 ? 'hi' : v < 67 ? 'mid' : 'lo';
+  const gapLabel = v => v < 34 ? 'Large gap' : v < 67 ? 'Gap' : 'Close';
+
+  // ---------- SPIDER GRAPH (14 practices, grouped by shift) ----------
+  const PAPER = { S1: '#0098B4', S2: '#3E9E83', S3: '#4B55C8', S4: '#D9661F', fg: '#12213F', muted: '#56667E', line: '#C9D4E0', accent: '#E6007E' };
+  function wrap2(t) { if (t.length <= 15) return [t]; const w = t.split(' '); let best = [t], bd = 1e9;
+    for (let k = 1; k < w.length; k++) { const a = w.slice(0, k).join(' '), b = w.slice(k).join(' '), d = Math.abs(a.length - b.length); if (d < bd) { bd = d; best = [a, b]; } } return best; }
+  function spider(paper) {
+    const a = S.answers, qs = F.questions, n = qs.length, W = 720, H = 600, cx = 360, cy = 300, R = 212;
+    const c = paper ? { s: s => PAPER[s], fg: PAPER.fg, muted: PAPER.muted, line: PAPER.line, accent: PAPER.accent }
+                    : { s: s => col(s), fg: 'var(--fg)', muted: 'var(--muted)', line: 'var(--line)', accent: 'var(--accent)' };
+    const ang = i => (-90 + i * 360 / n) * Math.PI / 180;
+    const pt = (i, r) => [cx + r * Math.cos(ang(i)), cy + r * Math.sin(ang(i))];
+    const f = v => v.toFixed(1);
+    let g = '';
+    SIDS.forEach(s => { const idx = qs.map((q, i) => q.s === s ? i : -1).filter(i => i >= 0);
+      const a0 = ang(idx[0]) - Math.PI / n, a1 = ang(idx[idx.length - 1]) + Math.PI / n, r = R + 8, large = (a1 - a0) > Math.PI ? 1 : 0;
+      g += `<path d="M${cx},${cy} L${f(cx + r * Math.cos(a0))},${f(cy + r * Math.sin(a0))} A${r},${r} 0 ${large} 1 ${f(cx + r * Math.cos(a1))},${f(cy + r * Math.sin(a1))} Z" fill="${c.s(s)}" fill-opacity="0.09"/>`; });
+    [1, 2, 3, 4].forEach(l => { const pts = qs.map((q, i) => pt(i, R * l / 4).map(f).join(',')).join(' ');
+      g += `<polygon points="${pts}" fill="none" stroke="${c.line}" stroke-width="${l === 4 ? 1.6 : 1}"${l === 4 ? ' stroke-dasharray="5 4"' : ''}/>`; });
+    qs.forEach((q, i) => { const [x, y] = pt(i, R); g += `<line x1="${cx}" y1="${cy}" x2="${f(x)}" y2="${f(y)}" stroke="${c.line}" stroke-width="1"/>`; });
+    F.levels.forEach((L, k) => { const y = cy - R * (k + 1) / 4; g += `<text x="${cx + 7}" y="${f(y + 13)}" font-size="10.5" fill="${c.muted}">${esc(k === 3 ? '2030-ready' : L)}</text>`; });
+    const dp = qs.map((q, i) => pt(i, R * (a[q.id] || 0) / 4).map(f).join(',')).join(' ');
+    g += `<polygon points="${dp}" fill="${c.accent}" fill-opacity="0.15" stroke="${c.accent}" stroke-width="2.4" stroke-linejoin="round"/>`;
+    qs.forEach((q, i) => { const [x, y] = pt(i, R * (a[q.id] || 0) / 4); g += `<circle cx="${f(x)}" cy="${f(y)}" r="5" fill="${c.s(q.s)}" stroke="#FFFFFF" stroke-width="1.5"/>`; });
+    qs.forEach((q, i) => { const [x, y] = pt(i, R + 18), cs = Math.cos(ang(i)), sn = Math.sin(ang(i)), lines = wrap2(q.t);
+      const anchor = Math.abs(cs) < 0.25 ? 'middle' : cs > 0 ? 'start' : 'end';
+      const dy = sn < -0.6 ? -(lines.length - 1) * 15 : sn > 0.6 ? 11 : -(lines.length - 1) * 7.5 + 4;
+      g += `<text x="${f(x)}" y="${f(y + dy)}" text-anchor="${anchor}" font-size="14" font-weight="600" fill="${c.s(q.s)}">${lines.map((ln, k) => `<tspan x="${f(x)}" dy="${k ? 15 : 0}">${esc(ln)}</tspan>`).join('')}</text>`; });
+    return `<svg class="spider" viewBox="0 0 ${W} ${H}" role="img" aria-label="Maturity profile on the 14 practices, from Emerging to Excellence · 2030-ready">${g}</svg>`;
+  }
+  function practiceList() {
+    const a = S.answers, r = scores();
+    return SIDS.map((s, i) => `<div class="pr-grp"><div class="pr-h" style="--c:${col(s)}"><span>Shift ${i + 1} · ${esc(F.shifts[s].n)}</span><b>${pct(r.pillars[s])}%</b></div>` +
+      F.questions.filter(q => q.s === s).map(q => `<div class="pr-row"><span>${esc(q.t)}</span><span class="lvl l${a[q.id]}">${esc(F.levels[a[q.id] - 1])}</span></div>`).join('') + '</div>').join('');
+  }
+  // System effect: how many shifts a set of priorities mobilizes, and how many initiatives are linked across shifts
+  function systemStats(rm) {
+    const shifts = new Set(rm.items.map(i => i.s)), linked = new Set();
+    rm.items.forEach(i => i.reqIds.forEach(r => { const p = rm.items.find(x => x.id === r); if (p && p.s !== i.s) { linked.add(i.id); linked.add(p.id); } }));
+    return { shifts: shifts.size, n: rm.items.length, linked: linked.size };
+  }
+  function systemSentence(rm, k) {
+    const st = systemStats(rm);
+    return `Your ${k} priorities mobilize ${st.shifts === 4 ? 'all 4 shifts' : st.shifts + ' of the 4 shifts'}: ${st.n} initiative${st.n > 1 ? 's' : ''}, ${st.linked} of them linked across shifts.`;
+  }
+  // Gantt dependency arrows, drawn after layout
+  function drawArrows() {
+    const box = document.querySelector('.gantt'); if (!box) return;
+    box.querySelector('svg.g-arrows')?.remove();
+    const B = box.getBoundingClientRect(), bars = {};
+    box.querySelectorAll('.g-bar[data-id]').forEach(b => { bars[b.dataset.id] = b.getBoundingClientRect(); });
+    let p = '';
+    box.querySelectorAll('.g-bar[data-id]').forEach(b => { const to = bars[b.dataset.id];
+      (b.dataset.req || '').split(' ').filter(Boolean).forEach(r => { const fr = bars[r]; if (!fr) return;
+        const cross = b.dataset.s !== box.querySelector(`.g-bar[data-id="${r}"]`).dataset.s;
+        const y1 = fr.top + fr.height / 2 - B.top, x2 = to.left - B.left + 1, y2 = to.top + to.height / 2 - B.top, F1 = v => v.toFixed(1);
+        let d;
+        if (to.left < fr.right - 4) { // same start column: a bracket on the left of both bars
+          const sx = fr.left - B.left - 1, bx = Math.min(sx, x2) - 18;
+          d = `M${F1(sx)},${F1(y1)} C${F1(bx)},${F1(y1)} ${F1(bx)},${F1(y2)} ${F1(x2)},${F1(y2)}`;
+        } else { const x1 = fr.right - B.left - 1, dx = Math.max(28, (x2 - x1) / 2);
+          d = `M${F1(x1)},${F1(y1)} C${F1(x1 + dx)},${F1(y1)} ${F1(x2 - dx)},${F1(y2)} ${F1(x2)},${F1(y2)}`; }
+        p += `<path d="${d}" data-a="${r}" data-b="${b.dataset.id}" class="${cross ? 'x' : 'i'}" marker-end="url(#${cross ? 'ax' : 'ai'})"/>`; }); });
+    box.insertAdjacentHTML('beforeend', `<svg class="g-arrows" width="${B.width}" height="${B.height}" aria-hidden="true"><defs>
+      <marker id="ax" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="xm"/></marker>
+      <marker id="ai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="im"/></marker></defs>${p}</svg>`);
+    const on = id => { box.dataset.cur = id || ''; box.classList.toggle('focus', !!id); box.querySelectorAll('svg.g-arrows path[data-a]').forEach(q => q.classList.toggle('on', q.dataset.a === id || q.dataset.b === id));
+        box.querySelectorAll('.g-bar[data-id]').forEach(q => q.classList.toggle('dim', !!id && q.dataset.id !== id && !box.querySelector(`svg.g-arrows path.on[data-a="${q.dataset.id}"], svg.g-arrows path.on[data-b="${q.dataset.id}"]`))); };
+    if (box.dataset.cur) on(box.dataset.cur); // keep the focus after a redraw (resize)
+    if (!box.dataset.hv) { box.dataset.hv = 1; // hover or tap a bar: show only its links
+      box.addEventListener('mouseover', e => { const g = e.target.closest('.g-bar[data-id]'); on(g ? g.dataset.id : null); });
+      box.addEventListener('mouseleave', () => on(null));
+      box.addEventListener('click', e => { const g = e.target.closest('.g-bar[data-id]'); on(g && !g.classList.contains('sel') ? g.dataset.id : null); box.querySelectorAll('.g-bar.sel').forEach(q => q.classList.remove('sel')); if (g && box.classList.contains('focus')) g.classList.add('sel'); }); }
+  }
+  window.addEventListener('resize', () => { if (document.querySelector('.gantt')) drawArrows(); });
+
+  // ---------- NAV ----------
+  const STEPS = [['#/', 'Introduction'], ['#/map', 'Interactive map'], ['#/diagnostic', 'Your Diagnostic'], ['#/priorities', 'Your Priorities'], ['#/newsfix', 'Your News Fix']];
+  const hasPaper = () => !!(S.paper && S.paper.lead && S.paper.lead.qa);
+  function nav(route) {
+    const ok = { '#/': true, '#/map': true, '#/diagnostic': true, '#/priorities': done(), '#/newsfix': hasPaper() };
+    document.getElementById('steps').innerHTML = STEPS.map(([h, t], i) => `<li><a href="${h}" class="${h === route ? 'on' : ''}" ${ok[h] ? '' : 'aria-disabled="true" tabindex="-1"'}><span class="n">${i + 1}</span>${t}</a></li>`).join('');
+  }
+
+  // ---------- SHARE CARD (1080 x 1350, the image people post) ----------
+  const SAMPLE = { company: 'Horizon Aero', lead: { headline: 'Admin is history. Work is human again.', deck: 'Four years after its diagnostic, the leadership team explains how it redesigned its flows before automating them, and where the time went.' },
+    stories: [{ headline: 'AI agents prepare. Humans decide.' }, { headline: 'Office days are now team days' }, { headline: 'Retirement wave passes. Know-how stays.' }] };
+  function paperDate() { const d = new Date(); d.setFullYear(2030); return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); }
+  function shareCard(p, company, url) {
+    return `<div class="share-card">
+      <div class="sc-top"><span>Serving the sky, the moon and the stars</span><span>The human edition</span></div>
+      <div class="sc-mast">The News Fix</div>
+      <div class="sc-date"><span>${esc(paperDate())}</span><span class="red">Fictional front page</span><span>${esc(company || 'Our organization')}</span></div>
+      <div class="sc-kicker">Interview</div>
+      <div class="sc-lead">${esc(p.lead.headline)}</div>
+      ${p.lead.deck ? `<div class="sc-deck">${esc(p.lead.deck)}</div>` : ''}
+      ${p.stories && p.stories.length ? `<div class="sc-also"><div class="sc-also-t">Also in this edition</div>${p.stories.slice(0, 4).map(s => `<div class="sc-story">${esc(s.headline)}</div>`).join('')}</div>` : ''}
+      <div class="sc-foot"><span>More human. More digital.<br>Not a trade-off. AND.</span><span class="sc-cta">Write your own 2030 front page<br><b>${esc(url)}</b></span></div>
+    </div>`;
+  }
+  function fitCards() { document.querySelectorAll('.sc-frame').forEach(f => { const c = f.querySelector('.share-card'); if (c) c.style.transform = `scale(${f.clientWidth / 1080})`; }); }
+  window.addEventListener('resize', fitCards);
+  const siteHost = () => (location.protocol.startsWith('http') && !/claude|localhost|127\.0\.0\.1/.test(location.host)) ? location.host : 'your-site.netlify.app';
+  const nextBtn = (href, label) => `<div class="section no-print"><div class="row"><a class="btn p" href="${href}">${label} →</a></div></div>`;
+
+  // ---------- 1. INTRODUCTION ----------
+  function home() {
+    const pillars = SIDS.map((s, i) => `<div class="card pillar" style="--c:${col(s)}"><div class="k">Shift ${i + 1}</div><h3>${esc(F.shifts[s].full)}</h3><p>${esc(F.shifts[s].line)}</p></div>`).join('');
+    return `<div class="section"><div class="hero"><div class="stack">
+        <div class="eyebrow">Future of Work · 4 shifts</div>
+        <h1>What will your 2030 front page say?</h1>
+        <p class="lede">A generational crossover, a new relationship to work, the AI reset, and constant uncertainty: four forces are reshaping work at the same time. Fragmented answers will not be enough.</p>
+        <p class="lede">In about ten minutes, see how far your operating model has come on the way to 2030, build a roadmap for your priorities, and get the front page of The News Fix, written for your organization.</p>
+        <div class="and">More human. More digital. <b>Not a trade-off. AND.</b></div>
+        <div class="row"><a class="btn p" href="#/diagnostic">${done() ? 'See your diagnostic' : 'Start your diagnostic'}</a><a class="btn s" href="#/map">Explore the interactive map</a></div>
+      </div>
+      <figure class="sample"><div class="sc-frame">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>Example front page for a fictional company</figcaption></figure></div></div>
+      <div class="section"><div class="stack"><div class="eyebrow">The model</div><h2>Four shifts, one operating system</h2>
+        <p class="lede">Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.</p></div>
+        <div class="cards">${pillars}</div></div>
+      <div class="section"><div class="stack"><div class="eyebrow">Your journey</div><h2>Five steps, three deliverables</h2></div>
+        <ol class="how"><li><h3>Interactive map</h3><p>Optional. See how each shift contributes to each challenge, and where shifts could cancel each other out.</p></li>
+        <li><h3>Your Diagnostic</h3><p>Fourteen questions. Your maturity profile, and an executive report-out to share with your ExCom.</p></li>
+        <li><h3>Your Priorities</h3><p>Choose 3 to 5 challenges. Your roadmap builds itself, with its prerequisites, in a list or a Gantt chart.</p></li>
+        <li><h3>Your News Fix</h3><p>An interview per priority: before, today, and what you did to get there. Share it as an image.</p></li></ol>
+        <p class="note">Your answers stay in your browser. Nothing is stored on a server. Only what is needed to write the newspaper is sent to an AI model, and it is not stored. <a href="privacy.html">Privacy</a></p></div>`;
+  }
+
+  // ---------- 2. INTERACTIVE MAP ----------
+  function mapView() {
+    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', '<div class="eyebrow">Step 2 · Interactive map</div>').replace('Click a link, a pillar or a challenge.', 'Click a link, a pillar or a challenge. The explanation appears below the map.').replace('<div class="scroll" id="mapview">', '<div class="scroll" id="mapview"><p class="scroll-hint">Scroll sideways to see the whole map.</p>');
+    return `<div class="mapapp">${html}</div>` + nextBtn('#/diagnostic', done() ? 'See your diagnostic' : 'Start your diagnostic');
+  }
+
+  // ---------- 3. YOUR DIAGNOSTIC (questions, then the report on the same step) ----------
+  function questions() {
+    const i = Math.min(S.qi || 0, F.questions.length - 1), q = F.questions[i], v = S.answers[q.id];
+    const n = F.questions.length, answered = F.questions.filter(x => S.answers[x.id]).length;
+    return `<div class="q-wrap">
+      <div class="eyebrow">Step 3 · Your Diagnostic</div>
+      <div class="progress" aria-hidden="true"><i style="width:${answered / n * 100}%"></i></div>
+      <div class="qmeta"><span>Question ${i + 1} of ${n}</span><span class="pl" style="--c:${col(q.s)}">Shift ${SIDS.indexOf(q.s) + 1} · ${esc(F.shifts[q.s].n)}</span></div>
+      <h2 id="qtitle">${esc(q.q)}</h2>
+      <div class="opts" role="radiogroup" aria-labelledby="qtitle">${q.o.map((o, k) => `<label class="opt ${v === k + 1 ? 'sel' : ''}"><input type="radio" name="${q.id}" id="${q.id}_${k + 1}" value="${k + 1}" ${v === k + 1 ? 'checked' : ''}><span class="lv">${k + 1}</span><span>${esc(o)}</span></label>`).join('')}</div>
+      <div class="scale"><span>1 · Typical today</span><span>4 · Target 2030</span></div>
+      <div class="row"><button class="btn g" id="prev" ${i === 0 ? 'disabled' : ''}>← Back</button>
+        <button class="btn p" id="next" ${v ? '' : 'disabled'}>${i === n - 1 ? 'See my report' : 'Next →'}</button></div></div>`;
+  }
+  function bindQuestions() {
+    document.querySelectorAll('.opt input').forEach(r => r.addEventListener('change', () => {
+      const q = F.questions[S.qi || 0]; S.answers[q.id] = +r.value; S.paper = null; S.editing = true; save(); render();
+      document.getElementById('next')?.focus();
+    }));
+    document.getElementById('prev').onclick = () => { S.qi = Math.max(0, (S.qi || 0) - 1); save(); render(); };
+    document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { S.editing = false; save(); ping('report'); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
+  }
+  function report() {
+    const r = scores();
+    const heat = g => Object.keys(F.challenges).filter(c => F.challenges[c].g === g).sort((x, y) => r.ch[x] - r.ch[y]).map(c => `<div class="hc"><div class="t"><span>${esc(F.challenges[c].n)}</span><span class="gap ${gapClass(r.ch[c])}">${gapLabel(r.ch[c])}</span></div><small>${esc(F.challenges[c].d)} · Maturity ${pct(r.ch[c])}%</small></div>`).join('');
+    const flags = r.flags.length ? `<div class="flags">${r.flags.map(f => `<div class="flag ${f.kind === 'limit' ? 'limit' : ''}"><b>${f.kind === 'limit' ? 'Limit · ' : ''}${esc(f.t)}</b><p>${esc(f.d)}</p><p class="note"><b>Guardrail:</b> ${esc(f.fix || '')} · Challenges affected: ${f.ch.map(c => esc(F.challenges[c].n)).join(', ')}</p></div>`).join('')}</div>`
+      : `<div class="ok-box">No contradiction detected between your practices. The shifts you invest in push in the same direction.</div>`;
+    return `<div class="section"><div class="stack"><div class="eyebrow">Step 3 · Your Diagnostic</div><h1>Your operating model today, against the 2030 target</h1>
+        <p class="lede">Maturity is 0% when a practice is typical of today, and 100% when it matches the 2030 target state of the model.</p></div>
+        <div class="kpis"><div class="kpi main"><b>${pct(r.overall)}%</b><span>Of the way to the 2030 target state</span><span class="kbar" aria-hidden="true"><i style="width:${Math.max(2, r.overall)}%"></i></span><span class="kto">${pct(r.distance)}% still to go</span></div>
+          <div class="kpi"><b>${pct(r.P)}%</b><span>Productivity maturity</span></div><div class="kpi"><b>${pct(r.C)}%</b><span>Culture maturity</span></div>
+          <div class="kpi"><b>${pct(r.and)}%</b><span>AND score: the lower of the two</span></div></div>
+        <p class="note">The AND score keeps the lower of productivity and culture. A strong result on one side does not make up for a weak one on the other.</p></div>
+      <div class="section"><div class="stack"><h2>Your maturity profile</h2><p class="lede">Your 14 practices, from Emerging to Excellence · 2030-ready. The dashed outer ring is the 2030 target.</p></div>
+        <div class="profile"><div class="spider-wrap">${spider(false)}</div><div class="pr-list">${practiceList()}<p class="note">${esc(F.levelNote)}</p></div></div></div>
+      <div class="section"><div class="stack"><h2>Coherence check</h2><p class="lede">Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.</p></div>${flags}</div>
+      <div class="section"><h2>Where the gaps are</h2><div class="band-l">Productivity challenges</div><div class="heat">${heat('P')}</div><div class="band-l">Cultural challenges</div><div class="heat">${heat('C')}</div></div>
+      <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">Prepare your executive report-out</a><a class="btn s" href="#/priorities">Next: your priorities →</a><button class="btn g" id="redo">Change my answers</button></div></div>`;
+  }
+  function bindReport() {
+    document.getElementById('redo').onclick = () => { S.qi = 0; S.editing = true; save(); render(); window.scrollTo(0, 0); };
+  }
+
+  // ---------- EXECUTIVE REPORT-OUT (deliverable of step 3, for the ExCom) ----------
+  const joinAnd = xs => xs.length < 2 ? xs.join('') : xs.slice(0, -1).join(', ') + ' and ' + xs[xs.length - 1];
+  function briefData() {
+    const r = scores(), co = S.company || 'Our organization';
+    const order = Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]);
+    const top = order.slice(0, 3);
+    const rm = roadmap(top);
+    const first = rm.items.filter(i => i.start === 2027);
+    const contra = r.flags.filter(f => f.kind !== 'limit'), sys = systemSentence(rm, top.length);
+    const ranked = SIDS.slice().sort((x, y) => r.pillars[y] - r.pillars[x]);
+    const weaker = r.P < r.C ? 'productivity' : r.C < r.P ? 'culture' : null;
+    const summary = [
+      `${co} is ${pct(r.overall)}% of the way to the 2030 target state of the Future of Work model. Productivity maturity is ${pct(r.P)}% and culture maturity is ${pct(r.C)}%.` +
+        (weaker ? ` ${weaker.charAt(0).toUpperCase() + weaker.slice(1)} is the constraint: the AND score keeps the lower of the two, so progress on one side does not make up for the other.` : ' Both sides are at the same level, which is the condition for progress to add up.'),
+      `The most advanced shift is ${F.shifts[ranked[0]].n} (${pct(r.pillars[ranked[0]])}%). The least advanced is ${F.shifts[ranked[3]].n} (${pct(r.pillars[ranked[3]])}%).`,
+      contra.length ? `${contra.length} contradiction${contra.length > 1 ? 's' : ''} between current practices cancel${contra.length > 1 ? '' : 's'} part of the effort, starting with: ${lc(contra[0].t)}.` : 'No contradiction was found between current practices: the shifts already in motion push in the same direction.',
+      `We recommend focusing on three priorities, ${joinAnd(top.map(c => F.challenges[c].n.toLowerCase()))}, and starting in 2027 with ${first.length} initiative${first.length > 1 ? 's' : ''}. ${sys.replace('Your 3 priorities', 'These 3 priorities')}`
+    ];
+    const decisions = [
+      `Confirm the priority challenges for 2027 to 2030. Proposed: ${joinAnd(top.map(c => F.challenges[c].n))}.`,
+      'Name one ExCom sponsor for each of the four shifts.',
+      contra.length ? `Resolve the ${contra.length} contradiction${contra.length > 1 ? 's' : ''} listed in this report before scaling new initiatives.` : 'Keep the shifts aligned: review coherence each time a new initiative starts.',
+      `Launch the 2027 first moves, starting with: ${first.length ? first[0].n.toLowerCase() : 'writing and sharing the 2030 headlines'}.`
+    ];
+    return { r, co, top, first, summary, decisions, sys };
+  }
+  function briefText(b) {
+    return `Future of Work 2030 · Executive report-out · ${b.co}\n\nSummary\n${b.summary.join('\n')}\n\nDecisions requested from the ExCom\n${b.decisions.map((d, i) => `${i + 1}. ${d}`).join('\n')}\n\nPrepared with the Future of Work · 4 Shifts diagnostic. ${siteHost()}`;
+  }
+  function brief() {
+    const b = briefData(), r = b.r, today = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    const bars = SIDS.map((s, i) => `<div class="b-bar"><span>Shift ${i + 1} · ${esc(F.shifts[s].n)}</span><span class="b-track"><i style="width:${Math.max(2, r.pillars[s])}%;background:${PAPER[s]}"></i></span><b>${pct(r.pillars[s])}%</b></div>`).join('');
+    const gaps = b.top.map(c => `<tr><td><b>${esc(F.challenges[c].n)}</b><br><span class="b-muted">${esc(F.challenges[c].d)}</span></td><td class="b-num">${pct(r.ch[c])}%</td><td>${SIDS.filter(s => F.addresses[s].includes(c)).map(s => esc(F.shifts[s].n)).join(', ')}</td></tr>`).join('');
+    const flags = r.flags.length ? `<table class="b-table"><thead><tr><th>Contradiction</th><th>Why it matters</th><th>Guardrail</th></tr></thead><tbody>${r.flags.map(f => `<tr><td><b>${esc(f.t)}</b>${f.kind === 'limit' ? '<br><span class="b-muted">Limit</span>' : ''}</td><td>${esc(f.d)}</td><td>${esc(f.fix || '')}</td></tr>`).join('')}</tbody></table>`
+      : '<p>No contradiction was found between current practices. The shifts already in motion push in the same direction.</p>';
+    const moves = b.first.length ? `<ul class="b-list">${b.first.slice(0, 6).map(i => `<li><b>${esc(i.n)}</b> · <span class="b-muted">${esc(F.shifts[i.s].n)}</span> · ${esc(i.d)}</li>`).join('')}</ul>` : '<p>Your practices already match the 2030 target on these challenges.</p>';
+    const head = n => `<header class="b-head"><div><div class="b-k">Future of Work 2030 · Executive report-out</div><div class="b-org">${esc(b.co)}</div></div><div class="b-meta">${esc(today)}<br>Page ${n} of 2</div></header>`;
+    const foot = `<footer class="b-foot">Prepared with the Future of Work · 4 Shifts diagnostic (${esc(siteHost())}). 14-question self-assessment: an indication to open the discussion, not a benchmark.</footer>`;
+    return `<div class="no-print brief-tools"><div class="stack"><div class="eyebrow">Step 3 · Your Diagnostic</div><h1>Your executive report-out</h1>
+        <p class="lede">Two pages for your ExCom: where you stand, what blocks progress, and the decisions to take. Print it or save it as PDF, or copy the summary into an email.</p></div>
+        <div class="field" style="max-width:520px"><label for="company_b">Organization name</label><input id="company_b" maxlength="60" value="${esc(S.company)}" placeholder="Our organization"></div>
+        <div class="row"><button class="btn p" id="bprint">Print or save as PDF</button><button class="btn s" id="bcopy">Copy the summary</button><a class="btn g" href="#/diagnostic">Back to your diagnostic</a><a class="btn g" href="#/priorities">Next: your priorities →</a></div>
+        <p class="note" id="bmsg"></p></div>
+      <div class="brief">
+      <section class="b-page">${head(1)}
+        <h2 class="b-title">Our operating model is ${pct(r.overall)}% of the way to 2030</h2>
+        <div class="b-sec"><h3>Summary</h3>${b.summary.map(x => `<p>${esc(x)}</p>`).join('')}</div>
+        <div class="b-sec"><h3>Where we stand</h3>
+          <div class="b-kpis"><div><b>${pct(r.overall)}%</b><span>of the way to the 2030 target</span></div><div><b>${pct(r.P)}%</b><span>productivity maturity</span></div><div><b>${pct(r.C)}%</b><span>culture maturity</span></div><div><b>${pct(r.and)}%</b><span>AND score, the lower of the two</span></div></div>
+          <div class="b-profile"><div class="b-spider">${spider(true)}</div><div class="b-bars">${bars}<p class="b-muted b-lv">Levels: ${F.levels.map((l, k) => `${k + 1} ${esc(l)}`).join(' · ')}</p></div></div></div>
+        <div class="b-sec"><h3>Our three largest gaps</h3><table class="b-table"><thead><tr><th>Challenge</th><th>Maturity</th><th>Shifts that address it</th></tr></thead><tbody>${gaps}</tbody></table></div>
+        ${foot}</section>
+      <section class="b-page">${head(2)}
+        <div class="b-sec"><h3>Contradictions to resolve</h3><p class="b-muted">One practice pushes a challenge forward while another pushes it back, and the effects cancel out.</p>${flags}</div>
+        <div class="b-sec"><h3>First moves for 2027</h3><p class="b-muted">For the three largest gaps, with the prerequisites they need. ${esc(b.sys.replace('Your 3 priorities', 'These 3 priorities'))}</p>${moves}</div>
+        <div class="b-sec b-ask"><h3>Decisions requested from the ExCom</h3><ol>${b.decisions.map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
+        ${foot}</section></div>`;
+  }
+  function bindBrief() {
+    document.getElementById('bprint').onclick = () => { ping('brief'); window.print(); };
+    document.getElementById('company_b').addEventListener('change', e => { S.company = e.target.value.trim(); save(); const y = window.scrollY; render(); window.scrollTo(0, y); });
+    document.getElementById('bcopy').onclick = async () => { const t = briefText(briefData()), msg = document.getElementById('bmsg');
+      try { await navigator.clipboard.writeText(t); msg.textContent = 'Summary copied. Paste it into your email to the ExCom.'; }
+      catch (e) { msg.textContent = 'Copy is not available here. Select the summary in the report and copy it with your keyboard.'; } };
+  }
+
+  // ---------- 4. YOUR PRIORITIES (selection, then the roadmap, updated live) ----------
+  function defaultPriorities() { const r = scores(); return Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]).slice(0, MINP); }
+  function roadmapBlock() {
+    const rm = roadmap(), pr = S.priorities;
+    const tag = i => i.direct ? i.serves.map(c => `<span class="for">${esc(F.challenges[c].n)}</span>`).join('') : '<span class="for pre">Prerequisite</span>';
+    const span = i => i.start === i.end ? String(i.start) : `${i.start}–${i.end}`;
+    const byId = Object.fromEntries(rm.items.map(i => [i.id, i]));
+    const links = (i, ids) => ids.map(id => { const x = byId[id], cross = x.s !== i.s; return `<span class="lk ${cross ? 'x' : ''}" style="--c:${col(x.s)}">${cross ? '⇄ ' : ''}${esc(x.n)}</span>`; }).join('');
+    const card = i => `<div class="ini" style="--c:${col(i.s)}"><span class="k">${esc(F.shifts[i.s].n)} · ${span(i)}</span><b>${esc(i.n)}</b><p>${esc(i.d)}</p>
+      <div class="fors">${tag(i)}</div>${i.reqIds.length ? `<div class="nu"><span class="nl">Needs</span>${links(i, i.reqIds)}</div>` : ''}${i.unlocks.length ? `<div class="nu"><span class="nl">Unlocks</span>${links(i, i.unlocks)}</div>` : ''}</div>`;
+    const list = `<div class="road-scroll"><div class="road">${YEARS.map(y => `<div class="yr"><h3>${y}</h3>${rm.byYear(y).map(card).join('') || '<p class="empty-yr">Consolidate and scale what is in place.</p>'}</div>`).join('')}</div></div>`;
+    const rows = SIDS.map(s => { const its = rm.items.filter(i => i.s === s); if (!its.length) return '';
+      return `<div class="g-grp" style="--c:${col(s)}">${esc(F.shifts[s].n)}</div>` + its.map(i => `<div class="g-row"><div class="g-name"><b>${esc(i.n)}</b><div class="fors">${tag(i)}</div></div>
+        <div class="g-track">${YEARS.map(() => '<span class="g-cell"></span>').join('')}<span class="g-bar" data-id="${i.id}" data-s="${i.s}" data-req="${i.reqIds.join(' ')}" style="--c:${col(i.s)};grid-column:${i.start - 2026} / ${i.end - 2026 + 1}" title="${esc(i.after.length ? 'Needs: ' + i.after.join(' · ') : '')}">${span(i)}</span></div></div>`).join(''); }).join('');
+    const gantt = `<div class="road-scroll"><div class="gantt"><div class="g-row g-head"><div class="g-name"></div><div class="g-track">${YEARS.map(y => `<span class="g-y">${y}</span>`).join('')}</div></div>${rows}</div></div>`;
+    const legend = SIDS.map(s => `<span style="--c:${col(s)}"><i class="sw"></i>${esc(F.shifts[s].n)}</span>`).join('');
+    const nPre = rm.items.filter(i => !i.direct).length;
+    if (pr.length < MINP) return `<div class="section" id="roadmap"><h2>Your roadmap, 2027 to 2030</h2><p class="note">Select ${MINP - pr.length} more challenge${MINP - pr.length > 1 ? 's' : ''} to build your roadmap.</p></div>`;
+    return `<div class="section" id="roadmap"><div class="stack"><h2>Your roadmap, 2027 to 2030</h2>
+        <p class="lede">${esc(systemSentence(rm, pr.length))} ${nPre ? `${nPre} of them ${nPre > 1 ? 'are prerequisites' : 'is a prerequisite'}. ` : ''}They are ordered by dependencies: vision before redesign, redesign before automation, trusted governance before connecting data.</p></div>
+        <div class="row" style="justify-content:space-between"><div class="legend">${legend}</div>
+          <div class="tabs no-print" role="group" aria-label="Roadmap view"><button id="rv-list" aria-pressed="${S.roadView !== 'gantt'}">List</button><button id="rv-gantt" aria-pressed="${S.roadView === 'gantt'}">Gantt</button></div></div>
+        ${rm.items.length && S.roadView === 'gantt' ? '<p class="note arrow-key"><span class="ak x"></span>Dependency across shifts <span class="ak i"></span>Dependency within a shift · Hover or tap a bar to isolate its links</p>' : ''}
+        ${rm.items.length ? (S.roadView === 'gantt' ? gantt : list) : '<div class="ok-box">Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.</div>'}</div>
+      <div class="section no-print"><div class="row"><button class="btn p" id="gen">Print your 2030 front page →</button><button class="btn s" id="print">Print or save as PDF</button></div>
+        <p class="note" id="genmsg">The News Fix interviews you on each priority, from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored. <a href="privacy.html">Privacy</a></p></div>`;
+  }
+  function priorities() {
+    if (!Array.isArray(S.priorities)) { S.priorities = defaultPriorities(); save(); }
+    const r = scores(), n = S.priorities.length;
+    const pick = Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]).map(c => { const k = S.priorities.indexOf(c), on = k >= 0;
+      return `<label class="pk ${on ? 'sel' : ''}"><input type="checkbox" value="${c}" id="pk_${c}" ${on ? 'checked' : ''}><span><span class="t">${esc(F.challenges[c].n)}</span><small>${F.challenges[c].g === 'P' ? 'Productivity' : 'Culture'} · maturity ${pct(r.ch[c])}%${k === 0 ? ' · lead story' : ''}</small></span></label>`; }).join('');
+    return `<div class="section"><div class="stack"><div class="eyebrow">Step 4 · Your Priorities</div><h1>Never transform everything at once</h1>
+        <p class="lede">Choose ${MINP} to ${MAXP} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.</p></div>
+        <div class="pick">${pick}</div><p class="note" id="pickmsg">${n} selected · choose ${MINP} to ${MAXP}</p>
+        <div class="field" style="max-width:520px"><label for="company">Organization name, for your front page (optional)</label><input id="company" maxlength="60" value="${esc(S.company)}" placeholder="Our company"></div></div>
+      ${roadmapBlock()}`;
+  }
+  function bindPriorities() {
+    document.querySelectorAll('.pk input').forEach(cb => cb.addEventListener('change', () => {
+      const c = cb.value;
+      if (cb.checked) { if (S.priorities.length >= MAXP) { cb.checked = false; document.getElementById('pickmsg').textContent = `${MAXP} challenges at most. Unselect one first.`; return; } S.priorities.push(c); }
+      else S.priorities = S.priorities.filter(x => x !== c);
+      S.paper = null; save(); const y = window.scrollY; render(); window.scrollTo(0, y);
+    }));
+    document.getElementById('company').addEventListener('input', e => { S.company = e.target.value.trim(); save(); });
+    const rl = document.getElementById('rv-list'), rg = document.getElementById('rv-gantt');
+    if (rl) { rl.onclick = () => { S.roadView = 'list'; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
+      rg.onclick = () => { S.roadView = 'gantt'; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
+      document.getElementById('print').onclick = () => window.print();
+      document.getElementById('gen').onclick = generate;
+      if (S.roadView === 'gantt') requestAnimationFrame(drawArrows); }
+  }
+
+  // ---------- THE NEWS FIX ----------
+  function interview(c, rm) {
+    const a = S.answers, qs = F.questions.filter(q => q.ch.includes(c));
+    const own = rm.items.filter(i => i.serves.includes(c));
+    const pre = new Set(); const walk = i => (i.req || []).forEach(r => { const x = rm.items.find(y => y.id === r); if (x && !pre.has(x)) { pre.add(x); walk(x); } }); own.forEach(walk);
+    const acts = [...new Set([...pre, ...own])].sort((x, y) => x.start - y.start || x.depth - y.depth);
+    return { before: qs.map(q => ({ topic: q.topic, text: q.o[a[q.id] - 1], level: a[q.id] })), after: qs.map(q => ({ topic: q.topic, text: q.o[3] })),
+      actions: acts.map(i => ({ year: i.start, name: i.n, what: i.d })) };
+  }
+  function payload() {
+    const r = scores(), rm = roadmap();
+    return { company: S.company || 'the organization', date: paperDate(),
+      items: S.priorities.map(c => Object.assign({ challenge: F.challenges[c].n, problem: F.challenges[c].d, example: F.challenges[c].ex }, interview(c, rm))),
+      context: { progress: pct(r.overall), distance: pct(r.distance), productivity: pct(r.P), culture: pct(r.C), and: pct(r.and), initiatives: rm.items.length } };
+  }
+  async function generate() {
+    const btn = document.getElementById('gen'), msg = document.getElementById('genmsg');
+    btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Printing…'; msg.textContent = 'The newsroom is interviewing you. It takes about 30 seconds.';
+    const body = payload();
+    try {
+      const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 60000);
+      const res = await fetch('/api/newsfix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
+      clearTimeout(to);
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !valid(data)) throw new Error('newsroom');
+      S.paper = data; S.paperSource = 'ai';
+    } catch (e) { S.paper = offline(body); S.paperSource = 'template'; }
+    S.paperContext = body.context; save(); ping('frontpage'); location.hash = '#/newsfix';
+  }
+  const okQA = x => x && typeof x.headline === 'string' && Array.isArray(x.qa) && x.qa.length >= 3 && x.qa.every(y => y && typeof y.a === 'string');
+  const valid = d => d && okQA(d.lead) && Array.isArray(d.stories) && d.stories.every(okQA);
+  // Without AI: the interviews are laid out directly from the diagnostic, the 2030 target and the roadmap
+  function offline(p) {
+    const list = xs => xs.map(x => `${x.topic}: ${lc(x.text)}`).join(' ');
+    const qa = x => [
+      { q: QS[0], a: `${x.problem} ${list(x.before)}` },
+      { q: QS[1], a: list(x.after) },
+      { q: QS[2], a: x.actions.length ? 'Step by step. ' + x.actions.map(i => `${i.year}: ${i.name}.`).join(' ') : 'We kept what was already in place and scaled it.' }];
+    const [a, ...rest] = p.items, co = p.company;
+    return { lead: { headline: a.example, deck: `Four years after its diagnostic, the leadership team of ${co} answers three questions: what was it like before, what is it like today, and what did they do to get there.`, qa: qa(a) },
+      stories: rest.map(x => ({ headline: x.example, qa: qa(x) })), quote: { text: 'We did not automate yesterday. We redesigned tomorrow.', who: 'A member of the leadership team' } };
+  }
+  function postText() {
+    return `I just wrote the 2030 front page of ${S.company || 'my organization'} with the Future of Work · 4 Shifts diagnostic by Vincent Dupuis.\n\nLead story: "${S.paper.lead.headline}"\n\nFourteen questions, a roadmap for your priorities, and your own front page. What will yours say?\n${siteHost()}\n\n#FutureOfWork`;
+  }
+  function qaHtml(list) { return list.map((x, i) => `<p class="qa"><b class="q">${esc(x.q || QS[i] || '')}</b> ${esc(x.a)}</p>`).join(''); }
+  function newsfix() {
+    const p = S.paper; if (!p || !p.lead || !p.lead.qa) return `<p>No front page yet. <a href="#/priorities">Back to your priorities</a>.</p>`;
+    const co = S.company || 'Your organization', ctx = S.paperContext || {};
+    const nums = [[`${ctx.progress != null ? ctx.progress : 100 - ctx.distance}%`, 'of the way to the 2030 target in the 2026 diagnostic'], [`${ctx.and}%`, 'AND score in 2026: the lower of productivity and culture'], [String(ctx.initiatives), 'initiatives on the 2027–2030 roadmap']]
+      .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
+    return `<div class="share no-print"><div class="stack"><div class="eyebrow">Step 5 · Your News Fix</div><h1>Your 2030 front page is printed</h1><h2>Share it on LinkedIn</h2>
+        <p class="lede">The image shows your 2030 headlines only. Your diagnostic figures stay private.</p>
+        <div class="row"><button class="btn p" id="dl">Download the image</button><button class="btn s" id="cp">Copy the post text</button><a class="btn g" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">Open LinkedIn ↗</a></div>
+        <textarea id="posttext" class="post" readonly rows="7" aria-label="Suggested post text">${esc(postText())}</textarea>
+        <p class="note" id="sharemsg">Download the image, copy the text, then create a post on LinkedIn and add the image.</p></div>
+        <div class="sc-frame">${shareCard(p, S.company, siteHost())}</div></div>
+      <div class="paper" id="paper">
+      <div class="np-top"><span>Serving the sky, the moon and the stars</span><span>Special edition · The human edition</span></div>
+      <div class="masthead">The News Fix</div>
+      <div class="np-sub">The future of work, as ${esc(S.company || 'you')} wrote it</div>
+      <div class="np-date"><span>${esc(paperDate())}</span><span class="red">Fictional front page</span><span>${esc(co)}</span></div>
+      <div class="lead"><div class="kicker">Interview</div><h2>${esc(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${esc(p.lead.deck)}</p>` : ''}</div>
+      <div class="np-cols"><div><div class="byline">Interview by the News Fix newsroom</div><div class="np-body lead-body">${qaHtml(p.lead.qa)}</div></div>
+        <div>${p.quote && p.quote.text ? `<div class="quote">"${esc(p.quote.text)}"<small>${esc(p.quote.who || '')}</small></div>` : ''}
+          ${nums ? `<div class="numbers"><h4>From the 2026 diagnostic</h4><ul>${nums}</ul></div>` : ''}</div></div>
+      ${p.stories.length ? `<div class="np-stories ${p.stories.length % 3 === 0 ? 'c3' : 'c2'}">${p.stories.map(s => `<article class="story"><div class="kicker">Interview</div><h3>${esc(s.headline)}</h3><div class="np-body">${qaHtml(s.qa)}</div></article>`).join('')}</div>` : ''}
+      <div class="np-foot"><span>Written with the Future of Work · 4 Shifts model</span><span>More human. More digital. Not a trade-off. AND.</span></div></div>
+      <div class="section no-print" style="margin-top:24px"><div class="row"><button class="btn s" id="print">Print or save as PDF</button><a class="btn g" href="#/priorities">Back to your priorities and roadmap</a></div>
+      ${S.paperSource === 'template' ? '<p class="note">The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.</p>' : ''}</div>
+      <div id="capture" aria-hidden="true">${shareCard(p, S.company, siteHost())}</div>`;
+  }
+  async function downloadImage() {
+    const msg = document.getElementById('sharemsg'), btn = document.getElementById('dl');
+    if (typeof window.html2canvas !== 'function') { msg.textContent = 'The image tool did not load. Check your connection and reload the page.'; return; }
+    btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Preparing…';
+    try {
+      await document.fonts.ready;
+      const canvas = await window.html2canvas(document.querySelector('#capture .share-card'), { scale: 1, width: 1080, height: 1350, backgroundColor: '#F7F3EA', logging: false });
+      const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'the-news-fix-2030.png'; document.body.appendChild(a); a.click();
+      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+      msg.textContent = 'Image downloaded: the-news-fix-2030.png. Now copy the text and create your LinkedIn post.'; ping('image');
+    } catch (e) { msg.textContent = 'The image could not be created. Try again, or take a screenshot of the preview.'; }
+    btn.disabled = false; btn.textContent = 'Download the image';
+  }
+  function bindNewsfix() {
+    document.getElementById('print').onclick = () => window.print();
+    document.getElementById('dl').onclick = downloadImage;
+    document.getElementById('cp').onclick = async () => { const ta = document.getElementById('posttext'), msg = document.getElementById('sharemsg');
+      try { await navigator.clipboard.writeText(ta.value); msg.textContent = 'Text copied. Paste it in your LinkedIn post.'; }
+      catch (e) { ta.focus(); ta.select(); msg.textContent = 'Select the text and copy it with your keyboard.'; } };
+  }
+
+  // ---------- RENDER ----------
+  function render() {
+    let route = location.hash || '#/';
+    const alias = { '#/vision': '#/priorities', '#/roadmap': '#/priorities', '#/report': '#/diagnostic' };
+    route = alias[route] || route;
+    if ((route === '#/priorities' || route === '#/brief') && !done()) route = '#/diagnostic';
+    if (route === '#/newsfix' && !hasPaper()) route = done() ? '#/priorities' : '#/diagnostic';
+    if (!STEPS.some(s => s[0] === route) && route !== '#/brief') route = '#/';
+    nav(route === '#/brief' ? '#/diagnostic' : route);
+    const v = document.getElementById('view');
+    if (route === '#/map') { v.innerHTML = mapView(); window.initMap(); }
+    else if (route === '#/diagnostic') { if (done() && !S.editing) { v.innerHTML = report(); bindReport(); } else { v.innerHTML = questions(); bindQuestions(); } }
+    else if (route === '#/brief') { v.innerHTML = brief(); bindBrief(); }
+    else if (route === '#/priorities') { v.innerHTML = priorities(); bindPriorities(); }
+    else if (route === '#/newsfix') { v.innerHTML = newsfix(); bindNewsfix(); }
+    else v.innerHTML = home();
+    fitCards();
+  }
+  let last = null;
+  window.addEventListener('hashchange', () => { render(); if (location.hash !== last) window.scrollTo(0, 0); last = location.hash; });
+  render();
+  if (document.fonts) document.fonts.ready.then(fitCards);
+})();
+</script>
+
+</body></html>
