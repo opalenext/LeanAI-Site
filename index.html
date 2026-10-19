@@ -297,6 +297,55 @@ h2[tabindex="-1"]:focus{outline:none}
 .quote{font:italic 19px/1.4 var(--news);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:12px 0;margin:6px 0 14px;color:var(--ink)}
 .quote small{display:block;font:600 11.5px var(--display);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:var(--ink-soft);margin-top:6px}
 .np-foot{border-top:3px double var(--rule);margin-top:20px;padding-top:8px;font:12px var(--display);color:var(--ink-soft);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+/* The News Fix as two A4 sheets (794 x 1123 px at 96 dpi), identical on screen and on paper.
+   --k is the body type size in px, set by fitSheets() so that each sheet is full. */
+.sheets{display:flex;flex-direction:column;align-items:center;gap:28px}
+.sheet-wrap{width:min(794px,100%);aspect-ratio:794/1123;position:relative;overflow:hidden}
+.sheet{--k:13;position:absolute;top:0;left:0;width:794px;height:1123px;padding:34px 40px 26px;box-sizing:border-box;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);font-family:var(--newsbody);transform-origin:0 0;box-shadow:0 2px 0 rgba(0,0,0,.06),0 18px 40px -20px rgba(0,0,0,.35)}
+.sheet .np-teasers{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-bottom:7px;margin-bottom:4px}
+.sheet .np-ear{display:block}
+.sheet .timeline ol{grid-auto-flow:column}
+.sheet .timeline ol::before{display:block}
+.sheet .np-teaser b{font-size:13.5px}
+.sheet .np-head{grid-template-columns:130px minmax(0,1fr) 130px}
+.sheet .np-ear{font-size:12.5px;padding:5px 6px}
+.sheet .masthead{font-size:68px;margin:4px 0 0}
+.sheet .np-top{font-size:10px;margin-top:4px;padding-top:5px}
+.sheet .np-date{font-size:11px;margin:6px 0 10px;padding:5px 0}
+.sheet .kicker{font-size:10.5px;margin-bottom:4px}
+.sheet .lead h2{font-size:40px;line-height:1.04}
+.sheet .lead .deck{font-size:16px;line-height:1.35;max-width:none;margin-top:8px}
+.s1-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,2.35fr) minmax(0,1fr);gap:18px;margin-top:12px;border-top:1px solid var(--rule);padding-top:10px}
+.s1-main{display:flex;flex-direction:column;min-height:0}
+.s1-side{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px}
+.sheet .fit{flex:1;min-height:0;overflow:hidden;column-fill:auto}
+.sheet .lead-body{column-count:2;column-gap:18px;column-rule:1px solid rgba(0,0,0,.18)}
+.sheet .np-body p{font-size:calc(var(--k) * 1px);line-height:1.36;margin:0 0 .45em}
+.sheet .np-body .subhead{font-size:calc(var(--k) * 1.02px);margin:.2em 0 .25em}
+.sheet .byline{font-size:10px;margin-bottom:6px}
+.sheet .quote{font-size:17px;margin:0;padding:8px 0}
+.sheet .numbers{margin:0}
+.sheet .numbers li{font-size:13px;line-height:1.3}
+.sheet .numbers li b{font-size:22px}
+.fun{border-top:3px solid var(--ink);padding-top:6px;break-inside:avoid;margin-bottom:12px}
+.fun h4{margin:0 0 4px;font:700 11px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#C8102E}
+.fun p{margin:0 0 .35em;font-size:calc(var(--k,13) * 1px);line-height:1.35;color:var(--ink)}
+.s1-side .fun p{font:italic 15px/1.35 var(--news)}
+.fun .upside{transform:rotate(180deg);font-size:calc(var(--k,13) * .85px);color:var(--ink-soft);margin-top:6px}
+.fun[hidden]{display:none}
+.s2-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:3px double var(--rule);padding-bottom:6px;font:600 11px var(--display);letter-spacing:.08em;text-transform:uppercase}
+.s2-mast{font:28px var(--black);letter-spacing:0;text-transform:none}
+.sheet .timeline{margin-top:10px}
+.sheet .timeline li{font-size:13px}
+.sheet .np-stories{display:block;column-count:3;column-gap:18px;column-rule:1px solid rgba(0,0,0,.18);margin-top:10px;padding-top:10px;border-top:3px double var(--rule)}
+.sheet .story{break-inside:auto;border-bottom:1px solid var(--rule);padding:0 0 .6em;margin-bottom:.8em}
+.sheet .st-h{break-inside:avoid;break-after:avoid}
+.sheet .story h3,.sheet .editorial h3{font-size:calc(var(--k) * 1.6px);line-height:1.12;margin-bottom:.3em}
+.sheet .story .qa{font-size:calc(var(--k) * 1px);line-height:1.36}
+.sheet .story .qa .q{font-size:calc(var(--k) * .82px)}
+.sheet .editorial{break-inside:avoid;margin-bottom:.8em}
+.sheet-foot{display:flex;justify-content:space-between;border-top:3px double var(--rule);margin-top:8px;padding-top:5px;font:11px var(--display);color:var(--ink-soft)}
+.paper-label{width:min(794px,100%);margin:0 auto 10px;max-width:none}
 /* sample + share card (1080 x 1350, posted on LinkedIn) */
 .sample{margin:0;display:flex;flex-direction:column;gap:8px;width:100%;max-width:420px;justify-self:center}
 .sample figcaption{font-size:13.5px;color:var(--muted);text-align:center}
@@ -327,7 +376,6 @@ h2[tabindex="-1"]:focus{outline:none}
 .sc-fig figcaption{font:600 12.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .sc-fig .btn{align-self:stretch;justify-content:center}
 @media (max-width:860px){.sc-fig{max-width:420px}}
-.paper-label{margin:0 auto 10px;max-width:980px}
 .post{font:15px/1.5 var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;resize:vertical}
 .btn.off{opacity:.4;pointer-events:none}
 .tabs{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
@@ -428,48 +476,17 @@ h2[tabindex="-1"]:focus{outline:none}
   body{background:#fff;padding:0}
   .top,.no-print{display:none!important}
   main{padding:0}
-  /* The News Fix on A4: page 1 = masthead, lead story and side column; page 2 = the other stories */
-  .paper{box-shadow:none;max-width:none;border-radius:0;padding:0;background:#fff}
-  .np-top{font-size:8pt}
-  .masthead{font-size:34pt;margin:2px 0 0}
-  .np-sub{font-size:10pt}
-  .np-date{font-size:8.5pt;margin:6px 0 10px;padding:4px 0}
-  .kicker{font-size:8pt;margin-bottom:3px}
-  .lead h2{font-size:24pt;line-height:1.05}
-  .lead .deck{font-size:12pt;max-width:none;margin-top:6px}
-  .np-cols{grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:14px;margin-top:8px;padding-top:8px}
-  .np-body p{font-size:8.8pt;line-height:1.3;margin:0 0 4px}
-  .lead-body{column-count:2;column-gap:16px}
-  .np-body .subhead{font-size:9pt;margin:2px 0 3px}
-  .byline{font-size:7.5pt;margin-bottom:6px}
-  .quote{font-size:11pt;padding:6px 0;margin:0 0 8px}
-  .quote small,.timeline h4,.numbers h4{font-size:7.5pt}
-  .timeline{break-before:page;margin-top:0;padding:5px 0 6px}
-  .timeline li{font-size:8.5pt;line-height:1.3;gap:3px}
-  .np-teasers{gap:6px;padding-bottom:5px;margin-bottom:4px}
-  .np-teaser{padding:3px 6px}
-  .np-teaser b{font-size:9.5pt}
-  .np-t-sec,.np-teaser small,.np-ear span{font-size:6.5pt}
-  .np-ear{font-size:9pt;padding:3px 5px}
-  .np-head{grid-template-columns:30mm minmax(0,1fr) 30mm}
-  .editorial{padding:6px 8px;break-inside:avoid}
-  .editorial h3{font-size:13pt}
-  .timeline ol,.numbers ul{gap:5px}
-  .numbers{padding:8px 10px}
-  .timeline li b{font-size:9pt}
-  .numbers li{font-size:8.5pt;line-height:1.3;gap:6px}
-  .numbers li b{font-size:14pt}
-  .np-stories{display:block;column-count:3;column-gap:16px;column-rule:1px solid rgba(0,0,0,.18);margin-top:8px;padding-top:8px;border-top:3px double var(--rule)}
-  .story{break-inside:auto;padding:2px 0 8px;margin-bottom:8px}
-  .st-h{break-inside:avoid;break-after:avoid}
-  .editorial h3{break-after:avoid}
-  .story h3{font-size:13.5pt;margin-bottom:4px}
-  .story .qa{font-size:9.5pt;line-height:1.38}
-  .np-foot{font-size:8pt;margin-top:10px}
+  /* The News Fix: the two sheets print as they are, one A4 page each, full size */
+  .paper-label{display:none}
+  .sheets{gap:0;display:block}
+  .sheet-wrap{width:auto;aspect-ratio:auto;overflow:visible;margin:0}
+  .sheet{position:static;transform:none!important;box-shadow:none;background:#fff;page:newsfix;break-after:page}
+  .sheet-wrap:last-child .sheet{break-after:auto}
   .section{break-inside:avoid}
   .road{min-width:0}
   .gantt{min-width:0}
   @page{size:A4;margin:10mm}
+  @page newsfix{size:A4;margin:0}
   .brief{gap:0}
   .b-spider{max-width:110mm}
   .b-page{box-shadow:none;max-width:none;min-height:0;padding:2mm 4mm;gap:12px;font-size:12.5px;line-height:1.42;break-after:page}
@@ -1193,6 +1210,30 @@ window.initMap=initMap;
   }
   function fitCards() { document.querySelectorAll('.sc-frame').forEach(f => { const c = f.querySelector('.share-card'); if (c) c.style.transform = `scale(${f.clientWidth / 1080})`; }); }
   window.addEventListener('resize', fitCards);
+  // The News Fix is two A4 sheets (794 x 1123 px), the same on screen and on paper. Once the text is in,
+  // the type size (--k, in px) of each sheet is the largest one that fits; light boxes (pun, riddle,
+  // horoscope) are removed, lowest priority first, when the text does not fit at the smallest size.
+  const overflows = b => b.scrollWidth > b.clientWidth + 1 || b.scrollHeight > b.clientHeight + 1;
+  function fitBox(box, min, max, area) {
+    const set = k => box.style.setProperty('--k', k.toFixed(2));
+    const tooBig = () => overflows(box) || (area && overflows(area));
+    let lo = min, hi = max; set(hi); if (!tooBig()) return true;
+    set(lo); if (tooBig()) return false;
+    for (let i = 0; i < 9; i++) { const m = (lo + hi) / 2; set(m); if (tooBig()) hi = m; else lo = m; }
+    set(lo); return true;
+  }
+  function fitSheets() {
+    document.querySelectorAll('.sheet').forEach(sh => {
+      const fill = [...sh.querySelectorAll('.filler')].sort((a, b) => a.dataset.prio - b.dataset.prio);
+      fill.forEach(f => { f.hidden = false; });
+      const box = sh.querySelector('.fit'), side = sh.querySelector('.s1-side');
+      if (side) { while (overflows(side) && fill.length) fill.shift().hidden = true; fitBox(box, 10.5, 15.5); return; }
+      while (!fitBox(box, 10.5, 15.5) && fill.length) fill.shift().hidden = true;
+    });
+    scaleSheets();
+  }
+  function scaleSheets() { document.querySelectorAll('.sheet-wrap').forEach(w => { const sh = w.querySelector('.sheet'); if (sh) sh.style.transform = w.clientWidth < 794 ? `scale(${w.clientWidth / 794})` : ''; }); }
+  window.addEventListener('resize', scaleSheets);
   const siteHost = () => (location.protocol.startsWith('http') && !/claude|localhost|127\.0\.0\.1/.test(location.host)) ? location.host : 'your-site.netlify.app';
   const nextBtn = (href, label) => `<div class="section no-print"><div class="row"><a class="btn p" href="${href}">${label} →</a></div></div>`;
 
@@ -1597,7 +1638,7 @@ window.initMap=initMap;
   const storyFormat = { portrait: 'Portrait', explainer: 'Explainer', interview: 'Interview', column: 'Opinion' };
   function newsfix() {
     const p = S.paper; if (!p || !p.lead || !(p.lead.qa || p.lead.sections)) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
-    const co = S.company || T('Your organization'), ctx = S.paperContext || {};
+    const co = S.company || T('Your organization'), ctx = S.paperContext || {}, ex = p.extras || {};
     const nums = [[window.num(ctx.progress != null ? ctx.progress : 100 - ctx.distance), T('of the way to the 2030 target in the 2026 diagnostic')], [window.num(ctx.and), T('AND score in 2026: the lower of productivity and culture')], [String(ctx.initiatives), T('initiatives on the 2027–2030 roadmap')]]
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
     return `<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 3 · Your News Fix')}</div><h1>${T('Your 2030 front page is printed')}</h1><h2>${T('Share it on LinkedIn')}</h2>
@@ -1608,16 +1649,23 @@ window.initMap=initMap;
         <figure class="sc-fig"><figcaption>${T('Image for LinkedIn')}</figcaption><div class="sc-frame">${shareCard(p, S.company, siteHost())}</div>
           <button class="btn p" id="dl">${T('Download this image')}</button></figure></div>
       <div class="eyebrow paper-label no-print">${T('Your full front page')}</div>
-      <div class="paper" id="paper">
-      ${paperHead(p, co)}
-      <div class="lead"><div class="kicker">${kicker(p.lead)}</div><h2>${tx(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${tx(p.lead.deck)}</p>` : ''}</div>
-      <div class="np-cols"><div><div class="byline">${T(p.lead.sections ? 'By the News Fix newsroom' : 'Interview by the News Fix newsroom')}</div><div class="np-body lead-body">${leadBody(p.lead)}</div></div>
-        <div>${p.quote && p.quote.text ? `<div class="quote">${quoted(p.quote.text)}<small>${tx(p.quote.who || '')}</small></div>` : ''}
-          ${nums ? `<div class="numbers"><h4>${T('From the 2026 diagnostic')}</h4><ul>${nums}</ul></div>` : ''}</div></div>
-      ${Array.isArray(p.timeline) && p.timeline.length ? `<div class="timeline"><h4>${T('The road to 2030')}</h4><ol>${p.timeline.map(t => `<li><b>${esc(t.year)}</b><span>${tx(t.text)}</span></li>`).join('')}</ol></div>` : ''}
-      ${p.stories.length ? `<div class="np-stories">${p.stories.map(x => `<article class="story ${esc(x.format || '')}"><header class="st-h"><div class="kicker">${kicker(x)}${storyFormat[x.format] ? ` · ${T(storyFormat[x.format])}` : ''}</div><h3>${tx(x.headline)}</h3></header><div class="np-body">${storyBody(x)}</div></article>`).join('')}
-        ${p.editorial && p.editorial.headline ? `<aside class="editorial"><div class="kicker">${T('Editorial')}</div><h3>${tx(p.editorial.headline)}</h3><div class="np-body">${parasHtml(p.editorial.paragraphs || [])}</div><small>${T('The editor-in-chief')}</small></aside>` : ''}</div>` : ''}
-      <div class="np-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>${T('More human. More digital. Not a trade-off. AND.')}</span></div></div>
+      <div class="sheets" id="paper">
+      <div class="sheet-wrap"><section class="sheet s1" aria-label="${T('Page {p}', { p: 1 })}">
+        ${paperHead(p, co)}
+        <div class="lead"><div class="kicker">${kicker(p.lead)}</div><h2>${tx(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${tx(p.lead.deck)}</p>` : ''}</div>
+        <div class="s1-body"><div class="s1-main"><div class="byline">${T(p.lead.sections ? 'By the News Fix newsroom' : 'Interview by the News Fix newsroom')}</div><div class="np-body lead-body fit">${leadBody(p.lead)}</div></div>
+          <aside class="s1-side">${p.quote && p.quote.text ? `<div class="quote">${quoted(p.quote.text)}<small>${tx(p.quote.who || '')}</small></div>` : ''}
+            ${nums ? `<div class="numbers"><h4>${T('From the 2026 diagnostic')}</h4><ul>${nums}</ul></div>` : ''}
+            ${ex.pun ? `<div class="fun filler" data-prio="1"><h4>${T('Pun of the day')}</h4><p>${tx(ex.pun)}</p></div>` : ''}</aside></div>
+        <div class="sheet-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>1</span></div></section></div>
+      <div class="sheet-wrap"><section class="sheet s2" aria-label="${T('Page {p}', { p: 2 })}">
+        <div class="s2-top"><span class="s2-mast">The News Fix</span><span>${esc(paperDate())}</span><span>${esc(co)}</span></div>
+        ${Array.isArray(p.timeline) && p.timeline.length ? `<div class="timeline"><h4>${T('The road to 2030')}</h4><ol>${p.timeline.map(t => `<li><b>${esc(t.year)}</b><span>${tx(t.text)}</span></li>`).join('')}</ol></div>` : ''}
+        <div class="np-stories fit">${p.stories.map(x => `<article class="story ${esc(x.format || '')}"><header class="st-h"><div class="kicker">${kicker(x)}${storyFormat[x.format] ? ` · ${T(storyFormat[x.format])}` : ''}</div><h3>${tx(x.headline)}</h3></header><div class="np-body">${storyBody(x)}</div></article>`).join('')}
+          ${p.editorial && p.editorial.headline ? `<aside class="editorial"><div class="kicker">${T('Editorial')}</div><h3>${tx(p.editorial.headline)}</h3><div class="np-body">${parasHtml(p.editorial.paragraphs || [])}</div><small>${T('The editor-in-chief')}</small></aside>` : ''}
+          ${ex.riddle && ex.riddle.question ? `<div class="fun filler" data-prio="3"><h4>${T('The riddle')}</h4><p>${tx(ex.riddle.question)}</p><p class="upside">${T('Answer:')} ${tx(ex.riddle.answer)}</p></div>` : ''}
+          ${Array.isArray(ex.horoscope) && ex.horoscope.length ? `<div class="fun filler" data-prio="2"><h4>${T('Work horoscope')}</h4>${ex.horoscope.map(h => `<p><b>${tx(h.sign)}.</b> ${tx(h.text)}</p>`).join('')}</div>` : ''}</div>
+        <div class="sheet-foot"><span>${T('More human. More digital. Not a trade-off. AND.')}</span><span>2</span></div></section></div></div>
       <div class="section no-print" style="margin-top:24px"><div class="row"><button class="btn s" id="print">${T('Print or save as PDF')}</button><a class="btn g" href="#/priorities">${T('Back to your priorities and roadmap')}</a></div>
       ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}${S.paperError ? ` <small>(${esc(S.paperError)})</small>` : ''}</p>` : ''}${contactBox()}</div>
       <div id="capture" aria-hidden="true">${shareCard(p, S.company, siteHost())}</div>`;
@@ -1659,7 +1707,7 @@ window.initMap=initMap;
     else if (route === '#/diagnostic') { if (done() && !S.editing && shared() && !S.profileSeen) { v.innerHTML = profile(); bindProfile(); } else if (done() && !S.editing) { v.innerHTML = report(); bindReport(); } else { v.innerHTML = questions(); bindQuestions(); } }
     else if (route === '#/brief') { v.innerHTML = brief(); bindBrief(); }
     else if (route === '#/priorities') { v.innerHTML = priorities(); bindPriorities(); }
-    else if (route === '#/newsfix') { v.innerHTML = newsfix(); bindNewsfix(); }
+    else if (route === '#/newsfix') { v.innerHTML = newsfix(); bindNewsfix(); fitSheets(); if (document.fonts) document.fonts.ready.then(fitSheets); }
     else { v.innerHTML = home(); bindHome(); }
     fitCards();
   }

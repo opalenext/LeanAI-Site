@@ -45,6 +45,11 @@ Before you answer, read the whole page as the editor-in-chief and correct it:
 - teasers: three short items for the strip above the masthead, as in a real daily: one "Sport", one "Business", one "Culture" or "Science". Light, plausible news of the world in 2030, not about the organization. Each has a section name and a headline of 4 to 9 words. They may give a score or a result, but never name a real person, a real company, a brand or a political party, and never deal with politics, war, crime or disasters. Cities, countries, national teams and sports are allowed.
 - weather: one short line of weather for the day (for example "Sunny spells, 14°C").
 - editorial: a short editorial by the editor-in-chief (80 to 110 words, 2 paragraphs) with a headline. It gives the newspaper's view on what this organization shows for the future of work.
+- extras, the light corner that real newspapers keep to fill the page. Invent them, with wit and kindness, on the world of work in 2030:
+  - pun: a pun or a wordplay of the day, one or two sentences, that works in the language of the page.
+  - riddle: a short riddle with its answer. The answer is printed upside down.
+  - horoscope: three signs of a "work horoscope", each one sentence (for example a sign and a prediction about meetings, agents or teams).
+  No real person, company or brand, nothing that mocks a group of people.
 
 # Headlines
 - Affirmative and concrete. Never a question. 5 to 11 words.
@@ -80,7 +85,7 @@ const paragraphs = { type: 'array', items: text };
 export const SCHEMA = {
   type: 'object',
   additionalProperties: false,
-  required: ['lead', 'stories', 'teasers', 'weather', 'editorial', 'quote', 'timeline'],
+  required: ['lead', 'stories', 'teasers', 'weather', 'editorial', 'extras', 'quote', 'timeline'],
   properties: {
     lead: {
       type: 'object',
@@ -110,6 +115,14 @@ export const SCHEMA = {
       items: { type: 'object', additionalProperties: false, required: ['section', 'headline'], properties: { section: text, headline: text } },
     },
     weather: text,
+    extras: {
+      type: 'object', additionalProperties: false, required: ['pun', 'riddle', 'horoscope'],
+      properties: {
+        pun: text,
+        riddle: { type: 'object', additionalProperties: false, required: ['question', 'answer'], properties: { question: text, answer: text } },
+        horoscope: { type: 'array', items: { type: 'object', additionalProperties: false, required: ['sign', 'text'], properties: { sign: text, text } } },
+      },
+    },
     editorial: { type: 'object', additionalProperties: false, required: ['headline', 'paragraphs'], properties: { headline: text, paragraphs } },
     quote: { type: 'object', additionalProperties: false, required: ['text', 'who'], properties: { text, who: text } },
     timeline: {

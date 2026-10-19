@@ -33,7 +33,7 @@
     'Productivity challenges': 'Défis de productivité', 'Cultural challenges': 'Défis culturels',
     // Share card and newspaper
     'Serving the sky, the moon and the stars': 'Au service du ciel, de la lune et des étoiles', 'The human edition': 'Édition humaine',
-    'The insiders’ view': 'Le regard de l’intérieur', 'Weather': 'Météo', 'Special edition': 'Édition spéciale', 'Special edition · No. 2030': 'Édition spéciale · N° 2030', '€3': '3 €', 'Page {p}': 'Page {p}', 'Editorial': 'Éditorial', 'The editor-in-chief': 'La rédaction en chef', 'Portrait': 'Portrait', 'Explainer': 'Décryptage', 'Opinion': 'Point de vue', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
+    'The insiders’ view': 'Le regard de l’intérieur', 'Weather': 'Météo', 'Special edition': 'Édition spéciale', 'Special edition · No. 2030': 'Édition spéciale · N° 2030', '€3': '3 €', 'Page {p}': 'Page {p}', 'Editorial': 'Éditorial', 'Pun of the day': 'Le calembour du jour', 'The riddle': 'L’énigme', 'Answer:': 'Réponse :', 'Work horoscope': 'L’horoscope du travail', 'The editor-in-chief': 'La rédaction en chef', 'Portrait': 'Portrait', 'Explainer': 'Décryptage', 'Opinion': 'Point de vue', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
     'Also in this edition': 'Aussi dans cette édition', 'More human. More digital.': 'Plus humain. Plus digital.',
     'Not a trade-off. AND.': 'Pas un compromis. ET.', 'Write your own 2030 front page': 'Écrivez votre Une 2030',
     // Introduction
