@@ -1292,7 +1292,7 @@ window.initMap=initMap;
     document.querySelectorAll('a[data-scroll]').forEach(a => { a.onclick = ev => { const t = document.getElementById(a.dataset.scroll); if (!t) return; ev.preventDefault(); t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); const h = t.querySelector('h2'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); } }; });
   }
   function home() {
-    const start = T(done() ? 'See your report' : 'Start your diagnostic');
+    const start = T('Start your diagnostic');
     const series = 'Why the Future of Work Needs a New Operating System';
     const intro = EPS().find(e => !e.shift);
     const introHtml = intro ? `<article class="vid ep-intro" style="--c:var(--accent)" aria-labelledby="ep-${esc(intro.id)}-t">${epFrame(intro)}
@@ -1354,7 +1354,7 @@ window.initMap=initMap;
       .replace(/<p class="lede">[^<]*<\/p>/, `<p class="lede">${T(lede)}</p>`)
       .replace('aria-label="Map of the four pillars and the challenges they address"', `aria-label="${T('Map of the four pillars and the challenges they address')}"`)
       .replace('<div class="scroll" id="mapview">', `<div class="scroll" id="mapview"><p class="scroll-hint">${T('Scroll sideways to see the whole map.')}</p>`);
-    return `<div class="mapapp">${html}</div>` + nextBtn('#/diagnostic', T(done() ? 'See your report' : 'Start your diagnostic'));
+    return `<div class="mapapp">${html}</div>` + nextBtn('#/diagnostic', T('Start your diagnostic'));
   }
 
   // ---------- 1. YOUR DIAGNOSTIC (questions, then the report on the same step) ----------
