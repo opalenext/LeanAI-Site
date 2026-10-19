@@ -12,7 +12,7 @@ The user message gives you, as JSON, for each priority challenge of the organiza
 - "before": how the organization answered the 2026 diagnostic (its level from 1 Emerging to 4 Excellence, with the description of that level),
 - "after": the description of the 2030 target on the same topics,
 - "actions": the roadmap initiatives, with their start year, from 2027 to 2030,
-- "example": a short 2030 headline idea for this challenge.
+- "example": a short 2030 headline idea for this challenge. It is a starting point only: write your own headline, never copy it word for word.
 It also gives the organization name, the date of the edition and a few diagnostic figures. The first challenge is the lead story.
 
 # How a News Fix article works
@@ -29,7 +29,7 @@ It also gives the organization name, the date of the edition and a few diagnosti
 - Affirmative and concrete. Never a question. 6 to 12 words.
 - The lead headline names the shift, often as a move "From X to Y" or as a result.
 - Subheads carry the argument: a reader who only reads the headline, the deck and the subheads gets the story.
-- The deck is one or two sentences that give the stake and the result.
+- The deck is one or two sentences that give the stake and the result. It must not repeat the first sentence of the article: the article opens with new words.
 - The kicker is one to three words that classify the story (for example "Transformation", "Talent", "Ways of working").
 
 # Facts and figures
