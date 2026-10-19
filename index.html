@@ -173,7 +173,9 @@ h2[tabindex="-1"]:focus{outline:none}
 .contact #cmsg:empty{display:none}
 .contact .assure{margin:12px 0 0;font-size:14.5px;color:var(--fg);border-left:3px solid var(--accent);padding-left:10px}
 /* diagnostic */
-.q-wrap{max-width:760px;display:flex;flex-direction:column;gap:22px}
+.q-wrap{display:flex;flex-direction:column;gap:22px}
+/* The question keeps a reading width; its action row spans the page, so the next step lines up with the other pages */
+.q-wrap > :not(.acts){max-width:760px;width:100%}
 .progress{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
 .progress i{display:block;height:100%;background:var(--accent);transition:width .3s}
 .qmeta{display:flex;justify-content:space-between;gap:10px;font:600 13px var(--display);color:var(--muted)}
@@ -1374,8 +1376,9 @@ window.initMap=initMap;
       <h2 id="qtitle">${esc(q.q)}</h2>
       <div class="opts" role="radiogroup" aria-labelledby="qtitle">${q.o.map((o, k) => `<label class="opt ${v === k + 1 ? 'sel' : ''}"><input type="radio" name="${q.id}" id="${q.id}_${k + 1}" value="${k + 1}" ${v === k + 1 ? 'checked' : ''}><span class="lv">${k + 1}</span><span>${esc(o)}</span></label>`).join('')}</div>
       <div class="scale"><span>${T('1 · Typical today')}</span><span>${T('4 · Target 2030')}</span></div>
+      ${i === n - 1 ? shareBox() : ''}
       <div class="row acts"><button class="btn g" id="prev" ${i === 0 ? 'disabled' : ''}>${T('← Back')}</button>
-        <button class="btn p" id="next" ${v && (i < n - 1 || shared()) ? '' : 'disabled'}>${i === n - 1 ? T('See your report') + ARROW : T('Next →')}</button></div>${i === n - 1 ? shareBox() : ''}</div>`;
+        <button class="btn p" id="next" ${v && (i < n - 1 || shared()) ? '' : 'disabled'}>${i === n - 1 ? T('See your report') + ARROW : T('Next →')}</button></div></div>`;
   }
   function bindQuestions() {
     document.querySelectorAll('.opt input').forEach(r => r.addEventListener('change', () => {
