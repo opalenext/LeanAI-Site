@@ -29,11 +29,11 @@
     'Your Priorities': 'Vos priorités', 'Your News Fix': 'Votre News Fix', 'Steps': 'Étapes', 'Language': 'Langue',
     'See your diagnostic': 'Voir votre diagnostic', 'Start your diagnostic': 'Commencer votre diagnostic',
     'Explore the interactive map': 'Explorer la carte interactive', 'Shift {n}': 'Shift {n}', 'Privacy': 'Confidentialité',
-    'Print the report (PDF, 2 pages)': 'Imprimer la synthèse (PDF, 2 pages)', 'Productivity': 'Productivité', 'Culture': 'Culture',
+    'Print the executive report (PDF, 2 pages)': 'Imprimer la synthèse (PDF, 2 pages)', 'Productivity': 'Productivité', 'Culture': 'Culture',
     'Productivity challenges': 'Défis de productivité', 'Cultural challenges': 'Défis culturels',
     // Share card and newspaper
     'Serving the sky, the moon and the stars': 'Au service du ciel, de la lune et des étoiles', 'The human edition': 'Édition humaine',
-    'The insiders’ view': 'Le regard de l’intérieur', 'Weather': 'Météo', 'Special edition': 'Édition spéciale', 'Special edition · No. 2030': 'Édition spéciale · N° 2030', '€3': '3 €', 'Page {p}': 'Page {p}', 'Editorial': 'Éditorial', 'Pun of the day': 'Le calembour du jour', 'contact Vincent Dupuis on LinkedIn ↗': 'contactez Vincent Dupuis sur LinkedIn ↗', 'Your front page is up to date with these answers and priorities. Change them to create a new one.': 'Votre Une est à jour avec ces réponses et ces priorités. Modifiez-les pour en créer une nouvelle.', 'Only one front page is left. To go further,': 'Il ne vous reste qu’une Une. Pour aller plus loin,', 'To go further,': 'Pour aller plus loin,', 'Your answers, priorities, organization name or language have changed since this front page.': 'Vos réponses, vos priorités, le nom de l’organisation ou la langue ont changé depuis cette Une.', 'Create it again with my changes →': 'La recréer avec mes modifications →', 'The riddle': 'L’énigme', 'Answer:': 'Réponse :', 'Work horoscope': 'L’horoscope du travail', 'The editor-in-chief': 'La rédaction en chef', 'Portrait': 'Portrait', 'Explainer': 'Décryptage', 'Opinion': 'Point de vue', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
+    'The insiders’ view': 'Le regard de l’intérieur', 'Weather': 'Météo', 'Special edition': 'Édition spéciale', 'Special edition · No. 2030': 'Édition spéciale · N° 2030', '€3': '3 €', 'Page {p}': 'Page {p}', 'Editorial': 'Éditorial', 'Pun of the day': 'Le calembour du jour', 'contact Vincent Dupuis on LinkedIn ↗': 'contactez Vincent Dupuis sur LinkedIn ↗', 'Your front page is up to date with these answers and priorities. Change them to create a new one.': 'Votre Une est à jour avec ces réponses et ces priorités. Modifiez-les pour en créer une nouvelle.', 'Only one front page is left. To go further,': 'Il ne vous reste qu’une Une. Pour aller plus loin,', 'To go further,': 'Pour aller plus loin,', 'Your answers, priorities, organization name or language have changed since this front page.': 'Vos réponses, vos priorités, le nom de l’organisation ou la langue ont changé depuis cette Une.', 'Generate it again with my changes →': 'La générer à nouveau avec mes modifications →', 'The riddle': 'L’énigme', 'Answer:': 'Réponse :', 'Work horoscope': 'L’horoscope du travail', 'The editor-in-chief': 'La rédaction en chef', 'Portrait': 'Portrait', 'Explainer': 'Décryptage', 'Opinion': 'Point de vue', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
     'Also in this edition': 'Aussi dans cette édition', 'More human. More digital.': 'Plus humain. Plus digital.',
     'Not a trade-off. AND.': 'Pas un compromis. ET.', 'Write your own 2030 front page': 'Écrivez votre Une 2030',
     // Introduction
@@ -119,7 +119,7 @@
     // 1. Diagnostic: questions
     'Step 1 · Your Diagnostic': 'Étape 1 · Votre diagnostic', 'Question {i} of {n}': 'Question {i} sur {n}',
     '1 · Typical today': '1 · Typique aujourd’hui', '4 · Target 2030': '4 · Cible 2030', '← Back': '← Retour',
-    'See my report': 'Voir mon rapport', 'Next →': 'Suivant →',
+    'See your report': 'Voir votre rapport', 'Next →': 'Suivant →',
     // 1. Diagnostic: report
     'Large gap': 'Écart fort', 'Gap': 'Écart', 'Close': 'Proche', 'Maturity {v}%': 'Maturité {v} %',
     'Limit · ': 'Limite · ', 'Guardrail:': 'Garde-fou :', 'Challenges affected:': 'Défis concernés :',
@@ -137,8 +137,8 @@
       'Vos 14 pratiques, d’Émergent à Excellence · prêt pour 2030. L’anneau extérieur en pointillés est la cible 2030.',
     'Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.':
       'Les contradictions entre vos pratiques : un shift fait avancer un défi pendant qu’un autre le fait reculer, et les effets s’annulent.',
-    'Where the gaps are': 'Où sont les écarts', 'Get the 2-page report for your ExCom': 'Obtenir la synthèse de 2 pages pour votre comité exécutif',
-    'Next: your priorities →': 'Suite : vos priorités →', '← Change my answers': '← Modifier mes réponses',
+    'Where the gaps are': 'Où sont les écarts', 'Generate the executive report for your ExCom': 'Générer la synthèse pour votre comité exécutif',
+    'Set your priorities →': 'Définir vos priorités →', '← Change my answers': '← Modifier mes réponses',
     'Maturity profile on the 14 practices, from Emerging to Excellence · 2030-ready': 'Profil de maturité sur les 14 pratiques, d’Émergent à Excellence · prêt pour 2030',
     '2030-ready': 'prêt 2030',
     // Executive report-out
@@ -171,7 +171,7 @@
     'Dependency across shifts': 'Dépendance entre shifts', 'Dependency within a shift · Hover or tap a bar to isolate its links': 'Dépendance dans un shift · Survolez ou touchez une barre pour isoler ses liens',
     'Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.':
       'Vos réponses atteignent déjà la cible 2030 sur ces défis. Choisissez d’autres priorités pour construire une feuille de route.',
-    'Create your 2030 front page': 'Créer votre Une 2030',
+    'Generate your 2030 vision': 'Générer votre vision 2030',
     'The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.':
       'La rédaction de The News Fix écrit votre Une à partir de votre diagnostic et de cette feuille de route. Le nom de votre organisation, ces réponses et cette feuille de route sont envoyés à un modèle d’IA et ne sont pas conservés.',
     'lead story': 'article principal', 'maturity {v}%': 'maturité {v} %',
@@ -196,7 +196,7 @@
     'Download the image, copy the text, then create a post on LinkedIn and add the image.': 'Téléchargez l’image, copiez le texte, puis créez un post sur LinkedIn et ajoutez l’image.',
     'Special edition · The human edition': 'Édition spéciale · Édition humaine',     'Interview by the News Fix newsroom': 'Interview par la rédaction de The News Fix', 'By the News Fix newsroom': 'Par la rédaction de The News Fix',
     'You can print {n} more front pages.': 'Vous pouvez encore imprimer {n} Unes.', 'You can print one more front page.': 'Vous pouvez encore imprimer une Une.',
-    'You have printed your {n} front pages.': 'Vous avez imprimé vos {n} Unes.', 'See your front page →': 'Voir votre Une →',
+    'You have printed your {n} front pages.': 'Vous avez imprimé vos {n} Unes.', 'See your 2030 vision →': 'Voir votre vision 2030 →',
     'To print more, contact Vincent Dupuis on LinkedIn ↗': 'Pour en imprimer d’autres, contactez Vincent Dupuis sur LinkedIn ↗', 'The road to 2030': 'La route vers 2030', 'From the 2026 diagnostic': 'Selon le diagnostic de 2026',
     'Written with the Future of Work · 4 Shifts model': 'Écrit avec le modèle Future of Work · 4 Shifts', 'More human. More digital. Not a trade-off. AND.': 'Plus humain. Plus digital. Pas un compromis. ET.',
     '← Back to your priorities and roadmap': '← Retour à vos priorités et à votre feuille de route',

@@ -1369,7 +1369,7 @@ window.initMap=initMap;
       <div class="opts" role="radiogroup" aria-labelledby="qtitle">${q.o.map((o, k) => `<label class="opt ${v === k + 1 ? 'sel' : ''}"><input type="radio" name="${q.id}" id="${q.id}_${k + 1}" value="${k + 1}" ${v === k + 1 ? 'checked' : ''}><span class="lv">${k + 1}</span><span>${esc(o)}</span></label>`).join('')}</div>
       <div class="scale"><span>${T('1 · Typical today')}</span><span>${T('4 · Target 2030')}</span></div>
       <div class="row acts tight"><button class="btn g" id="prev" ${i === 0 ? 'disabled' : ''}>${T('← Back')}</button>
-        <button class="btn p" id="next" ${v && (i < n - 1 || shared()) ? '' : 'disabled'}>${i === n - 1 ? T('See my report') + ARROW : T('Next →')}</button></div>${i === n - 1 ? shareBox() : ''}</div>`;
+        <button class="btn p" id="next" ${v && (i < n - 1 || shared()) ? '' : 'disabled'}>${i === n - 1 ? T('See your report') + ARROW : T('Next →')}</button></div>${i === n - 1 ? shareBox() : ''}</div>`;
   }
   function bindQuestions() {
     document.querySelectorAll('.opt input').forEach(r => r.addEventListener('change', () => {
@@ -1388,7 +1388,7 @@ window.initMap=initMap;
       `</div></fieldset>`).join('');
     return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Compare with organizations like yours')}</h1>
         <p class="lede">${T('Four optional questions. They are used only in the anonymous statistics, to compare results by sector, size, role and region. Never your name or your organization.')}</p></div>
-      ${fs}<div class="row acts tight"><button class="btn g" id="pback">${T('← Back')}</button><button class="btn p" id="pnext">${T('See my report')}${ARROW}</button></div></div>`;
+      ${fs}<div class="row acts tight"><button class="btn g" id="pback">${T('← Back')}</button><button class="btn p" id="pnext">${T('See your report')}${ARROW}</button></div></div>`;
   }
   function bindProfile() {
     document.querySelectorAll('.prof input').forEach(r => r.addEventListener('change', () => {
@@ -1412,7 +1412,7 @@ window.initMap=initMap;
         <div class="profile"><div class="spider-wrap">${spider(false)}</div><div class="pr-list">${practiceList()}<p class="note">${esc(F.levelNote)}</p></div></div></div>
       <div class="section"><div class="stack"><h2>${T('Coherence check')}</h2><p class="lede">${T('Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.')}</p></div>${flags}</div>
       <div class="section"><h2>${T('Where the gaps are')}</h2><div class="band-l">${T('Productivity challenges')}</div><div class="heat">${heat('P')}</div><div class="band-l">${T('Cultural challenges')}</div><div class="heat">${heat('C')}</div></div>
-      <div class="section no-print"><div class="row acts"><button class="btn g" id="redo">${T('← Change my answers')}</button><a class="btn s${shared() ? '' : ' off'}" href="#/brief" ${shared() ? '' : 'aria-disabled="true" tabindex="-1"'}>${T('Get the 2-page report for your ExCom')}</a><a class="btn p${shared() ? '' : ' off'}" href="#/priorities" ${shared() ? '' : 'aria-disabled="true" tabindex="-1"'}>${T('Next: your priorities →')}</a></div>${shared() ? '' : shareBox()}${contactBox()}</div>`;
+      <div class="section no-print"><div class="row acts"><button class="btn g" id="redo">${T('← Change my answers')}</button><a class="btn s${shared() ? '' : ' off'}" href="#/brief" ${shared() ? '' : 'aria-disabled="true" tabindex="-1"'}>${T('Generate the executive report for your ExCom')}</a><a class="btn p${shared() ? '' : ' off'}" href="#/priorities" ${shared() ? '' : 'aria-disabled="true" tabindex="-1"'}>${T('Set your priorities →')}</a></div>${shared() ? '' : shareBox()}${contactBox()}</div>`;
   }
   function bindReport() {
     bindShare(() => { const y = window.scrollY; render(); window.scrollTo(0, y); }); bindContact(); sendReport();
@@ -1472,7 +1472,7 @@ window.initMap=initMap;
     return `<div class="no-print brief-tools"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Your executive report-out')}</h1>
         <p class="lede">${T('Two pages for your ExCom: where you stand, what blocks progress, and the decisions to take. Print it or save it as PDF, or copy the summary into an email.')}</p></div>
         <div class="field" style="max-width:520px"><label for="company_b">${T('Organization name (optional)')}</label><input id="company_b" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our organization')}" aria-describedby="company_b_h"><p class="hint" id="company_b_h">${T('Saved in your browser only. It is not sent from this page.')}</p></div>
-        <div class="row acts"><a class="btn g" href="#/diagnostic">${T('← Back to your report')}</a><button class="btn s" id="bprint">${T('Print the report (PDF, 2 pages)')}</button><button class="btn s" id="bcopy">${T('Copy the summary')}</button><a class="btn p" href="#/priorities">${T('Next: your priorities →')}</a></div>
+        <div class="row acts"><a class="btn g" href="#/diagnostic">${T('← Back to your report')}</a><button class="btn s" id="bprint">${T('Print the executive report (PDF, 2 pages)')}</button><button class="btn s" id="bcopy">${T('Copy the summary')}</button><a class="btn p" href="#/priorities">${T('Set your priorities →')}</a></div>
         <p class="note" id="bmsg"></p></div>
       <div class="brief">
       <section class="b-page">${head(1)}
@@ -1548,11 +1548,11 @@ window.initMap=initMap;
         ${rm.items.length && S.roadView === 'gantt' ? `<p class="note arrow-key"><span class="ak x"></span>${T('Dependency across shifts')} <span class="ak i"></span>${T('Dependency within a shift · Hover or tap a bar to isolate its links')}</p>` : ''}
         ${rm.items.length && S.roadView === 'gantt' ? `<p class="note g-hint">${T('Scroll sideways to see all the years.')}</p>` : ''}
         ${rm.items.length ? (S.roadView === 'gantt' ? gantt : list) : `<div class="ok-box">${T('Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.')}</div>`}</div>
-      ${hasPaper() && S.paperKey && !paperStale() ? `<div class="section no-print"><div class="row acts"><button class="btn s" id="print">${T('Print the roadmap (PDF)')}</button><a class="btn p" href="#/newsfix">${T('See your front page →')}</a></div>
+      ${hasPaper() && S.paperKey && !paperStale() ? `<div class="section no-print"><div class="row acts"><button class="btn s" id="print">${T('Print the roadmap (PDF)')}</button><a class="btn p" href="#/newsfix">${T('See your 2030 vision →')}</a></div>
         <p class="note">${T('Your front page is up to date with these answers and priorities. Change them to create a new one.')}${leftNote()}</p></div>`
-      : papersLeft() ? `<div class="section no-print"><div class="row acts"><button class="btn s" id="print">${T('Print the roadmap (PDF)')}</button><button class="btn p" id="gen">${T('Create your 2030 front page')}${ARROW}</button></div>
+      : papersLeft() ? `<div class="section no-print"><div class="row acts"><button class="btn s" id="print">${T('Print the roadmap (PDF)')}</button><button class="btn p" id="gen">${T('Generate your 2030 vision')}${ARROW}</button></div>
         <p class="note" id="genmsg">${T('The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')}${leftNote()} <a href="privacy.html">${T('Privacy')}</a></p></div>`
-      : `<div class="section no-print"><div class="row acts"><button class="btn s" id="print">${T('Print the roadmap (PDF)')}</button>${hasPaper() ? `<a class="btn p" href="#/newsfix">${T('See your front page →')}</a>` : ''}</div>
+      : `<div class="section no-print"><div class="row acts"><button class="btn s" id="print">${T('Print the roadmap (PDF)')}</button>${hasPaper() ? `<a class="btn p" href="#/newsfix">${T('See your 2030 vision →')}</a>` : ''}</div>
         <p class="note" id="genmsg">${T('You have printed your {n} front pages.', { n: MAX_PAPERS })} <a href="${CONTACT_URL}" target="_blank" rel="noopener">${T('To print more, contact Vincent Dupuis on LinkedIn ↗')}</a></p></div>`}`;
   }
   function priorities() {
@@ -1689,7 +1689,7 @@ window.initMap=initMap;
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
     const banner = paperStale()
       ? `<div class="regen no-print"><p><b>${T('Your answers, priorities, organization name or language have changed since this front page.')}</b></p>
-          ${papersLeft() ? `<div class="row acts"><button class="btn p" id="gen">${T('Create it again with my changes →')}</button></div><p class="note" id="genmsg">${leftNote().trim()}</p>`
+          ${papersLeft() ? `<div class="row acts"><button class="btn p" id="gen">${T('Generate it again with my changes →')}</button></div><p class="note" id="genmsg">${leftNote().trim()}</p>`
             : `<p class="note">${T('You have printed your {n} front pages.', { n: MAX_PAPERS })} ${T('To go further,')} ${contactLink()}</p>`}</div>`
       : papersLeft() === 1 && S.paperSource === 'ai' ? `<div class="regen no-print"><p>${leftNote().trim()}</p></div>` : '';
     return `${banner}<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 3 · Your News Fix')}</div><h1>${T('Your 2030 front page is printed')}</h1><h2>${T('Share it on LinkedIn')}</h2>
