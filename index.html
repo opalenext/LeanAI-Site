@@ -1019,9 +1019,9 @@ window.initMap=initMap;
   const hasPrios = () => done() && Array.isArray(S.priorities) && S.priorities.length >= MINP;
   // anonymous usage counter: no cookie, no identifier, only the name of the step reached
   const ping = e => { try { fetch('/api/count', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ e }), keepalive: true }).catch(() => {}); } catch (x) {} };
-  // Anonymous statistics, unless the visitor unticks the box: a random id, the 14 levels, the priorities and the scores.
-  // No name, no organization. A new id for each new set of answers.
-  const shared = () => S.share !== false;
+  // Anonymous statistics: a random id, the 14 levels, the priorities and the scores. No name, no organization.
+  // The visitor ticks a box to accept them before seeing the report. A new id for each new set of answers.
+  const shared = () => S.share === true;
   const prof = () => { const p = {}; (F.profile || []).forEach(f => { const v = S.profile && S.profile[f.id]; if (v && f.o.some(o => o[0] === v)) p[f.id] = v; }); return p; };
   const sig = () => F.questions.map(q => S.answers[q.id] || 0).join('') + '|' + JSON.stringify(prof());
   const newId = () => Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, '0')).join('');
@@ -1048,8 +1048,9 @@ window.initMap=initMap;
     S.sentPrio = p; save();
     if (!(await post('priorities')) && S.sentPrio === p) { S.sentPrio = null; save(); }
   }
-  const shareBox = () => `<label class="optin no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
-  const bindShare = () => { const b = document.getElementById('share'); if (b) b.addEventListener('change', () => { S.share = b.checked; save(); }); };
+  const shareBox = () => `<label class="optin no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('I accept that my answers are added, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization. Required to continue.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
+  // onChange: what the page does when the box changes (enable the buttons, or show the next step)
+  const bindShare = onChange => { const b = document.getElementById('share'); if (b) b.addEventListener('change', () => { S.share = b.checked; save(); if (onChange) onChange(); }); };
   // Optional email to receive the summary of the study. Stored apart from the answers, with no link to them.
   const contactBox = () => S.contactDone
     ? `<div class="contact no-print"><h3>${T('Get the results of the study')}</h3><p>${T('Thank you. You will receive the summary of the results.')}</p></div>`
@@ -1188,7 +1189,7 @@ window.initMap=initMap;
   const STEPS = [['#/', 'Introduction'], ['#/map', 'Interactive map'], ['#/diagnostic', 'Your Diagnostic'], ['#/priorities', 'Your Priorities'], ['#/newsfix', 'Your News Fix']].map(([h, t]) => [h, T(t)]);
   const hasPaper = () => !!(S.paper && S.paper.lead && (S.paper.lead.qa || S.paper.lead.sections));
   function nav(route) {
-    const ok = { '#/': true, '#/map': true, '#/diagnostic': true, '#/priorities': done(), '#/newsfix': hasPaper() };
+    const ok = { '#/': true, '#/map': true, '#/diagnostic': true, '#/priorities': done() && shared(), '#/newsfix': hasPaper() && shared() };
     document.getElementById('stepsnav').setAttribute('aria-label', T('Steps'));
     document.querySelectorAll('.langs button').forEach(b => { b.setAttribute('aria-pressed', String(b.dataset.lang === window.LANG)); b.onclick = () => window.setLang(b.dataset.lang); });
     document.querySelector('.langs').setAttribute('aria-label', T('Language'));
@@ -1328,7 +1329,7 @@ window.initMap=initMap;
       <section class="section" aria-labelledby="h-final"><div class="final"><h2 id="h-final">${T('Your 2030 front page starts with fourteen questions')}</h2>
         <p class="lede">${T('About ten minutes. No account. Your report-out, your roadmap and your front page at the end.')}</p>
         <a class="btn p" href="#/diagnostic">${start}</a></div>
-        <p class="note privacy">${T('Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
+        <p class="note privacy">${T('Your answers are saved in your browser. To see your report, you accept that your levels and priorities are added to anonymous statistics, with no name and no organization. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
       <footer class="site-foot"><span>Future of Work · 4 Shifts · Vincent Dupuis</span><a href="privacy.html">${T('Privacy')}</a></footer>`;
   }
 
@@ -1355,7 +1356,7 @@ window.initMap=initMap;
       <div class="opts" role="radiogroup" aria-labelledby="qtitle">${q.o.map((o, k) => `<label class="opt ${v === k + 1 ? 'sel' : ''}"><input type="radio" name="${q.id}" id="${q.id}_${k + 1}" value="${k + 1}" ${v === k + 1 ? 'checked' : ''}><span class="lv">${k + 1}</span><span>${esc(o)}</span></label>`).join('')}</div>
       <div class="scale"><span>${T('1 · Typical today')}</span><span>${T('4 · Target 2030')}</span></div>
       <div class="row"><button class="btn g" id="prev" ${i === 0 ? 'disabled' : ''}>${T('← Back')}</button>
-        <button class="btn p" id="next" ${v ? '' : 'disabled'}>${T(i === n - 1 ? 'See my report' : 'Next →')}</button></div>${i === n - 1 ? shareBox() : ''}</div>`;
+        <button class="btn p" id="next" ${v && (i < n - 1 || shared()) ? '' : 'disabled'}>${T(i === n - 1 ? 'See my report' : 'Next →')}</button></div>${i === n - 1 ? shareBox() : ''}</div>`;
   }
   function bindQuestions() {
     document.querySelectorAll('.opt input').forEach(r => r.addEventListener('change', () => {
@@ -1363,8 +1364,8 @@ window.initMap=initMap;
       document.getElementById('next')?.focus();
     }));
     document.getElementById('prev').onclick = () => { S.qi = Math.max(0, (S.qi || 0) - 1); save(); render(); };
-    bindShare();
-    document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { S.editing = false; save(); ping('report'); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
+    bindShare(() => { const nx = document.getElementById('next'); if (nx) nx.disabled = !(S.answers[F.questions[S.qi || 0].id] && shared()); });
+    document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { if (!shared()) return; S.editing = false; save(); ping('report'); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
   }
   // ---------- PROFILE (optional, before the report, for the anonymous statistics) ----------
   function profile() {
@@ -1398,10 +1399,10 @@ window.initMap=initMap;
         <div class="profile"><div class="spider-wrap">${spider(false)}</div><div class="pr-list">${practiceList()}<p class="note">${esc(F.levelNote)}</p></div></div></div>
       <div class="section"><div class="stack"><h2>${T('Coherence check')}</h2><p class="lede">${T('Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.')}</p></div>${flags}</div>
       <div class="section"><h2>${T('Where the gaps are')}</h2><div class="band-l">${T('Productivity challenges')}</div><div class="heat">${heat('P')}</div><div class="band-l">${T('Cultural challenges')}</div><div class="heat">${heat('C')}</div></div>
-      <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">${T('Prepare your executive report-out')}</a><a class="btn s" href="#/priorities">${T('Next: your priorities →')}</a><button class="btn g" id="redo">${T('Change my answers')}</button></div>${shareBox()}${contactBox()}</div>`;
+      <div class="section no-print"><div class="row"><a class="btn p${shared() ? '' : ' off'}" href="#/brief" ${shared() ? '' : 'aria-disabled="true" tabindex="-1"'}>${T('Prepare your executive report-out')}</a><a class="btn s${shared() ? '' : ' off'}" href="#/priorities" ${shared() ? '' : 'aria-disabled="true" tabindex="-1"'}>${T('Next: your priorities →')}</a><button class="btn g" id="redo">${T('Change my answers')}</button></div>${shared() ? '' : shareBox()}${contactBox()}</div>`;
   }
   function bindReport() {
-    bindShare(); bindContact(); sendReport();
+    bindShare(() => { const y = window.scrollY; render(); window.scrollTo(0, y); }); bindContact(); sendReport();
     document.getElementById('redo').onclick = () => { S.qi = 0; S.editing = true; S.profileSeen = false; save(); render(); window.scrollTo(0, 0); };
   }
 
@@ -1710,7 +1711,8 @@ window.initMap=initMap;
     let route = location.hash || '#/';
     const alias = { '#/vision': '#/priorities', '#/roadmap': '#/priorities', '#/report': '#/diagnostic' };
     route = alias[route] || route;
-    if ((route === '#/priorities' || route === '#/brief') && !done()) route = '#/diagnostic';
+    // The next steps need all the answers and the acceptance of the anonymous statistics
+    if ((route === '#/priorities' || route === '#/brief' || route === '#/newsfix') && !(done() && shared())) route = '#/diagnostic';
     if (route === '#/newsfix' && !hasPaper()) route = done() ? '#/priorities' : '#/diagnostic';
     if (!STEPS.some(s => s[0] === route) && route !== '#/brief') route = '#/';
     nav(route === '#/brief' ? '#/diagnostic' : route);

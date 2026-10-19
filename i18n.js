@@ -80,11 +80,11 @@
     'Future of Work · 4 Shifts is a personal project. It is not linked to any employer.': 'Future of Work · 4 Shifts est un projet personnel. Il n’est lié à aucun employeur.',
     'Your 2030 front page starts with fourteen questions': 'Votre Une 2030 commence par quatorze questions',
     'About ten minutes. No account. Your report-out, your roadmap and your front page at the end.': 'Dix minutes environ. Sans compte. À la fin : votre synthèse, votre feuille de route et votre Une.',
-    'Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.':
-      'Vos réponses sont enregistrées dans votre navigateur. Par défaut, vos niveaux et vos priorités sont aussi ajoutés à des statistiques anonymes, sans nom ni organisation. Pour ne pas y figurer, décochez la case après la dernière question. Les questions de profil et l’email pour recevoir les résultats de l’étude sont facultatifs.',
+    'Your answers are saved in your browser. To see your report, you accept that your levels and priorities are added to anonymous statistics, with no name and no organization. The profile questions and the email for the study results are optional.':
+      'Vos réponses sont enregistrées dans votre navigateur. Pour voir votre rapport, vous acceptez que vos niveaux et vos priorités soient ajoutés à des statistiques anonymes, sans nom ni organisation. Les questions de profil et l’email pour recevoir les résultats de l’étude sont facultatifs.',
     'Read the privacy page': 'Lire la page Confidentialité',
-    'Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.':
-      'Ajouter mes réponses, de façon anonyme, aux statistiques 4 Shifts : niveaux, priorités, scores et profil, sans nom ni organisation.',
+    'I accept that my answers are added, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization. Required to continue.':
+      'J’accepte que mes réponses soient ajoutées, de façon anonyme, aux statistiques 4 Shifts : niveaux, priorités, scores et profil, sans nom ni organisation. Nécessaire pour continuer.',
     // Profile and contact
     'Compare with organizations like yours': 'Se comparer à des organisations proches de la vôtre',
     'Four optional questions. They are used only in the anonymous statistics, to compare results by sector, size, role and region. Never your name or your organization.':
