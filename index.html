@@ -1318,7 +1318,7 @@ window.initMap=initMap;
     return `<div class="section home"><div class="hero"><div class="stack">
         <p class="series-line">${T('From the LinkedIn series {t}, by Vincent Dupuis', { t: `<a href="#model" data-scroll="model">${series}</a>` })}</p>
         <h1>${T('Measure the gap between your operating model and 2030')}</h1>
-        <p class="lede">${T('You get an executive report-out for your ExCom, a roadmap for your priorities, and the 2030 front page of The News Fix, written for your organization.')}</p>
+        <p class="lede">${T('You get an executive report-out for your ExCom, a roadmap for your priorities, and your 2030 vision as the front page of The News Fix, written for your organization.')}</p>
         <div class="row acts tight"><a class="btn p" href="#/map">${T('Explore the interactive map')}</a><a class="btn p" href="#/diagnostic">${start}${ARROW}</a></div>
         <p class="facts">${T('Fourteen questions · About ten minutes · No account')}</p>
       </div>
@@ -1347,7 +1347,7 @@ window.initMap=initMap;
         <div class="author-txt"><div class="eyebrow">${T('The author')}</div><h3 id="h-author">Vincent Dupuis</h3>
         <p class="bio">${T('Engineer and innovator, with more than 25 years of experience and over 30 patents. Vincent makes breakthrough technology deliver real value: first in products, now in data and AI. He incubated a world-first product in startup mode and brought it to launch with a premium car maker. He then led Lean product development at very large scale. Since 2021, he applies the same discipline to data and AI: vision first, then reinvent the process before automating it, with value stream redesign and AI agents.')}</p>
         <p>${T('Future of Work · 4 Shifts is a personal project. It is not linked to any employer.')}</p></div></div></section>
-      <section class="section" aria-labelledby="h-final"><div class="final"><h2 id="h-final">${T('Your 2030 front page starts with fourteen questions')}</h2>
+      <section class="section" aria-labelledby="h-final"><div class="final"><h2 id="h-final">${T('Your 2030 vision starts with fourteen questions')}</h2>
         <p class="lede">${T('About ten minutes. No account. Your report-out, your roadmap and your front page at the end.')}</p>
         <div class="row acts"><a class="btn p" href="#/diagnostic">${start}${ARROW}</a></div></div>
         <p class="note privacy">${T('Your answers are saved in your browser. To see your report, you accept that your levels and priorities are added to anonymous statistics, with no name and no organization. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
@@ -1701,7 +1701,7 @@ window.initMap=initMap;
           ${papersLeft() ? `<div class="row acts"><button class="btn p" id="gen">${T('Generate it again with my changes →')}</button></div><p class="note" id="genmsg">${leftNote().trim()}</p>`
             : `<p class="note">${T('You have printed your {n} front pages.', { n: MAX_PAPERS })} ${T('To go further,')} ${contactLink()}</p>`}</div>`
       : papersLeft() === 1 && S.paperSource === 'ai' ? `<div class="regen no-print"><p>${leftNote().trim()}</p></div>` : '';
-    return `${banner}<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 3 · Your News Fix')}</div><h1>${T('Your 2030 front page is printed')}</h1><h2>${T('Share it on LinkedIn')}</h2>
+    return `${banner}<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 3 · Your News Fix')}</div><h1>${T('Your 2030 vision is on the front page')}</h1><h2>${T('Share it on LinkedIn')}</h2>
         <p class="lede">${T('The image shows your 2030 headlines only. Your diagnostic figures stay private.')}</p>
         <div class="row"><button class="btn s" id="cp">${T('Copy the post text')}</button><a class="btn g" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">${T('Open LinkedIn ↗')}</a></div>
         <textarea id="posttext" class="post" readonly rows="7" aria-label="${T('Suggested post text')}">${esc(postText())}</textarea>

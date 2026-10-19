@@ -39,8 +39,8 @@
     // Introduction
     'From the LinkedIn series {t}, by Vincent Dupuis': 'Tiré de la série LinkedIn {t}, de Vincent Dupuis',
     'Measure the gap between your operating model and 2030': 'Mesurez l’écart entre votre modèle opérationnel et 2030',
-    'You get an executive report-out for your ExCom, a roadmap for your priorities, and the 2030 front page of The News Fix, written for your organization.':
-      'Vous obtenez une synthèse pour votre comité exécutif, une feuille de route pour vos priorités et la Une 2030 de The News Fix, écrite pour votre organisation.',
+    'You get an executive report-out for your ExCom, a roadmap for your priorities, and your 2030 vision as the front page of The News Fix, written for your organization.':
+      'Vous obtenez une synthèse pour votre comité exécutif, une feuille de route pour vos priorités et votre vision 2030 en Une de The News Fix, écrite pour votre organisation.',
     'Fourteen questions · About ten minutes · No account': 'Quatorze questions · Dix minutes environ · Sans compte',
     'Example front page of The News Fix for a fictional company. Lead story: “{t}”': 'Exemple de Une de The News Fix pour une entreprise fictive. Article principal : « {t} »',
     'The model · The LinkedIn series': 'Le modèle · La série LinkedIn', 'Four shifts, one operating system': 'Quatre shifts, un seul système',
@@ -78,7 +78,7 @@
     'Engineer and innovator, with more than 25 years of experience and over 30 patents. Vincent makes breakthrough technology deliver real value: first in products, now in data and AI. He incubated a world-first product in startup mode and brought it to launch with a premium car maker. He then led Lean product development at very large scale. Since 2021, he applies the same discipline to data and AI: vision first, then reinvent the process before automating it, with value stream redesign and AI agents.': 'Ingénieur et innovateur, plus de 25 ans d’expérience et plus de 30 brevets. Vincent transforme les technologies de rupture en valeur réelle : d’abord dans les produits, aujourd’hui dans la data et l’IA. Il a incubé en mode startup un produit inédit au monde, jusqu’à son lancement avec un constructeur automobile premium. Il a ensuite dirigé le développement produit Lean à très grande échelle. Depuis 2021, il applique la même discipline à la data et à l’IA : la vision d’abord, puis réinventer le processus avant de l’automatiser, par la refonte des flux de valeur et des agents IA.',
     'Vincent Dupuis on stage, speaking about AI': 'Vincent Dupuis sur scène, en train de parler d’IA',
     'Future of Work · 4 Shifts is a personal project. It is not linked to any employer.': 'Future of Work · 4 Shifts est un projet personnel. Il n’est lié à aucun employeur.',
-    'Your 2030 front page starts with fourteen questions': 'Votre Une 2030 commence par quatorze questions',
+    'Your 2030 vision starts with fourteen questions': 'Votre vision 2030 commence par quatorze questions',
     'About ten minutes. No account. Your report-out, your roadmap and your front page at the end.': 'Dix minutes environ. Sans compte. À la fin : votre synthèse, votre feuille de route et votre Une.',
     'Your answers are saved in your browser. To see your report, you accept that your levels and priorities are added to anonymous statistics, with no name and no organization. The profile questions and the email for the study results are optional.':
       'Vos réponses sont enregistrées dans votre navigateur. Pour voir votre rapport, vous acceptez que vos niveaux et vos priorités soient ajoutés à des statistiques anonymes, sans nom ni organisation. Les questions de profil et l’email pour recevoir les résultats de l’étude sont facultatifs.',
@@ -190,7 +190,7 @@
     'of the way to the 2030 target in the 2026 diagnostic': 'du chemin vers la cible 2030 au diagnostic de 2026',
     'AND score in 2026: the lower of productivity and culture': 'score ET en 2026 : le plus faible de la productivité et de la culture',
     'initiatives on the 2027–2030 roadmap': 'initiatives sur la feuille de route 2027–2030',
-    'Step 3 · Your News Fix': 'Étape 3 · Votre News Fix', 'Your 2030 front page is printed': 'Votre Une 2030 est imprimée', 'Share it on LinkedIn': 'Partagez-la sur LinkedIn',
+    'Step 3 · Your News Fix': 'Étape 3 · Votre News Fix', 'Your 2030 vision is on the front page': 'Votre vision 2030 fait la Une', 'Share it on LinkedIn': 'Partagez-la sur LinkedIn',
     'The image shows your 2030 headlines only. Your diagnostic figures stay private.': 'L’image ne montre que vos titres de 2030. Les chiffres de votre diagnostic restent privés.',
     'Download the image': 'Télécharger l’image', 'Download this image': 'Télécharger cette image', 'Image for LinkedIn': 'Image pour LinkedIn', 'Your full front page': 'Votre Une complète', 'Copy the post text': 'Copier le texte du post', 'Open LinkedIn ↗': 'Ouvrir LinkedIn ↗', 'Suggested post text': 'Texte de post proposé',
     'Download the image, copy the text, then create a post on LinkedIn and add the image.': 'Téléchargez l’image, copiez le texte, puis créez un post sur LinkedIn et ajoutez l’image.',
