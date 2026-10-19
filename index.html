@@ -923,6 +923,14 @@ window.initMap=initMap;
   function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
   const done = () => F.questions.every(q => S.answers[q.id]);
+  // Front pages written by the AI newsroom in this browser: 3 at most. Kept apart from the answers,
+  // so that new answers do not give new front pages. Beyond 3, the visitor is invited to contact Vincent.
+  const MAX_PAPERS = 3, PAPERS_KEY = 'fow4_newsfix_n', CONTACT_URL = 'https://www.linkedin.com/in/vincentdupuis/';
+  const papersMade = () => { try { return Math.max(0, parseInt(localStorage.getItem(PAPERS_KEY), 10) || 0); } catch (e) { return 0; } };
+  const paperMade = () => { try { localStorage.setItem(PAPERS_KEY, String(papersMade() + 1)); } catch (e) {} };
+  const papersLeft = () => Math.max(0, MAX_PAPERS - papersMade());
+  // Once no front page is left, the last one stays, even if the answers or priorities change
+  const dropPaper = () => { if (papersLeft()) S.paper = null; };
   const hasPrios = () => done() && Array.isArray(S.priorities) && S.priorities.length >= MINP;
   // anonymous usage counter: no cookie, no identifier, only the name of the step reached
   const ping = e => { try { fetch('/api/count', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ e }), keepalive: true }).catch(() => {}); } catch (x) {} };
@@ -1240,7 +1248,7 @@ window.initMap=initMap;
   }
   function bindQuestions() {
     document.querySelectorAll('.opt input').forEach(r => r.addEventListener('change', () => {
-      const q = F.questions[S.qi || 0]; S.answers[q.id] = +r.value; S.paper = null; S.editing = true; save(); render();
+      const q = F.questions[S.qi || 0]; S.answers[q.id] = +r.value; dropPaper(); S.editing = true; save(); render();
       document.getElementById('next')?.focus();
     }));
     document.getElementById('prev').onclick = () => { S.qi = Math.max(0, (S.qi || 0) - 1); save(); render(); };
@@ -1392,8 +1400,10 @@ window.initMap=initMap;
           <div class="tabs no-print" role="group" aria-label="${T('Roadmap view')}"><button id="rv-list" aria-pressed="${S.roadView !== 'gantt'}">${T('List')}</button><button id="rv-gantt" aria-pressed="${S.roadView === 'gantt'}">${T('Gantt')}</button></div></div>
         ${rm.items.length && S.roadView === 'gantt' ? `<p class="note arrow-key"><span class="ak x"></span>${T('Dependency across shifts')} <span class="ak i"></span>${T('Dependency within a shift · Hover or tap a bar to isolate its links')}</p>` : ''}
         ${rm.items.length ? (S.roadView === 'gantt' ? gantt : list) : `<div class="ok-box">${T('Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.')}</div>`}</div>
-      <div class="section no-print"><div class="row"><button class="btn p" id="gen">${T('Print your 2030 front page →')}</button><button class="btn s" id="print">${T('Print or save as PDF')}</button></div>
-        <p class="note" id="genmsg">${T('The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
+      ${papersLeft() ? `<div class="section no-print"><div class="row"><button class="btn p" id="gen">${T('Print your 2030 front page →')}</button><button class="btn s" id="print">${T('Print or save as PDF')}</button></div>
+        <p class="note" id="genmsg">${T('The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')} ${T(papersLeft() > 1 ? 'You can print {n} more front pages.' : 'You can print one more front page.', { n: papersLeft() })} <a href="privacy.html">${T('Privacy')}</a></p></div>`
+      : `<div class="section no-print"><div class="row">${hasPaper() ? `<a class="btn p" href="#/newsfix">${T('See your front page →')}</a>` : ''}<button class="btn s" id="print">${T('Print or save as PDF')}</button></div>
+        <p class="note" id="genmsg">${T('You have printed your {n} front pages.', { n: MAX_PAPERS })} <a href="${CONTACT_URL}" target="_blank" rel="noopener">${T('To print more, contact Vincent Dupuis on LinkedIn ↗')}</a></p></div>`}`;
   }
   function priorities() {
     if (!Array.isArray(S.priorities)) { S.priorities = defaultPriorities(); save(); }
@@ -1411,14 +1421,14 @@ window.initMap=initMap;
       const c = cb.value;
       if (cb.checked) { if (S.priorities.length >= MAXP) { cb.checked = false; document.getElementById('pickmsg').textContent = T('{n} challenges at most. Unselect one first.', { n: MAXP }); return; } S.priorities.push(c); }
       else S.priorities = S.priorities.filter(x => x !== c);
-      S.paper = null; save(); const y = window.scrollY; render(); window.scrollTo(0, y);
+      dropPaper(); save(); const y = window.scrollY; render(); window.scrollTo(0, y);
     }));
     document.getElementById('company').addEventListener('input', e => { S.company = e.target.value.trim(); save(); });
     const rl = document.getElementById('rv-list'), rg = document.getElementById('rv-gantt');
     if (rl) { rl.onclick = () => { S.roadView = 'list'; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
       rg.onclick = () => { S.roadView = 'gantt'; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
       document.getElementById('print').onclick = () => window.print();
-      document.getElementById('gen').onclick = generate;
+      const gen = document.getElementById('gen'); if (gen) gen.onclick = generate;
       if (S.roadView === 'gantt') requestAnimationFrame(drawArrows); }
   }
 
@@ -1438,6 +1448,7 @@ window.initMap=initMap;
       context: { progress: pct(r.overall), distance: pct(r.distance), productivity: pct(r.P), culture: pct(r.C), and: pct(r.and), initiatives: rm.items.length } };
   }
   async function generate() {
+    if (!papersLeft()) { render(); return; }
     const btn = document.getElementById('gen'), msg = document.getElementById('genmsg');
     btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.textContent = T('The newsroom is writing your front page. It takes less than a minute.');
     const body = payload();
@@ -1448,7 +1459,7 @@ window.initMap=initMap;
       const data = await res.text().then(t => JSON.parse(t), () => null).catch(() => null);
       clearTimeout(to);
       if (!res.ok || !valid(data)) throw new Error('newsroom');
-      S.paper = data; S.paperSource = 'ai';
+      S.paper = data; S.paperSource = 'ai'; paperMade();
     } catch (e) { S.paper = offline(body); S.paperSource = 'template'; }
     S.paperContext = body.context; save(); ping('frontpage'); sendPriorities(); location.hash = '#/newsfix';
   }

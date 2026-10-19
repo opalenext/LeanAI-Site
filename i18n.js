@@ -196,7 +196,10 @@
     'The image shows your 2030 headlines only. Your diagnostic figures stay private.': 'L’image ne montre que vos titres de 2030. Les chiffres de votre diagnostic restent privés.',
     'Download the image': 'Télécharger l’image', 'Copy the post text': 'Copier le texte du post', 'Open LinkedIn ↗': 'Ouvrir LinkedIn ↗', 'Suggested post text': 'Texte de post proposé',
     'Download the image, copy the text, then create a post on LinkedIn and add the image.': 'Téléchargez l’image, copiez le texte, puis créez un post sur LinkedIn et ajoutez l’image.',
-    'Special edition · The human edition': 'Édition spéciale · Édition humaine',     'Interview by the News Fix newsroom': 'Interview par la rédaction de The News Fix', 'By the News Fix newsroom': 'Par la rédaction de The News Fix', 'The road to 2030': 'La route vers 2030', 'From the 2026 diagnostic': 'Selon le diagnostic de 2026',
+    'Special edition · The human edition': 'Édition spéciale · Édition humaine',     'Interview by the News Fix newsroom': 'Interview par la rédaction de The News Fix', 'By the News Fix newsroom': 'Par la rédaction de The News Fix',
+    'You can print {n} more front pages.': 'Vous pouvez encore imprimer {n} Unes.', 'You can print one more front page.': 'Vous pouvez encore imprimer une Une.',
+    'You have printed your {n} front pages.': 'Vous avez imprimé vos {n} Unes.', 'See your front page →': 'Voir votre Une →',
+    'To print more, contact Vincent Dupuis on LinkedIn ↗': 'Pour en imprimer d’autres, contactez Vincent Dupuis sur LinkedIn ↗', 'The road to 2030': 'La route vers 2030', 'From the 2026 diagnostic': 'Selon le diagnostic de 2026',
     'Written with the Future of Work · 4 Shifts model': 'Écrit avec le modèle Future of Work · 4 Shifts', 'More human. More digital. Not a trade-off. AND.': 'Plus humain. Plus digital. Pas un compromis. ET.',
     'Back to your priorities and roadmap': 'Retour à vos priorités et à votre feuille de route',
     'The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.':

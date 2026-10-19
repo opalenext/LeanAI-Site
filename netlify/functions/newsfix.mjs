@@ -9,7 +9,7 @@ import { SYSTEM_PROMPT, SCHEMA, validArticle } from '../lib/journalist.mjs';
 
 const MAX_SIZE = 40_000;
 const MODEL = process.env.NEWSFIX_MODEL || 'claude-opus-5-5';
-const PER_HOUR = Number(process.env.NEWSFIX_PER_HOUR) || 5;
+const PER_HOUR = Number(process.env.NEWSFIX_PER_HOUR) || 3;
 
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), {
   status,
