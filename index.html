@@ -252,6 +252,13 @@ h2[tabindex="-1"]:focus{outline:none}
 .qa .q{display:block;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:3px}
 .lead-body{column-count:2;column-gap:26px;column-rule:1px solid rgba(0,0,0,.18)}
 .lead-body .qa{break-inside:avoid-column}
+.np-body .subhead{font:700 15px/1.25 var(--display);color:var(--ink);margin:4px 0 6px;break-after:avoid-column}
+.np-body .subhead:first-child{margin-top:0}
+.timeline{border-top:3px solid var(--ink);padding-top:10px;margin-bottom:16px}
+.timeline h4{margin:0 0 8px;font:700 12px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.timeline ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.timeline li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;font-size:15px;line-height:1.4;color:var(--ink)}
+.timeline li b{font:700 15px var(--display);color:#C8102E}
 @media (max-width:760px){.lead-body{column-count:1}}
 .np-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px;border-top:3px double var(--rule);margin-top:22px;padding-top:16px}
 .np-stories.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -1086,7 +1093,7 @@ window.initMap=initMap;
 
   // ---------- NAV ----------
   const STEPS = [['#/', 'Introduction'], ['#/map', 'Interactive map'], ['#/diagnostic', 'Your Diagnostic'], ['#/priorities', 'Your Priorities'], ['#/newsfix', 'Your News Fix']].map(([h, t]) => [h, T(t)]);
-  const hasPaper = () => !!(S.paper && S.paper.lead && S.paper.lead.qa);
+  const hasPaper = () => !!(S.paper && S.paper.lead && (S.paper.lead.qa || S.paper.lead.sections));
   function nav(route) {
     const ok = { '#/': true, '#/map': true, '#/diagnostic': true, '#/priorities': done(), '#/newsfix': hasPaper() };
     document.getElementById('stepsnav').setAttribute('aria-label', T('Steps'));
@@ -1386,7 +1393,7 @@ window.initMap=initMap;
         ${rm.items.length && S.roadView === 'gantt' ? `<p class="note arrow-key"><span class="ak x"></span>${T('Dependency across shifts')} <span class="ak i"></span>${T('Dependency within a shift · Hover or tap a bar to isolate its links')}</p>` : ''}
         ${rm.items.length ? (S.roadView === 'gantt' ? gantt : list) : `<div class="ok-box">${T('Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.')}</div>`}</div>
       <div class="section no-print"><div class="row"><button class="btn p" id="gen">${T('Print your 2030 front page →')}</button><button class="btn s" id="print">${T('Print or save as PDF')}</button></div>
-        <p class="note" id="genmsg">${T('The News Fix interviews you on each priority, from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
+        <p class="note" id="genmsg">${T('The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
   }
   function priorities() {
     if (!Array.isArray(S.priorities)) { S.priorities = defaultPriorities(); save(); }
@@ -1432,20 +1439,26 @@ window.initMap=initMap;
   }
   async function generate() {
     const btn = document.getElementById('gen'), msg = document.getElementById('genmsg');
-    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.textContent = T('The newsroom is interviewing you. It takes about 30 seconds.');
+    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.textContent = T('The newsroom is writing your front page. It takes less than a minute.');
     const body = payload();
     try {
-      const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 60000);
+      const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 90000);
       const res = await fetch('/api/newsfix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
+      // The function sends spaces while the newsroom writes, then the article as JSON
+      const data = await res.text().then(t => JSON.parse(t), () => null).catch(() => null);
       clearTimeout(to);
-      const data = await res.json().catch(() => null);
       if (!res.ok || !valid(data)) throw new Error('newsroom');
       S.paper = data; S.paperSource = 'ai';
     } catch (e) { S.paper = offline(body); S.paperSource = 'template'; }
     S.paperContext = body.context; save(); ping('frontpage'); sendPriorities(); location.hash = '#/newsfix';
   }
   const okQA = x => x && typeof x.headline === 'string' && Array.isArray(x.qa) && x.qa.length >= 3 && x.qa.every(y => y && typeof y.a === 'string');
-  const valid = d => d && okQA(d.lead) && Array.isArray(d.stories) && d.stories.every(okQA);
+  const okText = x => typeof x === 'string' && x.trim() !== '';
+  const okParas = x => Array.isArray(x) && x.length > 0 && x.every(okText);
+  const okArticle = d => d && d.lead && okText(d.lead.headline) && Array.isArray(d.lead.sections) && d.lead.sections.length > 0 && d.lead.sections.every(x => x && okParas(x.paragraphs))
+    && Array.isArray(d.stories) && d.stories.every(x => x && okText(x.headline) && okParas(x.paragraphs));
+  // Article written by the AI newsroom (sections), or interviews laid out without AI (qa)
+  const valid = d => okArticle(d) || (d && okQA(d.lead) && Array.isArray(d.stories) && d.stories.every(okQA));
   // Without AI: the interviews are laid out directly from the diagnostic, the 2030 target and the roadmap
   function offline(p) {
     const list = xs => xs.map(x => `${x.topic}${FRL ? ' :' : ':'} ${lc(x.text)}`).join(' ');
@@ -1463,9 +1476,14 @@ window.initMap=initMap;
     if (FRL) return `Je viens d’écrire la Une 2030 de ${S.company || 'mon organisation'} avec le diagnostic Future of Work · 4 Shifts de Vincent Dupuis.\n\nArticle principal : « ${S.paper.lead.headline} »\n\nQuatorze questions, une feuille de route pour vos priorités, et votre propre Une. Que dira la vôtre ?\n${siteHost()}\n\n#FutureOfWork`;
     return `I just wrote the 2030 front page of ${S.company || 'my organization'} with the Future of Work · 4 Shifts diagnostic by Vincent Dupuis.\n\nLead story: "${S.paper.lead.headline}"\n\nFourteen questions, a roadmap for your priorities, and your own front page. What will yours say?\n${siteHost()}\n\n#FutureOfWork`;
   }
+  const parasHtml = list => list.map(x => `<p>${esc(x)}</p>`).join('');
+  const sectionsHtml = list => list.map(x => `${x.subhead ? `<h4 class="subhead">${esc(x.subhead)}</h4>` : ''}${parasHtml(x.paragraphs)}`).join('');
+  const leadBody = l => l.sections ? sectionsHtml(l.sections) : qaHtml(l.qa);
+  const storyBody = x => x.paragraphs ? parasHtml(x.paragraphs) : qaHtml(x.qa);
+  const kicker = x => esc(x.kicker || T('Interview'));
   function qaHtml(list) { return list.map((x, i) => `<p class="qa"><b class="q">${esc(x.q || QS[i] || '')}</b> ${esc(x.a)}</p>`).join(''); }
   function newsfix() {
-    const p = S.paper; if (!p || !p.lead || !p.lead.qa) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
+    const p = S.paper; if (!p || !p.lead || !(p.lead.qa || p.lead.sections)) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
     const co = S.company || T('Your organization'), ctx = S.paperContext || {};
     const nums = [[window.num(ctx.progress != null ? ctx.progress : 100 - ctx.distance), T('of the way to the 2030 target in the 2026 diagnostic')], [window.num(ctx.and), T('AND score in 2026: the lower of productivity and culture')], [String(ctx.initiatives), T('initiatives on the 2027–2030 roadmap')]]
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
@@ -1480,11 +1498,12 @@ window.initMap=initMap;
       <div class="masthead">The News Fix</div>
       <div class="np-sub">${esc(FRL ? (S.company ? `Le futur du travail, tel que ${S.company} l’a écrit` : 'Le futur du travail, tel que vous l’avez écrit') : `The future of work, as ${S.company || 'you'} wrote it`)}</div>
       <div class="np-date"><span>${esc(paperDate())}</span><span class="red">${T('Fictional front page')}</span><span>${esc(co)}</span></div>
-      <div class="lead"><div class="kicker">${T('Interview')}</div><h2>${esc(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${esc(p.lead.deck)}</p>` : ''}</div>
-      <div class="np-cols"><div><div class="byline">${T('Interview by the News Fix newsroom')}</div><div class="np-body lead-body">${qaHtml(p.lead.qa)}</div></div>
+      <div class="lead"><div class="kicker">${kicker(p.lead)}</div><h2>${esc(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${esc(p.lead.deck)}</p>` : ''}</div>
+      <div class="np-cols"><div><div class="byline">${T(p.lead.sections ? 'By the News Fix newsroom' : 'Interview by the News Fix newsroom')}</div><div class="np-body lead-body">${leadBody(p.lead)}</div></div>
         <div>${p.quote && p.quote.text ? `<div class="quote">${FRL ? `« ${esc(p.quote.text)} »` : `"${esc(p.quote.text)}"`}<small>${esc(p.quote.who || '')}</small></div>` : ''}
+          ${Array.isArray(p.timeline) && p.timeline.length ? `<div class="timeline"><h4>${T('The road to 2030')}</h4><ol>${p.timeline.map(t => `<li><b>${esc(t.year)}</b><span>${esc(t.text)}</span></li>`).join('')}</ol></div>` : ''}
           ${nums ? `<div class="numbers"><h4>${T('From the 2026 diagnostic')}</h4><ul>${nums}</ul></div>` : ''}</div></div>
-      ${p.stories.length ? `<div class="np-stories ${p.stories.length % 3 === 0 ? 'c3' : 'c2'}">${p.stories.map(s => `<article class="story"><div class="kicker">${T('Interview')}</div><h3>${esc(s.headline)}</h3><div class="np-body">${qaHtml(s.qa)}</div></article>`).join('')}</div>` : ''}
+      ${p.stories.length ? `<div class="np-stories ${p.stories.length % 3 === 0 ? 'c3' : 'c2'}">${p.stories.map(s => `<article class="story"><div class="kicker">${kicker(s)}</div><h3>${esc(s.headline)}</h3><div class="np-body">${storyBody(s)}</div></article>`).join('')}</div>` : ''}
       <div class="np-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>${T('More human. More digital. Not a trade-off. AND.')}</span></div></div>
       <div class="section no-print" style="margin-top:24px"><div class="row"><button class="btn s" id="print">${T('Print or save as PDF')}</button><a class="btn g" href="#/priorities">${T('Back to your priorities and roadmap')}</a></div>
       ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}</p>` : ''}${contactBox()}</div>

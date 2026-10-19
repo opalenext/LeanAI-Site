@@ -173,8 +173,8 @@
     'Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.':
       'Vos réponses atteignent déjà la cible 2030 sur ces défis. Choisissez d’autres priorités pour construire une feuille de route.',
     'Print your 2030 front page →': 'Imprimer votre Une 2030 →',
-    'The News Fix interviews you on each priority, from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.':
-      'The News Fix vous interviewe sur chaque priorité, à partir de votre diagnostic et de cette feuille de route. Le nom de votre organisation, ces réponses et cette feuille de route sont envoyés à un modèle d’IA et ne sont pas conservés.',
+    'The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.':
+      'La rédaction de The News Fix écrit votre Une à partir de votre diagnostic et de cette feuille de route. Le nom de votre organisation, ces réponses et cette feuille de route sont envoyés à un modèle d’IA et ne sont pas conservés.',
     'lead story': 'article principal', 'maturity {v}%': 'maturité {v} %',
     'Step 2 · Your Priorities': 'Étape 2 · Vos priorités', 'Never transform everything at once': 'Ne jamais tout transformer à la fois',
     'Choose {a} to {b} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.':
@@ -183,7 +183,7 @@
     'Organization name, for your front page (optional)': 'Nom de l’organisation, pour votre Une (facultatif)', 'Our company': 'Notre entreprise',
     '{n} challenges at most. Unselect one first.': '{n} défis au maximum. Retirez-en un d’abord.',
     // 3. News Fix
-    'Printing…': 'Impression…', 'The newsroom is interviewing you. It takes about 30 seconds.': 'La rédaction vous interviewe. Cela prend environ 30 secondes.',
+    'Printing…': 'Impression…', 'The newsroom is writing your front page. It takes less than a minute.': 'La rédaction écrit votre Une. Cela prend moins d’une minute.',
     'What was it like before?': 'Comment était-ce avant ?', 'What is it like today?': 'Comment est-ce aujourd’hui ?', 'What did you do to get there?': 'Qu’avez-vous fait pour y arriver ?',
     'We kept what was already in place and scaled it.': 'Nous avons gardé ce qui était en place et nous l’avons étendu.',
     'We did not automate yesterday. We redesigned tomorrow.': 'Nous n’avons pas automatisé hier. Nous avons redessiné demain.',
@@ -196,7 +196,7 @@
     'The image shows your 2030 headlines only. Your diagnostic figures stay private.': 'L’image ne montre que vos titres de 2030. Les chiffres de votre diagnostic restent privés.',
     'Download the image': 'Télécharger l’image', 'Copy the post text': 'Copier le texte du post', 'Open LinkedIn ↗': 'Ouvrir LinkedIn ↗', 'Suggested post text': 'Texte de post proposé',
     'Download the image, copy the text, then create a post on LinkedIn and add the image.': 'Téléchargez l’image, copiez le texte, puis créez un post sur LinkedIn et ajoutez l’image.',
-    'Special edition · The human edition': 'Édition spéciale · Édition humaine',     'Interview by the News Fix newsroom': 'Interview par la rédaction de The News Fix', 'From the 2026 diagnostic': 'Selon le diagnostic de 2026',
+    'Special edition · The human edition': 'Édition spéciale · Édition humaine',     'Interview by the News Fix newsroom': 'Interview par la rédaction de The News Fix', 'By the News Fix newsroom': 'Par la rédaction de The News Fix', 'The road to 2030': 'La route vers 2030', 'From the 2026 diagnostic': 'Selon le diagnostic de 2026',
     'Written with the Future of Work · 4 Shifts model': 'Écrit avec le modèle Future of Work · 4 Shifts', 'More human. More digital. Not a trade-off. AND.': 'Plus humain. Plus digital. Pas un compromis. ET.',
     'Back to your priorities and roadmap': 'Retour à vos priorités et à votre feuille de route',
     'The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.':

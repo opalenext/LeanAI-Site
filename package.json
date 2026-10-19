@@ -1,0 +1,8 @@
+{
+  "name": "leanai-site",
+  "private": true,
+  "description": "Netlify Functions of the Future of Work · 4 Shifts site",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.134.0"
+  }
+}
