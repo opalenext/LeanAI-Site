@@ -236,8 +236,17 @@ h2[tabindex="-1"]:focus{outline:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 /* The News Fix — printed paper, same in both themes */
 .paper{background:var(--paper);color:var(--ink);max-width:980px;margin:0 auto;padding:28px clamp(16px,4vw,44px) 36px;border-radius:4px;box-shadow:0 2px 0 rgba(0,0,0,.06),0 18px 40px -20px rgba(0,0,0,.35);font-family:var(--newsbody)}
-.np-top{display:flex;justify-content:space-between;gap:10px;font:600 11px var(--display);letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--rule);padding-bottom:6px;color:var(--ink)}
-.masthead{font-family:var(--black);font-size:clamp(46px,9vw,92px);text-align:center;line-height:1;margin:14px 0 4px;color:var(--ink)}
+.np-top{display:flex;justify-content:center;font:600 11px var(--display);letter-spacing:.28em;text-transform:uppercase;border-top:1px solid var(--rule);padding-top:6px;margin-top:6px;color:var(--ink)}
+.masthead{font-family:var(--black);font-size:clamp(42px,8vw,88px);text-align:center;line-height:1;margin:6px 0 2px;color:var(--ink)}
+.np-teasers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:8px}
+.np-teaser{border:1px solid var(--rule);padding:6px 9px;display:flex;flex-direction:column;gap:2px;color:var(--ink)}
+.np-t-sec{font:700 10.5px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#C8102E}
+.np-teaser b{font:700 15px/1.2 var(--news)}
+.np-teaser small{font:600 10.5px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.np-head{display:grid;grid-template-columns:minmax(90px,150px) minmax(0,1fr) minmax(90px,150px);align-items:center;gap:12px}
+.np-ear{border:1px solid var(--rule);padding:6px 8px;font:italic 14px/1.25 var(--news);text-align:center;color:var(--ink)}
+.np-ear span{display:block;font:700 10px var(--display);font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:#C8102E;margin-bottom:2px}
+@media (max-width:640px){.np-teasers{grid-template-columns:minmax(0,1fr)}.np-head{grid-template-columns:minmax(0,1fr)}.np-ear{display:none}}
 .np-sub{text-align:center;font:italic 15px var(--newsbody);color:var(--ink-soft)}
 .np-date{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:3px double var(--rule);border-bottom:1px solid var(--rule);padding:6px 0;margin:10px 0 18px;font:600 12.5px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 .np-date .red{color:#C8102E}
@@ -254,15 +263,23 @@ h2[tabindex="-1"]:focus{outline:none}
 .lead-body .qa{break-inside:avoid-column}
 .np-body .subhead{font:700 15px/1.25 var(--display);color:var(--ink);margin:4px 0 6px;break-after:avoid-column}
 .np-body .subhead:first-child{margin-top:0}
-.timeline{border-top:3px solid var(--ink);padding-top:10px;margin-bottom:16px}
+.timeline{border-top:3px solid var(--ink);border-bottom:1px solid var(--rule);padding:8px 0 10px;margin-top:18px}
 .timeline h4{margin:0 0 8px;font:700 12px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
-.timeline ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
-.timeline li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:baseline;font-size:15px;line-height:1.4;color:var(--ink)}
-.timeline li b{font:700 15px var(--display);color:#C8102E}
+.timeline ol{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:16px;position:relative}
+.timeline ol::before{content:'';position:absolute;left:0;right:0;top:10px;border-top:2px solid #C8102E}
+.timeline li{display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.35;color:var(--ink)}
+@media (max-width:640px){.timeline ol{grid-auto-flow:row}.timeline ol::before{display:none}}
+.timeline li b{font:700 14px var(--display);color:#C8102E;background:var(--paper);align-self:flex-start;padding-right:8px;position:relative}
 @media (max-width:760px){.lead-body{column-count:1}}
-.np-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px;border-top:3px double var(--rule);margin-top:22px;padding-top:16px}
-.np-stories.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:760px){.np-stories,.np-stories.c3{grid-template-columns:minmax(0,1fr)}}
+.np-stories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 22px;border-top:3px double var(--rule);margin-top:18px;padding-top:14px}
+.story.interview .qa .q{color:#C8102E}
+.story.column h3,.story.column .np-body p{font-style:italic}
+.editorial{border:2px solid var(--ink);padding:10px 12px;margin-bottom:14px;align-self:start}
+.editorial h3{font-family:var(--news);font-weight:700;font-size:21px;line-height:1.15;color:var(--ink);margin-bottom:8px}
+.editorial small{display:block;text-align:right;font:600 11px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.editorial .kicker{text-align:left}
+@media (max-width:1000px){.np-stories{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.np-stories{grid-template-columns:minmax(0,1fr)}}
 .story{border-bottom:1px solid var(--rule);padding:4px 0 14px;margin-bottom:14px}
 .story h3{font-family:var(--news);font-weight:700;font-size:24px;line-height:1.12;color:var(--ink);margin-bottom:10px}
 .story .qa{font-size:15.5px;line-height:1.5}
@@ -414,28 +431,39 @@ h2[tabindex="-1"]:focus{outline:none}
   /* The News Fix on A4: page 1 = masthead, lead story and side column; page 2 = the other stories */
   .paper{box-shadow:none;max-width:none;border-radius:0;padding:0;background:#fff}
   .np-top{font-size:8pt}
-  .masthead{font-size:40pt;margin:4px 0 2px}
+  .masthead{font-size:34pt;margin:2px 0 0}
   .np-sub{font-size:10pt}
   .np-date{font-size:8.5pt;margin:6px 0 10px;padding:4px 0}
   .kicker{font-size:8pt;margin-bottom:3px}
   .lead h2{font-size:24pt;line-height:1.05}
   .lead .deck{font-size:12pt;max-width:none;margin-top:6px}
   .np-cols{grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:14px;margin-top:8px;padding-top:8px}
-  .np-body p{font-size:9pt;line-height:1.33;margin:0 0 5px}
+  .np-body p{font-size:8.8pt;line-height:1.3;margin:0 0 4px}
   .lead-body{column-count:2;column-gap:16px}
   .np-body .subhead{font-size:9pt;margin:2px 0 3px}
   .byline{font-size:7.5pt;margin-bottom:6px}
   .quote{font-size:11pt;padding:6px 0;margin:0 0 8px}
   .quote small,.timeline h4,.numbers h4{font-size:7.5pt}
-  .timeline li{font-size:8.5pt;line-height:1.3;gap:6px}
+  .timeline{break-before:page;margin-top:0;padding:5px 0 6px}
+  .timeline li{font-size:8.5pt;line-height:1.3;gap:3px}
+  .np-teasers{gap:6px;padding-bottom:5px;margin-bottom:4px}
+  .np-teaser{padding:3px 6px}
+  .np-teaser b{font-size:9.5pt}
+  .np-t-sec,.np-teaser small,.np-ear span{font-size:6.5pt}
+  .np-ear{font-size:9pt;padding:3px 5px}
+  .np-head{grid-template-columns:30mm minmax(0,1fr) 30mm}
+  .editorial{padding:6px 8px;break-inside:avoid}
+  .editorial h3{font-size:13pt}
   .timeline ol,.numbers ul{gap:5px}
   .numbers{padding:8px 10px}
   .timeline li b{font-size:9pt}
   .numbers li{font-size:8.5pt;line-height:1.3;gap:6px}
   .numbers li b{font-size:14pt}
-  .np-stories,.np-stories.c3{break-before:page;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;margin-top:0;border-top:3px double var(--rule);padding-top:10px}
-  .story{break-inside:avoid;padding:2px 0 8px;margin-bottom:8px}
-  .story h3{font-size:16pt;margin-bottom:6px}
+  .np-stories{display:block;column-count:3;column-gap:16px;column-rule:1px solid rgba(0,0,0,.18);margin-top:8px;padding-top:8px;border-top:3px double var(--rule)}
+  .story{break-inside:auto;padding:2px 0 8px;margin-bottom:8px}
+  .st-h{break-inside:avoid;break-after:avoid}
+  .editorial h3{break-after:avoid}
+  .story h3{font-size:13.5pt;margin-bottom:4px}
   .story .qa{font-size:9.5pt;line-height:1.38}
   .np-foot{font-size:8pt;margin-top:10px}
   .section{break-inside:avoid}
@@ -1155,11 +1183,11 @@ window.initMap=initMap;
     return `<div class="share-card${long ? ' sc-long' : ''}">
       <div class="sc-top"><span>${T('Serving the sky, the moon and the stars')}</span><span>${T('The human edition')}</span></div>
       <div class="sc-mast">The News Fix</div>
-      <div class="sc-date"><span>${esc(paperDate())}</span><span class="red">${T('Fictional front page')}</span><span>${esc(company || T('Our organization'))}</span></div>
+      <div class="sc-date"><span>${esc(paperDate())}</span><span>${T('Special edition')}</span><span>${esc(company || T('Our organization'))}</span></div>
       <div class="sc-kicker">${esc(p.lead.kicker || T('Interview'))}</div>
-      <div class="sc-lead">${esc(p.lead.headline)}</div>
-      ${p.lead.deck ? `<div class="sc-deck">${esc(p.lead.deck)}</div>` : ''}
-      ${st.length ? `<div class="sc-also"><div class="sc-also-t">${T('Also in this edition')}</div>${st.map(s => `<div class="sc-story">${esc(s.headline)}</div>`).join('')}</div>` : ''}
+      <div class="sc-lead">${tx(p.lead.headline)}</div>
+      ${p.lead.deck ? `<div class="sc-deck">${tx(p.lead.deck)}</div>` : ''}
+      ${st.length ? `<div class="sc-also"><div class="sc-also-t">${T('Also in this edition')}</div>${st.map(s => `<div class="sc-story">${tx(s.headline)}</div>`).join('')}</div>` : ''}
       <div class="sc-foot"><span>${T('More human. More digital.')}<br>${T('Not a trade-off. AND.')}</span><span class="sc-cta">${T('Write your own 2030 front page')}<br><b>${esc(url)}</b></span></div>
     </div>`;
   }
@@ -1546,12 +1574,27 @@ window.initMap=initMap;
     if (FRL) return `Je viens d’écrire la Une 2030 de ${S.company || 'mon organisation'} avec le diagnostic Future of Work · 4 Shifts de Vincent Dupuis.\n\nArticle principal : « ${S.paper.lead.headline} »\n\nQuatorze questions, une feuille de route pour vos priorités, et votre propre Une. Que dira la vôtre ?\n${siteHost()}\n\n#FutureOfWork`;
     return `I just wrote the 2030 front page of ${S.company || 'my organization'} with the Future of Work · 4 Shifts diagnostic by Vincent Dupuis.\n\nLead story: "${S.paper.lead.headline}"\n\nFourteen questions, a roadmap for your priorities, and your own front page. What will yours say?\n${siteHost()}\n\n#FutureOfWork`;
   }
-  const parasHtml = list => list.map(x => `<p>${esc(x)}</p>`).join('');
-  const sectionsHtml = list => list.map(x => `${x.subhead ? `<h4 class="subhead">${esc(x.subhead)}</h4>` : ''}${parasHtml(x.paragraphs)}`).join('');
+  // Paper text: removes escape codes written as text by the model and sets the French spacing
+  const tx = t => { let v = String(t == null ? '' : t).replace(/\\u00a0/gi, ' ');
+    if (FRL) v = v.replace(/\s+([:;!?»%])/g, '\u00a0$1').replace(/«\s*/g, '«\u00a0');
+    return esc(v); };
+  const parasHtml = list => list.map(x => `<p>${tx(x)}</p>`).join('');
+  const sectionsHtml = list => list.map(x => `${x.subhead ? `<h4 class="subhead">${tx(x.subhead)}</h4>` : ''}${parasHtml(x.paragraphs)}`).join('');
   const leadBody = l => l.sections ? sectionsHtml(l.sections) : qaHtml(l.qa);
-  const storyBody = x => x.paragraphs ? parasHtml(x.paragraphs) : qaHtml(x.qa);
-  const kicker = x => esc(x.kicker || T('Interview'));
-  function qaHtml(list) { return list.map((x, i) => `<p class="qa"><b class="q">${esc(x.q || QS[i] || '')}</b> ${esc(x.a)}</p>`).join(''); }
+  const storyBody = x => x.paragraphs ? parasHtml(x.paragraphs) + (Array.isArray(x.qa) && x.qa.length ? qaHtml(x.qa) : '') : qaHtml(x.qa);
+  const kicker = x => tx(x.kicker || T('Interview'));
+  function qaHtml(list) { return list.map((x, i) => `<p class="qa"><b class="q">${tx(x.q || QS[i] || '')}</b> ${tx(x.a)}</p>`).join(''); }
+  const quoted = t => FRL ? `« ${tx(t)} »` : `"${tx(t)}"`;
+  // Newspaper furniture: teasers above the masthead, ears, motto, folio line
+  function paperHead(p, co) {
+    const pages = ['B2', 'C4', 'D1'];
+    const teasers = Array.isArray(p.teasers) && p.teasers.length ? `<div class="np-teasers">${p.teasers.slice(0, 3).map((t, i) => `<div class="np-teaser"><span class="np-t-sec">${tx(t.section)}</span><b>${tx(t.headline)}</b><small>${T('Page {p}', { p: pages[i] })}</small></div>`).join('')}</div>` : '';
+    return `${teasers}<div class="np-head"><div class="np-ear">${T('The insiders’ view')}</div><div class="masthead">The News Fix</div>
+        <div class="np-ear r">${p.weather ? `<span>${T('Weather')}</span>${tx(p.weather)}` : `<span>${T('Special edition')}</span>${T('The human edition')}</div>`}</div></div>
+      <div class="np-top"><span>${T('Serving the sky, the moon and the stars')}</span></div>
+      <div class="np-date"><span>${esc(paperDate())}</span><span>${T('Special edition · No. 2030')}</span><span>${esc(co)} · ${T('€3')}</span></div>`;
+  }
+  const storyFormat = { portrait: 'Portrait', explainer: 'Explainer', interview: 'Interview', column: 'Opinion' };
   function newsfix() {
     const p = S.paper; if (!p || !p.lead || !(p.lead.qa || p.lead.sections)) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
     const co = S.company || T('Your organization'), ctx = S.paperContext || {};
@@ -1566,16 +1609,14 @@ window.initMap=initMap;
           <button class="btn p" id="dl">${T('Download this image')}</button></figure></div>
       <div class="eyebrow paper-label no-print">${T('Your full front page')}</div>
       <div class="paper" id="paper">
-      <div class="np-top"><span>${T('Serving the sky, the moon and the stars')}</span><span>${T('Special edition · The human edition')}</span></div>
-      <div class="masthead">The News Fix</div>
-      <div class="np-sub">${esc(FRL ? (S.company ? `Le futur du travail, tel que ${S.company} l’a écrit` : 'Le futur du travail, tel que vous l’avez écrit') : `The future of work, as ${S.company || 'you'} wrote it`)}</div>
-      <div class="np-date"><span>${esc(paperDate())}</span><span class="red">${T('Fictional front page')}</span><span>${esc(co)}</span></div>
-      <div class="lead"><div class="kicker">${kicker(p.lead)}</div><h2>${esc(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${esc(p.lead.deck)}</p>` : ''}</div>
+      ${paperHead(p, co)}
+      <div class="lead"><div class="kicker">${kicker(p.lead)}</div><h2>${tx(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${tx(p.lead.deck)}</p>` : ''}</div>
       <div class="np-cols"><div><div class="byline">${T(p.lead.sections ? 'By the News Fix newsroom' : 'Interview by the News Fix newsroom')}</div><div class="np-body lead-body">${leadBody(p.lead)}</div></div>
-        <div>${p.quote && p.quote.text ? `<div class="quote">${FRL ? `« ${esc(p.quote.text)} »` : `"${esc(p.quote.text)}"`}<small>${esc(p.quote.who || '')}</small></div>` : ''}
-          ${Array.isArray(p.timeline) && p.timeline.length ? `<div class="timeline"><h4>${T('The road to 2030')}</h4><ol>${p.timeline.map(t => `<li><b>${esc(t.year)}</b><span>${esc(t.text)}</span></li>`).join('')}</ol></div>` : ''}
+        <div>${p.quote && p.quote.text ? `<div class="quote">${quoted(p.quote.text)}<small>${tx(p.quote.who || '')}</small></div>` : ''}
           ${nums ? `<div class="numbers"><h4>${T('From the 2026 diagnostic')}</h4><ul>${nums}</ul></div>` : ''}</div></div>
-      ${p.stories.length ? `<div class="np-stories ${p.stories.length % 3 === 0 ? 'c3' : 'c2'}">${p.stories.map(s => `<article class="story"><div class="kicker">${kicker(s)}</div><h3>${esc(s.headline)}</h3><div class="np-body">${storyBody(s)}</div></article>`).join('')}</div>` : ''}
+      ${Array.isArray(p.timeline) && p.timeline.length ? `<div class="timeline"><h4>${T('The road to 2030')}</h4><ol>${p.timeline.map(t => `<li><b>${esc(t.year)}</b><span>${tx(t.text)}</span></li>`).join('')}</ol></div>` : ''}
+      ${p.stories.length ? `<div class="np-stories">${p.stories.map(x => `<article class="story ${esc(x.format || '')}"><header class="st-h"><div class="kicker">${kicker(x)}${storyFormat[x.format] ? ` · ${T(storyFormat[x.format])}` : ''}</div><h3>${tx(x.headline)}</h3></header><div class="np-body">${storyBody(x)}</div></article>`).join('')}
+        ${p.editorial && p.editorial.headline ? `<aside class="editorial"><div class="kicker">${T('Editorial')}</div><h3>${tx(p.editorial.headline)}</h3><div class="np-body">${parasHtml(p.editorial.paragraphs || [])}</div><small>${T('The editor-in-chief')}</small></aside>` : ''}</div>` : ''}
       <div class="np-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>${T('More human. More digital. Not a trade-off. AND.')}</span></div></div>
       <div class="section no-print" style="margin-top:24px"><div class="row"><button class="btn s" id="print">${T('Print or save as PDF')}</button><a class="btn g" href="#/priorities">${T('Back to your priorities and roadmap')}</a></div>
       ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}${S.paperError ? ` <small>(${esc(S.paperError)})</small>` : ''}</p>` : ''}${contactBox()}</div>
