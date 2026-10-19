@@ -1,9 +1,9 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Future of Work 4 Shifts</title></head><body>
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="icon" href="favicon.ico" sizes="48x48"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Measure how far your operating model is from the 2030 target, get a roadmap, and write the front page of The News Fix.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;1,400&family=UnifrakturMaguntia&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;1,400&family=UnifrakturCook:wght@700&display=swap">
 <style>/* Layout: one guided journey (model → diagnostic → report & roadmap → 2030 vision → The News Fix), one column of reading width with wider boards for report and roadmap. Identity: shared charter (warm white, ink, emerald accent, brick, blue, violet; Space Grotesk and IBM Plex Sans) with the O hexagon mark. The News Fix is printed paper in both themes. */
 :root{
   --bg:#F5F5F1; --surface:#FFFFFF; --fg:#12161C; --muted:#5A6270; --line:#DADCD5; --soft:#ECEDE7;
@@ -12,7 +12,7 @@
   --s1:#A74018; --s2:#0F6E5D; --s3:#2C5687; --s4:#8A4F9E; --on-bar:#FFFFFF;
   --display:"Space Grotesk","Segoe UI",Arial,sans-serif; --body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
   --paper:#F7F3EA; --ink:#1B1B1B; --ink-soft:#4A4A4A; --rule:#1B1B1B;
-  --news:"Playfair Display",Georgia,"Times New Roman",serif; --newsbody:"Source Serif 4",Georgia,serif; --black:"UnifrakturMaguntia","Old English Text MT",Georgia,serif;
+  --news:"Playfair Display",Georgia,"Times New Roman",serif; --newsbody:"Source Serif 4",Georgia,serif; --black:"UnifrakturCook","Old English Text MT",Georgia,serif;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#101317; --surface:#181C21; --fg:#ECEBE6; --muted:#A3A8AE; --line:#2B3036; --soft:#1E2328;
@@ -63,9 +63,25 @@ h3{font-size:19px}
 .btn.p{background:var(--accent);color:var(--accent-ink)}
 .btn.s{background:transparent;color:var(--fg);border:1.5px solid var(--fg)}
 .btn.g{background:transparent;color:var(--muted);padding-inline:6px}
+/* Deliverables (executive report, roadmap, front page): branded, with a document icon, between the secondary actions and the next step */
+.btn.d{background:var(--accent-soft);color:var(--accent);border:1.5px solid var(--accent)}
+.btn.d:hover{background:#cfe4dd}
+.btn.d svg{flex:none}
+/* Light green: a strong action that gives way to the main one (home header: the map first, then the diagnostic) */
+.btn.l{background:var(--accent-soft);color:var(--accent);border:1.5px solid var(--accent)}
+.btn.l:hover{background:#cfe4dd}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 .btn:focus-visible,.opt:focus-within,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+/* Action rows: secondary actions first (left), the one primary "next" action last (right). On a phone the primary
+   action takes the full width at the end of the row: same order for the eye and the keyboard, under the thumb. */
+.acts .btn.p{margin-left:auto}
+.acts.tight .btn.p{margin-left:0}
+@media (max-width:560px){.acts .btn.p,.acts.tight .btn.l{flex:1 1 100%;justify-content:center;margin-left:0}}
+.why{margin:0;font-size:17px;max-width:62ch}
+.g-hint{display:none}
+@media (max-width:760px){.g-hint{display:block}}
+.field .hint{font-size:14.5px;color:var(--muted);margin:6px 0 0}
 .and{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.6vw,28px)}
 .and b{color:var(--accent);white-space:nowrap}
 .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:36px;align-items:center}
@@ -135,6 +151,7 @@ h3{font-size:19px}
 @media (max-width:560px){.author{flex-direction:column}.author-photo{width:96px;height:96px}}
 .final{background:var(--surface);border:1.5px solid var(--line);border-radius:18px;padding:clamp(22px,4vw,40px);display:flex;flex-direction:column;gap:16px;align-items:flex-start}
 .final .lede{max-width:56ch}
+.final .acts{align-self:stretch}
 .privacy{margin:0;max-width:90ch}
 h2[tabindex="-1"]:focus{outline:none}
 .site-foot{margin-top:8px;border-top:1px solid var(--line);padding-block:20px 0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;font-size:14px;color:var(--muted)}
@@ -150,7 +167,6 @@ h2[tabindex="-1"]:focus{outline:none}
 .chip span{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;background:var(--surface);cursor:pointer;font-size:15px;line-height:1.3}
 .chip input:checked+span{border-color:var(--accent);background:var(--accent-soft);font-weight:600}
 .chip input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
-.chip.none span{color:var(--muted)}
 .contact{margin-top:28px;padding:20px 22px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);max-width:640px}
 .contact h3{margin:0 0 6px;font:600 18px var(--display)}
 .contact p{margin:0 0 12px}
@@ -160,7 +176,9 @@ h2[tabindex="-1"]:focus{outline:none}
 .contact #cmsg:empty{display:none}
 .contact .assure{margin:12px 0 0;font-size:14.5px;color:var(--fg);border-left:3px solid var(--accent);padding-left:10px}
 /* diagnostic */
-.q-wrap{max-width:760px;display:flex;flex-direction:column;gap:22px}
+.q-wrap{display:flex;flex-direction:column;gap:22px}
+/* The question keeps a reading width; its action row spans the page, so the next step lines up with the other pages */
+.q-wrap > :not(.acts){max-width:760px;width:100%}
 .progress{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
 .progress i{display:block;height:100%;background:var(--accent);transition:width .3s}
 .qmeta{display:flex;justify-content:space-between;gap:10px;font:600 13px var(--display);color:var(--muted)}
@@ -236,8 +254,17 @@ h2[tabindex="-1"]:focus{outline:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 /* The News Fix — printed paper, same in both themes */
 .paper{background:var(--paper);color:var(--ink);max-width:980px;margin:0 auto;padding:28px clamp(16px,4vw,44px) 36px;border-radius:4px;box-shadow:0 2px 0 rgba(0,0,0,.06),0 18px 40px -20px rgba(0,0,0,.35);font-family:var(--newsbody)}
-.np-top{display:flex;justify-content:space-between;gap:10px;font:600 11px var(--display);letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid var(--rule);padding-bottom:6px;color:var(--ink)}
-.masthead{font-family:var(--black);font-size:clamp(46px,9vw,92px);text-align:center;line-height:1;margin:14px 0 4px;color:var(--ink)}
+.np-top{display:flex;justify-content:center;font:600 11px var(--display);letter-spacing:.28em;text-transform:uppercase;border-top:1px solid var(--rule);padding-top:6px;margin-top:6px;color:var(--ink)}
+.masthead{font-family:var(--black);font-weight:700;font-size:clamp(42px,8vw,88px);text-align:center;line-height:1;margin:6px 0 2px;color:var(--ink)}
+.np-teasers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:8px}
+.np-teaser{border:1px solid var(--rule);padding:6px 9px;display:flex;flex-direction:column;gap:2px;color:var(--ink)}
+.np-t-sec{font:700 10.5px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#C8102E}
+.np-teaser b{font:700 15px/1.2 var(--news)}
+.np-teaser small{font:600 10.5px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+.np-head{display:grid;grid-template-columns:minmax(90px,150px) minmax(0,1fr) minmax(90px,150px);align-items:center;gap:12px}
+.np-ear{border:1px solid var(--rule);padding:6px 8px;font:italic 14px/1.25 var(--news);text-align:center;color:var(--ink)}
+.np-ear span{display:block;font:700 10px var(--display);font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:#C8102E;margin-bottom:2px}
+@media (max-width:640px){.np-teasers{grid-template-columns:minmax(0,1fr)}.np-head{grid-template-columns:minmax(0,1fr)}.np-ear{display:none}}
 .np-sub{text-align:center;font:italic 15px var(--newsbody);color:var(--ink-soft)}
 .np-date{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:3px double var(--rule);border-bottom:1px solid var(--rule);padding:6px 0;margin:10px 0 18px;font:600 12.5px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
 .np-date .red{color:#C8102E}
@@ -252,10 +279,25 @@ h2[tabindex="-1"]:focus{outline:none}
 .qa .q{display:block;font:700 13px var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-bottom:3px}
 .lead-body{column-count:2;column-gap:26px;column-rule:1px solid rgba(0,0,0,.18)}
 .lead-body .qa{break-inside:avoid-column}
+.np-body .subhead{font:700 15px/1.25 var(--display);color:var(--ink);margin:4px 0 6px;break-after:avoid-column}
+.np-body .subhead:first-child{margin-top:0}
+.timeline{border-top:3px solid var(--ink);border-bottom:1px solid var(--rule);padding:8px 0 10px;margin-top:18px}
+.timeline h4{margin:0 0 8px;font:700 12px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.timeline ol{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:16px;position:relative}
+.timeline ol::before{content:'';position:absolute;left:0;right:0;top:10px;border-top:2px solid #C8102E}
+.timeline li{display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.35;color:var(--ink)}
+@media (max-width:640px){.timeline ol{grid-auto-flow:row}.timeline ol::before{display:none}}
+.timeline li b{font:700 14px var(--display);color:#C8102E;background:var(--paper);align-self:flex-start;padding-right:8px;position:relative}
 @media (max-width:760px){.lead-body{column-count:1}}
-.np-stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 26px;border-top:3px double var(--rule);margin-top:22px;padding-top:16px}
-.np-stories.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media (max-width:760px){.np-stories,.np-stories.c3{grid-template-columns:minmax(0,1fr)}}
+.np-stories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 22px;border-top:3px double var(--rule);margin-top:18px;padding-top:14px}
+.story.interview .qa .q{color:#C8102E}
+.story.column h3,.story.column .np-body p{font-style:italic}
+.editorial{border:2px solid var(--ink);padding:10px 12px;margin-bottom:14px;align-self:start}
+.editorial h3{font-family:var(--news);font-weight:700;font-size:21px;line-height:1.15;color:var(--ink);margin-bottom:8px}
+.editorial small{display:block;text-align:right;font:600 11px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.editorial .kicker{text-align:left}
+@media (max-width:1000px){.np-stories{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.np-stories{grid-template-columns:minmax(0,1fr)}}
 .story{border-bottom:1px solid var(--rule);padding:4px 0 14px;margin-bottom:14px}
 .story h3{font-family:var(--news);font-weight:700;font-size:24px;line-height:1.12;color:var(--ink);margin-bottom:10px}
 .story .qa{font-size:15.5px;line-height:1.5}
@@ -273,6 +315,55 @@ h2[tabindex="-1"]:focus{outline:none}
 .quote{font:italic 19px/1.4 var(--news);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:12px 0;margin:6px 0 14px;color:var(--ink)}
 .quote small{display:block;font:600 11.5px var(--display);letter-spacing:.08em;text-transform:uppercase;font-style:normal;color:var(--ink-soft);margin-top:6px}
 .np-foot{border-top:3px double var(--rule);margin-top:20px;padding-top:8px;font:12px var(--display);color:var(--ink-soft);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+/* The News Fix as two A4 sheets (794 x 1123 px at 96 dpi), identical on screen and on paper.
+   --k is the body type size in px, set by fitSheets() so that each sheet is full. */
+.sheets{display:flex;flex-direction:column;align-items:center;gap:28px}
+.sheet-wrap{width:min(794px,100%);aspect-ratio:794/1123;position:relative;overflow:hidden}
+.sheet{--k:13;position:absolute;top:0;left:0;width:794px;height:1123px;padding:34px 40px 26px;box-sizing:border-box;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);font-family:var(--newsbody);transform-origin:0 0;box-shadow:0 2px 0 rgba(0,0,0,.06),0 18px 40px -20px rgba(0,0,0,.35)}
+.sheet .np-teasers{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding-bottom:7px;margin-bottom:4px}
+.sheet .np-ear{display:block}
+.sheet .timeline ol{grid-auto-flow:column}
+.sheet .timeline ol::before{display:block}
+.sheet .np-teaser b{font-size:13.5px}
+.sheet .np-head{grid-template-columns:130px minmax(0,1fr) 130px}
+.sheet .np-ear{font-size:12.5px;padding:5px 6px}
+.sheet .masthead{font-size:68px;margin:4px 0 0}
+.sheet .np-top{font-size:10px;margin-top:4px;padding-top:5px}
+.sheet .np-date{font-size:11px;margin:6px 0 10px;padding:5px 0}
+.sheet .kicker{font-size:10.5px;margin-bottom:4px}
+.sheet .lead h2{font-size:40px;line-height:1.04}
+.sheet .lead .deck{font-size:16px;line-height:1.35;max-width:none;margin-top:8px}
+.s1-body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,2.35fr) minmax(0,1fr);gap:18px;margin-top:12px;border-top:1px solid var(--rule);padding-top:10px}
+.s1-main{display:flex;flex-direction:column;min-height:0}
+.s1-side{min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px}
+.sheet .fit{flex:1;min-height:0;overflow:hidden;column-fill:auto}
+.sheet .lead-body{column-count:2;column-gap:18px;column-rule:1px solid rgba(0,0,0,.18)}
+.sheet .np-body p{font-size:calc(var(--k) * 1px);line-height:1.36;margin:0 0 .45em}
+.sheet .np-body .subhead{font-size:calc(var(--k) * 1.02px);margin:.2em 0 .25em}
+.sheet .byline{font-size:10px;margin-bottom:6px}
+.sheet .quote{font-size:17px;margin:0;padding:8px 0}
+.sheet .numbers{margin:0}
+.sheet .numbers li{font-size:13px;line-height:1.3}
+.sheet .numbers li b{font-size:22px}
+.fun{border-top:3px solid var(--ink);padding-top:6px;break-inside:avoid;margin-bottom:12px}
+.fun h4{margin:0 0 4px;font:700 11px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#C8102E}
+.fun p{margin:0 0 .35em;font-size:calc(var(--k,13) * 1px);line-height:1.35;color:var(--ink)}
+.s1-side .fun p{font:italic 15px/1.35 var(--news)}
+.fun .upside{transform:rotate(180deg);font-size:calc(var(--k,13) * .85px);color:var(--ink-soft);margin-top:6px}
+.fun[hidden]{display:none}
+.s2-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:3px double var(--rule);padding-bottom:6px;font:600 11px var(--display);letter-spacing:.08em;text-transform:uppercase}
+.s2-mast{font:700 28px var(--black);letter-spacing:0;text-transform:none}
+.sheet .timeline{margin-top:10px}
+.sheet .timeline li{font-size:13px}
+.sheet .np-stories{display:block;column-count:3;column-gap:18px;column-rule:1px solid rgba(0,0,0,.18);margin-top:10px;padding-top:10px;border-top:3px double var(--rule)}
+.sheet .story{break-inside:auto;border-bottom:1px solid var(--rule);padding:0 0 .6em;margin-bottom:.8em}
+.sheet .st-h{break-inside:avoid;break-after:avoid}
+.sheet .story h3,.sheet .editorial h3{font-size:calc(var(--k) * 1.6px);line-height:1.12;margin-bottom:.3em}
+.sheet .story .qa{font-size:calc(var(--k) * 1px);line-height:1.36}
+.sheet .story .qa .q{font-size:calc(var(--k) * .82px)}
+.sheet .editorial{break-inside:avoid;margin-bottom:.8em}
+.sheet-foot{display:flex;justify-content:space-between;border-top:3px double var(--rule);margin-top:8px;padding-top:5px;font:11px var(--display);color:var(--ink-soft)}
+.paper-label{width:min(794px,100%);margin:0 auto 10px;max-width:none}
 /* sample + share card (1080 x 1350, posted on LinkedIn) */
 .sample{margin:0;display:flex;flex-direction:column;gap:8px;width:100%;max-width:420px;justify-self:center}
 .sample figcaption{font-size:13.5px;color:var(--muted);text-align:center}
@@ -281,7 +372,7 @@ h2[tabindex="-1"]:focus{outline:none}
 #capture{position:fixed;left:-20000px;top:0;pointer-events:none}
 .share-card{width:1080px;height:1350px;background:#F7F3EA;color:#1B1B1B;padding:60px 72px 56px;display:flex;flex-direction:column;transform-origin:0 0;font-family:var(--newsbody);overflow:hidden}
 .sc-top{display:flex;justify-content:space-between;font:600 17px var(--display);letter-spacing:.18em;text-transform:uppercase;border-bottom:2px solid #1B1B1B;padding-bottom:12px}
-.sc-mast{font-family:var(--black);font-size:150px;line-height:1;text-align:center;margin:26px 0 12px}
+.sc-mast{font-family:var(--black);font-weight:700;font-size:150px;line-height:1;text-align:center;margin:26px 0 12px}
 .sc-date{display:flex;justify-content:space-between;border-top:6px double #1B1B1B;border-bottom:2px solid #1B1B1B;padding:12px 0;font:600 19px var(--display);letter-spacing:.06em;text-transform:uppercase}
 .sc-date .red,.sc-kicker{color:#C8102E}
 .sc-kicker{text-align:center;font:700 22px var(--display);letter-spacing:.22em;text-transform:uppercase;margin-top:52px}
@@ -290,16 +381,27 @@ h2[tabindex="-1"]:focus{outline:none}
 .sc-also{margin-top:auto;border-top:6px double #1B1B1B;padding-top:20px}
 .sc-also-t{font:700 18px var(--display);letter-spacing:.18em;text-transform:uppercase;margin-bottom:4px}
 .sc-story{font:700 37px/1.15 var(--news);padding:14px 0;border-bottom:1px solid rgba(0,0,0,.25)}
+.sc-long .sc-kicker{margin-top:36px}
+.sc-long .sc-lead{font-size:76px;margin:12px 0 16px}
+.sc-long .sc-deck{font-size:28px}
+.sc-long .sc-story{font-size:31px;padding:11px 0}
 .sc-cta{text-align:right}
 .sc-cta b{color:#1B1B1B;font-weight:700;white-space:nowrap}
 .sc-foot{margin-top:24px;display:flex;justify-content:space-between;gap:20px;font:600 18px var(--display);color:#4A4A4A;border-top:2px solid #1B1B1B;padding-top:14px}
 .share{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:28px;align-items:start;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line)}
 @media (max-width:860px){.share{grid-template-columns:minmax(0,1fr)}.share .sc-frame{max-width:420px}}
+.regen{border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px 18px;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
+.regen p{margin:0}
+.sc-fig{margin:0;display:flex;flex-direction:column;gap:10px}
+.sc-fig figcaption{font:600 12.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sc-fig .btn{align-self:stretch;justify-content:center}
+@media (max-width:860px){.sc-fig{max-width:420px}}
 .post{font:15px/1.5 var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;resize:vertical}
 .btn.off{opacity:.4;pointer-events:none}
 .tabs{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
 .tabs button{font:600 14px var(--display);border:0;background:transparent;color:var(--muted);padding:8px 16px;border-radius:999px;cursor:pointer}
-.tabs button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+/* A view switch, not an action: the selected view is shown in light green, the solid green stays for the next step */
+.tabs button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
 .fors{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
 .for{font:600 11.5px var(--display);padding:2px 8px;border-radius:999px;background:var(--soft);color:var(--fg)}
 .for.pre{background:var(--warn-bg);color:var(--warn)}
@@ -395,11 +497,17 @@ h2[tabindex="-1"]:focus{outline:none}
   body{background:#fff;padding:0}
   .top,.no-print{display:none!important}
   main{padding:0}
-  .paper{box-shadow:none;max-width:none}
+  /* The News Fix: the two sheets print as they are, one A4 page each, full size */
+  .paper-label{display:none}
+  .sheets{gap:0;display:block}
+  .sheet-wrap{width:auto;aspect-ratio:auto;overflow:visible;margin:0}
+  .sheet{position:static;transform:none!important;box-shadow:none;background:var(--paper);-webkit-print-color-adjust:exact;print-color-adjust:exact;page:newsfix;break-after:page}
+  .sheet-wrap:last-child .sheet{break-after:auto}
   .section{break-inside:avoid}
   .road{min-width:0}
   .gantt{min-width:0}
   @page{size:A4;margin:10mm}
+  @page newsfix{size:A4;margin:0}
   .brief{gap:0}
   .b-spider{max-width:110mm}
   .b-page{box-shadow:none;max-width:none;min-height:0;padding:2mm 4mm;gap:12px;font-size:12.5px;line-height:1.42;break-after:page}
@@ -912,16 +1020,30 @@ window.initMap=initMap;
   const lc = s => s.charAt(0).toLowerCase() + s.slice(1);
 
   let S = load() || {};
-  S = Object.assign({ answers: {}, qi: 0, company: '', priorities: null, paper: null, paperSource: null, roadView: 'list' }, S);
+  S = Object.assign({ answers: {}, qi: 0, company: '', priorities: null, paper: null, paperSource: null, roadView: 'gantt' }, S);
+  // Roadmap view until the visitor chooses one: the Gantt chart on a wide screen, the list on a phone (the Gantt needs sideways scroll there)
+  if (!S.roadPicked) S.roadView = matchMedia('(max-width: 760px)').matches ? 'list' : 'gantt';
   function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
   const done = () => F.questions.every(q => S.answers[q.id]);
+  // Front pages written by the AI newsroom in this browser: 3 at most. Kept apart from the answers,
+  // so that new answers do not give new front pages. Beyond 3, the visitor is invited to contact Vincent.
+  const MAX_PAPERS = 3, PAPERS_KEY = 'fow4_newsfix_n', CONTACT_URL = 'https://www.linkedin.com/in/vincentdupuis/';
+  const papersMade = () => { try { return Math.max(0, parseInt(localStorage.getItem(PAPERS_KEY), 10) || 0); } catch (e) { return 0; } };
+  const paperMade = () => { try { localStorage.setItem(PAPERS_KEY, String(papersMade() + 1)); } catch (e) {} };
+  const papersLeft = () => Math.max(0, MAX_PAPERS - papersMade());
+  // The front page keeps the key of what it was written from (language, answers, priorities, organization).
+  // When the key changes, the page stays and the visitor is offered to print it again.
+  const paperKey = () => JSON.stringify([window.LANG, F.questions.map(q => S.answers[q.id] || 0), S.priorities || [], S.company || '']);
+  const paperStale = () => !!(S.paper && S.paperKey && S.paperKey !== paperKey());
+  const contactLink = () => `<a href="${CONTACT_URL}" target="_blank" rel="noopener">${T('contact Vincent Dupuis on LinkedIn ↗')}</a>`;
+  const leftNote = () => papersLeft() === 1 ? ` ${T('Only one front page is left. To go further,')} ${contactLink()}` : papersLeft() > 1 ? ` ${T('You can print {n} more front pages.', { n: papersLeft() })}` : '';
   const hasPrios = () => done() && Array.isArray(S.priorities) && S.priorities.length >= MINP;
   // anonymous usage counter: no cookie, no identifier, only the name of the step reached
   const ping = e => { try { fetch('/api/count', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ e }), keepalive: true }).catch(() => {}); } catch (x) {} };
-  // Anonymous statistics, unless the visitor unticks the box: a random id, the 14 levels, the priorities and the scores.
-  // No name, no organization. A new id for each new set of answers.
-  const shared = () => S.share !== false;
+  // Anonymous statistics: a random id, the 14 levels, the priorities and the scores. No name, no organization.
+  // The visitor ticks a box to accept them before seeing the report. A new id for each new set of answers.
+  const shared = () => S.share === true;
   const prof = () => { const p = {}; (F.profile || []).forEach(f => { const v = S.profile && S.profile[f.id]; if (v && f.o.some(o => o[0] === v)) p[f.id] = v; }); return p; };
   const sig = () => F.questions.map(q => S.answers[q.id] || 0).join('') + '|' + JSON.stringify(prof());
   const newId = () => Array.from(crypto.getRandomValues(new Uint8Array(12)), b => b.toString(16).padStart(2, '0')).join('');
@@ -948,8 +1070,9 @@ window.initMap=initMap;
     S.sentPrio = p; save();
     if (!(await post('priorities')) && S.sentPrio === p) { S.sentPrio = null; save(); }
   }
-  const shareBox = () => `<label class="optin no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
-  const bindShare = () => { const b = document.getElementById('share'); if (b) b.addEventListener('change', () => { S.share = b.checked; save(); }); };
+  const shareBox = () => `<label class="optin no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('I accept that my answers are added, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization. Required to continue.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
+  // onChange: what the page does when the box changes (enable the buttons, or show the next step)
+  const bindShare = onChange => { const b = document.getElementById('share'); if (b) b.addEventListener('change', () => { S.share = b.checked; save(); if (onChange) onChange(); }); };
   // Optional email to receive the summary of the study. Stored apart from the answers, with no link to them.
   const contactBox = () => S.contactDone
     ? `<div class="contact no-print"><h3>${T('Get the results of the study')}</h3><p>${T('Thank you. You will receive the summary of the results.')}</p></div>`
@@ -1086,9 +1209,9 @@ window.initMap=initMap;
 
   // ---------- NAV ----------
   const STEPS = [['#/', 'Introduction'], ['#/map', 'Interactive map'], ['#/diagnostic', 'Your Diagnostic'], ['#/priorities', 'Your Priorities'], ['#/newsfix', 'Your News Fix']].map(([h, t]) => [h, T(t)]);
-  const hasPaper = () => !!(S.paper && S.paper.lead && S.paper.lead.qa);
+  const hasPaper = () => !!(S.paper && S.paper.lead && (S.paper.lead.qa || S.paper.lead.sections));
   function nav(route) {
-    const ok = { '#/': true, '#/map': true, '#/diagnostic': true, '#/priorities': done(), '#/newsfix': hasPaper() };
+    const ok = { '#/': true, '#/map': true, '#/diagnostic': true, '#/priorities': done() && shared(), '#/newsfix': hasPaper() && shared() };
     document.getElementById('stepsnav').setAttribute('aria-label', T('Steps'));
     document.querySelectorAll('.langs button').forEach(b => { b.setAttribute('aria-pressed', String(b.dataset.lang === window.LANG)); b.onclick = () => window.setLang(b.dataset.lang); });
     document.querySelector('.langs').setAttribute('aria-label', T('Language'));
@@ -1100,21 +1223,49 @@ window.initMap=initMap;
     stories: [{ headline: F.challenges.augmented.ex }, { headline: F.challenges.workplace.ex }, { headline: F.challenges.knowledge.ex }] };
   function paperDate() { const d = new Date(); d.setFullYear(2030); return d.toLocaleDateString(L_, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); }
   function shareCard(p, company, url) {
-    return `<div class="share-card">
+    // Long headlines from the AI newsroom: smaller type so that the whole edition fits in 1080 x 1350
+    const st = (p.stories || []).slice(0, 4), long = p.lead.headline.length > 48 || st.reduce((n, x) => n + x.headline.length, 0) > 200;
+    return `<div class="share-card${long ? ' sc-long' : ''}">
       <div class="sc-top"><span>${T('Serving the sky, the moon and the stars')}</span><span>${T('The human edition')}</span></div>
       <div class="sc-mast">The News Fix</div>
-      <div class="sc-date"><span>${esc(paperDate())}</span><span class="red">${T('Fictional front page')}</span><span>${esc(company || T('Our organization'))}</span></div>
-      <div class="sc-kicker">${T('Interview')}</div>
-      <div class="sc-lead">${esc(p.lead.headline)}</div>
-      ${p.lead.deck ? `<div class="sc-deck">${esc(p.lead.deck)}</div>` : ''}
-      ${p.stories && p.stories.length ? `<div class="sc-also"><div class="sc-also-t">${T('Also in this edition')}</div>${p.stories.slice(0, 4).map(s => `<div class="sc-story">${esc(s.headline)}</div>`).join('')}</div>` : ''}
+      <div class="sc-date"><span>${esc(paperDate())}</span><span>${T('Special edition')}</span><span>${esc(company || T('Our organization'))}</span></div>
+      <div class="sc-kicker">${esc(p.lead.kicker || T('Interview'))}</div>
+      <div class="sc-lead">${tx(p.lead.headline)}</div>
+      ${p.lead.deck ? `<div class="sc-deck">${tx(p.lead.deck)}</div>` : ''}
+      ${st.length ? `<div class="sc-also"><div class="sc-also-t">${T('Also in this edition')}</div>${st.map(s => `<div class="sc-story">${tx(s.headline)}</div>`).join('')}</div>` : ''}
       <div class="sc-foot"><span>${T('More human. More digital.')}<br>${T('Not a trade-off. AND.')}</span><span class="sc-cta">${T('Write your own 2030 front page')}<br><b>${esc(url)}</b></span></div>
     </div>`;
   }
   function fitCards() { document.querySelectorAll('.sc-frame').forEach(f => { const c = f.querySelector('.share-card'); if (c) c.style.transform = `scale(${f.clientWidth / 1080})`; }); }
   window.addEventListener('resize', fitCards);
+  // The News Fix is two A4 sheets (794 x 1123 px), the same on screen and on paper. Once the text is in,
+  // the type size (--k, in px) of each sheet is the largest one that fits; light boxes (pun, riddle,
+  // horoscope) are removed, lowest priority first, when the text does not fit at the smallest size.
+  const overflows = b => b.scrollWidth > b.clientWidth + 1 || b.scrollHeight > b.clientHeight + 1;
+  function fitBox(box, min, max, area) {
+    const set = k => box.style.setProperty('--k', k.toFixed(2));
+    const tooBig = () => overflows(box) || (area && overflows(area));
+    let lo = min, hi = max; set(hi); if (!tooBig()) return true;
+    set(lo); if (tooBig()) return false;
+    for (let i = 0; i < 9; i++) { const m = (lo + hi) / 2; set(m); if (tooBig()) hi = m; else lo = m; }
+    set(lo); return true;
+  }
+  function fitSheets() {
+    document.querySelectorAll('.sheet').forEach(sh => {
+      const fill = [...sh.querySelectorAll('.filler')].sort((a, b) => a.dataset.prio - b.dataset.prio);
+      fill.forEach(f => { f.hidden = false; });
+      const box = sh.querySelector('.fit'), side = sh.querySelector('.s1-side');
+      if (side) { while (overflows(side) && fill.length) fill.shift().hidden = true; fitBox(box, 10.5, 15.5); return; }
+      while (!fitBox(box, 10.5, 15.5) && fill.length) fill.shift().hidden = true;
+    });
+    scaleSheets();
+  }
+  function scaleSheets() { document.querySelectorAll('.sheet-wrap').forEach(w => { const sh = w.querySelector('.sheet'); if (sh) sh.style.transform = w.clientWidth < 794 ? `scale(${w.clientWidth / 794})` : ''; }); }
+  window.addEventListener('resize', scaleSheets);
   const siteHost = () => (location.protocol.startsWith('http') && !/claude|localhost|127\.0\.0\.1/.test(location.host)) ? location.host : 'your-site.netlify.app';
-  const nextBtn = (href, label) => `<div class="section no-print"><div class="row"><a class="btn p" href="${href}">${label} →</a></div></div>`;
+  const ARROW = ' <span aria-hidden="true">→</span>';
+  const DOC = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 11v6"/><path d="M9.5 14.5 12 17l2.5-2.5"/></svg>';
+  const nextBtn = (href, label) => `<div class="section no-print"><div class="row acts"><a class="btn p" href="${href}">${label}${ARROW}</a></div></div>`;
 
   // ---------- INTRODUCTION ----------
   // Episode players: poster and play button first, the <video> is created on click (nothing is loaded before).
@@ -1152,7 +1303,7 @@ window.initMap=initMap;
     document.querySelectorAll('a[data-scroll]').forEach(a => { a.onclick = ev => { const t = document.getElementById(a.dataset.scroll); if (!t) return; ev.preventDefault(); t.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); const h = t.querySelector('h2'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); } }; });
   }
   function home() {
-    const start = T(done() ? 'See your diagnostic' : 'Start your diagnostic');
+    const start = T('Start your diagnostic');
     const series = 'Why the Future of Work Needs a New Operating System';
     const intro = EPS().find(e => !e.shift);
     const introHtml = intro ? `<article class="vid ep-intro" style="--c:var(--accent)" aria-labelledby="ep-${esc(intro.id)}-t">${epFrame(intro)}
@@ -1170,8 +1321,8 @@ window.initMap=initMap;
     return `<div class="section home"><div class="hero"><div class="stack">
         <p class="series-line">${T('From the LinkedIn series {t}, by Vincent Dupuis', { t: `<a href="#model" data-scroll="model">${series}</a>` })}</p>
         <h1>${T('Measure the gap between your operating model and 2030')}</h1>
-        <p class="lede">${T('You get an executive report-out for your ExCom, a roadmap for your priorities, and the 2030 front page of The News Fix, written for your organization.')}</p>
-        <div class="row"><a class="btn p" href="#/diagnostic">${start}</a><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div>
+        <p class="lede">${T('You get an executive report-out for your ExCom, a roadmap for your priorities, and your 2030 vision as the front page of The News Fix, written for your organization.')}</p>
+        <div class="row acts tight"><a class="btn p" href="#/map">${T('Explore the interactive map')}</a><a class="btn l" href="#/diagnostic">${start}${ARROW}</a></div>
         <p class="facts">${T('Fourteen questions · About ten minutes · No account')}</p>
       </div>
       <figure class="sample"><div class="sc-frame" aria-hidden="true">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>${T('Example front page of The News Fix for a fictional company. Lead story: “{t}”', { t: esc(SAMPLE.lead.headline) })}</figcaption></figure></div></div>
@@ -1199,10 +1350,10 @@ window.initMap=initMap;
         <div class="author-txt"><div class="eyebrow">${T('The author')}</div><h3 id="h-author">Vincent Dupuis</h3>
         <p class="bio">${T('Engineer and innovator, with more than 25 years of experience and over 30 patents. Vincent makes breakthrough technology deliver real value: first in products, now in data and AI. He incubated a world-first product in startup mode and brought it to launch with a premium car maker. He then led Lean product development at very large scale. Since 2021, he applies the same discipline to data and AI: vision first, then reinvent the process before automating it, with value stream redesign and AI agents.')}</p>
         <p>${T('Future of Work · 4 Shifts is a personal project. It is not linked to any employer.')}</p></div></div></section>
-      <section class="section" aria-labelledby="h-final"><div class="final"><h2 id="h-final">${T('Your 2030 front page starts with fourteen questions')}</h2>
+      <section class="section" aria-labelledby="h-final"><div class="final"><h2 id="h-final">${T('Your 2030 vision starts with fourteen questions')}</h2>
         <p class="lede">${T('About ten minutes. No account. Your report-out, your roadmap and your front page at the end.')}</p>
-        <a class="btn p" href="#/diagnostic">${start}</a></div>
-        <p class="note privacy">${T('Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
+        <div class="row acts"><a class="btn p" href="#/diagnostic">${start}${ARROW}</a></div></div>
+        <p class="note privacy">${T('Your answers are saved in your browser. To see your report, you accept that your levels and priorities are added to anonymous statistics, with no name and no organization. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
       <footer class="site-foot"><span>Future of Work · 4 Shifts · Vincent Dupuis</span><a href="privacy.html">${T('Privacy')}</a></footer>`;
   }
 
@@ -1214,7 +1365,7 @@ window.initMap=initMap;
       .replace(/<p class="lede">[^<]*<\/p>/, `<p class="lede">${T(lede)}</p>`)
       .replace('aria-label="Map of the four pillars and the challenges they address"', `aria-label="${T('Map of the four pillars and the challenges they address')}"`)
       .replace('<div class="scroll" id="mapview">', `<div class="scroll" id="mapview"><p class="scroll-hint">${T('Scroll sideways to see the whole map.')}</p>`);
-    return `<div class="mapapp">${html}</div>` + nextBtn('#/diagnostic', T(done() ? 'See your diagnostic' : 'Start your diagnostic'));
+    return `<div class="mapapp">${html}</div>` + nextBtn('#/diagnostic', T('Start your diagnostic'));
   }
 
   // ---------- 1. YOUR DIAGNOSTIC (questions, then the report on the same step) ----------
@@ -1228,27 +1379,28 @@ window.initMap=initMap;
       <h2 id="qtitle">${esc(q.q)}</h2>
       <div class="opts" role="radiogroup" aria-labelledby="qtitle">${q.o.map((o, k) => `<label class="opt ${v === k + 1 ? 'sel' : ''}"><input type="radio" name="${q.id}" id="${q.id}_${k + 1}" value="${k + 1}" ${v === k + 1 ? 'checked' : ''}><span class="lv">${k + 1}</span><span>${esc(o)}</span></label>`).join('')}</div>
       <div class="scale"><span>${T('1 · Typical today')}</span><span>${T('4 · Target 2030')}</span></div>
-      <div class="row"><button class="btn g" id="prev" ${i === 0 ? 'disabled' : ''}>${T('← Back')}</button>
-        <button class="btn p" id="next" ${v ? '' : 'disabled'}>${T(i === n - 1 ? 'See my report' : 'Next →')}</button></div>${i === n - 1 ? shareBox() : ''}</div>`;
+      ${i === n - 1 ? shareBox() : ''}
+      <div class="row acts"><button class="btn g" id="prev" ${i === 0 ? 'disabled' : ''}>${T('← Back')}</button>
+        <button class="btn p" id="next" ${v && (i < n - 1 || shared()) ? '' : 'disabled'}>${i === n - 1 ? T('See your report') + ARROW : T('Next →')}</button></div></div>`;
   }
   function bindQuestions() {
     document.querySelectorAll('.opt input').forEach(r => r.addEventListener('change', () => {
-      const q = F.questions[S.qi || 0]; S.answers[q.id] = +r.value; S.paper = null; S.editing = true; save(); render();
+      const q = F.questions[S.qi || 0]; S.answers[q.id] = +r.value; S.editing = true; save(); render();
       document.getElementById('next')?.focus();
     }));
     document.getElementById('prev').onclick = () => { S.qi = Math.max(0, (S.qi || 0) - 1); save(); render(); };
-    bindShare();
-    document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { S.editing = false; save(); ping('report'); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
+    bindShare(() => { const nx = document.getElementById('next'); if (nx) nx.disabled = !(S.answers[F.questions[S.qi || 0].id] && shared()); });
+    document.getElementById('next').onclick = () => { if ((S.qi || 0) >= F.questions.length - 1) { if (!shared()) return; S.editing = false; save(); ping('report'); render(); window.scrollTo(0, 0); return; } S.qi++; save(); render(); };
   }
   // ---------- PROFILE (optional, before the report, for the anonymous statistics) ----------
   function profile() {
     const p = S.profile || {};
     const fs = (F.profile || []).map(f => `<fieldset class="prof"><legend>${esc(f.q)}</legend><div class="chips">` +
       f.o.map(o => `<label class="chip"><input type="radio" name="pf_${f.id}" value="${esc(o[0])}" ${p[f.id] === o[0] ? 'checked' : ''}><span>${esc(o[1])}</span></label>`).join('') +
-      `<label class="chip none"><input type="radio" name="pf_${f.id}" value="" ${p[f.id] ? '' : 'checked'}><span>${T('Prefer not to say')}</span></label></div></fieldset>`).join('');
+      `</div></fieldset>`).join('');
     return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Compare with organizations like yours')}</h1>
         <p class="lede">${T('Four optional questions. They are used only in the anonymous statistics, to compare results by sector, size, role and region. Never your name or your organization.')}</p></div>
-      ${fs}<div class="row"><button class="btn g" id="pback">${T('← Back')}</button><button class="btn p" id="pnext">${T('See my report')}</button></div></div>`;
+      ${fs}<div class="row acts"><button class="btn g" id="pback">${T('← Back')}</button><button class="btn p" id="pnext">${T('See your report')}${ARROW}</button></div></div>`;
   }
   function bindProfile() {
     document.querySelectorAll('.prof input').forEach(r => r.addEventListener('change', () => {
@@ -1272,10 +1424,10 @@ window.initMap=initMap;
         <div class="profile"><div class="spider-wrap">${spider(false)}</div><div class="pr-list">${practiceList()}<p class="note">${esc(F.levelNote)}</p></div></div></div>
       <div class="section"><div class="stack"><h2>${T('Coherence check')}</h2><p class="lede">${T('Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.')}</p></div>${flags}</div>
       <div class="section"><h2>${T('Where the gaps are')}</h2><div class="band-l">${T('Productivity challenges')}</div><div class="heat">${heat('P')}</div><div class="band-l">${T('Cultural challenges')}</div><div class="heat">${heat('C')}</div></div>
-      <div class="section no-print"><div class="row"><a class="btn p" href="#/brief">${T('Prepare your executive report-out')}</a><a class="btn s" href="#/priorities">${T('Next: your priorities →')}</a><button class="btn g" id="redo">${T('Change my answers')}</button></div>${shareBox()}${contactBox()}</div>`;
+      <div class="section no-print"><div class="row acts"><button class="btn g" id="redo">${T('← Change my answers')}</button><a class="btn d${shared() ? '' : ' off'}" href="#/brief" ${shared() ? '' : 'aria-disabled="true" tabindex="-1"'}>${DOC}${T('Generate the executive report for your ExCom')}</a><a class="btn p${shared() ? '' : ' off'}" href="#/priorities" ${shared() ? '' : 'aria-disabled="true" tabindex="-1"'}>${T('Set your priorities →')}</a></div>${shared() ? '' : shareBox()}${contactBox()}</div>`;
   }
   function bindReport() {
-    bindShare(); bindContact(); sendReport();
+    bindShare(() => { const y = window.scrollY; render(); window.scrollTo(0, y); }); bindContact(); sendReport();
     document.getElementById('redo').onclick = () => { S.qi = 0; S.editing = true; S.profileSeen = false; save(); render(); window.scrollTo(0, 0); };
   }
 
@@ -1284,8 +1436,7 @@ window.initMap=initMap;
   const theseThree = t => FRL ? t.replace('Vos 3 priorités', 'Ces 3 priorités') : t.replace('Your 3 priorities', 'These 3 priorities');
   function briefData() {
     const r = scores(), co = S.company || T('Our organization');
-    const order = Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]);
-    const top = order.slice(0, 3);
+    const top = defaultPriorities();
     const rm = roadmap(top);
     const first = rm.items.filter(i => i.start === 2027);
     const contra = r.flags.filter(f => f.kind !== 'limit'), sys = systemSentence(rm, top.length);
@@ -1332,8 +1483,8 @@ window.initMap=initMap;
     const foot = `<footer class="b-foot">${esc(T('Prepared with the Future of Work · 4 Shifts diagnostic ({h}). 14-question self-assessment: an indication to open the discussion, not a benchmark.', { h: siteHost() }))}</footer>`;
     return `<div class="no-print brief-tools"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Your executive report-out')}</h1>
         <p class="lede">${T('Two pages for your ExCom: where you stand, what blocks progress, and the decisions to take. Print it or save it as PDF, or copy the summary into an email.')}</p></div>
-        <div class="field" style="max-width:520px"><label for="company_b">${T('Organization name')}</label><input id="company_b" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our organization')}"></div>
-        <div class="row"><button class="btn p" id="bprint">${T('Print or save as PDF')}</button><button class="btn s" id="bcopy">${T('Copy the summary')}</button><a class="btn g" href="#/diagnostic">${T('Back to your diagnostic')}</a><a class="btn g" href="#/priorities">${T('Next: your priorities →')}</a></div>
+        <div class="field" style="max-width:520px"><label for="company_b">${T('Organization name (optional)')}</label><input id="company_b" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our organization')}" aria-describedby="company_b_h"><p class="hint" id="company_b_h">${T('Saved in your browser only. It is not sent from this page.')}</p></div>
+        <div class="row acts"><a class="btn g" href="#/diagnostic">${T('← Back to your report')}</a><button class="btn d" id="bprint">${DOC}${T('Print the executive report (PDF, 2 pages)')}</button><button class="btn s" id="bcopy">${T('Copy the summary')}</button><a class="btn p" href="#/priorities">${T('Set your priorities →')}</a></div>
         <p class="note" id="bmsg"></p></div>
       <div class="brief">
       <section class="b-page">${head(1)}
@@ -1342,11 +1493,11 @@ window.initMap=initMap;
         <div class="b-sec"><h3>${T('Where we stand')}</h3>
           <div class="b-kpis"><div><b>${pc(r.overall)}</b><span>${T('of the way to the 2030 target')}</span></div><div><b>${pc(r.P)}</b><span>${T('productivity maturity')}</span></div><div><b>${pc(r.C)}</b><span>${T('culture maturity')}</span></div><div><b>${pc(r.and)}</b><span>${T('AND score, the lower of the two')}</span></div></div>
           <div class="b-profile"><div class="b-spider">${spider(true)}</div><div class="b-bars">${bars}<p class="b-muted b-lv">${T('Levels:')} ${F.levels.map((l, k) => `${k + 1} ${esc(l)}`).join(' · ')}</p></div></div></div>
-        <div class="b-sec"><h3>${T('Our three largest gaps')}</h3><table class="b-table"><thead><tr><th>${T('Challenge')}</th><th>${T('Maturity')}</th><th>${T('Shifts that address it')}</th></tr></thead><tbody>${gaps}</tbody></table></div>
+        <div class="b-sec"><h3>${T('Three proposed priorities')}</h3><table class="b-table"><thead><tr><th>${T('Challenge')}</th><th>${T('Maturity')}</th><th>${T('Shifts that address it')}</th></tr></thead><tbody>${gaps}</tbody></table></div>
         ${foot}</section>
       <section class="b-page">${head(2)}
         <div class="b-sec"><h3>${T('Contradictions to resolve')}</h3><p class="b-muted">${T('One practice pushes a challenge forward while another pushes it back, and the effects cancel out.')}</p>${flags}</div>
-        <div class="b-sec"><h3>${T('First moves for 2027')}</h3><p class="b-muted">${T('For the three largest gaps, with the prerequisites they need.')} ${esc(theseThree(b.sys))}</p>${moves}</div>
+        <div class="b-sec"><h3>${T('First moves for 2027')}</h3><p class="b-muted">${esc(whySuggested(true))} ${T('For these three priorities, with the prerequisites they need.')} ${esc(theseThree(b.sys))}</p>${moves}</div>
         <div class="b-sec b-ask"><h3>${T('Decisions requested from the ExCom')}</h3><ol>${b.decisions.map(d => `<li>${esc(d)}</li>`).join('')}</ol></div>
         ${foot}</section></div>`;
   }
@@ -1359,7 +1510,30 @@ window.initMap=initMap;
   }
 
   // ---------- 2. YOUR PRIORITIES (selection, then the roadmap, updated live) ----------
-  function defaultPriorities() { const r = scores(); return Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]).slice(0, MINP); }
+  // Suggested priorities, one rule an ExCom can check: the largest gap in productivity, the largest gap in culture
+  // (the AND principle: one side does not make up for the other), then the second largest gap on the weaker side,
+  // the one that holds the AND score down. On equal gaps, the challenge whose roadmap shares the most initiatives
+  // with the ones already chosen wins (one effort serves several priorities), then the model order.
+  // The lead story (first) is the largest gap of the three.
+  const weakerSide = () => { const r = scores(), p = pct(r.P), c = pct(r.C); return p < c ? 'P' : c < p ? 'C' : null; };
+  function defaultPriorities() {
+    const r = scores(), gap = c => Math.round(r.ch[c] * 1000);
+    const all = Object.keys(F.challenges).filter(c => r.ch[c] != null), ids = c => roadmap([c]).items.map(i => i.id);
+    const best = (pool, chosen) => { const near = new Set(chosen.flatMap(ids)), share = c => ids(c).filter(id => near.has(id)).length;
+      return pool.map((c, k) => ({ c, k, g: gap(c), s: share(c) })).sort((x, y) => x.g - y.g || y.s - x.s || x.k - y.k)[0]?.c; };
+    const pick = [], from = g => all.filter(c => !pick.includes(c) && (!g || F.challenges[c].g === g));
+    const add = pool => { const c = best(pool, pick); if (c) pick.push(c); };
+    const w = weakerSide();
+    add(from('P')); add(from('C')); add(from(w).length ? from(w) : from(null));
+    return pick.map((c, k) => ({ c, k, g: gap(c) })).sort((x, y) => x.g - y.g || x.k - y.k).map(x => x.c).slice(0, MINP);
+  }
+  function whySuggested(brief) {
+    const w = weakerSide(), side = w ? T(w === 'P' ? 'productivity' : 'culture') : '';
+    if (brief) return w ? T('Largest gap in productivity, largest gap in culture, then the second largest gap in {side}, the weaker side.', { side })
+      : T('Largest gap in productivity, largest gap in culture, then the largest remaining gap.');
+    return w ? T('We suggest your largest gap in productivity, your largest gap in culture, and your second largest gap in {side}, because the AND score keeps the lower of the two sides.', { side })
+      : T('We suggest your largest gap in productivity, your largest gap in culture, and your largest remaining gap, because the AND score keeps the lower of the two sides.');
+  }
   function roadmapBlock() {
     const rm = roadmap(), pr = S.priorities;
     const tag = i => i.direct ? i.serves.map(c => `<span class="for">${esc(F.challenges[c].n)}</span>`).join('') : `<span class="for pre">${T('Prerequisite')}</span>`;
@@ -1382,21 +1556,27 @@ window.initMap=initMap;
     return `<div class="section" id="roadmap"><div class="stack"><h2>${T('Your roadmap, 2027 to 2030')}</h2>
         <p class="lede">${esc(systemSentence(rm, pr.length))} ${preTxt}${order}</p></div>
         <div class="row" style="justify-content:space-between"><div class="legend">${legend}</div>
-          <div class="tabs no-print" role="group" aria-label="${T('Roadmap view')}"><button id="rv-list" aria-pressed="${S.roadView !== 'gantt'}">${T('List')}</button><button id="rv-gantt" aria-pressed="${S.roadView === 'gantt'}">${T('Gantt')}</button></div></div>
+          <div class="tabs no-print" role="group" aria-label="${T('Roadmap view')}"><button id="rv-gantt" aria-pressed="${S.roadView === 'gantt'}">${T('Gantt')}</button><button id="rv-list" aria-pressed="${S.roadView !== 'gantt'}">${T('List')}</button></div></div>
         ${rm.items.length && S.roadView === 'gantt' ? `<p class="note arrow-key"><span class="ak x"></span>${T('Dependency across shifts')} <span class="ak i"></span>${T('Dependency within a shift · Hover or tap a bar to isolate its links')}</p>` : ''}
+        ${rm.items.length && S.roadView === 'gantt' ? `<p class="note g-hint">${T('Scroll sideways to see all the years.')}</p>` : ''}
         ${rm.items.length ? (S.roadView === 'gantt' ? gantt : list) : `<div class="ok-box">${T('Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.')}</div>`}</div>
-      <div class="section no-print"><div class="row"><button class="btn p" id="gen">${T('Print your 2030 front page →')}</button><button class="btn s" id="print">${T('Print or save as PDF')}</button></div>
-        <p class="note" id="genmsg">${T('The News Fix interviews you on each priority, from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')} <a href="privacy.html">${T('Privacy')}</a></p></div>`;
+      ${hasPaper() && S.paperKey && !paperStale() ? `<div class="section no-print"><div class="row acts"><button class="btn d" id="print">${DOC}${T('Print the roadmap (PDF)')}</button><a class="btn p" href="#/newsfix">${T('See your 2030 vision →')}</a></div>
+        <p class="note">${T('Your front page is up to date with these answers and priorities. Change them to create a new one.')}${leftNote()}</p></div>`
+      : papersLeft() ? `<div class="section no-print"><div class="row acts"><button class="btn d" id="print">${DOC}${T('Print the roadmap (PDF)')}</button><button class="btn p" id="gen">${T('Generate your 2030 vision')}${ARROW}</button></div>
+        <p class="note" id="genmsg">${T('The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')}${leftNote()} <a href="privacy.html">${T('Privacy')}</a></p></div>`
+      : `<div class="section no-print"><div class="row acts"><button class="btn d" id="print">${DOC}${T('Print the roadmap (PDF)')}</button>${hasPaper() ? `<a class="btn p" href="#/newsfix">${T('See your 2030 vision →')}</a>` : ''}</div>
+        <p class="note" id="genmsg">${T('You have printed your {n} front pages.', { n: MAX_PAPERS })} <a href="${CONTACT_URL}" target="_blank" rel="noopener">${T('To print more, contact Vincent Dupuis on LinkedIn ↗')}</a></p></div>`}`;
   }
   function priorities() {
     if (!Array.isArray(S.priorities)) { S.priorities = defaultPriorities(); save(); }
-    const r = scores(), n = S.priorities.length;
+    const r = scores(), n = S.priorities.length, sug = defaultPriorities();
     const pick = Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]).map(c => { const k = S.priorities.indexOf(c), on = k >= 0;
-      return `<label class="pk ${on ? 'sel' : ''}"><input type="checkbox" value="${c}" id="pk_${c}" ${on ? 'checked' : ''}><span><span class="t">${esc(F.challenges[c].n)}</span><small>${T(F.challenges[c].g === 'P' ? 'Productivity' : 'Culture')} · ${T('maturity {v}%', { v: pct(r.ch[c]) })}${k === 0 ? ' · ' + T('lead story') : ''}</small></span></label>`; }).join('');
+      return `<label class="pk ${on ? 'sel' : ''}"><input type="checkbox" value="${c}" id="pk_${c}" ${on ? 'checked' : ''}><span><span class="t">${esc(F.challenges[c].n)}</span><small>${T(F.challenges[c].g === 'P' ? 'Productivity' : 'Culture')} · ${T('maturity {v}%', { v: pct(r.ch[c]) })}${sug.includes(c) ? ' · ' + T('suggested') : ''}${k === 0 ? ' · ' + T('lead story') : ''}</small></span></label>`; }).join('');
     return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 2 · Your Priorities')}</div><h1>${T('Never transform everything at once')}</h1>
-        <p class="lede">${T('Choose {a} to {b} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.', { a: MINP, b: MAXP })}</p></div>
+        <p class="lede">${T('Choose {a} to {b} priority challenges. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.', { a: MINP, b: MAXP })}</p>
+        <p class="why">${esc(whySuggested(false))}</p></div>
         <div class="pick">${pick}</div><p class="note" id="pickmsg">${T(n > 1 ? '{n} selected · choose {a} to {b}' : '{n} selected · choose {a} to {b} ', { n, a: MINP, b: MAXP })}</p>
-        <div class="field" style="max-width:520px"><label for="company">${T('Organization name, for your front page (optional)')}</label><input id="company" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our company')}"></div></div>
+        <div class="field no-print" style="max-width:520px"><label for="company">${T('Organization name, for your front page (optional)')}</label><input id="company" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our company')}" aria-describedby="company_h"><p class="hint" id="company_h">${T('Saved in your browser only. Sent to the AI to write your front page, then not stored, and never added to the statistics.')}</p></div></div>
       ${roadmapBlock()}`;
   }
   function bindPriorities() {
@@ -1404,14 +1584,14 @@ window.initMap=initMap;
       const c = cb.value;
       if (cb.checked) { if (S.priorities.length >= MAXP) { cb.checked = false; document.getElementById('pickmsg').textContent = T('{n} challenges at most. Unselect one first.', { n: MAXP }); return; } S.priorities.push(c); }
       else S.priorities = S.priorities.filter(x => x !== c);
-      S.paper = null; save(); const y = window.scrollY; render(); window.scrollTo(0, y);
+      save(); const y = window.scrollY; render(); window.scrollTo(0, y);
     }));
     document.getElementById('company').addEventListener('input', e => { S.company = e.target.value.trim(); save(); });
     const rl = document.getElementById('rv-list'), rg = document.getElementById('rv-gantt');
-    if (rl) { rl.onclick = () => { S.roadView = 'list'; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
-      rg.onclick = () => { S.roadView = 'gantt'; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
+    if (rl) { rl.onclick = () => { S.roadView = 'list'; S.roadPicked = true; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
+      rg.onclick = () => { S.roadView = 'gantt'; S.roadPicked = true; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
       document.getElementById('print').onclick = () => window.print();
-      document.getElementById('gen').onclick = generate;
+      const gen = document.getElementById('gen'); if (gen) gen.onclick = generate;
       if (S.roadView === 'gantt') requestAnimationFrame(drawArrows); }
   }
 
@@ -1430,22 +1610,52 @@ window.initMap=initMap;
       items: S.priorities.map(c => Object.assign({ challenge: F.challenges[c].n, problem: F.challenges[c].d, example: F.challenges[c].ex }, interview(c, rm))),
       context: { progress: pct(r.overall), distance: pct(r.distance), productivity: pct(r.P), culture: pct(r.C), and: pct(r.and), initiatives: rm.items.length } };
   }
-  async function generate() {
-    const btn = document.getElementById('gen'), msg = document.getElementById('genmsg');
-    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.textContent = T('The newsroom is interviewing you. It takes about 30 seconds.');
-    const body = payload();
-    try {
-      const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 60000);
-      const res = await fetch('/api/newsfix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
-      clearTimeout(to);
-      const data = await res.json().catch(() => null);
-      if (!res.ok || !valid(data)) throw new Error('newsroom');
-      S.paper = data; S.paperSource = 'ai';
-    } catch (e) { S.paper = offline(body); S.paperSource = 'template'; }
-    S.paperContext = body.context; save(); ping('frontpage'); sendPriorities(); location.hash = '#/newsfix';
+  // Reads the Anthropic event stream forwarded by /api/newsfix and rebuilds the article (JSON) from the text deltas.
+  // onWords shows the progress. Rejects with a short reason, kept to explain the front page without AI.
+  async function readNewsroom(res, onWords) {
+    if (!res.ok || !/event-stream/.test(res.headers.get('content-type') || '')) {
+      const e = await res.json().catch(() => ({})); throw new Error(e.error ? e.error + (e.status ? ' ' + e.status : '') : 'http ' + res.status);
+    }
+    const reader = res.body.getReader(), dec = new TextDecoder();
+    let buf = '', text = '', stop = null;
+    for (;;) {
+      const { value, done } = await reader.read(); if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split('\n'); buf = lines.pop();
+      for (const l of lines) {
+        if (!l.startsWith('data:')) continue;
+        let ev; try { ev = JSON.parse(l.slice(5)); } catch (e) { continue; }
+        if (ev.type === 'content_block_delta' && ev.delta && ev.delta.type === 'text_delta') { text += ev.delta.text; onWords((text.match(/\s+/g) || []).length); }
+        else if (ev.type === 'message_delta' && ev.delta && ev.delta.stop_reason) stop = ev.delta.stop_reason;
+        else if (ev.type === 'error') throw new Error('api ' + ((ev.error && ev.error.type) || ''));
+      }
+    }
+    if (stop && stop !== 'end_turn') throw new Error('stop ' + stop);
+    let data; try { data = JSON.parse(text); } catch (e) { throw new Error('json'); }
+    if (!okArticle(data)) throw new Error('invalid');
+    return data;
   }
-  const okQA = x => x && typeof x.headline === 'string' && Array.isArray(x.qa) && x.qa.length >= 3 && x.qa.every(y => y && typeof y.a === 'string');
-  const valid = d => d && okQA(d.lead) && Array.isArray(d.stories) && d.stories.every(okQA);
+  async function generate() {
+    if (!papersLeft()) { render(); return; }
+    const btn = document.getElementById('gen'), msg = document.getElementById('genmsg');
+    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.textContent = T('The newsroom is writing your front page. It takes about a minute.');
+    const body = payload();
+    const ctl = new AbortController(); let idle;
+    const wait = () => { clearTimeout(idle); idle = setTimeout(() => ctl.abort(), 60000); };
+    try {
+      wait();
+      const res = await fetch('/api/newsfix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
+      S.paper = await readNewsroom(res, n => { wait(); msg.textContent = T('The newsroom is writing your front page: {n} words so far.', { n }); });
+      S.paperSource = 'ai'; S.paperError = null; paperMade();
+    } catch (e) { S.paper = offline(body); S.paperSource = 'template'; S.paperError = ctl.signal.aborted ? 'timeout' : String(e && e.message || e).slice(0, 60); }
+    clearTimeout(idle);
+    S.paperContext = body.context; S.paperKey = paperKey(); save(); ping('frontpage'); sendPriorities();
+    if (location.hash === '#/newsfix') { render(); window.scrollTo(0, 0); } else location.hash = '#/newsfix';
+  }
+  const okText = x => typeof x === 'string' && x.trim() !== '';
+  const okParas = x => Array.isArray(x) && x.length > 0 && x.every(okText);
+  const okArticle = d => d && d.lead && okText(d.lead.headline) && Array.isArray(d.lead.sections) && d.lead.sections.length > 0 && d.lead.sections.every(x => x && okParas(x.paragraphs))
+    && Array.isArray(d.stories) && d.stories.every(x => x && okText(x.headline) && okParas(x.paragraphs));
   // Without AI: the interviews are laid out directly from the diagnostic, the 2030 target and the roadmap
   function offline(p) {
     const list = xs => xs.map(x => `${x.topic}${FRL ? ' :' : ':'} ${lc(x.text)}`).join(' ');
@@ -1463,31 +1673,64 @@ window.initMap=initMap;
     if (FRL) return `Je viens d’écrire la Une 2030 de ${S.company || 'mon organisation'} avec le diagnostic Future of Work · 4 Shifts de Vincent Dupuis.\n\nArticle principal : « ${S.paper.lead.headline} »\n\nQuatorze questions, une feuille de route pour vos priorités, et votre propre Une. Que dira la vôtre ?\n${siteHost()}\n\n#FutureOfWork`;
     return `I just wrote the 2030 front page of ${S.company || 'my organization'} with the Future of Work · 4 Shifts diagnostic by Vincent Dupuis.\n\nLead story: "${S.paper.lead.headline}"\n\nFourteen questions, a roadmap for your priorities, and your own front page. What will yours say?\n${siteHost()}\n\n#FutureOfWork`;
   }
-  function qaHtml(list) { return list.map((x, i) => `<p class="qa"><b class="q">${esc(x.q || QS[i] || '')}</b> ${esc(x.a)}</p>`).join(''); }
+  // Paper text: removes escape codes written as text by the model and sets the French spacing
+  const tx = t => { let v = String(t == null ? '' : t).replace(/\\u00a0/gi, ' ');
+    if (FRL) v = v.replace(/\s+([:;!?»%])/g, '\u00a0$1').replace(/«\s*/g, '«\u00a0');
+    return esc(v); };
+  const parasHtml = list => list.map(x => `<p>${tx(x)}</p>`).join('');
+  const sectionsHtml = list => list.map(x => `${x.subhead ? `<h4 class="subhead">${tx(x.subhead)}</h4>` : ''}${parasHtml(x.paragraphs)}`).join('');
+  const leadBody = l => l.sections ? sectionsHtml(l.sections) : qaHtml(l.qa);
+  const storyBody = x => x.paragraphs ? parasHtml(x.paragraphs) + (Array.isArray(x.qa) && x.qa.length ? qaHtml(x.qa) : '') : qaHtml(x.qa);
+  const kicker = x => tx(x.kicker || T('Interview'));
+  function qaHtml(list) { return list.map((x, i) => `<p class="qa"><b class="q">${tx(x.q || QS[i] || '')}</b> ${tx(x.a)}</p>`).join(''); }
+  const quoted = t => FRL ? `« ${tx(t)} »` : `"${tx(t)}"`;
+  // Newspaper furniture: teasers above the masthead, ears, motto, folio line
+  function paperHead(p, co) {
+    const pages = ['B2', 'C4', 'D1'];
+    const teasers = Array.isArray(p.teasers) && p.teasers.length ? `<div class="np-teasers">${p.teasers.slice(0, 3).map((t, i) => `<div class="np-teaser"><span class="np-t-sec">${tx(t.section)}</span><b>${tx(t.headline)}</b><small>${T('Page {p}', { p: pages[i] })}</small></div>`).join('')}</div>` : '';
+    return `${teasers}<div class="np-head"><div class="np-ear">${T('The insiders’ view')}</div><div class="masthead">The News Fix</div>
+        <div class="np-ear r">${p.weather ? `<span>${T('Weather')}</span>${tx(p.weather)}` : `<span>${T('Special edition')}</span>${T('The human edition')}`}</div></div>
+      <div class="np-top"><span>${T('Serving the sky, the moon and the stars')}</span></div>
+      <div class="np-date"><span>${esc(paperDate())}</span><span>${T('Special edition · No. 2030')}</span><span>${esc(co)} · ${T('€3')}</span></div>`;
+  }
+  const storyFormat = { portrait: 'Portrait', explainer: 'Explainer', interview: 'Interview', column: 'Opinion' };
   function newsfix() {
-    const p = S.paper; if (!p || !p.lead || !p.lead.qa) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
-    const co = S.company || T('Your organization'), ctx = S.paperContext || {};
+    const p = S.paper; if (!p || !p.lead || !(p.lead.qa || p.lead.sections)) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
+    const co = S.company || T('Your organization'), ctx = S.paperContext || {}, ex = p.extras || {};
     const nums = [[window.num(ctx.progress != null ? ctx.progress : 100 - ctx.distance), T('of the way to the 2030 target in the 2026 diagnostic')], [window.num(ctx.and), T('AND score in 2026: the lower of productivity and culture')], [String(ctx.initiatives), T('initiatives on the 2027–2030 roadmap')]]
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
-    return `<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 3 · Your News Fix')}</div><h1>${T('Your 2030 front page is printed')}</h1><h2>${T('Share it on LinkedIn')}</h2>
+    const banner = paperStale()
+      ? `<div class="regen no-print"><p><b>${T('Your answers, priorities, organization name or language have changed since this front page.')}</b></p>
+          ${papersLeft() ? `<div class="row acts"><button class="btn p" id="gen">${T('Generate it again with my changes →')}</button></div><p class="note" id="genmsg">${leftNote().trim()}</p>`
+            : `<p class="note">${T('You have printed your {n} front pages.', { n: MAX_PAPERS })} ${T('To go further,')} ${contactLink()}</p>`}</div>`
+      : papersLeft() === 1 && S.paperSource === 'ai' ? `<div class="regen no-print"><p>${leftNote().trim()}</p></div>` : '';
+    return `${banner}<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 3 · Your News Fix')}</div><h1>${T('Your 2030 vision is on the front page')}</h1><h2>${T('Share it on LinkedIn')}</h2>
         <p class="lede">${T('The image shows your 2030 headlines only. Your diagnostic figures stay private.')}</p>
-        <div class="row"><button class="btn p" id="dl">${T('Download the image')}</button><button class="btn s" id="cp">${T('Copy the post text')}</button><a class="btn g" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">${T('Open LinkedIn ↗')}</a></div>
+        <div class="row"><button class="btn s" id="cp">${T('Copy the post text')}</button><a class="btn g" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">${T('Open LinkedIn ↗')}</a></div>
         <textarea id="posttext" class="post" readonly rows="7" aria-label="${T('Suggested post text')}">${esc(postText())}</textarea>
         <p class="note" id="sharemsg">${T('Download the image, copy the text, then create a post on LinkedIn and add the image.')}</p></div>
-        <div class="sc-frame">${shareCard(p, S.company, siteHost())}</div></div>
-      <div class="paper" id="paper">
-      <div class="np-top"><span>${T('Serving the sky, the moon and the stars')}</span><span>${T('Special edition · The human edition')}</span></div>
-      <div class="masthead">The News Fix</div>
-      <div class="np-sub">${esc(FRL ? (S.company ? `Le futur du travail, tel que ${S.company} l’a écrit` : 'Le futur du travail, tel que vous l’avez écrit') : `The future of work, as ${S.company || 'you'} wrote it`)}</div>
-      <div class="np-date"><span>${esc(paperDate())}</span><span class="red">${T('Fictional front page')}</span><span>${esc(co)}</span></div>
-      <div class="lead"><div class="kicker">${T('Interview')}</div><h2>${esc(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${esc(p.lead.deck)}</p>` : ''}</div>
-      <div class="np-cols"><div><div class="byline">${T('Interview by the News Fix newsroom')}</div><div class="np-body lead-body">${qaHtml(p.lead.qa)}</div></div>
-        <div>${p.quote && p.quote.text ? `<div class="quote">${FRL ? `« ${esc(p.quote.text)} »` : `"${esc(p.quote.text)}"`}<small>${esc(p.quote.who || '')}</small></div>` : ''}
-          ${nums ? `<div class="numbers"><h4>${T('From the 2026 diagnostic')}</h4><ul>${nums}</ul></div>` : ''}</div></div>
-      ${p.stories.length ? `<div class="np-stories ${p.stories.length % 3 === 0 ? 'c3' : 'c2'}">${p.stories.map(s => `<article class="story"><div class="kicker">${T('Interview')}</div><h3>${esc(s.headline)}</h3><div class="np-body">${qaHtml(s.qa)}</div></article>`).join('')}</div>` : ''}
-      <div class="np-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>${T('More human. More digital. Not a trade-off. AND.')}</span></div></div>
-      <div class="section no-print" style="margin-top:24px"><div class="row"><button class="btn s" id="print">${T('Print or save as PDF')}</button><a class="btn g" href="#/priorities">${T('Back to your priorities and roadmap')}</a></div>
-      ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}</p>` : ''}${contactBox()}</div>
+        <figure class="sc-fig"><figcaption>${T('Image for LinkedIn')}</figcaption><div class="sc-frame">${shareCard(p, S.company, siteHost())}</div>
+          <button class="btn p" id="dl">${DOC}${T('Download this image')}</button></figure></div>
+      <div class="eyebrow paper-label no-print">${T('Your full front page')}</div>
+      <div class="sheets" id="paper">
+      <div class="sheet-wrap"><section class="sheet s1" aria-label="${T('Page {p}', { p: 1 })}">
+        ${paperHead(p, co)}
+        <div class="lead"><div class="kicker">${kicker(p.lead)}</div><h2>${tx(p.lead.headline)}</h2>${p.lead.deck ? `<p class="deck">${tx(p.lead.deck)}</p>` : ''}</div>
+        <div class="s1-body"><div class="s1-main"><div class="byline">${T(p.lead.sections ? 'By the News Fix newsroom' : 'Interview by the News Fix newsroom')}</div><div class="np-body lead-body fit">${leadBody(p.lead)}</div></div>
+          <aside class="s1-side">${p.quote && p.quote.text ? `<div class="quote">${quoted(p.quote.text)}<small>${tx(p.quote.who || '')}</small></div>` : ''}
+            ${nums ? `<div class="numbers"><h4>${T('From the 2026 diagnostic')}</h4><ul>${nums}</ul></div>` : ''}
+            ${ex.pun ? `<div class="fun filler" data-prio="1"><h4>${T('Pun of the day')}</h4><p>${tx(ex.pun)}</p></div>` : ''}</aside></div>
+        <div class="sheet-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>1</span></div></section></div>
+      <div class="sheet-wrap"><section class="sheet s2" aria-label="${T('Page {p}', { p: 2 })}">
+        <div class="s2-top"><span class="s2-mast">The News Fix</span><span>${esc(paperDate())}</span><span>${esc(co)}</span></div>
+        ${Array.isArray(p.timeline) && p.timeline.length ? `<div class="timeline"><h4>${T('The road to 2030')}</h4><ol>${p.timeline.map(t => `<li><b>${esc(t.year)}</b><span>${tx(t.text)}</span></li>`).join('')}</ol></div>` : ''}
+        <div class="np-stories fit">${p.stories.map(x => `<article class="story ${esc(x.format || '')}"><header class="st-h"><div class="kicker">${kicker(x)}${storyFormat[x.format] ? ` · ${T(storyFormat[x.format])}` : ''}</div><h3>${tx(x.headline)}</h3></header><div class="np-body">${storyBody(x)}</div></article>`).join('')}
+          ${p.editorial && p.editorial.headline ? `<aside class="editorial"><div class="kicker">${T('Editorial')}</div><h3>${tx(p.editorial.headline)}</h3><div class="np-body">${parasHtml(p.editorial.paragraphs || [])}</div><small>${T('The editor-in-chief')}</small></aside>` : ''}
+          ${ex.riddle && ex.riddle.question ? `<div class="fun filler" data-prio="3"><h4>${T('The riddle')}</h4><p>${tx(ex.riddle.question)}</p><p class="upside">${T('Answer:')} ${tx(ex.riddle.answer)}</p></div>` : ''}
+          ${Array.isArray(ex.horoscope) && ex.horoscope.length ? `<div class="fun filler" data-prio="2"><h4>${T('Work horoscope')}</h4>${ex.horoscope.map(h => `<p><b>${tx(h.sign)}.</b> ${tx(h.text)}</p>`).join('')}</div>` : ''}</div>
+        <div class="sheet-foot"><span>${T('More human. More digital. Not a trade-off. AND.')}</span><span>2</span></div></section></div></div>
+      <div class="section no-print" style="margin-top:24px"><div class="row acts"><a class="btn g" href="#/priorities">${T('← Back to your priorities and roadmap')}</a><button class="btn p" id="print">${DOC}${T('Print the front page (PDF, 2 pages)')}</button></div>
+      ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}${S.paperError ? ` <small>(${esc(S.paperError)})</small>` : ''}</p>` : ''}${contactBox()}</div>
       <div id="capture" aria-hidden="true">${shareCard(p, S.company, siteHost())}</div>`;
   }
   async function downloadImage() {
@@ -1502,10 +1745,11 @@ window.initMap=initMap;
       setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
       msg.textContent = T('Image downloaded: the-news-fix-2030.png. Now copy the text and create your LinkedIn post.'); ping('image');
     } catch (e) { msg.textContent = T('The image could not be created. Try again, or take a screenshot of the preview.'); }
-    btn.disabled = false; btn.textContent = T('Download the image');
+    btn.disabled = false; btn.innerHTML = DOC + T('Download this image');
   }
   function bindNewsfix() {
     bindContact();
+    const gen = document.getElementById('gen'); if (gen) gen.onclick = generate;
     document.getElementById('print').onclick = () => window.print();
     document.getElementById('dl').onclick = downloadImage;
     document.getElementById('cp').onclick = async () => { const ta = document.getElementById('posttext'), msg = document.getElementById('sharemsg');
@@ -1518,7 +1762,8 @@ window.initMap=initMap;
     let route = location.hash || '#/';
     const alias = { '#/vision': '#/priorities', '#/roadmap': '#/priorities', '#/report': '#/diagnostic' };
     route = alias[route] || route;
-    if ((route === '#/priorities' || route === '#/brief') && !done()) route = '#/diagnostic';
+    // The next steps need all the answers and the acceptance of the anonymous statistics
+    if ((route === '#/priorities' || route === '#/brief' || route === '#/newsfix') && !(done() && shared())) route = '#/diagnostic';
     if (route === '#/newsfix' && !hasPaper()) route = done() ? '#/priorities' : '#/diagnostic';
     if (!STEPS.some(s => s[0] === route) && route !== '#/brief') route = '#/';
     nav(route === '#/brief' ? '#/diagnostic' : route);
@@ -1527,7 +1772,7 @@ window.initMap=initMap;
     else if (route === '#/diagnostic') { if (done() && !S.editing && shared() && !S.profileSeen) { v.innerHTML = profile(); bindProfile(); } else if (done() && !S.editing) { v.innerHTML = report(); bindReport(); } else { v.innerHTML = questions(); bindQuestions(); } }
     else if (route === '#/brief') { v.innerHTML = brief(); bindBrief(); }
     else if (route === '#/priorities') { v.innerHTML = priorities(); bindPriorities(); }
-    else if (route === '#/newsfix') { v.innerHTML = newsfix(); bindNewsfix(); }
+    else if (route === '#/newsfix') { v.innerHTML = newsfix(); bindNewsfix(); fitSheets(); if (document.fonts) document.fonts.ready.then(fitSheets); }
     else { v.innerHTML = home(); bindHome(); }
     fitCards();
   }

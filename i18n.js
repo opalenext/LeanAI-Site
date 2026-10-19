@@ -27,20 +27,20 @@
     // Navigation and common
     'Introduction': 'Introduction', 'Interactive map': 'Carte interactive', 'Your Diagnostic': 'Votre diagnostic',
     'Your Priorities': 'Vos priorités', 'Your News Fix': 'Votre News Fix', 'Steps': 'Étapes', 'Language': 'Langue',
-    'See your diagnostic': 'Voir votre diagnostic', 'Start your diagnostic': 'Commencer votre diagnostic',
+    'Start your diagnostic': 'Commencer votre diagnostic',
     'Explore the interactive map': 'Explorer la carte interactive', 'Shift {n}': 'Shift {n}', 'Privacy': 'Confidentialité',
-    'Print or save as PDF': 'Imprimer ou enregistrer en PDF', 'Productivity': 'Productivité', 'Culture': 'Culture',
+    'Print the executive report (PDF, 2 pages)': 'Imprimer la synthèse (PDF, 2 pages)', 'Productivity': 'Productivité', 'Culture': 'Culture',
     'Productivity challenges': 'Défis de productivité', 'Cultural challenges': 'Défis culturels',
     // Share card and newspaper
     'Serving the sky, the moon and the stars': 'Au service du ciel, de la lune et des étoiles', 'The human edition': 'Édition humaine',
-    'Fictional front page': 'Une fictive', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
+    'The insiders’ view': 'Le regard de l’intérieur', 'Weather': 'Météo', 'Special edition': 'Édition spéciale', 'Special edition · No. 2030': 'Édition spéciale · N° 2030', '€3': '3 €', 'Page {p}': 'Page {p}', 'Editorial': 'Éditorial', 'Pun of the day': 'Le calembour du jour', 'contact Vincent Dupuis on LinkedIn ↗': 'contactez Vincent Dupuis sur LinkedIn ↗', 'Your front page is up to date with these answers and priorities. Change them to create a new one.': 'Votre Une est à jour avec ces réponses et ces priorités. Modifiez-les pour en créer une nouvelle.', 'Only one front page is left. To go further,': 'Il ne vous reste qu’une Une. Pour aller plus loin,', 'To go further,': 'Pour aller plus loin,', 'Your answers, priorities, organization name or language have changed since this front page.': 'Vos réponses, vos priorités, le nom de l’organisation ou la langue ont changé depuis cette Une.', 'Generate it again with my changes →': 'La générer à nouveau avec mes modifications →', 'The riddle': 'L’énigme', 'Answer:': 'Réponse :', 'Work horoscope': 'L’horoscope du travail', 'The editor-in-chief': 'La rédaction en chef', 'Portrait': 'Portrait', 'Explainer': 'Décryptage', 'Opinion': 'Point de vue', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
     'Also in this edition': 'Aussi dans cette édition', 'More human. More digital.': 'Plus humain. Plus digital.',
     'Not a trade-off. AND.': 'Pas un compromis. ET.', 'Write your own 2030 front page': 'Écrivez votre Une 2030',
     // Introduction
     'From the LinkedIn series {t}, by Vincent Dupuis': 'Tiré de la série LinkedIn {t}, de Vincent Dupuis',
     'Measure the gap between your operating model and 2030': 'Mesurez l’écart entre votre modèle opérationnel et 2030',
-    'You get an executive report-out for your ExCom, a roadmap for your priorities, and the 2030 front page of The News Fix, written for your organization.':
-      'Vous obtenez une synthèse pour votre comité exécutif, une feuille de route pour vos priorités et la Une 2030 de The News Fix, écrite pour votre organisation.',
+    'You get an executive report-out for your ExCom, a roadmap for your priorities, and your 2030 vision as the front page of The News Fix, written for your organization.':
+      'Vous obtenez une synthèse pour votre comité exécutif, une feuille de route pour vos priorités et votre vision 2030 en Une de The News Fix, écrite pour votre organisation.',
     'Fourteen questions · About ten minutes · No account': 'Quatorze questions · Dix minutes environ · Sans compte',
     'Example front page of The News Fix for a fictional company. Lead story: “{t}”': 'Exemple de Une de The News Fix pour une entreprise fictive. Article principal : « {t} »',
     'The model · The LinkedIn series': 'Le modèle · La série LinkedIn', 'Four shifts, one operating system': 'Quatre shifts, un seul système',
@@ -78,18 +78,17 @@
     'Engineer and innovator, with more than 25 years of experience and over 30 patents. Vincent makes breakthrough technology deliver real value: first in products, now in data and AI. He incubated a world-first product in startup mode and brought it to launch with a premium car maker. He then led Lean product development at very large scale. Since 2021, he applies the same discipline to data and AI: vision first, then reinvent the process before automating it, with value stream redesign and AI agents.': 'Ingénieur et innovateur, plus de 25 ans d’expérience et plus de 30 brevets. Vincent transforme les technologies de rupture en valeur réelle : d’abord dans les produits, aujourd’hui dans la data et l’IA. Il a incubé en mode startup un produit inédit au monde, jusqu’à son lancement avec un constructeur automobile premium. Il a ensuite dirigé le développement produit Lean à très grande échelle. Depuis 2021, il applique la même discipline à la data et à l’IA : la vision d’abord, puis réinventer le processus avant de l’automatiser, par la refonte des flux de valeur et des agents IA.',
     'Vincent Dupuis on stage, speaking about AI': 'Vincent Dupuis sur scène, en train de parler d’IA',
     'Future of Work · 4 Shifts is a personal project. It is not linked to any employer.': 'Future of Work · 4 Shifts est un projet personnel. Il n’est lié à aucun employeur.',
-    'Your 2030 front page starts with fourteen questions': 'Votre Une 2030 commence par quatorze questions',
+    'Your 2030 vision starts with fourteen questions': 'Votre vision 2030 commence par quatorze questions',
     'About ten minutes. No account. Your report-out, your roadmap and your front page at the end.': 'Dix minutes environ. Sans compte. À la fin : votre synthèse, votre feuille de route et votre Une.',
-    'Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.':
-      'Vos réponses sont enregistrées dans votre navigateur. Par défaut, vos niveaux et vos priorités sont aussi ajoutés à des statistiques anonymes, sans nom ni organisation. Pour ne pas y figurer, décochez la case après la dernière question. Les questions de profil et l’email pour recevoir les résultats de l’étude sont facultatifs.',
+    'Your answers are saved in your browser. To see your report, you accept that your levels and priorities are added to anonymous statistics, with no name and no organization. The profile questions and the email for the study results are optional.':
+      'Vos réponses sont enregistrées dans votre navigateur. Pour voir votre rapport, vous acceptez que vos niveaux et vos priorités soient ajoutés à des statistiques anonymes, sans nom ni organisation. Les questions de profil et l’email pour recevoir les résultats de l’étude sont facultatifs.',
     'Read the privacy page': 'Lire la page Confidentialité',
-    'Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.':
-      'Ajouter mes réponses, de façon anonyme, aux statistiques 4 Shifts : niveaux, priorités, scores et profil, sans nom ni organisation.',
+    'I accept that my answers are added, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization. Required to continue.':
+      'J’accepte que mes réponses soient ajoutées, de façon anonyme, aux statistiques 4 Shifts : niveaux, priorités, scores et profil, sans nom ni organisation. Nécessaire pour continuer.',
     // Profile and contact
     'Compare with organizations like yours': 'Se comparer à des organisations proches de la vôtre',
     'Four optional questions. They are used only in the anonymous statistics, to compare results by sector, size, role and region. Never your name or your organization.':
       'Quatre questions facultatives. Elles servent uniquement aux statistiques anonymes, pour comparer les résultats par secteur, taille, fonction et zone. Jamais votre nom ni votre organisation.',
-    'Prefer not to say': 'Je préfère ne pas répondre',
     'Get the results of the study': 'Recevoir les résultats de l’étude',
     'When enough leaders have answered, we publish a summary of the results. Leave your email to receive it: one email, nothing else.':
       'Quand assez de dirigeants auront répondu, nous publierons une synthèse des résultats. Laissez votre email pour la recevoir : un seul email, rien d’autre.',
@@ -120,7 +119,7 @@
     // 1. Diagnostic: questions
     'Step 1 · Your Diagnostic': 'Étape 1 · Votre diagnostic', 'Question {i} of {n}': 'Question {i} sur {n}',
     '1 · Typical today': '1 · Typique aujourd’hui', '4 · Target 2030': '4 · Cible 2030', '← Back': '← Retour',
-    'See my report': 'Voir mon rapport', 'Next →': 'Suivant →',
+    'See your report': 'Voir votre rapport', 'Next →': 'Suivant →',
     // 1. Diagnostic: report
     'Large gap': 'Écart fort', 'Gap': 'Écart', 'Close': 'Proche', 'Maturity {v}%': 'Maturité {v} %',
     'Limit · ': 'Limite · ', 'Guardrail:': 'Garde-fou :', 'Challenges affected:': 'Défis concernés :',
@@ -138,8 +137,8 @@
       'Vos 14 pratiques, d’Émergent à Excellence · prêt pour 2030. L’anneau extérieur en pointillés est la cible 2030.',
     'Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.':
       'Les contradictions entre vos pratiques : un shift fait avancer un défi pendant qu’un autre le fait reculer, et les effets s’annulent.',
-    'Where the gaps are': 'Où sont les écarts', 'Prepare your executive report-out': 'Préparer votre synthèse pour le comité exécutif',
-    'Next: your priorities →': 'Suite : vos priorités →', 'Change my answers': 'Modifier mes réponses',
+    'Where the gaps are': 'Où sont les écarts', 'Generate the executive report for your ExCom': 'Générer la synthèse pour votre comité exécutif',
+    'Set your priorities →': 'Définir vos priorités →', '← Change my answers': '← Modifier mes réponses',
     'Maturity profile on the 14 practices, from Emerging to Excellence · 2030-ready': 'Profil de maturité sur les 14 pratiques, d’Émergent à Excellence · prêt pour 2030',
     '2030-ready': 'prêt 2030',
     // Executive report-out
@@ -153,15 +152,15 @@
     'Your executive report-out': 'Votre synthèse pour le comité exécutif',
     'Two pages for your ExCom: where you stand, what blocks progress, and the decisions to take. Print it or save it as PDF, or copy the summary into an email.':
       'Deux pages pour votre comité exécutif : où vous en êtes, ce qui bloque, et les décisions à prendre. Imprimez-la, enregistrez-la en PDF, ou copiez la synthèse dans un email.',
-    'Organization name': 'Nom de l’organisation', 'Copy the summary': 'Copier la synthèse', 'Back to your diagnostic': 'Retour à votre diagnostic',
+    'Organization name (optional)': 'Nom de l’organisation (facultatif)', 'Copy the summary': 'Copier la synthèse', '← Back to your report': '← Retour à votre rapport',
     'Our operating model is {v}% of the way to 2030': 'Notre modèle opérationnel a parcouru {v} % du chemin vers 2030',
     'Summary': 'Synthèse', 'Where we stand': 'Où nous en sommes', 'of the way to the 2030 target': 'du chemin vers la cible 2030',
     'productivity maturity': 'maturité productivité', 'culture maturity': 'maturité culture', 'AND score, the lower of the two': 'score ET, le plus faible des deux',
-    'Levels:': 'Niveaux :', 'Our three largest gaps': 'Nos trois écarts les plus importants', 'Maturity': 'Maturité', 'Shifts that address it': 'Shifts qui le traitent',
+    'Levels:': 'Niveaux :', 'Three proposed priorities': 'Trois priorités proposées', 'Maturity': 'Maturité', 'Shifts that address it': 'Shifts qui le traitent',
     'Contradictions to resolve': 'Contradictions à résoudre',
     'One practice pushes a challenge forward while another pushes it back, and the effects cancel out.':
       'Une pratique fait avancer un défi pendant qu’une autre le fait reculer, et les effets s’annulent.',
-    'First moves for 2027': 'Premières actions pour 2027', 'For the three largest gaps, with the prerequisites they need.': 'Pour les trois écarts les plus importants, avec leurs prérequis.',
+    'First moves for 2027': 'Premières actions pour 2027', 'For these three priorities, with the prerequisites they need.': 'Pour ces trois priorités, avec leurs prérequis.',
     'Decisions requested from the ExCom': 'Décisions demandées au comité exécutif',
     'Summary copied. Paste it into your email to the ExCom.': 'Synthèse copiée. Collez-la dans votre email au comité exécutif.',
     'Copy is not available here. Select the summary in the report and copy it with your keyboard.': 'La copie n’est pas disponible ici. Sélectionnez la synthèse dans le rapport et copiez-la au clavier.',
@@ -172,18 +171,17 @@
     'Dependency across shifts': 'Dépendance entre shifts', 'Dependency within a shift · Hover or tap a bar to isolate its links': 'Dépendance dans un shift · Survolez ou touchez une barre pour isoler ses liens',
     'Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.':
       'Vos réponses atteignent déjà la cible 2030 sur ces défis. Choisissez d’autres priorités pour construire une feuille de route.',
-    'Print your 2030 front page →': 'Imprimer votre Une 2030 →',
-    'The News Fix interviews you on each priority, from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.':
-      'The News Fix vous interviewe sur chaque priorité, à partir de votre diagnostic et de cette feuille de route. Le nom de votre organisation, ces réponses et cette feuille de route sont envoyés à un modèle d’IA et ne sont pas conservés.',
+    'Generate your 2030 vision': 'Générer votre vision 2030',
+    'The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.':
+      'La rédaction de The News Fix écrit votre Une à partir de votre diagnostic et de cette feuille de route. Le nom de votre organisation, ces réponses et cette feuille de route sont envoyés à un modèle d’IA et ne sont pas conservés.',
     'lead story': 'article principal', 'maturity {v}%': 'maturité {v} %',
     'Step 2 · Your Priorities': 'Étape 2 · Vos priorités', 'Never transform everything at once': 'Ne jamais tout transformer à la fois',
-    'Choose {a} to {b} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.':
-      'Choisissez {a} à {b} défis prioritaires. Nous proposons ceux qui ont le plus grand écart. Votre feuille de route se met à jour plus bas à chaque choix. Le premier devient l’article principal de votre Une.',
+    'Choose {a} to {b} priority challenges. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.': 'Choisissez {a} à {b} défis prioritaires. Votre feuille de route se met à jour plus bas à chaque choix. Le premier devient l’article principal de votre Une.',
     '{n} selected · choose {a} to {b}': '{n} sélectionnés · choisissez-en {a} à {b}', '{n} selected · choose {a} to {b} ': '{n} sélectionné · choisissez-en {a} à {b}',
     'Organization name, for your front page (optional)': 'Nom de l’organisation, pour votre Une (facultatif)', 'Our company': 'Notre entreprise',
     '{n} challenges at most. Unselect one first.': '{n} défis au maximum. Retirez-en un d’abord.',
     // 3. News Fix
-    'Printing…': 'Impression…', 'The newsroom is interviewing you. It takes about 30 seconds.': 'La rédaction vous interviewe. Cela prend environ 30 secondes.',
+    'Printing…': 'Impression…', 'The newsroom is writing your front page. It takes about a minute.': 'La rédaction écrit votre Une. Cela prend environ une minute.', 'The newsroom is writing your front page: {n} words so far.': 'La rédaction écrit votre Une : {n} mots déjà écrits.',
     'What was it like before?': 'Comment était-ce avant ?', 'What is it like today?': 'Comment est-ce aujourd’hui ?', 'What did you do to get there?': 'Qu’avez-vous fait pour y arriver ?',
     'We kept what was already in place and scaled it.': 'Nous avons gardé ce qui était en place et nous l’avons étendu.',
     'We did not automate yesterday. We redesigned tomorrow.': 'Nous n’avons pas automatisé hier. Nous avons redessiné demain.',
@@ -192,19 +190,35 @@
     'of the way to the 2030 target in the 2026 diagnostic': 'du chemin vers la cible 2030 au diagnostic de 2026',
     'AND score in 2026: the lower of productivity and culture': 'score ET en 2026 : le plus faible de la productivité et de la culture',
     'initiatives on the 2027–2030 roadmap': 'initiatives sur la feuille de route 2027–2030',
-    'Step 3 · Your News Fix': 'Étape 3 · Votre News Fix', 'Your 2030 front page is printed': 'Votre Une 2030 est imprimée', 'Share it on LinkedIn': 'Partagez-la sur LinkedIn',
+    'Step 3 · Your News Fix': 'Étape 3 · Votre News Fix', 'Your 2030 vision is on the front page': 'Votre vision 2030 fait la Une', 'Share it on LinkedIn': 'Partagez-la sur LinkedIn',
     'The image shows your 2030 headlines only. Your diagnostic figures stay private.': 'L’image ne montre que vos titres de 2030. Les chiffres de votre diagnostic restent privés.',
-    'Download the image': 'Télécharger l’image', 'Copy the post text': 'Copier le texte du post', 'Open LinkedIn ↗': 'Ouvrir LinkedIn ↗', 'Suggested post text': 'Texte de post proposé',
+    'Download the image': 'Télécharger l’image', 'Download this image': 'Télécharger cette image', 'Image for LinkedIn': 'Image pour LinkedIn', 'Your full front page': 'Votre Une complète', 'Copy the post text': 'Copier le texte du post', 'Open LinkedIn ↗': 'Ouvrir LinkedIn ↗', 'Suggested post text': 'Texte de post proposé',
     'Download the image, copy the text, then create a post on LinkedIn and add the image.': 'Téléchargez l’image, copiez le texte, puis créez un post sur LinkedIn et ajoutez l’image.',
-    'Special edition · The human edition': 'Édition spéciale · Édition humaine',     'Interview by the News Fix newsroom': 'Interview par la rédaction de The News Fix', 'From the 2026 diagnostic': 'Selon le diagnostic de 2026',
+    'Special edition · The human edition': 'Édition spéciale · Édition humaine',     'Interview by the News Fix newsroom': 'Interview par la rédaction de The News Fix', 'By the News Fix newsroom': 'Par la rédaction de The News Fix',
+    'You can print {n} more front pages.': 'Vous pouvez encore imprimer {n} Unes.', 'You can print one more front page.': 'Vous pouvez encore imprimer une Une.',
+    'You have printed your {n} front pages.': 'Vous avez imprimé vos {n} Unes.', 'See your 2030 vision →': 'Voir votre vision 2030 →',
+    'To print more, contact Vincent Dupuis on LinkedIn ↗': 'Pour en imprimer d’autres, contactez Vincent Dupuis sur LinkedIn ↗', 'The road to 2030': 'La route vers 2030', 'From the 2026 diagnostic': 'Selon le diagnostic de 2026',
     'Written with the Future of Work · 4 Shifts model': 'Écrit avec le modèle Future of Work · 4 Shifts', 'More human. More digital. Not a trade-off. AND.': 'Plus humain. Plus digital. Pas un compromis. ET.',
-    'Back to your priorities and roadmap': 'Retour à vos priorités et à votre feuille de route',
+    '← Back to your priorities and roadmap': '← Retour à vos priorités et à votre feuille de route',
     'The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.':
       'La rédaction IA n’était pas joignable : les interviews ont été mises en page directement à partir de votre diagnostic et de votre feuille de route, sans IA.',
     'The image tool did not load. Check your connection and reload the page.': 'L’outil d’image ne s’est pas chargé. Vérifiez votre connexion et rechargez la page.',
     'Preparing…': 'Préparation…', 'Image downloaded: the-news-fix-2030.png. Now copy the text and create your LinkedIn post.': 'Image téléchargée : the-news-fix-2030.png. Copiez maintenant le texte et créez votre post LinkedIn.',
     'The image could not be created. Try again, or take a screenshot of the preview.': 'L’image n’a pas pu être créée. Réessayez, ou faites une capture d’écran de l’aperçu.',
     'Text copied. Paste it in your LinkedIn post.': 'Texte copié. Collez-le dans votre post LinkedIn.', 'Select the text and copy it with your keyboard.': 'Sélectionnez le texte et copiez-le au clavier.',
+    // Buttons and suggested priorities
+    'Saved in your browser only. It is not sent from this page.': 'Enregistré uniquement dans votre navigateur. Il n’est pas envoyé depuis cette page.',
+    'Saved in your browser only. Sent to the AI to write your front page, then not stored, and never added to the statistics.': 'Enregistré uniquement dans votre navigateur. Envoyé à l’IA pour écrire votre Une, puis non conservé, et jamais ajouté aux statistiques.',
+    'Scroll sideways to see all the years.': 'Faites défiler sur le côté pour voir toutes les années.',
+    'Print the roadmap (PDF)': 'Imprimer la feuille de route (PDF)',
+    'Print the front page (PDF, 2 pages)': 'Imprimer la Une (PDF, 2 pages)',
+    'suggested': 'proposé',
+    'productivity': 'productivité',
+    'culture': 'culture',
+    'We suggest your largest gap in productivity, your largest gap in culture, and your second largest gap in {side}, because the AND score keeps the lower of the two sides.': 'Nous proposons votre plus grand écart en productivité, votre plus grand écart en culture et votre deuxième plus grand écart en {side}, car le score ET retient le plus faible des deux côtés.',
+    'We suggest your largest gap in productivity, your largest gap in culture, and your largest remaining gap, because the AND score keeps the lower of the two sides.': 'Nous proposons votre plus grand écart en productivité, votre plus grand écart en culture et votre plus grand écart restant, car le score ET retient le plus faible des deux côtés.',
+    'Largest gap in productivity, largest gap in culture, then the second largest gap in {side}, the weaker side.': 'Plus grand écart en productivité, plus grand écart en culture, puis deuxième plus grand écart en {side}, le côté le plus faible.',
+    'Largest gap in productivity, largest gap in culture, then the largest remaining gap.': 'Plus grand écart en productivité, plus grand écart en culture, puis plus grand écart restant.',
     // Sample front page on the home page
     'Four years after its diagnostic, the leadership team explains how it redesigned its flows before automating them, and where the time went.':
       'Quatre ans après son diagnostic, l’équipe de direction explique comment elle a redessiné ses flux avant de les automatiser, et où est passé le temps gagné.'

@@ -17,3 +17,9 @@ Les réponses anonymes (niveaux, priorités, scores et profil facultatif : secte
 L'email facultatif pour recevoir la synthèse de l'étude est ajouté par `/api/contact` à l'onglet `contacts`, sans lien avec les réponses.
 
 Variables d'environnement Netlify : `GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY`. Sans elles, le site fonctionne avec son modèle intégré et n'enregistre rien.
+
+## The News Fix avec IA
+
+`/api/newsfix` (`netlify/edge-functions/newsfix.js`) fait écrire la Une par un agent « journaliste » : Claude, via l'API Anthropic. C'est une Edge Function : elle envoie ses en-têtes tout de suite, puis transmet le flux de l'API tel quel pendant environ une minute (une fonction classique en flux est coupée après 10 s). La page lit ce flux, reconstitue l'article et le vérifie. Le prompt, le schéma de sortie et le nettoyage des données sont dans `netlify/lib/journalist.mjs`. Rien n'est conservé. En cas d'erreur, de refus ou de limite atteinte, la page compose la Une sans IA et affiche un code court (par exemple `api 401`, `timeout`).
+
+Variables d'environnement Netlify : `ANTHROPIC_API_KEY` (obligatoire ; sans elle, la Une est composée sans IA), `NEWSFIX_MODEL` (par défaut `claude-opus-5-5`), `NEWSFIX_PER_HOUR` (Unes par adresse IP et par heure, par défaut 3). Le plafond de dépense se règle dans la console Anthropic.
