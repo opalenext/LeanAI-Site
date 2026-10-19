@@ -194,7 +194,7 @@
     'initiatives on the 2027–2030 roadmap': 'initiatives sur la feuille de route 2027–2030',
     'Step 3 · Your News Fix': 'Étape 3 · Votre News Fix', 'Your 2030 front page is printed': 'Votre Une 2030 est imprimée', 'Share it on LinkedIn': 'Partagez-la sur LinkedIn',
     'The image shows your 2030 headlines only. Your diagnostic figures stay private.': 'L’image ne montre que vos titres de 2030. Les chiffres de votre diagnostic restent privés.',
-    'Download the image': 'Télécharger l’image', 'Copy the post text': 'Copier le texte du post', 'Open LinkedIn ↗': 'Ouvrir LinkedIn ↗', 'Suggested post text': 'Texte de post proposé',
+    'Download the image': 'Télécharger l’image', 'Download this image': 'Télécharger cette image', 'Image for LinkedIn': 'Image pour LinkedIn', 'Your full front page': 'Votre Une complète', 'Copy the post text': 'Copier le texte du post', 'Open LinkedIn ↗': 'Ouvrir LinkedIn ↗', 'Suggested post text': 'Texte de post proposé',
     'Download the image, copy the text, then create a post on LinkedIn and add the image.': 'Téléchargez l’image, copiez le texte, puis créez un post sur LinkedIn et ajoutez l’image.',
     'Special edition · The human edition': 'Édition spéciale · Édition humaine',     'Interview by the News Fix newsroom': 'Interview par la rédaction de The News Fix', 'By the News Fix newsroom': 'Par la rédaction de The News Fix',
     'You can print {n} more front pages.': 'Vous pouvez encore imprimer {n} Unes.', 'You can print one more front page.': 'Vous pouvez encore imprimer une Une.',

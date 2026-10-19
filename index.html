@@ -297,11 +297,20 @@ h2[tabindex="-1"]:focus{outline:none}
 .sc-also{margin-top:auto;border-top:6px double #1B1B1B;padding-top:20px}
 .sc-also-t{font:700 18px var(--display);letter-spacing:.18em;text-transform:uppercase;margin-bottom:4px}
 .sc-story{font:700 37px/1.15 var(--news);padding:14px 0;border-bottom:1px solid rgba(0,0,0,.25)}
+.sc-long .sc-kicker{margin-top:36px}
+.sc-long .sc-lead{font-size:76px;margin:12px 0 16px}
+.sc-long .sc-deck{font-size:28px}
+.sc-long .sc-story{font-size:31px;padding:11px 0}
 .sc-cta{text-align:right}
 .sc-cta b{color:#1B1B1B;font-weight:700;white-space:nowrap}
 .sc-foot{margin-top:24px;display:flex;justify-content:space-between;gap:20px;font:600 18px var(--display);color:#4A4A4A;border-top:2px solid #1B1B1B;padding-top:14px}
 .share{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:28px;align-items:start;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line)}
 @media (max-width:860px){.share{grid-template-columns:minmax(0,1fr)}.share .sc-frame{max-width:420px}}
+.sc-fig{margin:0;display:flex;flex-direction:column;gap:10px}
+.sc-fig figcaption{font:600 12.5px var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.sc-fig .btn{align-self:stretch;justify-content:center}
+@media (max-width:860px){.sc-fig{max-width:420px}}
+.paper-label{margin:0 auto 10px;max-width:980px}
 .post{font:15px/1.5 var(--body);color:var(--fg);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;resize:vertical}
 .btn.off{opacity:.4;pointer-events:none}
 .tabs{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;padding:3px;background:var(--surface)}
@@ -1141,14 +1150,16 @@ window.initMap=initMap;
     stories: [{ headline: F.challenges.augmented.ex }, { headline: F.challenges.workplace.ex }, { headline: F.challenges.knowledge.ex }] };
   function paperDate() { const d = new Date(); d.setFullYear(2030); return d.toLocaleDateString(L_, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }); }
   function shareCard(p, company, url) {
-    return `<div class="share-card">
+    // Long headlines from the AI newsroom: smaller type so that the whole edition fits in 1080 x 1350
+    const st = (p.stories || []).slice(0, 4), long = p.lead.headline.length > 48 || st.reduce((n, x) => n + x.headline.length, 0) > 200;
+    return `<div class="share-card${long ? ' sc-long' : ''}">
       <div class="sc-top"><span>${T('Serving the sky, the moon and the stars')}</span><span>${T('The human edition')}</span></div>
       <div class="sc-mast">The News Fix</div>
       <div class="sc-date"><span>${esc(paperDate())}</span><span class="red">${T('Fictional front page')}</span><span>${esc(company || T('Our organization'))}</span></div>
-      <div class="sc-kicker">${T('Interview')}</div>
+      <div class="sc-kicker">${esc(p.lead.kicker || T('Interview'))}</div>
       <div class="sc-lead">${esc(p.lead.headline)}</div>
       ${p.lead.deck ? `<div class="sc-deck">${esc(p.lead.deck)}</div>` : ''}
-      ${p.stories && p.stories.length ? `<div class="sc-also"><div class="sc-also-t">${T('Also in this edition')}</div>${p.stories.slice(0, 4).map(s => `<div class="sc-story">${esc(s.headline)}</div>`).join('')}</div>` : ''}
+      ${st.length ? `<div class="sc-also"><div class="sc-also-t">${T('Also in this edition')}</div>${st.map(s => `<div class="sc-story">${esc(s.headline)}</div>`).join('')}</div>` : ''}
       <div class="sc-foot"><span>${T('More human. More digital.')}<br>${T('Not a trade-off. AND.')}</span><span class="sc-cta">${T('Write your own 2030 front page')}<br><b>${esc(url)}</b></span></div>
     </div>`;
   }
@@ -1548,10 +1559,12 @@ window.initMap=initMap;
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
     return `<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 3 · Your News Fix')}</div><h1>${T('Your 2030 front page is printed')}</h1><h2>${T('Share it on LinkedIn')}</h2>
         <p class="lede">${T('The image shows your 2030 headlines only. Your diagnostic figures stay private.')}</p>
-        <div class="row"><button class="btn p" id="dl">${T('Download the image')}</button><button class="btn s" id="cp">${T('Copy the post text')}</button><a class="btn g" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">${T('Open LinkedIn ↗')}</a></div>
+        <div class="row"><button class="btn s" id="cp">${T('Copy the post text')}</button><a class="btn g" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">${T('Open LinkedIn ↗')}</a></div>
         <textarea id="posttext" class="post" readonly rows="7" aria-label="${T('Suggested post text')}">${esc(postText())}</textarea>
         <p class="note" id="sharemsg">${T('Download the image, copy the text, then create a post on LinkedIn and add the image.')}</p></div>
-        <div class="sc-frame">${shareCard(p, S.company, siteHost())}</div></div>
+        <figure class="sc-fig"><figcaption>${T('Image for LinkedIn')}</figcaption><div class="sc-frame">${shareCard(p, S.company, siteHost())}</div>
+          <button class="btn p" id="dl">${T('Download this image')}</button></figure></div>
+      <div class="eyebrow paper-label no-print">${T('Your full front page')}</div>
       <div class="paper" id="paper">
       <div class="np-top"><span>${T('Serving the sky, the moon and the stars')}</span><span>${T('Special edition · The human edition')}</span></div>
       <div class="masthead">The News Fix</div>
@@ -1580,7 +1593,7 @@ window.initMap=initMap;
       setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
       msg.textContent = T('Image downloaded: the-news-fix-2030.png. Now copy the text and create your LinkedIn post.'); ping('image');
     } catch (e) { msg.textContent = T('The image could not be created. Try again, or take a screenshot of the preview.'); }
-    btn.disabled = false; btn.textContent = T('Download the image');
+    btn.disabled = false; btn.textContent = T('Download this image');
   }
   function bindNewsfix() {
     bindContact();
