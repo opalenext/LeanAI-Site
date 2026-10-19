@@ -1,7 +1,7 @@
 // POST /api/responses → adds one anonymous row to the "responses" tab of the back-office spreadsheet.
 // Stored: date, a random id of the diagnostic, the step (report or priorities), the language,
-// the 14 levels, the priority challenges, the scores, the optional profile (sector, size, role, region,
-// as ids from a fixed list) and the organization name if the visitor typed one. No person's name, no IP address.
+// the 14 levels, the priority challenges, the scores and the optional profile (sector, size, role, region,
+// as ids from a fixed list). No name, no organization, no IP address.
 
 import { responsesHeader, appendRow, RESPONSES_TAB, BackOfficeError } from '../lib/sheets.mjs';
 
@@ -24,7 +24,7 @@ const score = (v) => (typeof v === 'number' && v >= 0 && v <= 100 ? Math.round(v
 // Returns the row as { column: value }, or a string that explains the error.
 export function validate(input, now = new Date()) {
   if (!input || typeof input !== 'object') return 'Invalid body';
-  const { rid, step, lang, answers, priorities = [], scores = {}, flags, profile = {}, company = '' } = input;
+  const { rid, step, lang, answers, priorities = [], scores = {}, flags, profile = {} } = input;
   if (typeof rid !== 'string' || !/^[a-z0-9]{12,40}$/.test(rid)) return 'Invalid id';
   if (step !== 'report' && step !== 'priorities') return 'Invalid step';
   if (lang !== 'en' && lang !== 'fr') return 'Invalid language';
@@ -36,8 +36,6 @@ export function validate(input, now = new Date()) {
   if (!profile || typeof profile !== 'object' || Array.isArray(profile)) return 'Invalid profile';
   const fields = ['sector', 'size', 'role', 'region'];
   if (Object.keys(profile).some((k) => !fields.includes(k) || typeof profile[k] !== 'string' || !/^[a-z0-9]{1,20}$/.test(profile[k]))) return 'Invalid profile';
-  if (typeof company !== 'string' || company.length > 60) return 'Invalid company';
-  const org = company.replace(/[\u0000-\u001f\u007f]/g, ' ').trim();
   const row = {
     date: now.toISOString().slice(0, 19).replace('T', ' '),
     response_id: rid, step, lang, ...answers,
@@ -45,8 +43,6 @@ export function validate(input, now = new Date()) {
     overall: score(scores.overall), productivity: score(scores.productivity), culture: score(scores.culture),
     contradictions: Number.isInteger(flags) && flags >= 0 && flags <= 50 ? flags : null,
     ...Object.fromEntries(fields.map((k) => [k, profile[k] || ''])),
-    // The leading apostrophe keeps the name as text in the spreadsheet: a name that starts with = is never a formula
-    company: org ? `'${org}` : '',
   };
   return row;
 }

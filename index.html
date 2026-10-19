@@ -1019,8 +1019,8 @@ window.initMap=initMap;
   const hasPrios = () => done() && Array.isArray(S.priorities) && S.priorities.length >= MINP;
   // anonymous usage counter: no cookie, no identifier, only the name of the step reached
   const ping = e => { try { fetch('/api/count', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ e }), keepalive: true }).catch(() => {}); } catch (x) {} };
-  // Statistics, unless the visitor unticks the box: a random id, the 14 levels, the priorities, the scores and the
-  // organization name if typed. No person's name. A new id for each new set of answers.
+  // Anonymous statistics, unless the visitor unticks the box: a random id, the 14 levels, the priorities and the scores.
+  // No name, no organization. A new id for each new set of answers.
   const shared = () => S.share !== false;
   const prof = () => { const p = {}; (F.profile || []).forEach(f => { const v = S.profile && S.profile[f.id]; if (v && f.o.some(o => o[0] === v)) p[f.id] = v; }); return p; };
   const sig = () => F.questions.map(q => S.answers[q.id] || 0).join('') + '|' + JSON.stringify(prof());
@@ -1029,7 +1029,7 @@ window.initMap=initMap;
   function post(step) {
     const r = scores(), answers = {}; F.questions.forEach(q => { answers[q.id] = S.answers[q.id]; });
     const body = { rid: S.rid, step, lang: window.LANG, answers, priorities: step === 'priorities' ? S.priorities : [],
-      scores: { overall: r.overall, productivity: r.P, culture: r.C }, flags: r.flags.length, profile: prof(), company: (S.company || '').slice(0, 60) };
+      scores: { overall: r.overall, productivity: r.P, culture: r.C }, flags: r.flags.length, profile: prof() };
     try { return fetch('/api/responses', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), keepalive: true }).then(r => r.ok, () => false); }
     catch (x) { return Promise.resolve(false); }
   }
@@ -1044,11 +1044,11 @@ window.initMap=initMap;
   }
   async function sendPriorities() {
     if (!shared() || !hasPrios() || !(await sendReport())) return;
-    const p = S.priorities.slice().sort().join(',') + '|' + (S.company || ''); if (S.sentPrio === p) return;
+    const p = S.priorities.slice().sort().join(','); if (S.sentPrio === p) return;
     S.sentPrio = p; save();
     if (!(await post('priorities')) && S.sentPrio === p) { S.sentPrio = null; save(); }
   }
-  const shareBox = () => `<label class="optin no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('Add my answers to the 4 Shifts statistics: levels, priorities, scores, profile and, if I give it, my organization name. Never my own name.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
+  const shareBox = () => `<label class="optin no-print"><input type="checkbox" id="share" ${shared() ? 'checked' : ''}><span>${T('Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.')} <a href="privacy.html">${T('Privacy')}</a></span></label>`;
   const bindShare = () => { const b = document.getElementById('share'); if (b) b.addEventListener('change', () => { S.share = b.checked; save(); }); };
   // Optional email to receive the summary of the study. Stored apart from the answers, with no link to them.
   const contactBox = () => S.contactDone
@@ -1328,7 +1328,7 @@ window.initMap=initMap;
       <section class="section" aria-labelledby="h-final"><div class="final"><h2 id="h-final">${T('Your 2030 front page starts with fourteen questions')}</h2>
         <p class="lede">${T('About ten minutes. No account. Your report-out, your roadmap and your front page at the end.')}</p>
         <a class="btn p" href="#/diagnostic">${start}</a></div>
-        <p class="note privacy">${T('Your answers are saved in your browser. By default, your levels and priorities are also added to the 4 Shifts statistics, with your organization name if you give it, never your own name. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
+        <p class="note privacy">${T('Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.')} <a href="privacy.html">${T('Read the privacy page')}</a></p></section>
       <footer class="site-foot"><span>Future of Work · 4 Shifts · Vincent Dupuis</span><a href="privacy.html">${T('Privacy')}</a></footer>`;
   }
 
@@ -1373,7 +1373,7 @@ window.initMap=initMap;
       f.o.map(o => `<label class="chip"><input type="radio" name="pf_${f.id}" value="${esc(o[0])}" ${p[f.id] === o[0] ? 'checked' : ''}><span>${esc(o[1])}</span></label>`).join('') +
       `</div></fieldset>`).join('');
     return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Compare with organizations like yours')}</h1>
-        <p class="lede">${T('Four optional questions. They are used only in the statistics, to compare results by sector, size, role and region. Never your name.')}</p></div>
+        <p class="lede">${T('Four optional questions. They are used only in the anonymous statistics, to compare results by sector, size, role and region. Never your name or your organization.')}</p></div>
       ${fs}<div class="row"><button class="btn g" id="pback">${T('← Back')}</button><button class="btn p" id="pnext">${T('See my report')}</button></div></div>`;
   }
   function bindProfile() {
@@ -1524,7 +1524,7 @@ window.initMap=initMap;
     return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 2 · Your Priorities')}</div><h1>${T('Never transform everything at once')}</h1>
         <p class="lede">${T('Choose {a} to {b} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.', { a: MINP, b: MAXP })}</p></div>
         <div class="pick">${pick}</div><p class="note" id="pickmsg">${T(n > 1 ? '{n} selected · choose {a} to {b}' : '{n} selected · choose {a} to {b} ', { n, a: MINP, b: MAXP })}</p>
-        <div class="field" style="max-width:520px"><label for="company">${T('Organization name, for your front page and the statistics (optional)')}</label><input id="company" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our company')}"></div></div>
+        <div class="field" style="max-width:520px"><label for="company">${T('Organization name, for your front page (optional)')}</label><input id="company" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our company')}"></div></div>
       ${roadmapBlock()}`;
   }
   function bindPriorities() {
