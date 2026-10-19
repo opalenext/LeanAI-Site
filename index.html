@@ -3,7 +3,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Measure how far your operating model is from the 2030 target, get a roadmap, and write the front page of The News Fix.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;1,400&family=UnifrakturMaguntia&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;600&family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,400;1,400&family=UnifrakturCook:wght@700&display=swap">
 <style>/* Layout: one guided journey (model → diagnostic → report & roadmap → 2030 vision → The News Fix), one column of reading width with wider boards for report and roadmap. Identity: shared charter (warm white, ink, emerald accent, brick, blue, violet; Space Grotesk and IBM Plex Sans) with the O hexagon mark. The News Fix is printed paper in both themes. */
 :root{
   --bg:#F5F5F1; --surface:#FFFFFF; --fg:#12161C; --muted:#5A6270; --line:#DADCD5; --soft:#ECEDE7;
@@ -12,7 +12,7 @@
   --s1:#A74018; --s2:#0F6E5D; --s3:#2C5687; --s4:#8A4F9E; --on-bar:#FFFFFF;
   --display:"Space Grotesk","Segoe UI",Arial,sans-serif; --body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
   --paper:#F7F3EA; --ink:#1B1B1B; --ink-soft:#4A4A4A; --rule:#1B1B1B;
-  --news:"Playfair Display",Georgia,"Times New Roman",serif; --newsbody:"Source Serif 4",Georgia,serif; --black:"UnifrakturMaguntia","Old English Text MT",Georgia,serif;
+  --news:"Playfair Display",Georgia,"Times New Roman",serif; --newsbody:"Source Serif 4",Georgia,serif; --black:"UnifrakturCook","Old English Text MT",Georgia,serif;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#101317; --surface:#181C21; --fg:#ECEBE6; --muted:#A3A8AE; --line:#2B3036; --soft:#1E2328;
@@ -237,7 +237,7 @@ h2[tabindex="-1"]:focus{outline:none}
 /* The News Fix — printed paper, same in both themes */
 .paper{background:var(--paper);color:var(--ink);max-width:980px;margin:0 auto;padding:28px clamp(16px,4vw,44px) 36px;border-radius:4px;box-shadow:0 2px 0 rgba(0,0,0,.06),0 18px 40px -20px rgba(0,0,0,.35);font-family:var(--newsbody)}
 .np-top{display:flex;justify-content:center;font:600 11px var(--display);letter-spacing:.28em;text-transform:uppercase;border-top:1px solid var(--rule);padding-top:6px;margin-top:6px;color:var(--ink)}
-.masthead{font-family:var(--black);font-size:clamp(42px,8vw,88px);text-align:center;line-height:1;margin:6px 0 2px;color:var(--ink)}
+.masthead{font-family:var(--black);font-weight:700;font-size:clamp(42px,8vw,88px);text-align:center;line-height:1;margin:6px 0 2px;color:var(--ink)}
 .np-teasers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:8px}
 .np-teaser{border:1px solid var(--rule);padding:6px 9px;display:flex;flex-direction:column;gap:2px;color:var(--ink)}
 .np-t-sec{font:700 10.5px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#C8102E}
@@ -334,7 +334,7 @@ h2[tabindex="-1"]:focus{outline:none}
 .fun .upside{transform:rotate(180deg);font-size:calc(var(--k,13) * .85px);color:var(--ink-soft);margin-top:6px}
 .fun[hidden]{display:none}
 .s2-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:3px double var(--rule);padding-bottom:6px;font:600 11px var(--display);letter-spacing:.08em;text-transform:uppercase}
-.s2-mast{font:28px var(--black);letter-spacing:0;text-transform:none}
+.s2-mast{font:700 28px var(--black);letter-spacing:0;text-transform:none}
 .sheet .timeline{margin-top:10px}
 .sheet .timeline li{font-size:13px}
 .sheet .np-stories{display:block;column-count:3;column-gap:18px;column-rule:1px solid rgba(0,0,0,.18);margin-top:10px;padding-top:10px;border-top:3px double var(--rule)}
@@ -354,7 +354,7 @@ h2[tabindex="-1"]:focus{outline:none}
 #capture{position:fixed;left:-20000px;top:0;pointer-events:none}
 .share-card{width:1080px;height:1350px;background:#F7F3EA;color:#1B1B1B;padding:60px 72px 56px;display:flex;flex-direction:column;transform-origin:0 0;font-family:var(--newsbody);overflow:hidden}
 .sc-top{display:flex;justify-content:space-between;font:600 17px var(--display);letter-spacing:.18em;text-transform:uppercase;border-bottom:2px solid #1B1B1B;padding-bottom:12px}
-.sc-mast{font-family:var(--black);font-size:150px;line-height:1;text-align:center;margin:26px 0 12px}
+.sc-mast{font-family:var(--black);font-weight:700;font-size:150px;line-height:1;text-align:center;margin:26px 0 12px}
 .sc-date{display:flex;justify-content:space-between;border-top:6px double #1B1B1B;border-bottom:2px solid #1B1B1B;padding:12px 0;font:600 19px var(--display);letter-spacing:.06em;text-transform:uppercase}
 .sc-date .red,.sc-kicker{color:#C8102E}
 .sc-kicker{text-align:center;font:700 22px var(--display);letter-spacing:.22em;text-transform:uppercase;margin-top:52px}
