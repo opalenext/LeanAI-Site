@@ -33,7 +33,7 @@
     'Productivity challenges': 'Défis de productivité', 'Cultural challenges': 'Défis culturels',
     // Share card and newspaper
     'Serving the sky, the moon and the stars': 'Au service du ciel, de la lune et des étoiles', 'The human edition': 'Édition humaine',
-    'The insiders’ view': 'Le regard de l’intérieur', 'Weather': 'Météo', 'Special edition': 'Édition spéciale', 'Special edition · No. 2030': 'Édition spéciale · N° 2030', '€3': '3 €', 'Page {p}': 'Page {p}', 'Editorial': 'Éditorial', 'Pun of the day': 'Le calembour du jour', 'The riddle': 'L’énigme', 'Answer:': 'Réponse :', 'Work horoscope': 'L’horoscope du travail', 'The editor-in-chief': 'La rédaction en chef', 'Portrait': 'Portrait', 'Explainer': 'Décryptage', 'Opinion': 'Point de vue', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
+    'The insiders’ view': 'Le regard de l’intérieur', 'Weather': 'Météo', 'Special edition': 'Édition spéciale', 'Special edition · No. 2030': 'Édition spéciale · N° 2030', '€3': '3 €', 'Page {p}': 'Page {p}', 'Editorial': 'Éditorial', 'Pun of the day': 'Le calembour du jour', 'contact Vincent Dupuis on LinkedIn ↗': 'contactez Vincent Dupuis sur LinkedIn ↗', 'Only one front page is left. To go further,': 'Il ne vous reste qu’une Une. Pour aller plus loin,', 'To go further,': 'Pour aller plus loin,', 'Your answers, priorities, organization name or language have changed since this front page.': 'Vos réponses, vos priorités, le nom de l’organisation ou la langue ont changé depuis cette Une.', 'Print it again with my changes →': 'La réimprimer avec mes changements →', 'The riddle': 'L’énigme', 'Answer:': 'Réponse :', 'Work horoscope': 'L’horoscope du travail', 'The editor-in-chief': 'La rédaction en chef', 'Portrait': 'Portrait', 'Explainer': 'Décryptage', 'Opinion': 'Point de vue', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
     'Also in this edition': 'Aussi dans cette édition', 'More human. More digital.': 'Plus humain. Plus digital.',
     'Not a trade-off. AND.': 'Pas un compromis. ET.', 'Write your own 2030 front page': 'Écrivez votre Une 2030',
     // Introduction
@@ -80,16 +80,15 @@
     'Future of Work · 4 Shifts is a personal project. It is not linked to any employer.': 'Future of Work · 4 Shifts est un projet personnel. Il n’est lié à aucun employeur.',
     'Your 2030 front page starts with fourteen questions': 'Votre Une 2030 commence par quatorze questions',
     'About ten minutes. No account. Your report-out, your roadmap and your front page at the end.': 'Dix minutes environ. Sans compte. À la fin : votre synthèse, votre feuille de route et votre Une.',
-    'Your answers are saved in your browser. By default, your levels and priorities are also added to anonymous statistics, with no name and no organization. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.':
-      'Vos réponses sont enregistrées dans votre navigateur. Par défaut, vos niveaux et vos priorités sont aussi ajoutés à des statistiques anonymes, sans nom ni organisation. Pour ne pas y figurer, décochez la case après la dernière question. Les questions de profil et l’email pour recevoir les résultats de l’étude sont facultatifs.',
+    'Your answers are saved in your browser. By default, your levels and priorities are also added to the 4 Shifts statistics, with your organization name if you give it, never your own name. If you do not want this, untick the box after the last question. The profile questions and the email for the study results are optional.':
+      'Vos réponses sont enregistrées dans votre navigateur. Par défaut, vos niveaux et vos priorités sont aussi ajoutés aux statistiques 4 Shifts, avec le nom de votre organisation si vous l’indiquez, jamais votre nom. Pour ne pas y figurer, décochez la case après la dernière question. Les questions de profil et l’email pour recevoir les résultats de l’étude sont facultatifs.',
     'Read the privacy page': 'Lire la page Confidentialité',
-    'Add my answers, anonymously, to the 4 Shifts statistics: levels, priorities, scores and profile, no name and no organization.':
-      'Ajouter mes réponses, de façon anonyme, aux statistiques 4 Shifts : niveaux, priorités, scores et profil, sans nom ni organisation.',
+    'Add my answers to the 4 Shifts statistics: levels, priorities, scores, profile and, if I give it, my organization name. Never my own name.':
+      'Ajouter mes réponses aux statistiques 4 Shifts : niveaux, priorités, scores, profil et, si je l’indique, le nom de mon organisation. Jamais mon nom.',
     // Profile and contact
     'Compare with organizations like yours': 'Se comparer à des organisations proches de la vôtre',
-    'Four optional questions. They are used only in the anonymous statistics, to compare results by sector, size, role and region. Never your name or your organization.':
-      'Quatre questions facultatives. Elles servent uniquement aux statistiques anonymes, pour comparer les résultats par secteur, taille, fonction et zone. Jamais votre nom ni votre organisation.',
-    'Prefer not to say': 'Je préfère ne pas répondre',
+    'Four optional questions. They are used only in the statistics, to compare results by sector, size, role and region. Never your name.':
+      'Quatre questions facultatives. Elles servent uniquement aux statistiques, pour comparer les résultats par secteur, taille, fonction et zone. Jamais votre nom.',
     'Get the results of the study': 'Recevoir les résultats de l’étude',
     'When enough leaders have answered, we publish a summary of the results. Leave your email to receive it: one email, nothing else.':
       'Quand assez de dirigeants auront répondu, nous publierons une synthèse des résultats. Laissez votre email pour la recevoir : un seul email, rien d’autre.',
@@ -180,7 +179,7 @@
     'Choose {a} to {b} priority challenges. We suggest the ones with the largest gap. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.':
       'Choisissez {a} à {b} défis prioritaires. Nous proposons ceux qui ont le plus grand écart. Votre feuille de route se met à jour plus bas à chaque choix. Le premier devient l’article principal de votre Une.',
     '{n} selected · choose {a} to {b}': '{n} sélectionnés · choisissez-en {a} à {b}', '{n} selected · choose {a} to {b} ': '{n} sélectionné · choisissez-en {a} à {b}',
-    'Organization name, for your front page (optional)': 'Nom de l’organisation, pour votre Une (facultatif)', 'Our company': 'Notre entreprise',
+    'Organization name, for your front page and the statistics (optional)': 'Nom de l’organisation, pour votre Une et les statistiques (facultatif)', 'Our company': 'Notre entreprise',
     '{n} challenges at most. Unselect one first.': '{n} défis au maximum. Retirez-en un d’abord.',
     // 3. News Fix
     'Printing…': 'Impression…', 'The newsroom is writing your front page. It takes about a minute.': 'La rédaction écrit votre Une. Cela prend environ une minute.', 'The newsroom is writing your front page: {n} words so far.': 'La rédaction écrit votre Une : {n} mots déjà écrits.',
