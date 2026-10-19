@@ -1,4 +1,4 @@
-// The "journalist" of The News Fix: system prompt, output schema and checks.
+// The "journalist" of The News Fix: system prompt, output schema, input cleaning and checks.
 // Principles taken from two reference front pages written by Vincent Dupuis (spec in LeanAI-Studio,
 // docs/specs/newsfix-journaliste.md). The prompt is public: it holds no secret and no real case.
 
@@ -84,6 +84,33 @@ export const SCHEMA = {
     },
   },
 };
+
+const s = (v, max) => (typeof v === 'string' ? v.trim().slice(0, max) : '');
+
+// Keeps only the expected fields, with a size limit on each text.
+export function material(input) {
+  if (!input || typeof input !== 'object') return null;
+  const { lang, items } = input;
+  if (lang !== 'en' && lang !== 'fr') return null;
+  if (!Array.isArray(items) || items.length < 1 || items.length > 5) return null;
+  const level = (x) => ({ topic: s(x && x.topic, 120), text: s(x && x.text, 600), ...(x && [1, 2, 3, 4].includes(x.level) ? { level: x.level } : {}) });
+  const clean = items.map((i) => ({
+    challenge: s(i && i.challenge, 120), problem: s(i && i.problem, 600), example: s(i && i.example, 200),
+    before: (Array.isArray(i && i.before) ? i.before : []).slice(0, 8).map(level),
+    after: (Array.isArray(i && i.after) ? i.after : []).slice(0, 8).map(level),
+    actions: (Array.isArray(i && i.actions) ? i.actions : []).slice(0, 20).map((a) => ({
+      year: Number.isInteger(a && a.year) && a.year >= 2026 && a.year <= 2030 ? a.year : null, name: s(a && a.name, 160), what: s(a && a.what, 600),
+    })),
+  }));
+  if (clean.some((i) => !i.challenge)) return null;
+  const c = input.context && typeof input.context === 'object' ? input.context : {};
+  const num = (v) => (typeof v === 'number' && v >= 0 && v <= 1000 ? Math.round(v) : undefined);
+  return {
+    lang, company: s(input.company, 60) || (lang === 'fr' ? 'l’organisation' : 'the organization'), date: s(input.date, 60),
+    diagnostic_2026: { progress_to_2030_target_pct: num(c.progress), productivity_pct: num(c.productivity), culture_pct: num(c.culture), and_score_pct: num(c.and), initiatives: num(c.initiatives) },
+    items: clean,
+  };
+}
 
 const str = (v, max) => typeof v === 'string' && v.trim().length > 0 && v.length <= max;
 const paras = (v, min, max) => Array.isArray(v) && v.length >= min && v.length <= max && v.every((p) => str(p, 1500));

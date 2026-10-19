@@ -20,6 +20,6 @@ Variables d'environnement Netlify : `GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_E
 
 ## The News Fix avec IA
 
-`/api/newsfix` (`netlify/functions/newsfix.mjs`) fait écrire la Une par un agent « journaliste » : Claude, via l'API Anthropic. Le prompt, le schéma de sortie et les contrôles sont dans `netlify/lib/journalist.mjs`. Rien n'est conservé. La réponse est envoyée en flux (des espaces pendant la rédaction, puis l'article en JSON) pour garder la connexion ouverte. En cas d'erreur, de refus ou de limite atteinte, la page compose la Une sans IA à partir du diagnostic et de la feuille de route.
+`/api/newsfix` (`netlify/edge-functions/newsfix.js`) fait écrire la Une par un agent « journaliste » : Claude, via l'API Anthropic. C'est une Edge Function : elle envoie ses en-têtes tout de suite, puis transmet le flux de l'API tel quel pendant environ une minute (une fonction classique en flux est coupée après 10 s). La page lit ce flux, reconstitue l'article et le vérifie. Le prompt, le schéma de sortie et le nettoyage des données sont dans `netlify/lib/journalist.mjs`. Rien n'est conservé. En cas d'erreur, de refus ou de limite atteinte, la page compose la Une sans IA et affiche un code court (par exemple `api 401`, `timeout`).
 
 Variables d'environnement Netlify : `ANTHROPIC_API_KEY` (obligatoire ; sans elle, la Une est composée sans IA), `NEWSFIX_MODEL` (par défaut `claude-opus-5-5`), `NEWSFIX_PER_HOUR` (Unes par adresse IP et par heure, par défaut 3). Le plafond de dépense se règle dans la console Anthropic.

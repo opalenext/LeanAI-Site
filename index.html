@@ -402,7 +402,33 @@ h2[tabindex="-1"]:focus{outline:none}
   body{background:#fff;padding:0}
   .top,.no-print{display:none!important}
   main{padding:0}
-  .paper{box-shadow:none;max-width:none}
+  /* The News Fix on A4: page 1 = masthead, lead story and side column; page 2 = the other stories */
+  .paper{box-shadow:none;max-width:none;border-radius:0;padding:0;background:#fff}
+  .np-top{font-size:8pt}
+  .masthead{font-size:40pt;margin:4px 0 2px}
+  .np-sub{font-size:10pt}
+  .np-date{font-size:8.5pt;margin:6px 0 10px;padding:4px 0}
+  .kicker{font-size:8pt;margin-bottom:3px}
+  .lead h2{font-size:24pt;line-height:1.05}
+  .lead .deck{font-size:12pt;max-width:none;margin-top:6px}
+  .np-cols{grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);gap:14px;margin-top:8px;padding-top:8px}
+  .np-body p{font-size:9pt;line-height:1.33;margin:0 0 5px}
+  .lead-body{column-count:2;column-gap:16px}
+  .np-body .subhead{font-size:9pt;margin:2px 0 3px}
+  .byline{font-size:7.5pt;margin-bottom:6px}
+  .quote{font-size:11pt;padding:6px 0;margin:0 0 8px}
+  .quote small,.timeline h4,.numbers h4{font-size:7.5pt}
+  .timeline li{font-size:8.5pt;line-height:1.3;gap:6px}
+  .timeline ol,.numbers ul{gap:5px}
+  .numbers{padding:8px 10px}
+  .timeline li b{font-size:9pt}
+  .numbers li{font-size:8.5pt;line-height:1.3;gap:6px}
+  .numbers li b{font-size:14pt}
+  .np-stories,.np-stories.c3{break-before:page;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px;margin-top:0;border-top:3px double var(--rule);padding-top:10px}
+  .story{break-inside:avoid;padding:2px 0 8px;margin-bottom:8px}
+  .story h3{font-size:16pt;margin-bottom:6px}
+  .story .qa{font-size:9.5pt;line-height:1.38}
+  .np-foot{font-size:8pt;margin-top:10px}
   .section{break-inside:avoid}
   .road{min-width:0}
   .gantt{min-width:0}
@@ -1447,29 +1473,51 @@ window.initMap=initMap;
       items: S.priorities.map(c => Object.assign({ challenge: F.challenges[c].n, problem: F.challenges[c].d, example: F.challenges[c].ex }, interview(c, rm))),
       context: { progress: pct(r.overall), distance: pct(r.distance), productivity: pct(r.P), culture: pct(r.C), and: pct(r.and), initiatives: rm.items.length } };
   }
+  // Reads the Anthropic event stream forwarded by /api/newsfix and rebuilds the article (JSON) from the text deltas.
+  // onWords shows the progress. Rejects with a short reason, kept to explain the front page without AI.
+  async function readNewsroom(res, onWords) {
+    if (!res.ok || !/event-stream/.test(res.headers.get('content-type') || '')) {
+      const e = await res.json().catch(() => ({})); throw new Error(e.error ? e.error + (e.status ? ' ' + e.status : '') : 'http ' + res.status);
+    }
+    const reader = res.body.getReader(), dec = new TextDecoder();
+    let buf = '', text = '', stop = null;
+    for (;;) {
+      const { value, done } = await reader.read(); if (done) break;
+      buf += dec.decode(value, { stream: true });
+      const lines = buf.split('\n'); buf = lines.pop();
+      for (const l of lines) {
+        if (!l.startsWith('data:')) continue;
+        let ev; try { ev = JSON.parse(l.slice(5)); } catch (e) { continue; }
+        if (ev.type === 'content_block_delta' && ev.delta && ev.delta.type === 'text_delta') { text += ev.delta.text; onWords((text.match(/\s+/g) || []).length); }
+        else if (ev.type === 'message_delta' && ev.delta && ev.delta.stop_reason) stop = ev.delta.stop_reason;
+        else if (ev.type === 'error') throw new Error('api ' + ((ev.error && ev.error.type) || ''));
+      }
+    }
+    if (stop && stop !== 'end_turn') throw new Error('stop ' + stop);
+    let data; try { data = JSON.parse(text); } catch (e) { throw new Error('json'); }
+    if (!okArticle(data)) throw new Error('invalid');
+    return data;
+  }
   async function generate() {
     if (!papersLeft()) { render(); return; }
     const btn = document.getElementById('gen'), msg = document.getElementById('genmsg');
-    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.textContent = T('The newsroom is writing your front page. It takes less than a minute.');
+    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.textContent = T('The newsroom is writing your front page. It takes about a minute.');
     const body = payload();
+    const ctl = new AbortController(); let idle;
+    const wait = () => { clearTimeout(idle); idle = setTimeout(() => ctl.abort(), 60000); };
     try {
-      const ctl = new AbortController(); const to = setTimeout(() => ctl.abort(), 90000);
+      wait();
       const res = await fetch('/api/newsfix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
-      // The function sends spaces while the newsroom writes, then the article as JSON
-      const data = await res.text().then(t => JSON.parse(t), () => null).catch(() => null);
-      clearTimeout(to);
-      if (!res.ok || !valid(data)) throw new Error('newsroom');
-      S.paper = data; S.paperSource = 'ai'; paperMade();
-    } catch (e) { S.paper = offline(body); S.paperSource = 'template'; }
+      S.paper = await readNewsroom(res, n => { wait(); msg.textContent = T('The newsroom is writing your front page: {n} words so far.', { n }); });
+      S.paperSource = 'ai'; S.paperError = null; paperMade();
+    } catch (e) { S.paper = offline(body); S.paperSource = 'template'; S.paperError = ctl.signal.aborted ? 'timeout' : String(e && e.message || e).slice(0, 60); }
+    clearTimeout(idle);
     S.paperContext = body.context; save(); ping('frontpage'); sendPriorities(); location.hash = '#/newsfix';
   }
-  const okQA = x => x && typeof x.headline === 'string' && Array.isArray(x.qa) && x.qa.length >= 3 && x.qa.every(y => y && typeof y.a === 'string');
   const okText = x => typeof x === 'string' && x.trim() !== '';
   const okParas = x => Array.isArray(x) && x.length > 0 && x.every(okText);
   const okArticle = d => d && d.lead && okText(d.lead.headline) && Array.isArray(d.lead.sections) && d.lead.sections.length > 0 && d.lead.sections.every(x => x && okParas(x.paragraphs))
     && Array.isArray(d.stories) && d.stories.every(x => x && okText(x.headline) && okParas(x.paragraphs));
-  // Article written by the AI newsroom (sections), or interviews laid out without AI (qa)
-  const valid = d => okArticle(d) || (d && okQA(d.lead) && Array.isArray(d.stories) && d.stories.every(okQA));
   // Without AI: the interviews are laid out directly from the diagnostic, the 2030 target and the roadmap
   function offline(p) {
     const list = xs => xs.map(x => `${x.topic}${FRL ? ' :' : ':'} ${lc(x.text)}`).join(' ');
@@ -1517,7 +1565,7 @@ window.initMap=initMap;
       ${p.stories.length ? `<div class="np-stories ${p.stories.length % 3 === 0 ? 'c3' : 'c2'}">${p.stories.map(s => `<article class="story"><div class="kicker">${kicker(s)}</div><h3>${esc(s.headline)}</h3><div class="np-body">${storyBody(s)}</div></article>`).join('')}</div>` : ''}
       <div class="np-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>${T('More human. More digital. Not a trade-off. AND.')}</span></div></div>
       <div class="section no-print" style="margin-top:24px"><div class="row"><button class="btn s" id="print">${T('Print or save as PDF')}</button><a class="btn g" href="#/priorities">${T('Back to your priorities and roadmap')}</a></div>
-      ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}</p>` : ''}${contactBox()}</div>
+      ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}${S.paperError ? ` <small>(${esc(S.paperError)})</small>` : ''}</p>` : ''}${contactBox()}</div>
       <div id="capture" aria-hidden="true">${shareCard(p, S.company, siteHost())}</div>`;
   }
   async function downloadImage() {

@@ -183,7 +183,7 @@
     'Organization name, for your front page (optional)': 'Nom de l’organisation, pour votre Une (facultatif)', 'Our company': 'Notre entreprise',
     '{n} challenges at most. Unselect one first.': '{n} défis au maximum. Retirez-en un d’abord.',
     // 3. News Fix
-    'Printing…': 'Impression…', 'The newsroom is writing your front page. It takes less than a minute.': 'La rédaction écrit votre Une. Cela prend moins d’une minute.',
+    'Printing…': 'Impression…', 'The newsroom is writing your front page. It takes about a minute.': 'La rédaction écrit votre Une. Cela prend environ une minute.', 'The newsroom is writing your front page: {n} words so far.': 'La rédaction écrit votre Une : {n} mots déjà écrits.',
     'What was it like before?': 'Comment était-ce avant ?', 'What is it like today?': 'Comment est-ce aujourd’hui ?', 'What did you do to get there?': 'Qu’avez-vous fait pour y arriver ?',
     'We kept what was already in place and scaled it.': 'Nous avons gardé ce qui était en place et nous l’avons étendu.',
     'We did not automate yesterday. We redesigned tomorrow.': 'Nous n’avons pas automatisé hier. Nous avons redessiné demain.',
