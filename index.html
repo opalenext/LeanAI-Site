@@ -390,6 +390,7 @@ h2[tabindex="-1"]:focus{outline:none}
 .sc-foot{margin-top:24px;display:flex;justify-content:space-between;gap:20px;font:600 18px var(--display);color:#4A4A4A;border-top:2px solid #1B1B1B;padding-top:14px}
 .share{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:28px;align-items:start;margin-bottom:36px;padding-bottom:36px;border-bottom:1px solid var(--line)}
 @media (max-width:860px){.share{grid-template-columns:minmax(0,1fr)}.share .sc-frame{max-width:420px}}
+.flash{border:1.5px solid var(--accent);background:var(--accent-soft);color:var(--accent);border-radius:12px;padding:12px 16px;margin:0 0 24px;font-weight:600}
 .regen{border:1.5px solid var(--accent);background:var(--accent-soft);border-radius:12px;padding:14px 18px;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
 .regen p{margin:0}
 .sc-fig{margin:0;display:flex;flex-direction:column;gap:10px}
@@ -1031,6 +1032,16 @@ window.initMap=initMap;
   const MAX_PAPERS = 3, PAPERS_KEY = 'fow4_newsfix_n', CONTACT_URL = 'https://www.linkedin.com/in/vincentdupuis/';
   const papersMade = () => { try { return Math.max(0, parseInt(localStorage.getItem(PAPERS_KEY), 10) || 0); } catch (e) { return 0; } };
   const paperMade = () => { try { localStorage.setItem(PAPERS_KEY, String(papersMade() + 1)); } catch (e) {} };
+  // Unlock link sent by Vincent (?unlock=<code>): checked by /api/unlock, then the counter goes back to zero
+  async function unlockFromLink() {
+    const u = new URL(location.href), code = u.searchParams.get('unlock'); if (!code) return;
+    u.searchParams.delete('unlock'); history.replaceState(null, '', u.pathname + u.search + u.hash);
+    let ok = false;
+    try { const r = await fetch('/api/unlock', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ code }) }); ok = !!(await r.json()).ok; } catch (e) {}
+    if (ok) { try { localStorage.removeItem(PAPERS_KEY); } catch (e) {} }
+    S.flash = ok ? T('Unlocked: you can generate {n} more 2030 visions.', { n: MAX_PAPERS }) : T('This unlock link is not valid. Ask Vincent Dupuis for a new one.');
+    save(); render();
+  }
   const papersLeft = () => Math.max(0, MAX_PAPERS - papersMade());
   // The front page keeps the key of what it was written from (language, answers, priorities, organization).
   // When the key changes, the page stays and the visitor is offered to print it again.
@@ -1774,6 +1785,7 @@ window.initMap=initMap;
     else if (route === '#/priorities') { v.innerHTML = priorities(); bindPriorities(); }
     else if (route === '#/newsfix') { v.innerHTML = newsfix(); bindNewsfix(); fitSheets(); if (document.fonts) document.fonts.ready.then(fitSheets); }
     else { v.innerHTML = home(); bindHome(); }
+    if (S.flash) { v.insertAdjacentHTML('afterbegin', `<p class="flash no-print" role="status">${esc(S.flash)}</p>`); S.flash = null; save(); }
     fitCards();
   }
   let last = location.hash;
@@ -1781,7 +1793,7 @@ window.initMap=initMap;
   headVar(); window.addEventListener('resize', headVar);
   window.addEventListener('hashchange', () => { if (last === '#/priorities') sendPriorities(); render(); if (location.hash !== last) window.scrollTo(0, 0); last = location.hash; });
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden' && location.hash === '#/priorities') sendPriorities(); });
-  render();
+  render(); unlockFromLink();
   if (document.fonts) document.fonts.ready.then(fitCards);
 });
 </script>
