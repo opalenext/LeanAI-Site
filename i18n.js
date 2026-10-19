@@ -27,7 +27,7 @@
     // Navigation and common
     'Introduction': 'Introduction', 'Interactive map': 'Carte interactive', 'Your Diagnostic': 'Votre diagnostic',
     'Your Priorities': 'Vos priorités', 'Your News Fix': 'Votre News Fix', 'Steps': 'Étapes', 'Language': 'Langue',
-    'See your diagnostic': 'Voir votre diagnostic', 'Start your diagnostic': 'Commencer votre diagnostic',
+    'Start your diagnostic': 'Commencer votre diagnostic',
     'Explore the interactive map': 'Explorer la carte interactive', 'Shift {n}': 'Shift {n}', 'Privacy': 'Confidentialité',
     'Print the executive report (PDF, 2 pages)': 'Imprimer la synthèse (PDF, 2 pages)', 'Productivity': 'Productivité', 'Culture': 'Culture',
     'Productivity challenges': 'Défis de productivité', 'Cultural challenges': 'Défis culturels',
