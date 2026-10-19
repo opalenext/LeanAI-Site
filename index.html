@@ -67,6 +67,9 @@ h3{font-size:19px}
 .btn.d{background:var(--accent-soft);color:var(--accent);border:1.5px solid var(--accent)}
 .btn.d:hover{background:#cfe4dd}
 .btn.d svg{flex:none}
+/* Light green: a strong action that gives way to the main one (home header: the map first, then the diagnostic) */
+.btn.l{background:var(--accent-soft);color:var(--accent);border:1.5px solid var(--accent)}
+.btn.l:hover{background:#cfe4dd}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 .btn:focus-visible,.opt:focus-within,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
@@ -74,7 +77,7 @@ h3{font-size:19px}
    action takes the full width at the end of the row: same order for the eye and the keyboard, under the thumb. */
 .acts .btn.p{margin-left:auto}
 .acts.tight .btn.p{margin-left:0}
-@media (max-width:560px){.acts .btn.p{flex:1 1 100%;justify-content:center;margin-left:0}}
+@media (max-width:560px){.acts .btn.p,.acts.tight .btn.l{flex:1 1 100%;justify-content:center;margin-left:0}}
 .why{margin:0;font-size:17px;max-width:62ch}
 .g-hint{display:none}
 @media (max-width:760px){.g-hint{display:block}}
@@ -1319,7 +1322,7 @@ window.initMap=initMap;
         <p class="series-line">${T('From the LinkedIn series {t}, by Vincent Dupuis', { t: `<a href="#model" data-scroll="model">${series}</a>` })}</p>
         <h1>${T('Measure the gap between your operating model and 2030')}</h1>
         <p class="lede">${T('You get an executive report-out for your ExCom, a roadmap for your priorities, and your 2030 vision as the front page of The News Fix, written for your organization.')}</p>
-        <div class="row acts tight"><a class="btn p" href="#/map">${T('Explore the interactive map')}</a><a class="btn p" href="#/diagnostic">${start}${ARROW}</a></div>
+        <div class="row acts tight"><a class="btn p" href="#/map">${T('Explore the interactive map')}</a><a class="btn l" href="#/diagnostic">${start}${ARROW}</a></div>
         <p class="facts">${T('Fourteen questions · About ten minutes · No account')}</p>
       </div>
       <figure class="sample"><div class="sc-frame" aria-hidden="true">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>${T('Example front page of The News Fix for a fictional company. Lead story: “{t}”', { t: esc(SAMPLE.lead.headline) })}</figcaption></figure></div></div>
