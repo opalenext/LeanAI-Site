@@ -79,6 +79,13 @@ h3{font-size:19px}
 .acts.tight .btn.p{margin-left:0}
 @media (max-width:560px){.acts .btn.p,.acts.tight .btn.l{flex:1 1 100%;justify-content:center;margin-left:0}}
 .why{margin:0;font-size:17px;max-width:62ch}
+/* The suggestion rule on the priorities page: a light green frame so it reads as advice, not as body text */
+.why.tip{max-width:none;background:var(--accent-soft);border:1.5px solid var(--accent);border-radius:12px;padding:12px 16px;color:var(--fg)}
+/* The note under the main action sits under that action, on the right; on a phone the button is full width, so the note starts on the left */
+.gen-note{margin:10px 0 0 auto;max-width:62ch;text-align:right}
+.gen-note.busy{color:var(--accent);font-weight:600}
+.gen-note .wc{font:700 20px var(--display);font-variant-numeric:tabular-nums}
+@media (max-width:560px){.gen-note{text-align:left;margin-left:0}}
 .g-hint{display:none}
 @media (max-width:760px){.g-hint{display:block}}
 .field .hint{font-size:14.5px;color:var(--muted);margin:6px 0 0}
@@ -177,8 +184,8 @@ h2[tabindex="-1"]:focus{outline:none}
 .contact .assure{margin:12px 0 0;font-size:14.5px;color:var(--fg);border-left:3px solid var(--accent);padding-left:10px}
 /* diagnostic */
 .q-wrap{display:flex;flex-direction:column;gap:22px}
-/* The question keeps a reading width; its action row spans the page, so the next step lines up with the other pages */
-.q-wrap > :not(.acts){max-width:760px;width:100%}
+/* The question and its action row share one reading width: Next lines up with the right edge of the answers */
+.q-wrap > *{max-width:760px;width:100%}
 .progress{height:6px;background:var(--soft);border-radius:3px;overflow:hidden}
 .progress i{display:block;height:100%;background:var(--accent);transition:width .3s}
 .qmeta{display:flex;justify-content:space-between;gap:10px;font:600 13px var(--display);color:var(--muted)}
@@ -201,6 +208,10 @@ h2[tabindex="-1"]:focus{outline:none}
 .kpi .kbar{display:block;height:8px;border-radius:4px;background:var(--soft);margin:10px 0 6px;overflow:hidden}
 .kpi .kbar i{display:block;height:100%;background:var(--accent);border-radius:4px}
 .kpi .kto{display:block;font-size:13.5px}
+/* Every card ends with its bar: the bars line up even when a label takes two lines */
+.kpi{display:flex;flex-direction:column}
+.kpi .kbar{margin-top:auto;flex:none}
+.kpi > span:not(.kbar):not(.kto){padding-bottom:10px}
 .bars{display:flex;flex-direction:column;gap:12px}
 .bar{display:grid;grid-template-columns:minmax(150px,220px) minmax(0,1fr) 52px;gap:12px;align-items:center}
 @media (max-width:560px){.bar{grid-template-columns:minmax(0,1fr) 48px}.bar .track{grid-column:1 / -1;grid-row:2}}
@@ -446,8 +457,8 @@ h2[tabindex="-1"]:focus{outline:none}
 .b-table td{border-bottom:1px solid #DADCD5;padding:8px;vertical-align:top}
 .b-num{font:700 15px var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
 .b-list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:#12161C}
-.b-ask{background:#12161C;color:#FFFFFF;border-radius:10px;padding:16px 18px}
-.b-ask h3{color:#FFFFFF;border-bottom-color:rgba(255,255,255,.25)}
+.b-ask{background:#E1EEEA;color:#12161C;border:1.5px solid #0F6E5D;border-radius:10px;padding:16px 18px}
+.b-ask h3{color:#0F6E5D;border-bottom-color:#0F6E5D}
 .b-ask ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
 .b-foot{margin-top:auto;border-top:1px solid #DADCD5;padding-top:8px;font-size:11.5px;color:#5A6270}
 /* maturity profile: spider + practice list */
@@ -504,8 +515,21 @@ h2[tabindex="-1"]:focus{outline:none}
   .sheet{position:static;transform:none!important;box-shadow:none;background:var(--paper);-webkit-print-color-adjust:exact;print-color-adjust:exact;page:newsfix;break-after:page}
   .sheet-wrap:last-child .sheet{break-after:auto}
   .section{break-inside:avoid}
-  .road{min-width:0}
+  .road-scroll{overflow:visible}
+  .g-hint{display:none!important}
+  #roadmap{-webkit-print-color-adjust:exact;print-color-adjust:exact;border-top:0;padding-top:0}
+  /* Roadmap, list view: year after year down the page, three cards per line, never cut in two */
+  .road{display:block;min-width:0}
+  .yr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:16px}
+  .yr h3{grid-column:1 / -1;font-size:18px;padding-bottom:4px;break-after:avoid}
+  .ini{break-inside:avoid;padding:8px 10px}
+  .ini b{font-size:13.5px}
+  .ini p{font-size:12.5px}
+  /* Roadmap, Gantt view: one A4 landscape page (width and zoom are set by roadPrint) */
+  #roadmap.road-g{zoom:var(--rz,1)}
+  #roadmap.road-g.land{page:roadland}
   .gantt{min-width:0}
+  @page roadland{size:A4 landscape;margin:10mm}
   @page{size:A4;margin:10mm}
   @page newsfix{size:A4;margin:0}
   .brief{gap:0}
@@ -523,6 +547,16 @@ h2[tabindex="-1"]:focus{outline:none}
   .b-ask{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .b-track i,.b-kpis{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+/* Gantt prepared for print (see roadPrint): compact rows at a fixed width, the same on screen and on paper */
+body.road-printing #roadmap.road-g{width:var(--rw);max-width:none}
+.road-printing .road-g .g-row{grid-template-columns:330px minmax(0,1fr);padding:4px 0}
+.road-printing .road-g .g-name b{font-size:13px}
+.road-printing .road-g .fors{margin-top:2px}
+.road-printing .road-g .g-track{min-height:24px}
+.road-printing .road-g .g-bar{height:22px;font-size:11.5px}
+.road-printing .road-g .g-grp{padding:10px 0 2px}
+.print-only{display:none}
+@media print{.print-only{display:block}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
 
 .mapapp .wrap{max-width:1320px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
@@ -1205,7 +1239,23 @@ window.initMap=initMap;
       box.addEventListener('mouseleave', () => on(null));
       box.addEventListener('click', e => { const g = e.target.closest('.g-bar[data-id]'); on(g && !g.classList.contains('sel') ? g.dataset.id : null); box.querySelectorAll('.g-bar.sel').forEach(q => q.classList.remove('sel')); if (g && box.classList.contains('focus')) g.classList.add('sel'); }); }
   }
-  window.addEventListener('resize', () => { if (document.querySelector('.gantt')) drawArrows(); });
+  window.addEventListener('resize', () => { if (document.querySelector('.gantt') && !document.body.classList.contains('road-printing')) drawArrows(); });
+  // Printing the Gantt on one A4 page: the roadmap is laid out compact at a fixed width, in portrait or in landscape,
+  // whichever needs the smaller reduction; the arrows are drawn again for that layout, then the whole roadmap
+  // (arrows included, so they keep their place) is zoomed to fit the page. Page content: 718 × 1047 px at 10 mm margins.
+  function roadPrint(on) {
+    const sec = document.querySelector('#roadmap.road-g'), box = sec && sec.querySelector('.gantt'); if (!box) return;
+    if (on) {
+      box.dataset.cur = ''; box.classList.remove('focus'); box.querySelectorAll('.g-bar.dim, .g-bar.sel').forEach(q => q.classList.remove('dim', 'sel'));
+      document.body.classList.add('road-printing');
+      const fit = (w, pw, ph) => { sec.style.setProperty('--rw', w + 'px'); return Math.min(1, pw / w, ph / sec.getBoundingClientRect().height); };
+      const land = fit(1040, 1040, 700), port = fit(880, 712, 1030), wide = land > port;
+      if (wide) fit(1040, 1040, 700);
+      sec.classList.toggle('land', wide); sec.style.setProperty('--rz', Math.max(0.5, wide ? land : port).toFixed(3)); drawArrows();
+    } else if (document.body.classList.contains('road-printing')) { document.body.classList.remove('road-printing'); sec.classList.remove('land'); sec.style.removeProperty('--rz'); sec.style.removeProperty('--rw'); drawArrows(); }
+  }
+  window.addEventListener('beforeprint', () => roadPrint(true));
+  window.addEventListener('afterprint', () => roadPrint(false));
 
   // ---------- NAV ----------
   const STEPS = [['#/', 'Introduction'], ['#/map', 'Interactive map'], ['#/diagnostic', 'Your Diagnostic'], ['#/priorities', 'Your Priorities'], ['#/newsfix', 'Your News Fix']].map(([h, t]) => [h, T(t)]);
@@ -1416,9 +1466,8 @@ window.initMap=initMap;
       : `<div class="ok-box">${T('No contradiction detected between your practices. The shifts you invest in push in the same direction.')}</div>`;
     return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Your operating model today, against the 2030 target')}</h1>
         <p class="lede">${T('Maturity is 0% when a practice is typical of today, and 100% when it matches the 2030 target state of the model.')}</p></div>
-        <div class="kpis"><div class="kpi main"><b>${pc(r.overall)}</b><span>${T('Of the way to the 2030 target state')}</span><span class="kbar" aria-hidden="true"><i style="width:${Math.max(2, r.overall)}%"></i></span><span class="kto">${T('{v}% still to go', { v: pct(r.distance) })}</span></div>
-          <div class="kpi"><b>${pc(r.P)}</b><span>${T('Productivity maturity')}</span></div><div class="kpi"><b>${pc(r.C)}</b><span>${T('Culture maturity')}</span></div>
-          <div class="kpi"><b>${pc(r.and)}</b><span>${T('AND score: the lower of the two')}</span></div></div>
+        <div class="kpis">${[[r.overall, 'Of the way to the 2030 target state', 'main'], [r.P, 'Productivity maturity'], [r.C, 'Culture maturity'], [r.and, 'AND score: the lower of the two']].map(([v, t, c]) =>
+          `<div class="kpi ${c || ''}"><b>${pc(v)}</b><span>${T(t)}</span><span class="kbar" aria-hidden="true"><i style="width:${Math.max(2, v)}%"></i></span><span class="kto">${T('{v}% still to go', { v: pct(100 - v) })}</span></div>`).join('')}</div>
         <p class="note">${T('The AND score keeps the lower of productivity and culture. A strong result on one side does not make up for a weak one on the other.')}</p></div>
       <div class="section"><div class="stack"><h2>${T('Your maturity profile')}</h2><p class="lede">${T('Your 14 practices, from Emerging to Excellence · 2030-ready. The dashed outer ring is the 2030 target.')}</p></div>
         <div class="profile"><div class="spider-wrap">${spider(false)}</div><div class="pr-list">${practiceList()}<p class="note">${esc(F.levelNote)}</p></div></div></div>
@@ -1553,28 +1602,28 @@ window.initMap=initMap;
     const preTxt = !nPre ? '' : FRL ? `${nPre > 1 ? `${nPre} d’entre elles sont des prérequis` : 'L’une d’elles est un prérequis'}. ` : `${nPre} of them ${nPre > 1 ? 'are prerequisites' : 'is a prerequisite'}. `;
     const order = FRL ? 'Elles sont ordonnées par dépendances : la vision avant la refonte, la refonte avant l’automatisation, une gouvernance de confiance avant de connecter les données.'
       : 'They are ordered by dependencies: vision before redesign, redesign before automation, trusted governance before connecting data.';
-    return `<div class="section" id="roadmap"><div class="stack"><h2>${T('Your roadmap, 2027 to 2030')}</h2>
+    return `<div class="section${S.roadView === 'gantt' ? ' road-g' : ''}" id="roadmap"><div class="stack"><p class="print-only b-k">${T('Future of Work 2030 · Roadmap')}${S.company ? ' · ' + esc(S.company) : ''}</p><h2>${T('Your roadmap, 2027 to 2030')}</h2>
         <p class="lede">${esc(systemSentence(rm, pr.length))} ${preTxt}${order}</p></div>
         <div class="row" style="justify-content:space-between"><div class="legend">${legend}</div>
           <div class="tabs no-print" role="group" aria-label="${T('Roadmap view')}"><button id="rv-gantt" aria-pressed="${S.roadView === 'gantt'}">${T('Gantt')}</button><button id="rv-list" aria-pressed="${S.roadView !== 'gantt'}">${T('List')}</button></div></div>
         ${rm.items.length && S.roadView === 'gantt' ? `<p class="note arrow-key"><span class="ak x"></span>${T('Dependency across shifts')} <span class="ak i"></span>${T('Dependency within a shift · Hover or tap a bar to isolate its links')}</p>` : ''}
         ${rm.items.length && S.roadView === 'gantt' ? `<p class="note g-hint">${T('Scroll sideways to see all the years.')}</p>` : ''}
         ${rm.items.length ? (S.roadView === 'gantt' ? gantt : list) : `<div class="ok-box">${T('Your answers already match the 2030 target on these challenges. Choose other priorities to build a roadmap.')}</div>`}</div>
-      ${hasPaper() && S.paperKey && !paperStale() ? `<div class="section no-print"><div class="row acts"><button class="btn d" id="print">${DOC}${T('Print the roadmap (PDF)')}</button><a class="btn p" href="#/newsfix">${T('See your 2030 vision →')}</a></div>
-        <p class="note">${T('Your front page is up to date with these answers and priorities. Change them to create a new one.')}${leftNote()}</p></div>`
-      : papersLeft() ? `<div class="section no-print"><div class="row acts"><button class="btn d" id="print">${DOC}${T('Print the roadmap (PDF)')}</button><button class="btn p" id="gen">${T('Generate your 2030 vision')}${ARROW}</button></div>
-        <p class="note" id="genmsg">${T('The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')}${leftNote()} <a href="privacy.html">${T('Privacy')}</a></p></div>`
-      : `<div class="section no-print"><div class="row acts"><button class="btn d" id="print">${DOC}${T('Print the roadmap (PDF)')}</button>${hasPaper() ? `<a class="btn p" href="#/newsfix">${T('See your 2030 vision →')}</a>` : ''}</div>
-        <p class="note" id="genmsg">${T('You have printed your {n} front pages.', { n: MAX_PAPERS })} <a href="${CONTACT_URL}" target="_blank" rel="noopener">${T('To print more, contact Vincent Dupuis on LinkedIn ↗')}</a></p></div>`}`;
+      ${hasPaper() && S.paperKey && !paperStale() ? `<div class="section no-print"><div class="row acts"><a class="btn g" href="#/diagnostic">${T('← Back to your report')}</a><button class="btn d" id="print">${DOC}${T('Print the roadmap (PDF)')}</button><a class="btn p" href="#/newsfix">${T('See your 2030 vision →')}</a></div>
+        <p class="note gen-note">${T('Your front page is up to date with these answers and priorities. Change them to create a new one.')}${leftNote()}</p></div>`
+      : papersLeft() ? `<div class="section no-print"><div class="row acts"><a class="btn g" href="#/diagnostic">${T('← Back to your report')}</a><button class="btn d" id="print">${DOC}${T('Print the roadmap (PDF)')}</button><button class="btn p" id="gen">${T('Generate your 2030 vision')}${ARROW}</button></div>
+        <p class="note gen-note" id="genmsg">${T('The News Fix newsroom writes your front page from your diagnostic and this roadmap. Your organization name, these answers and this roadmap are sent to an AI model and are not stored.')}${leftNote()} <a href="privacy.html">${T('Privacy')}</a></p></div>`
+      : `<div class="section no-print"><div class="row acts"><a class="btn g" href="#/diagnostic">${T('← Back to your report')}</a><button class="btn d" id="print">${DOC}${T('Print the roadmap (PDF)')}</button>${hasPaper() ? `<a class="btn p" href="#/newsfix">${T('See your 2030 vision →')}</a>` : ''}</div>
+        <p class="note gen-note" id="genmsg">${T('You have printed your {n} front pages.', { n: MAX_PAPERS })} <a href="${CONTACT_URL}" target="_blank" rel="noopener">${T('To print more, contact Vincent Dupuis on LinkedIn ↗')}</a></p></div>`}`;
   }
   function priorities() {
     if (!Array.isArray(S.priorities)) { S.priorities = defaultPriorities(); save(); }
     const r = scores(), n = S.priorities.length, sug = defaultPriorities();
     const pick = Object.keys(F.challenges).sort((x, y) => r.ch[x] - r.ch[y]).map(c => { const k = S.priorities.indexOf(c), on = k >= 0;
       return `<label class="pk ${on ? 'sel' : ''}"><input type="checkbox" value="${c}" id="pk_${c}" ${on ? 'checked' : ''}><span><span class="t">${esc(F.challenges[c].n)}</span><small>${T(F.challenges[c].g === 'P' ? 'Productivity' : 'Culture')} · ${T('maturity {v}%', { v: pct(r.ch[c]) })}${sug.includes(c) ? ' · ' + T('suggested') : ''}${k === 0 ? ' · ' + T('lead story') : ''}</small></span></label>`; }).join('');
-    return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 2 · Your Priorities')}</div><h1>${T('Never transform everything at once')}</h1>
+    return `<div class="section no-print"><div class="stack"><div class="eyebrow">${T('Step 2 · Your Priorities')}</div><h1>${T('Never transform everything at once')}</h1>
         <p class="lede">${T('Choose {a} to {b} priority challenges. Your roadmap updates below with each choice. The first one becomes the lead story of your front page.', { a: MINP, b: MAXP })}</p>
-        <p class="why">${esc(whySuggested(false))}</p></div>
+        <p class="why tip">${esc(whySuggested(false))}</p></div>
         <div class="pick">${pick}</div><p class="note" id="pickmsg">${T(n > 1 ? '{n} selected · choose {a} to {b}' : '{n} selected · choose {a} to {b} ', { n, a: MINP, b: MAXP })}</p>
         <div class="field no-print" style="max-width:520px"><label for="company">${T('Organization name, for your front page (optional)')}</label><input id="company" maxlength="60" value="${esc(S.company)}" placeholder="${T('Our company')}" aria-describedby="company_h"><p class="hint" id="company_h">${T('Saved in your browser only. Sent to the AI to write your front page, then not stored, and never added to the statistics.')}</p></div></div>
       ${roadmapBlock()}`;
@@ -1590,7 +1639,7 @@ window.initMap=initMap;
     const rl = document.getElementById('rv-list'), rg = document.getElementById('rv-gantt');
     if (rl) { rl.onclick = () => { S.roadView = 'list'; S.roadPicked = true; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
       rg.onclick = () => { S.roadView = 'gantt'; S.roadPicked = true; save(); const y = window.scrollY; render(); window.scrollTo(0, y); };
-      document.getElementById('print').onclick = () => window.print();
+      document.getElementById('print').onclick = () => { roadPrint(true); window.print(); };
       const gen = document.getElementById('gen'); if (gen) gen.onclick = generate;
       if (S.roadView === 'gantt') requestAnimationFrame(drawArrows); }
   }
@@ -1638,14 +1687,14 @@ window.initMap=initMap;
   async function generate() {
     if (!papersLeft()) { render(); return; }
     const btn = document.getElementById('gen'), msg = document.getElementById('genmsg');
-    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.textContent = T('The newsroom is writing your front page. It takes about a minute.');
+    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.classList.add('busy'); msg.textContent = T('The newsroom is writing your front page. It takes about a minute.');
     const body = payload();
     const ctl = new AbortController(); let idle;
     const wait = () => { clearTimeout(idle); idle = setTimeout(() => ctl.abort(), 60000); };
     try {
       wait();
       const res = await fetch('/api/newsfix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
-      S.paper = await readNewsroom(res, n => { wait(); msg.textContent = T('The newsroom is writing your front page: {n} words so far.', { n }); });
+      S.paper = await readNewsroom(res, n => { wait(); msg.innerHTML = T('The newsroom is writing your front page: {n} words so far.', { n: `<span class="wc">${n}</span>` }); });
       S.paperSource = 'ai'; S.paperError = null; paperMade();
     } catch (e) { S.paper = offline(body); S.paperSource = 'template'; S.paperError = ctl.signal.aborted ? 'timeout' : String(e && e.message || e).slice(0, 60); }
     clearTimeout(idle);
@@ -1701,7 +1750,7 @@ window.initMap=initMap;
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
     const banner = paperStale()
       ? `<div class="regen no-print"><p><b>${T('Your answers, priorities, organization name or language have changed since this front page.')}</b></p>
-          ${papersLeft() ? `<div class="row acts"><button class="btn p" id="gen">${T('Generate it again with my changes →')}</button></div><p class="note" id="genmsg">${leftNote().trim()}</p>`
+          ${papersLeft() ? `<div class="row acts"><button class="btn p" id="gen">${T('Generate it again with my changes →')}</button></div><p class="note gen-note" id="genmsg">${leftNote().trim()}</p>`
             : `<p class="note">${T('You have printed your {n} front pages.', { n: MAX_PAPERS })} ${T('To go further,')} ${contactLink()}</p>`}</div>`
       : papersLeft() === 1 && S.paperSource === 'ai' ? `<div class="regen no-print"><p>${leftNote().trim()}</p></div>` : '';
     return `${banner}<div class="share no-print"><div class="stack"><div class="eyebrow">${T('Step 3 · Your News Fix')}</div><h1>${T('Your 2030 vision is on the front page')}</h1><h2>${T('Share it on LinkedIn')}</h2>
