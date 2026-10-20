@@ -74,7 +74,30 @@ export default async (req, context) => {
     console.error('newsfix: Anthropic API', res.status, (await res.text().catch(() => '')).slice(0, 500));
     return json({ error: 'api', status: res.status }, 502);
   }
-  return new Response(res.body, { headers: { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-store' } });
+  return new Response(withHeartbeat(res.body), { headers: { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-store' } });
 };
+
+// The model thinks silently before its first word, sometimes for more than a minute. A comment line
+// (": keep-alive"), which SSE readers ignore, is sent every 15 s without data, between two events only,
+// so that the page and the network see that the connection is alive. The bytes are passed through untouched.
+const BEAT = new TextEncoder().encode(': keep-alive\n\n');
+function withHeartbeat(body) {
+  const { readable, writable } = new TransformStream();
+  const w = writable.getWriter();
+  let between = true, last = Date.now();
+  const beat = setInterval(() => { if (between && Date.now() - last >= 14000) { last = Date.now(); w.write(BEAT).catch(() => {}); } }, 15000);
+  (async () => {
+    const r = body.getReader();
+    try {
+      for (;;) {
+        const { value, done } = await r.read(); if (done) break;
+        last = Date.now(); between = value.length >= 2 && value[value.length - 1] === 10 && value[value.length - 2] === 10;
+        await w.write(value);
+      }
+    } catch (e) { console.error('newsfix: stream', e); }
+    finally { clearInterval(beat); w.close().catch(() => {}); }
+  })();
+  return readable;
+}
 
 export const config = { path: '/api/newsfix', method: 'POST' };
