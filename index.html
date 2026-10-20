@@ -362,25 +362,6 @@ h2[tabindex="-1"]:focus{outline:none}
 .s1-side .fun p{font:italic 15px/1.35 var(--news)}
 .fun .upside{transform:rotate(180deg);font-size:calc(var(--k,13) * .85px);color:var(--ink-soft);margin-top:6px}
 .fun[hidden]{display:none}
-.reserve{display:none}
-.s1-side.spread{justify-content:space-between}
-.s1-side .fun{margin-bottom:0}
-.fun.fq p{font:italic 600 calc(var(--k,13) * 1.15px)/1.3 var(--news)}
-.s1-side .fun.fq p{font:italic 600 16px/1.3 var(--news)}
-.fun.fq small{display:block;text-align:right;font:600 10.5px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
-.fun.fq small::before{content:"— "}
-.fun.thought p{font-style:italic}
-.fun ol{margin:0 0 .35em;padding-left:1.4em;font-size:calc(var(--k,13) * 1px);line-height:1.35;list-style:upper-alpha}
-.s1-side .fun ol{font-size:14px}
-.fun.ad{border:1px solid var(--ink);border-top-width:3px;padding:5px 8px 6px}
-.fun.ad b{font-family:var(--display);font-size:.82em;letter-spacing:.06em;text-transform:uppercase;display:block}
-.fun.cartoon svg{display:block;width:100%;height:auto;color:var(--ink);margin-top:2px}
-.cartoon .bubbles{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end;margin-top:4px}
-.sheet .fun .bub,.fun .bub{position:relative;margin:0 0 9px;border:1.5px solid var(--ink);border-radius:12px;padding:4px 7px;font:italic 12px/1.3 var(--newsbody);background:var(--paper)}
-.bub::after{content:"";position:absolute;bottom:-6px;width:9px;height:9px;background:var(--paper);border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:rotate(45deg)}
-.bub.l::after{left:22%}
-.bub.r::after{right:22%}
-.fun .cap{text-align:center;font:italic 12px/1.3 var(--newsbody)!important;color:var(--ink-soft);margin-top:3px}
 .s2-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:3px double var(--rule);padding-bottom:6px;font:600 11px var(--display);letter-spacing:.08em;text-transform:uppercase}
 .s2-mast{font:700 28px var(--black);letter-spacing:0;text-transform:none}
 .sheet .timeline{margin-top:10px}
@@ -1308,11 +1289,8 @@ window.initMap=initMap;
   function fitCards() { document.querySelectorAll('.sc-frame').forEach(f => { const c = f.querySelector('.share-card'); if (c) c.style.transform = `scale(${f.clientWidth / 1080})`; }); }
   window.addEventListener('resize', fitCards);
   // The News Fix is two A4 sheets (794 x 1123 px), the same on screen and on paper. Once the text is in,
-  // the type size (--k, in px) of each sheet is the largest one at which the articles fit; on page 2, with
-  // room kept for the first two short items when the type can stay at 10.5 px or more. Then the make-up step
-  // fills the blank spaces, like a real newspaper: each short item of the reserve (quote, cartoon, pun, games,
-  // small ads...), most important first, goes into the first place where it fits without pushing anything off
-  // the sheet: the side column of page 1, then page 2, from the end of the page backwards (bottoms of columns).
+  // the type size (--k, in px) of each sheet is the largest one that fits; light boxes (pun, riddle,
+  // horoscope) are removed, lowest priority first, when the text does not fit at the smallest size.
   const overflows = b => b.scrollWidth > b.clientWidth + 1 || b.scrollHeight > b.clientHeight + 1;
   function fitBox(box, min, max, area) {
     const set = k => box.style.setProperty('--k', k.toFixed(2));
@@ -1323,22 +1301,13 @@ window.initMap=initMap;
     set(lo); return true;
   }
   function fitSheets() {
-    const pool = document.querySelector('.reserve'); if (!pool) return;
-    const items = [...document.querySelectorAll('.reserve .filler, #paper .filler')];
-    items.forEach((f, i) => { if (!f.dataset.n) f.dataset.n = i; });
-    items.sort((a, b) => a.dataset.n - b.dataset.n).forEach(f => pool.appendChild(f));
-    // Tries each place in turn, from the end backwards; keeps the item in the first place where nothing overflows.
-    const place = (area, f, ends) => { for (const at of ends ? [null] : [null, ...[...area.children].reverse()]) { area.insertBefore(f, at); if (!overflows(area)) return true; } pool.appendChild(f); return false; };
-    const side = document.querySelector('#paper .s1-side'), lead = document.querySelector('#paper .s1 .fit'), s2 = document.querySelector('#paper .s2 .fit');
-    if (lead) fitBox(lead, 10.5, 15.5);
-    if (side) [...pool.children].forEach(f => place(side, f, true));
-    if (s2) { // keep room for up to two short items, if the type can stay readable
-      let m = Math.min(2, pool.children.length);
-      for (;; m--) { const keep = [...pool.children].slice(0, m); keep.forEach(f => s2.appendChild(f)); const ok = fitBox(s2, 10.5, 15.5); keep.forEach(f => pool.appendChild(f)); if (ok || !m) break; }
-      items.filter(f => f.parentNode === pool).sort((a, b) => a.dataset.n - b.dataset.n).forEach(f => pool.appendChild(f));
-      if (!m) fitBox(s2, 10.5, 15.5);
-      [...pool.children].forEach(f => place(s2, f, false)); }
-    if (side) side.classList.toggle('spread', side.children.length > 2);
+    document.querySelectorAll('.sheet').forEach(sh => {
+      const fill = [...sh.querySelectorAll('.filler')].sort((a, b) => a.dataset.prio - b.dataset.prio);
+      fill.forEach(f => { f.hidden = false; });
+      const box = sh.querySelector('.fit'), side = sh.querySelector('.s1-side');
+      if (side) { while (overflows(side) && fill.length) fill.shift().hidden = true; fitBox(box, 10.5, 15.5); return; }
+      while (!fitBox(box, 10.5, 15.5) && fill.length) fill.shift().hidden = true;
+    });
     scaleSheets();
   }
   function scaleSheets() { document.querySelectorAll('.sheet-wrap').forEach(w => { const sh = w.querySelector('.sheet'); if (sh) sh.style.transform = w.clientWidth < 794 ? `scale(${w.clientWidth / 794})` : ''; }); }
@@ -1718,15 +1687,14 @@ window.initMap=initMap;
   async function generate() {
     if (!papersLeft()) { render(); return; }
     const btn = document.getElementById('gen'), msg = document.getElementById('genmsg');
-    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Thinking…')}`; msg.classList.add('busy'); msg.textContent = T('The newsroom is reading your diagnostic. It takes about a minute.');
-    let printing = false;
+    btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.classList.add('busy'); msg.textContent = T('The newsroom is writing your front page. It takes about a minute.');
     const body = payload();
     const ctl = new AbortController(); let idle;
     const wait = () => { clearTimeout(idle); idle = setTimeout(() => ctl.abort(), 60000); };
     try {
       wait();
       const res = await fetch('/api/newsfix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
-      S.paper = await readNewsroom(res, n => { wait(); if (n && !printing) { printing = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; } msg.innerHTML = T('The newsroom is writing your front page: {n} words so far.', { n: `<span class="wc">${n}</span>` }); });
+      S.paper = await readNewsroom(res, n => { wait(); msg.innerHTML = T('The newsroom is writing your front page: {n} words so far.', { n: `<span class="wc">${n}</span>` }); });
       S.paperSource = 'ai'; S.paperError = null; paperMade();
     } catch (e) { S.paper = offline(body); S.paperSource = 'template'; S.paperError = ctl.signal.aborted ? 'timeout' : String(e && e.message || e).slice(0, 60); }
     clearTimeout(idle);
@@ -1775,48 +1743,6 @@ window.initMap=initMap;
       <div class="np-date"><span>${esc(paperDate())}</span><span>${T('Special edition · No. 2030')}</span><span>${esc(co)} · ${T('€3')}</span></div>`;
   }
   const storyFormat = { portrait: 'Portrait', explainer: 'Explainer', interview: 'Interview', column: 'Opinion' };
-  // Famous quotes: texts and authors checked by hand. The journalist only chooses an id.
-  // The same list (English only) is in netlify/lib/journalist.mjs: keep both in step.
-  const FAMOUS_QUOTES = {
-    drucker: ['There is nothing so useless as doing efficiently that which should not be done at all.', 'Rien n’est plus inutile que de faire efficacement ce qui ne devrait pas être fait du tout.', 'Peter Drucker'],
-    deming: ['A bad system will beat a good person every time.', 'Un mauvais système battra toujours une bonne personne.', 'W. Edwards Deming'],
-    kay: ['The best way to predict the future is to invent it.', 'La meilleure façon de prédire l’avenir, c’est de l’inventer.', 'Alan Kay'],
-    saintex: ['As for the future, your task is not to foresee it, but to enable it.', 'Pour ce qui est de l’avenir, il ne s’agit pas de le prévoir, mais de le rendre possible.', 'Antoine de Saint-Exupéry'],
-    seneca: ['It is not because things are difficult that we do not dare; it is because we do not dare that they are difficult.', 'Ce n’est pas parce que les choses sont difficiles que nous n’osons pas, c’est parce que nous n’osons pas qu’elles sont difficiles.', 'Seneca', 'Sénèque'],
-    bodin: ['There is no wealth and no strength but people.', 'Il n’y a ni richesse ni force que d’hommes.', 'Jean Bodin'],
-    laozi: ['A journey of a thousand miles begins with a single step.', 'Un voyage de mille lieues commence par un premier pas.', 'Laozi', 'Lao-tseu'],
-    clarke: ['Any sufficiently advanced technology is indistinguishable from magic.', 'Toute technologie suffisamment avancée est indiscernable de la magie.', 'Arthur C. Clarke'],
-    skinner: ['The real problem is not whether machines think but whether men do.', 'Le vrai problème n’est pas de savoir si les machines pensent, mais si les hommes pensent.', 'B. F. Skinner'],
-    keller: ['Alone we can do so little; together we can do so much.', 'Seuls, nous pouvons si peu ; ensemble, nous pouvons beaucoup.', 'Helen Keller'],
-    curie: ['Nothing in life is to be feared, it is only to be understood.', 'Dans la vie, rien n’est à craindre, tout est à comprendre.', 'Marie Curie'],
-    voltaire: ['Work keeps at bay three great evils: boredom, vice and need.', 'Le travail éloigne de nous trois grands maux : l’ennui, le vice et le besoin.', 'Voltaire'],
-    gibson: ['The future is already here. It is just not very evenly distributed.', 'Le futur est déjà là. Il n’est simplement pas très bien réparti.', 'William Gibson'],
-    dijkstra: ['Simplicity is prerequisite for reliability.', 'La simplicité est la condition de la fiabilité.', 'Edsger W. Dijkstra'],
-    montaigne: ['Better a well-made head than a well-filled one.', 'Plutôt la tête bien faite que bien pleine.', 'Montaigne'],
-  };
-  const CARTOON = '<svg viewBox="0 4 220 96" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'
-    + '<circle cx="52" cy="34" r="11"/><path d="M41 31Q52 17 63 31"/><path d="M48 39.5Q52 42.5 56 39.5"/><circle cx="48" cy="33" r=".9" fill="currentColor"/><circle cx="56" cy="33" r=".9" fill="currentColor"/>'
-    + '<path d="M33 78Q33 50 52 50Q71 50 71 78"/><path d="M64 60Q76 66 86 72"/>'
-    + '<path d="M8 78H212M20 78V98M200 78V98"/><path d="M92 77L96 58H120L116 77"/><path d="M86 78H122"/><path d="M128 68h10v10h-10z"/><path d="M138 71q5 2 0 5"/>'
-    + '<rect x="152" y="24" width="36" height="26" rx="7"/><path d="M170 24V16"/><circle cx="170" cy="13" r="2.6" fill="currentColor"/><circle cx="162" cy="37" r="3" fill="currentColor"/><circle cx="178" cy="37" r="3" fill="currentColor"/><path d="M163 44Q170 48 177 44"/>'
-    + '<path d="M170 50V54"/><rect x="156" y="54" width="28" height="24" rx="5"/><circle cx="170" cy="64" r="3"/><path d="M184 60Q194 52 196 43"/><path d="M156 62Q148 68 144 73"/></svg>';
-  // The reserve of short items written by the editor-in-chief, most important first. fitSheets() places them
-  // in the blank spaces left by the articles, so that the two sheets are full like a real newspaper.
-  function fillers(ex) {
-    const out = [], box = (cls, title, body) => out.push(`<div class="fun filler ${cls}"><h4>${title}</h4>${body}</div>`);
-    const fq = FAMOUS_QUOTES[ex.famous_quote] || FAMOUS_QUOTES.deming;
-    box('fq', T('Quote of the day'), `<p>${FRL ? `« ${fq[1]} »` : `"${fq[0]}"`}</p><small>${esc(FRL && fq[3] ? fq[3] : fq[2])}</small>`);
-    const c = ex.cartoon;
-    if (c && c.leader && c.agent) box('cartoon', T('Cartoon of the day'), `<div class="bubbles"><p class="bub l">${tx(c.leader)}</p><p class="bub r">${tx(c.agent)}</p></div>${CARTOON}${c.caption ? `<p class="cap">${tx(c.caption)}</p>` : ''}<span class="vh">${T('Drawing: a team leader at a desk talks with a small AI agent robot.')}</span>`);
-    if (ex.pun) box('pun', T('Pun of the day'), `<p>${tx(ex.pun)}</p>`);
-    if (ex.thought) box('thought', T('Thought of the day'), `<p>${tx(ex.thought)}</p>`);
-    if (ex.riddle && ex.riddle.question) box('riddle', T('The riddle'), `<p>${tx(ex.riddle.question)}</p><p class="upside">${T('Answer:')} ${tx(ex.riddle.answer)}</p>`);
-    const q = ex.quiz;
-    if (q && q.question && Array.isArray(q.options) && q.options.length) box('quiz', T('Quiz of the day'), `<p>${tx(q.question)}</p><ol>${q.options.map(o => `<li>${tx(o)}</li>`).join('')}</ol><p class="upside">${T('Answer:')} ${tx(q.answer)}</p>`);
-    if (Array.isArray(ex.horoscope) && ex.horoscope.length) box('horo', T('Work horoscope'), ex.horoscope.map(h => `<p><b>${tx(h.sign)}.</b> ${tx(h.text)}</p>`).join(''));
-    (Array.isArray(ex.ads) ? ex.ads : []).filter(a => a && a.title).forEach(a => box('ad', T('Small ads'), `<p><b>${tx(a.title)}</b> ${tx(a.text)}</p>`));
-    return out.join('');
-  }
   function newsfix() {
     const p = S.paper; if (!p || !p.lead || !(p.lead.qa || p.lead.sections)) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
     const co = S.company || T('Your organization'), ctx = S.paperContext || {}, ex = p.extras || {};
@@ -1842,16 +1768,16 @@ window.initMap=initMap;
         <div class="s1-body"><div class="s1-main"><div class="byline">${T(p.lead.sections ? 'By the News Fix newsroom' : 'Interview by the News Fix newsroom')}</div><div class="np-body lead-body fit">${leadBody(p.lead)}</div></div>
           <aside class="s1-side">${p.quote && p.quote.text ? `<div class="quote">${quoted(p.quote.text)}<small>${tx(p.quote.who || '')}</small></div>` : ''}
             ${nums ? `<div class="numbers"><h4>${T('From the 2026 diagnostic')}</h4><ul>${nums}</ul></div>` : ''}
-</aside></div>
+            ${ex.pun ? `<div class="fun filler" data-prio="1"><h4>${T('Pun of the day')}</h4><p>${tx(ex.pun)}</p></div>` : ''}</aside></div>
         <div class="sheet-foot"><span>${T('Written with the Future of Work · 4 Shifts model')}</span><span>1</span></div></section></div>
       <div class="sheet-wrap"><section class="sheet s2" aria-label="${T('Page {p}', { p: 2 })}">
         <div class="s2-top"><span class="s2-mast">The News Fix</span><span>${esc(paperDate())}</span><span>${esc(co)}</span></div>
         ${Array.isArray(p.timeline) && p.timeline.length ? `<div class="timeline"><h4>${T('The road to 2030')}</h4><ol>${p.timeline.map(t => `<li><b>${esc(t.year)}</b><span>${tx(t.text)}</span></li>`).join('')}</ol></div>` : ''}
-        <div class="np-stories fit">${p.stories.map(x => `<article class="story ${esc(x.format || '')}"><header class="st-h"><div class="kicker">${kicker(x)}${storyFormat[x.format] && T(storyFormat[x.format]).toLowerCase() !== String(x.kicker || '').trim().toLowerCase() ? ` · ${T(storyFormat[x.format])}` : ''}</div><h3>${tx(x.headline)}</h3></header><div class="np-body">${storyBody(x)}</div></article>`).join('')}
+        <div class="np-stories fit">${p.stories.map(x => `<article class="story ${esc(x.format || '')}"><header class="st-h"><div class="kicker">${kicker(x)}${storyFormat[x.format] ? ` · ${T(storyFormat[x.format])}` : ''}</div><h3>${tx(x.headline)}</h3></header><div class="np-body">${storyBody(x)}</div></article>`).join('')}
           ${p.editorial && p.editorial.headline ? `<aside class="editorial"><div class="kicker">${T('Editorial')}</div><h3>${tx(p.editorial.headline)}</h3><div class="np-body">${parasHtml(p.editorial.paragraphs || [])}</div><small>${T('The editor-in-chief')}</small></aside>` : ''}
-</div>
+          ${ex.riddle && ex.riddle.question ? `<div class="fun filler" data-prio="3"><h4>${T('The riddle')}</h4><p>${tx(ex.riddle.question)}</p><p class="upside">${T('Answer:')} ${tx(ex.riddle.answer)}</p></div>` : ''}
+          ${Array.isArray(ex.horoscope) && ex.horoscope.length ? `<div class="fun filler" data-prio="2"><h4>${T('Work horoscope')}</h4>${ex.horoscope.map(h => `<p><b>${tx(h.sign)}.</b> ${tx(h.text)}</p>`).join('')}</div>` : ''}</div>
         <div class="sheet-foot"><span>${T('More human. More digital. Not a trade-off. AND.')}</span><span>2</span></div></section></div></div>
-      <div class="reserve" hidden>${fillers(ex)}</div>
       <div class="section no-print" style="margin-top:24px"><div class="row acts"><a class="btn g" href="#/priorities">${T('← Back to your priorities and roadmap')}</a><button class="btn p" id="print">${DOC}${T('Print the front page (PDF, 2 pages)')}</button></div>
       ${S.paperSource === 'template' ? `<p class="note">${T('The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.')}${S.paperError ? ` <small>(${esc(S.paperError)})</small>` : ''}</p>` : ''}${contactBox()}</div>
       <div id="capture" aria-hidden="true">${shareCard(p, S.company, siteHost())}</div>`;
