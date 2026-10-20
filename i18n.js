@@ -181,8 +181,11 @@
     'Organization name, for your front page (optional)': 'Nom de l’organisation, pour votre Une (facultatif)', 'Our company': 'Notre entreprise',
     '{n} challenges at most. Unselect one first.': '{n} défis au maximum. Retirez-en un d’abord.',
     // 3. News Fix
+    'Thinking…': 'Réflexion…', 'The newsroom is reading your diagnostic. It takes about a minute.': 'La rédaction lit votre diagnostic. Cela prend environ une minute.',
+    'Quote of the day': 'La citation du jour', 'Cartoon of the day': 'Le dessin du jour', 'Thought of the day': 'La pensée du jour', 'Quiz of the day': 'Le quiz du jour', 'Small ads': 'Petites annonces',
+    'Drawing: a team leader at a desk talks with a small AI agent robot.': 'Dessin : à son bureau, une personne responsable d’équipe parle avec un petit robot, agent d’IA.',
     'Future of Work 2030 · Roadmap': 'Future of Work 2030 · Feuille de route',
-    'Printing…': 'Impression…', 'The newsroom is writing your front page. It takes about a minute.': 'La rédaction écrit votre Une. Cela prend environ une minute.', 'The newsroom is writing your front page: {n} words so far.': 'La rédaction écrit votre Une : {n} mots déjà écrits.',
+    'Printing…': 'Impression…', 'The newsroom is writing your front page: {n} words so far.': 'La rédaction écrit votre Une : {n} mots déjà écrits.',
     'What was it like before?': 'Comment était-ce avant ?', 'What is it like today?': 'Comment est-ce aujourd’hui ?', 'What did you do to get there?': 'Qu’avez-vous fait pour y arriver ?',
     'We kept what was already in place and scaled it.': 'Nous avons gardé ce qui était en place et nous l’avons étendu.',
     'We did not automate yesterday. We redesigned tomorrow.': 'Nous n’avons pas automatisé hier. Nous avons redessiné demain.',

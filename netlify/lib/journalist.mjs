@@ -2,6 +2,26 @@
 // Principles taken from two reference front pages written by Vincent Dupuis (spec in LeanAI-Studio,
 // docs/specs/newsfix-journaliste.md). The prompt is public: it holds no secret and no real case.
 
+// Famous quotes the newspaper may print. Texts and authors checked by hand; the model only chooses an id.
+// The same list, with the French texts, is in index.html (FAMOUS_QUOTES): keep both in step.
+export const FAMOUS_QUOTES = [
+  { id: 'drucker', en: 'There is nothing so useless as doing efficiently that which should not be done at all.', who: 'Peter Drucker' },
+  { id: 'deming', en: 'A bad system will beat a good person every time.', who: 'W. Edwards Deming' },
+  { id: 'kay', en: 'The best way to predict the future is to invent it.', who: 'Alan Kay' },
+  { id: 'saintex', en: 'As for the future, your task is not to foresee it, but to enable it.', who: 'Antoine de Saint-Exupéry' },
+  { id: 'seneca', en: 'It is not because things are difficult that we do not dare; it is because we do not dare that they are difficult.', who: 'Seneca' },
+  { id: 'bodin', en: 'There is no wealth and no strength but people.', who: 'Jean Bodin' },
+  { id: 'laozi', en: 'A journey of a thousand miles begins with a single step.', who: 'Laozi' },
+  { id: 'clarke', en: 'Any sufficiently advanced technology is indistinguishable from magic.', who: 'Arthur C. Clarke' },
+  { id: 'skinner', en: 'The real problem is not whether machines think but whether men do.', who: 'B. F. Skinner' },
+  { id: 'keller', en: 'Alone we can do so little; together we can do so much.', who: 'Helen Keller' },
+  { id: 'curie', en: 'Nothing in life is to be feared, it is only to be understood.', who: 'Marie Curie' },
+  { id: 'voltaire', en: 'Work keeps at bay three great evils: boredom, vice and need.', who: 'Voltaire' },
+  { id: 'gibson', en: 'The future is already here. It is just not very evenly distributed.', who: 'William Gibson' },
+  { id: 'dijkstra', en: 'Simplicity is prerequisite for reliability.', who: 'Edsger W. Dijkstra' },
+  { id: 'montaigne', en: 'Better a well-made head than a well-filled one.', who: 'Montaigne' },
+];
+
 export const SYSTEM_PROMPT = `You are the editor-in-chief of The News Fix, a business newspaper, and its senior feature writer. You write and edit the front page of a special edition dated in 2030.
 
 The front page tells how one organization changed its operating model between 2026 and 2030. The reader is a member of an executive committee who will share this page on LinkedIn. The page must look and read like a real newspaper front page: real business journalism with people, tension and a clear mechanism, varied article formats, and the usual furniture of a daily paper. It is never a consulting report and never a list of initiatives.
@@ -36,6 +56,7 @@ Each story has its own angle and its own principle in quotation marks. Do not re
 
 # Editor-in-chief pass
 Before you answer, read the whole page as the editor-in-chief and correct it:
+- Every item of the make-up desk is written, short and different from the rest of the page, so that the layout desk can fill every blank space.
 - The 2026 diagnostic levels appear at most twice on the whole page, in the lead. Other stories do not repeat "level 1" or the scores.
 - Do not start more than one article with "In 2026". Do not tell every story year by year. Vary the openings: a scene, a quote, a result, a question asked by an employee.
 - No sentence, quote or principle appears twice on the page.
@@ -45,11 +66,27 @@ Before you answer, read the whole page as the editor-in-chief and correct it:
 - teasers: three short items for the strip above the masthead, as in a real daily: one "Sport", one "Business", one "Culture" or "Science". Light, plausible news of the world in 2030, not about the organization. Each has a section name and a headline of 4 to 9 words. They may give a score or a result, but never name a real person, a real company, a brand or a political party, and never deal with politics, war, crime or disasters. Cities, countries, national teams and sports are allowed.
 - weather: one short line of weather for the day (for example "Sunny spells, 14°C").
 - editorial: a short editorial by the editor-in-chief (80 to 110 words, 2 paragraphs) with a headline. It gives the newspaper's view on what this organization shows for the future of work.
-- extras, the light corner that real newspapers keep to fill the page. Invent them, with wit and kindness, on the world of work in 2030:
+- extras: the light corner and the small items that real newspapers use so that no space stays empty. See "Make-up desk" below.
+
+# Make-up desk: no empty space on the page
+A real front page has no blank space: every gap at the bottom of a column holds a quote, a joke, a game or a small ad. You are responsible for this too.
+The page is set in fixed columns on two A4 sheets. After your articles are set, the layout desk measures every blank space left in each column, in English and in French (the lengths differ), and fills it with the short items you give in "extras", most important first, until no item fits any more. So:
+- Write every item in "extras", each one complete and ready to print. They are the reserve of the page: an item that is too long, missing or weak leaves a hole.
+- Keep each item short and at the stated length: short items fill small gaps.
+- Each item must stand alone, read well in a narrow column, and not repeat an article, a quote or another item.
+The items, invented with wit and kindness on the world of work in 2030:
   - pun: a pun or a wordplay of the day, one or two sentences, that works in the language of the page.
   - riddle: a short riddle with its answer. The answer is printed upside down.
   - horoscope: three signs of a "work horoscope", each one sentence (for example a sign and a prediction about meetings, agents or teams).
-  No real person, company or brand, nothing that mocks a group of people.
+  - thought: the thought of the day, one sentence of 8 to 18 words, not attributed to anyone.
+  - famous_quote: the id of the famous quote, from the list below, that fits this page best. Give only the id: the page prints the exact text and its author. Never write a famous quote yourself.
+  - cartoon: the speech bubbles of the cartoon of the day. The drawing is fixed: a team leader at a desk, talking with a small friendly AI agent robot. "leader" and "agent" are what each one says (3 to 12 words each), "caption" is a title under the drawing (2 to 8 words). The joke must work with the drawing.
+  - quiz: one light question on the world of work in 2030 with three short options and the answer, which is printed upside down. No figure presented as a fact.
+  - ads: two small classified ads of the 2030 world of work, each with a title of 2 to 5 words and a text of 10 to 25 words (for example "Wanted: one meeting with a clear purpose"). Fictional and funny, never a real company or product.
+  No real person, company or brand (except the authors of the famous quotes, which the page prints), nothing that mocks a group of people.
+
+Famous quotes (id: text, author). Choose the one that fits the lead story:
+${FAMOUS_QUOTES.map((q) => `- ${q.id}: "${q.en}", ${q.who}`).join('\n')}
 
 # Headlines
 - Affirmative and concrete. Never a question. 5 to 11 words.
@@ -116,11 +153,16 @@ export const SCHEMA = {
     },
     weather: text,
     extras: {
-      type: 'object', additionalProperties: false, required: ['pun', 'riddle', 'horoscope'],
+      type: 'object', additionalProperties: false, required: ['pun', 'riddle', 'horoscope', 'thought', 'famous_quote', 'cartoon', 'quiz', 'ads'],
       properties: {
         pun: text,
         riddle: { type: 'object', additionalProperties: false, required: ['question', 'answer'], properties: { question: text, answer: text } },
         horoscope: { type: 'array', items: { type: 'object', additionalProperties: false, required: ['sign', 'text'], properties: { sign: text, text } } },
+        thought: text,
+        famous_quote: { type: 'string', enum: FAMOUS_QUOTES.map((q) => q.id) },
+        cartoon: { type: 'object', additionalProperties: false, required: ['leader', 'agent', 'caption'], properties: { leader: text, agent: text, caption: text } },
+        quiz: { type: 'object', additionalProperties: false, required: ['question', 'options', 'answer'], properties: { question: text, options: { type: 'array', items: text }, answer: text } },
+        ads: { type: 'array', items: { type: 'object', additionalProperties: false, required: ['title', 'text'], properties: { title: text, text } } },
       },
     },
     editorial: { type: 'object', additionalProperties: false, required: ['headline', 'paragraphs'], properties: { headline: text, paragraphs } },
