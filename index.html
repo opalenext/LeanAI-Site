@@ -1661,7 +1661,7 @@ window.initMap=initMap;
   }
   // Reads the Anthropic event stream forwarded by /api/newsfix and rebuilds the article (JSON) from the text deltas.
   // onWords shows the progress. Rejects with a short reason, kept to explain the front page without AI.
-  async function readNewsroom(res, onWords) {
+  async function readNewsroom(res, onWords, onAlive) {
     if (!res.ok || !/event-stream/.test(res.headers.get('content-type') || '')) {
       const e = await res.json().catch(() => ({})); throw new Error(e.error ? e.error + (e.status ? ' ' + e.status : '') : 'http ' + res.status);
     }
@@ -1669,6 +1669,7 @@ window.initMap=initMap;
     let buf = '', text = '', stop = null;
     for (;;) {
       const { value, done } = await reader.read(); if (done) break;
+      if (onAlive) onAlive(); // any byte counts: the model thinks silently before its first word
       buf += dec.decode(value, { stream: true });
       const lines = buf.split('\n'); buf = lines.pop();
       for (const l of lines) {
@@ -1690,14 +1691,17 @@ window.initMap=initMap;
     btn.disabled = true; btn.innerHTML = `<span class="spinner"></span> ${T('Printing…')}`; msg.classList.add('busy'); msg.textContent = T('The newsroom is writing your front page. It takes about a minute.');
     const body = payload();
     const ctl = new AbortController(); let idle;
-    const wait = () => { clearTimeout(idle); idle = setTimeout(() => ctl.abort(), 60000); };
+    // Gives up after 2 minutes without any data, or 4 minutes in all. The model first thinks without writing
+    // a word: a limit counted on words only (60 s) cut the long front pages before they started.
+    const wait = () => { clearTimeout(idle); idle = setTimeout(() => ctl.abort(), 120000); };
+    const cap = setTimeout(() => ctl.abort(), 240000);
     try {
       wait();
       const res = await fetch('/api/newsfix', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(body), signal: ctl.signal });
-      S.paper = await readNewsroom(res, n => { wait(); msg.innerHTML = T('The newsroom is writing your front page: {n} words so far.', { n: `<span class="wc">${n}</span>` }); });
+      S.paper = await readNewsroom(res, n => { wait(); msg.innerHTML = T('The newsroom is writing your front page: {n} words so far.', { n: `<span class="wc">${n}</span>` }); }, wait);
       S.paperSource = 'ai'; S.paperError = null; paperMade();
     } catch (e) { S.paper = offline(body); S.paperSource = 'template'; S.paperError = ctl.signal.aborted ? 'timeout' : String(e && e.message || e).slice(0, 60); }
-    clearTimeout(idle);
+    clearTimeout(idle); clearTimeout(cap);
     S.paperContext = body.context; S.paperKey = paperKey(); save(); ping('frontpage'); sendPriorities();
     if (location.hash === '#/newsfix') { render(); window.scrollTo(0, 0); } else location.hash = '#/newsfix';
   }
