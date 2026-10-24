@@ -244,7 +244,7 @@
             line: 'L’IA prend l’administratif, le temps sur site est conçu pour le travail collectif, et les managers agissent en coachs.' },
       S3: { n: 'Transformation LeanAI', full: 'De la tech magique à la transformation LeanAI',
             line: 'La vision d’abord, cibler là où la valeur est prête, redessiner tout le flux avant de l’automatiser, et prévoir le rôle humain.' },
-      S4: { n: 'Workforce digital twin', full: 'De la gestion des ressources au workforce digital twin',
+      S4: { n: 'Workforce intelligence', full: 'De la gestion des ressources à la workforce intelligence',
             line: 'Une gouvernance de confiance, un graphe de connaissance des collaborateurs, des services proactifs, et un plan piloté en cours d’année.' }
     },
     levels: ['Émergent', 'En développement', 'Avancé', 'Excellence · prêt pour 2030'],
@@ -399,7 +399,7 @@
         augmented: 'L’humain est au centre de chaque refonte. L’IA augmente la part humaine du travail, elle ne la supprime pas.',
         leadership: 'Les managers accompagnent le changement en coachs, en commençant par la vision, pas par la technologie.',
         growth: 'La vision d’abord : des titres de 2030 partagés transforment la peur de l’IA en un avenir que l’on veut construire.' },
-      S4: { fluid: 'Staffing dynamique des projets : le jumeau voit compétences et disponibilités, et les équipes se forment vite autour d’un nouveau travail.',
+      S4: { fluid: 'Staffing dynamique des projets : le jumeau numérique voit compétences et disponibilités, et les équipes se forment vite autour d’un nouveau travail.',
         knowledge: 'Les données hors RH (bases de connaissances, modes de collaboration) montrent où se trouve le savoir-faire et où il est menacé.',
         benefits: 'Des services RH stratégiques à la valeur mesurable : plans de succession, staffing des projets, prévention santé et sécurité.',
         sovereignty: 'Les données sur les collaborateurs restent gouvernées et transparentes, sous le contrôle de l’entreprise.',
@@ -411,7 +411,7 @@
         global: 'Le jumeau relie données métier, compétences et collaborateurs. Les dirigeants voient tout le système et l’impact de chaque décision.' }
     },
     K: {
-      fluid: ['Équipes talentueuses ouvre tous les modèles d’équipe et les missions. Le digital twin les staffe avec les données.', 'Un staffing optimisé par les seules données pourrait remanier les équipes en permanence et casser les équipes stables sur lesquelles repose Équipes talentueuses.', 'Le jumeau staffe des équipes, pas seulement des individus. La stabilité des équipes est une contrainte de chaque simulation.'],
+      fluid: ['Équipes talentueuses ouvre tous les modèles d’équipe et les missions. La workforce intelligence les staffe avec les données.', 'Un staffing optimisé par les seules données pourrait remanier les équipes en permanence et casser les équipes stables sur lesquelles repose Équipes talentueuses.', 'Le jumeau staffe des équipes, pas seulement des individus. La stabilité des équipes est une contrainte de chaque simulation.'],
       agility: ['Trois piliers agissent ensemble : des systèmes RH pour tous les modèles d’équipe, une organisation fondée sur les compétences, et un plan corrigé en cours d’année.', 'Un plan corrigé chaque mois n’a aucun effet si les flux redessinés supposent encore des cases de postes fixes.', 'Un seul langage des compétences pour les missions, la refonte des processus et le jumeau.'],
       skills: ['Le jumeau détecte l’écart, LeanAI définit les compétences dont le travail futur a besoin, les missions les développent en situation de travail.', 'Si les simulations favorisent le recrutement ou les agents IA, elles contredisent la promesse de progresser par les missions.', 'Chaque simulation inclut l’option interne (missions, montée en compétences) et la compare aux autres.'],
       knowledge: ['Les quatre piliers agissent : transmission en situation de travail, jours sur site pour transmettre, captation du savoir par l’IA, et carte du savoir menacé. C’est l’effet cumulé le plus fort du système.', 'Si les agents IA de connaissance remplacent la transmission entre personnes, les moments de transmission sur site perdent leur raison d’être.', 'Les agents captent, les personnes transmettent. L’agent aide le mentor, il ne remplace pas le moment de mentorat.'],
@@ -426,7 +426,7 @@
       leadership: ['Les quatre piliers agissent. Les managers soudent les équipes, coachent, accompagnent le changement et utilisent des signaux d’équipe.', 'Les tableaux de bord du jumeau peuvent pousser les managers à contrôler les individus, l’inverse de la posture de coach.', 'Le jumeau donne des signaux d’équipe pour coacher. Toujours agrégés, jamais individuels.'],
       growth: ['Les débriefs, une vision partagée et des scénarios transforment la peur en apprentissage.', 'Si les collaborateurs voient les signaux du jumeau comme de la surveillance, la peur grandit.', 'Une gouvernance de confiance : transparente, agrégée, jamais individuelle, expliquée aux collaborateurs.'],
       augmented: ['LeanAI met l’humain au centre de la refonte. Le jumeau donne des agents IA aux managers et aux experts.', 'Quand les simulations proposent des agents IA comme option à côté du recrutement, on peut y lire un remplacement, l’inverse de l’augmentation.', 'Les agents IA sont présentés comme une capacité ajoutée aux équipes. Les humains gardent la décision.'],
-      global: ['Seul le digital twin traite ce défi.', 'Pas de conflit entre piliers, mais pas d’effet cumulé non plus. Si le jumeau prend du retard, rien d’autre ne couvre ce défi.', 'Chercher quel autre pilier pourrait contribuer, par exemple les missions entre sites et fonctions.']
+      global: ['Seule la workforce intelligence traite ce défi.', 'Pas de conflit entre piliers, mais pas d’effet cumulé non plus. Si le jumeau prend du retard, rien d’autre ne couvre ce défi.', 'Chercher quel autre pilier pourrait contribuer, par exemple les missions entre sites et fonctions.']
     }
   };
   window.I18N_MAP = function (P, C, L, K) {
