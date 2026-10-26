@@ -13,6 +13,7 @@ export const MODEL_TABS = ['shifts', 'levels', 'texts', 'challenges', 'questions
 export const OPTIONAL_TABS = ['media'];
 export const RESPONSES_TAB = 'responses';
 export const CONTACTS_TAB = 'contacts';
+export const EVENTS_TAB = 'events';
 
 // An error whose reason can be shown to the site owner: it never contains a secret.
 export class BackOfficeError extends Error {
