@@ -190,6 +190,7 @@
     'A member of the leadership team': 'Un membre de l’équipe de direction',
     'No front page yet.': 'Pas encore de Une.', 'Back to your priorities': 'Retour à vos priorités', 'Your organization': 'Votre organisation',
     'of the way to the 2030 target in the 2026 diagnostic': 'du chemin vers la cible 2030 au diagnostic de 2026',
+    'productivity maturity in 2026': 'maturité productivité en 2026', 'culture maturity in 2026': 'maturité culture en 2026',
     'initiatives on the 2027–2030 roadmap': 'initiatives sur la feuille de route 2027–2030',
     'Step 3 · Your News Fix': 'Étape 3 · Votre News Fix', 'Your 2030 vision is on the front page': 'Votre vision 2030 fait la Une', 'Share it on LinkedIn': 'Partagez-la sur LinkedIn',
     'The image shows your 2030 headlines only. Your diagnostic figures stay private.': 'L’image ne montre que vos titres de 2030. Les chiffres de votre diagnostic restent privés.',

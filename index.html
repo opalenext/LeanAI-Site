@@ -1766,7 +1766,7 @@ window.initMap=initMap;
   function newsfix() {
     const p = S.paper; if (!p || !p.lead || !(p.lead.qa || p.lead.sections)) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
     const co = S.company || T('Your organization'), ctx = S.paperContext || {}, ex = p.extras || {};
-    const nums = [[window.num(ctx.progress != null ? ctx.progress : 100 - ctx.distance), T('of the way to the 2030 target in the 2026 diagnostic')], [String(ctx.initiatives), T('initiatives on the 2027–2030 roadmap')]]
+    const nums = [[window.num(ctx.progress != null ? ctx.progress : 100 - ctx.distance), T('of the way to the 2030 target in the 2026 diagnostic')], [window.num(ctx.productivity), T('productivity maturity in 2026')], [window.num(ctx.culture), T('culture maturity in 2026')], [String(ctx.initiatives), T('initiatives on the 2027–2030 roadmap')]]
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
     const banner = paperStale()
       ? `<div class="regen no-print"><p><b>${T('Your answers, priorities, organization name or language have changed since this front page.')}</b></p>
