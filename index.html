@@ -742,13 +742,13 @@ window.FOW = {
       o: ['From a tool or a vendor offer.', 'From use cases collected bottom-up, without a shared vision.', "Top-down: leaders target specific processes to fix today's problems.", 'From a 2030 vision, written as headlines and shared with leaders and employees, then working backwards to the processes impacted.'] },
     { id: 'q32', s: 'S3', t: 'Value-based focus', topic: 'Choosing where to start', q: 'Focus: how do you choose where to start?', ch: ['benefits'],
       o: ['Each team starts its own pilots.', 'Use cases are ranked by expected gains.', 'Use cases are ranked on data maturity and adoption simplicity, not only on gains.', 'Opportunities are positioned on the LeanAI matrix (data maturity, adoption simplicity, impact), and value is proven before scaling.'] },
-    { id: 'q33', s: 'S3', t: 'Flow redesign before AI', topic: 'Process redesign before AI', q: 'Reinvent: before automating with AI, do you redesign the process?', ch: ['simplif', 'purpose', 'workplace', 'network'],
-      o: ['Existing processes are usually automated as they are.', 'Some simplification comes first.', 'Value stream mapping on key processes, addressing simplification, automation and AI at once.', 'Every AI project first redesigns the whole flow, defining what AI does and what people do, and freed time goes to human time.'] },
+    { id: 'q33', s: 'S3', t: 'Flow redesign before AI', topic: 'Process redesign before AI', q: 'Reinvent: before automating with AI, do you redesign the process?', ch: ['simplif', 'purpose', 'workplace', 'network', 'recog', 'sovereignty'],
+      o: ['Existing processes are usually automated as they are.', 'Some simplification comes first.', 'Value stream mapping on key processes, addressing simplification, automation and AI at once.', 'Every AI project first redesigns the whole flow, defining what AI does and what people do, and freed time goes to human time. Core know-how stays on sovereign AI.'] },
     { id: 'q34', s: 'S3', t: 'Skills & roles for AI', topic: 'Roles and skills with AI', q: 'People: how do roles and skills evolve with AI?', ch: ['augmented', 'skills', 'agility', 'knowledge'],
       o: ['People adapt on their own as AI is deployed.', 'Dedicated training on AI tools is organized.', 'Roles are redesigned on some processes alongside AI deployment, with an upskilling plan.', 'The AI impact on every job is assessed (how deep, how fast), with a company-wide upskilling and reskilling plan. AI captures expert knowledge in the flow of work and makes it available to new generations.'] },
     { id: 'q41', s: 'S4', t: 'Trusted data governance', topic: 'Workforce data governance', q: 'Trust: how is workforce data governed, and do employees trust it?', ch: ['growth', 'sovereignty'],
       o: ['No specific governance beyond access rights to the HR system.', 'Rules exist and are documented, mainly for HR and IT.', 'Governance defines which data stays individual and which is aggregated, and the rules are shared with employee representatives.', 'Trusted and transparent governance: critical data stays under company control, and employees can check, in self-service or by asking an AI agent, which of their data is used and for what purpose.'] },
-    { id: 'q42', s: 'S4', t: 'Workforce knowledge graph', topic: 'Connected workforce data', q: 'Knowledge graph: how connected is your workforce data?', ch: ['knowledge', 'skills', 'fluid', 'augmented', 'network'],
+    { id: 'q42', s: 'S4', t: 'Workforce knowledge graph', topic: 'Connected workforce data', q: 'Knowledge graph: how connected is your workforce data?', ch: ['knowledge', 'skills', 'fluid', 'augmented', 'network', 'sovereignty'],
       o: ['Data sits in separate systems (HR, learning, projects), with no link between them.', 'Some systems are linked by employee ID, and reports combine them by hand.', 'A skills graph links people, skills and roles, and supports HR-specific use cases such as mobility or development.', 'A knowledge graph covers people, teams and the organization beyond HR: projects, knowledge bases and communities. It stays up to date automatically.'] },
     { id: 'q43', s: 'S4', t: 'Proactive data services', topic: 'Data services for performance and culture', q: 'Services: how do data and the knowledge graph support performance and culture?', ch: ['benefits', 'leadership', 'fluid', 'skills', 'collective'],
       o: ['Reports and dashboards, mainly used by HR.', 'Self-service: HR and business teams analyze workforce data, combined with their own data, to support their decisions.', 'Data is built into key decisions on performance and culture, such as staffing, succession or team engagement, with defined rules.', 'Proactive services: signals are detected early and turned into proposals, at team level for managers (engagement, workload, collaboration) and for the business (risks, dynamic staffing, emerging skills). People decide.'] },
@@ -845,8 +845,8 @@ const L = {
     skills:'Lifelong learning through missions: people build new skills by doing new work, at the pace of the business.',
     knowledge:'Missions mix generations in the same team, so experts transfer know-how on the job.',
     workplace:'Team rituals such as planning and debriefs give on-site days a collective reason.',
-    collective:'High-performing teamwork, with rituals of elite sport teams (hot and cold debriefs), counters the individualism trend.',
-    recog:'Recognize the how, not only the what: team results and collaboration count in reviews and rewards, next to individual performance.',
+    collective:'Team objectives and shared gains make the team, not the individual, the unit of performance.',
+    recog:'Team results count in reviews and rewards, and teams receive a share of the gains they generate.',
     network:'Missions across sites and functions create real ties that hold in hybrid work.',
     purpose:'A mission with a clear team goal shows each person why their work matters.',
     leadership:'Leaders build and bond teams, not only manage individuals one by one.'
@@ -868,8 +868,8 @@ const L = {
     workplace:'The redesigned flow shows which steps need people together, so on-site time is planned for them.',
     simplif:'Reinvent before automating: value stream mapping removes steps and hand-offs, then AI accelerates what remains.',
     benefits:'Tangible ROI: Focus starts where data is mature and change is simple, and value is proven before scaling.',
-    sovereignty:'Sovereign AI where needed: processes with critical data or know-how stay on AI the company controls.',
-    agility:'A skills-based organization: redesigned flows describe work by skills, not by job boxes, so people can move where needed.',
+    sovereignty:'The transformation decides what is core for the company. Core processes and know-how run on sovereign AI.',
+    agility:'Each job is assessed for AI impact, and people are upskilled or reskilled, so the organization adapts as AI changes the work.',
     skills:'The 2030 headlines show which skills the redesigned work needs. The gap becomes a learning plan.',
     recog:'The future process defines where human value lies, and recognizes it at individual and team level.',
     purpose:'AI augments human work. Admin time becomes human time, which gives work more purpose.',
@@ -880,12 +880,14 @@ const L = {
   },
   S4:{
     fluid:'Dynamic project staffing: the twin sees skills and availability, so teams form fast around new work.',
-    knowledge:'Data beyond HR (knowledge bases, collaboration patterns) shows where know-how sits and where it is at risk.',
-    benefits:'Strategic HR services with measurable business value: succession planning, project staffing, health and safety prevention.',
-    sovereignty:'Workforce data stays governed and transparent, under company control.',
-    agility:'Fly the plan: signals raise alerts, and corrective actions are simulated during the year, not once a year.',
+    knowledge:'Data beyond HR (projects, knowledge bases, communities) shows where know-how sits and where it is at risk.',
+    benefits:'Strategic HR services with measurable business value: job redesign with AI, workforce scenarios, team and organization risk prevention, organization design.',
+    sovereignty:'The knowledge graph is a competitive advantage. Workforce data stays governed and under company control, and knowledge capture and reuse run on sovereign AI.',
+    agility:'The plan is steered during the year: signals raise alerts, and corrective actions are simulated before deciding.',
     skills:'Emerging and declining skills are detected early. Upskilling, hiring, redeployment and AI agents are simulated before deciding.',
-    augmented:'Manager co-pilot and business expert AI agents support decisions. People decide.',
+    augmented:'The twin shows how AI changes each task, so people learn and grow instead of fearing AI. People decide.',
+    network:'Communities and contributions are part of the knowledge graph, so the twin sees the real network, not only the org chart.',
+    collective:'Team-level signals on engagement, workload and collaboration help managers act for the team, never on individuals.',
     leadership:'Managers receive team-level signals to coach their teams, not to control individuals.',
     growth:'Several scenarios instead of one forecast: uncertainty becomes something to explore, not to fear.',
     global:'The twin connects business, skills and people data. Leaders see the whole system and the impact of each decision.'
@@ -900,10 +902,10 @@ const K = {
   workplace:{s:'ok', sum:'Team rituals, on-site days redesigned for collective work, and flows that show which steps need people together.', risk:'A redesign optimized for individual remote productivity would empty the on-site days.', guard:'Redesigned flows explicitly mark the steps that need people together.'},
   simplif:{s:'warn', sum:'Moments that matter removes admin from reviews. LeanAI redesigns the whole flow.', risk:'Automating today’s review form without the redesign only accelerates a task without meaning.', guard:'Reinvent before you automate. No AI on a process that has not been redesigned.'},
   benefits:{s:'warn', sum:'Time saved, ROI proven before scaling, and strategic HR services.', risk:'If benefits are measured only as hours saved, the pressure is to cut human time, the opposite of what Moments that matter wants.', guard:'Count human time reinvested as a benefit, not only cost saved.'},
-  sovereignty:{s:'ok', sum:'LeanAI keeps critical processes on controlled AI. The twin keeps workforce data governed.', risk:'Data beyond HR can push toward more external platforms, against the sovereign AI choice.', guard:'One classification of critical data, shared by LeanAI and the twin.'},
-  collective:{s:'ok', sum:'Teamwork rituals and debriefs push in the same direction.', risk:'People reviews that look only at individual goals would keep individualism first.', guard:'Reviews assess both individual performance and the contribution to the team.'},
+  sovereignty:{s:'ok', sum:'LeanAI keeps core processes and know-how on sovereign AI. The twin keeps the knowledge graph under company control.', risk:'Data beyond HR can push toward more external platforms, against the sovereign AI choice.', guard:'One classification of critical data, shared by LeanAI and the twin.'},
+  collective:{s:'ok', sum:'Team objectives, shared gains, debriefs and team-level signals push in the same direction.', risk:'People reviews that look only at individual goals would keep individualism first.', guard:'Reviews assess both individual performance and the contribution to the team.'},
   recog:{s:'warn', sum:'Team recognition, reviews that become conversations, and human value defined in the redesigned flow.', risk:'If LeanAI recognizes human value only person by person, it works against the team recognition of Talented teams.', guard:'In every pillar, recognition combines individual and collective performance. No pillar recognizes only the individual.'},
-  network:{s:'warn', sum:'Missions across sites and real-life team moments build belonging.', risk:'LeanAI removes hand-offs. When these exchanges were also human contact, it weakens what Moments that matter builds.', guard:'The time freed by the redesign goes to collective moments. Simplify the transaction, elevate the moment.'},
+  network:{s:'warn', sum:'Missions across sites, real-life team moments and a knowledge graph that sees communities build belonging.', risk:'LeanAI removes hand-offs. When these exchanges were also human contact, it weakens what Moments that matter builds.', guard:'The time freed by the redesign goes to collective moments. Simplify the transaction, elevate the moment.'},
   purpose:{s:'ok', sum:'Clear team goals, a reason to come on site, and more human time in the work.', risk:'Automation could remove meaningful tasks, not only admin.', guard:'The Vision step names the human tasks that must stay human.'},
   leadership:{s:'warn', sum:'All four pillars act. Leaders bond teams, coach, guide the change and use team-level signals.', risk:'Twin dashboards can tempt managers to control individuals, the opposite of the coach posture.', guard:'The twin gives team-level signals to coach. Always aggregated, never individual.'},
   growth:{s:'warn', sum:'Debriefs, a shared vision and scenarios turn fear into learning.', risk:'If employees see the twin’s signals as surveillance, fear grows instead.', guard:'Trusted governance: transparent, aggregated, never individual, explained to employees.'},
@@ -993,7 +995,6 @@ function render(sel, fromPanel){
     h=`<div class="kind" style="color:${col(s)}">${T('Shift {n} · Episode {e}',{n:SIDS.indexOf(s)+1,e:P[s].ep})}</div><h2>${esc(P[s].full)}</h2>
       <p class="muted">${T('Addresses {p} productivity and {c} cultural challenges. {w} of them have a coherence watch-out.',{p:cs.filter(c=>C[c].g==='P').length,c:cs.filter(c=>C[c].g==='C').length,w})}</p>
       <ul class="contribs">${cs.map(c=>`<li style="--c:${col(s)}"><button data-s="${s}" data-c="${c}">${esc(C[c].n)}${K[c].s==='warn'?' <i class="dot"></i>':''}</button><br>${esc(L[s][c])}</li>`).join('')}</ul>`; }
-  h+=`<p class="note">${T('Draft for review. Contributions and checks are written from the episode content and should be validated pillar by pillar.')}</p>`;
   pn.innerHTML=h;
   pn.querySelectorAll('button[data-s]').forEach(b=>b.addEventListener('click',()=>select({type:'link',s:b.dataset.s,c:b.dataset.c},true)));
   // Keep the panel where the reader left it: same top position, or its top at the top of the screen
@@ -1426,7 +1427,7 @@ window.initMap=initMap;
   // ---------- INTERACTIVE MAP (optional) ----------
   function mapView() {
     const lede = 'Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge to see its explanation.';
-    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', `<div class="eyebrow">${T('Optional · Interactive map')}</div>`)
+    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', `<div class="eyebrow">${T('Interactive map')}</div>`)
       .replace('<h1>Four pillars, sixteen challenges</h1>', `<h1>${T('Four pillars, sixteen challenges')}</h1>`)
       .replace(/<p class="lede">[^<]*<\/p>/, `<p class="lede">${T(lede)}</p>`)
       .replace('aria-label="Map of the four pillars and the challenges they address"', `aria-label="${T('Map of the four pillars and the challenges they address')}"`)
