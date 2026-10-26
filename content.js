@@ -133,7 +133,7 @@
     var seen = {};
     for (var k = 0; k < v.length; k++) {
       var e = v[k];
-      if (e.shift !== '' && SIDS.indexOf(e.shift) < 0) return e.id + ': shift must be empty or one of ' + SIDS.join(', ');
+      if (e.shift !== '' && e.shift !== 'Bonus' && SIDS.indexOf(e.shift) < 0) return e.id + ': shift must be empty, Bonus or one of ' + SIDS.join(', ');
       if (e.shift && seen[e.shift]) return e.id + ': two episodes for ' + e.shift;
       seen[e.shift] = 1;
       if (!str(e.title)) return e.id + ': no title';

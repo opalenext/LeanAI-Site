@@ -147,7 +147,8 @@ h3{font-size:19px}
 .journey .card p.get{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);color:var(--fg)}
 .get b{display:block;font:600 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
 .optional{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;background:var(--soft);border-radius:14px;padding:14px 18px}
-.optional p{margin:0;max-width:70ch}
+.optional p{margin:0;max-width:70ch;display:flex;gap:10px;align-items:flex-start}
+.optional .bulb{flex:none;margin-top:2px;color:var(--accent)}
 .optional .btn{padding:10px 16px;font-size:14.5px}
 .author{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:20px;display:flex;align-items:flex-start;gap:20px}
 .author-photo{width:112px;height:112px;border-radius:50%;object-fit:cover;flex:0 0 auto}
@@ -679,12 +680,14 @@ window.FOW = {
   // Episodes of the LinkedIn series, shown on the home page. Titles stay in English in every language.
   // video_url: MP4 file on this site (media/epN.mp4). Empty = poster only, no play button.
   // linkedin_url empty = no "Comment on LinkedIn" link. duration (m:ss) empty = no badge.
+  // shift: '' = introduction, S1 to S4 = the episode of that shift, 'Bonus' = bonus episode (not counted in the series).
   episodes: [
     { id: 'ep1', shift: '', title: 'Why the Future of Work Needs a New Operating System', summary: "Many companies are deploying AI to solve yesterday's problems. I believe we should start from tomorrow instead.", linkedin_url: 'https://www.linkedin.com/feed/update/urn:li:activity:7515286497734836225/', video_url: 'media/ep1.mp4', poster_url: 'media/ep1-poster.jpg', captions_url: 'media/ep1.en.vtt', duration: '2:04' },
     { id: 'ep2', shift: 'S1', title: 'From Talented Individuals to Talented Teams', summary: 'Our HR processes are built around individual talent. Yet work is done by teams.', linkedin_url: 'https://www.linkedin.com/posts/vincentdupuis_futureofwork-ai-leadership-activity-7516011174790975489-GsHB', video_url: 'media/ep2.mp4', poster_url: 'media/ep2-poster.jpg', captions_url: 'media/ep2.en.vtt', duration: '2:34' },
     { id: 'ep3', shift: 'S2', title: 'From Transactions to Moments that Matter', summary: 'Simplify the transaction. Elevate the moment. Let AI handle the admin, so people get back to what makes the difference.', linkedin_url: 'https://www.linkedin.com/posts/vincentdupuis_futureofwork-ai-leadership-activity-7516736059813122048-X4fN', video_url: 'media/ep3.mp4', poster_url: 'media/ep3-poster.jpg', captions_url: 'media/ep3.en.vtt', duration: '2:29' },
     { id: 'ep4', shift: 'S3', title: 'From Tech Magic to LeanAI Transformation', summary: 'The gap is not the technology. It is the method.', linkedin_url: '', video_url: 'media/ep4.mp4', poster_url: 'media/ep4-poster.jpg', captions_url: 'media/ep4.en.vtt', duration: '2:38' },
-    { id: 'ep5', shift: 'S4', title: 'From Resource Management to Workforce Digital Twin', summary: "What our HR systems currently see of an employee's life is just the tip of the iceberg.", linkedin_url: '', video_url: 'media/ep5.mp4', poster_url: 'media/ep5-poster.jpg', captions_url: 'media/ep5.en.vtt', duration: '2:49' }
+    { id: 'ep5', shift: 'S4', title: 'From Resource Management to Workforce Digital Twin', summary: "What our HR systems currently see of an employee's life is just the tip of the iceberg.", linkedin_url: '', video_url: 'media/ep5.mp4', poster_url: 'media/ep5-poster.jpg', captions_url: 'media/ep5.en.vtt', duration: '2:49' },
+    { id: 'ep6', shift: 'Bonus', title: 'Workforce intelligence in practice', summary: 'One job, step by step: tasks, AI impact, job redesign, new skills. Then, at company scale, a workforce digital twin simulates the workforce each business scenario requires.', linkedin_url: '', video_url: 'media/ep6.mp4', poster_url: 'media/ep6-poster.png', captions_url: 'media/ep6.en.vtt', duration: '2:37' }
   ],
   levels: ['Emerging', 'Developing', 'Advanced', 'Excellence · 2030-ready'],
   levelNote: 'Excellence · 2030-ready: the practice is embedded, continuously improved and shared across the organization.',
@@ -739,13 +742,13 @@ window.FOW = {
       o: ['From a tool or a vendor offer.', 'From use cases collected bottom-up, without a shared vision.', "Top-down: leaders target specific processes to fix today's problems.", 'From a 2030 vision, written as headlines and shared with leaders and employees, then working backwards to the processes impacted.'] },
     { id: 'q32', s: 'S3', t: 'Value-based focus', topic: 'Choosing where to start', q: 'Focus: how do you choose where to start?', ch: ['benefits'],
       o: ['Each team starts its own pilots.', 'Use cases are ranked by expected gains.', 'Use cases are ranked on data maturity and adoption simplicity, not only on gains.', 'Opportunities are positioned on the LeanAI matrix (data maturity, adoption simplicity, impact), and value is proven before scaling.'] },
-    { id: 'q33', s: 'S3', t: 'Flow redesign before AI', topic: 'Process redesign before AI', q: 'Reinvent: before automating with AI, do you redesign the process?', ch: ['simplif', 'purpose', 'workplace', 'network'],
-      o: ['Existing processes are usually automated as they are.', 'Some simplification comes first.', 'Value stream mapping on key processes, addressing simplification, automation and AI at once.', 'Every AI project first redesigns the whole flow, defining what AI does and what people do, and freed time goes to human time.'] },
+    { id: 'q33', s: 'S3', t: 'Flow redesign before AI', topic: 'Process redesign before AI', q: 'Reinvent: before automating with AI, do you redesign the process?', ch: ['simplif', 'purpose', 'workplace', 'network', 'recog', 'sovereignty'],
+      o: ['Existing processes are usually automated as they are.', 'Some simplification comes first.', 'Value stream mapping on key processes, addressing simplification, automation and AI at once.', 'Every AI project first redesigns the whole flow, defining what AI does and what people do, and freed time goes to human time. Core know-how stays on sovereign AI.'] },
     { id: 'q34', s: 'S3', t: 'Skills & roles for AI', topic: 'Roles and skills with AI', q: 'People: how do roles and skills evolve with AI?', ch: ['augmented', 'skills', 'agility', 'knowledge'],
       o: ['People adapt on their own as AI is deployed.', 'Dedicated training on AI tools is organized.', 'Roles are redesigned on some processes alongside AI deployment, with an upskilling plan.', 'The AI impact on every job is assessed (how deep, how fast), with a company-wide upskilling and reskilling plan. AI captures expert knowledge in the flow of work and makes it available to new generations.'] },
     { id: 'q41', s: 'S4', t: 'Trusted data governance', topic: 'Workforce data governance', q: 'Trust: how is workforce data governed, and do employees trust it?', ch: ['growth', 'sovereignty'],
       o: ['No specific governance beyond access rights to the HR system.', 'Rules exist and are documented, mainly for HR and IT.', 'Governance defines which data stays individual and which is aggregated, and the rules are shared with employee representatives.', 'Trusted and transparent governance: critical data stays under company control, and employees can check, in self-service or by asking an AI agent, which of their data is used and for what purpose.'] },
-    { id: 'q42', s: 'S4', t: 'Workforce knowledge graph', topic: 'Connected workforce data', q: 'Knowledge graph: how connected is your workforce data?', ch: ['knowledge', 'skills', 'fluid', 'augmented', 'network'],
+    { id: 'q42', s: 'S4', t: 'Workforce knowledge graph', topic: 'Connected workforce data', q: 'Knowledge graph: how connected is your workforce data?', ch: ['knowledge', 'skills', 'fluid', 'augmented', 'network', 'sovereignty'],
       o: ['Data sits in separate systems (HR, learning, projects), with no link between them.', 'Some systems are linked by employee ID, and reports combine them by hand.', 'A skills graph links people, skills and roles, and supports HR-specific use cases such as mobility or development.', 'A knowledge graph covers people, teams and the organization beyond HR: projects, knowledge bases and communities. It stays up to date automatically.'] },
     { id: 'q43', s: 'S4', t: 'Proactive data services', topic: 'Data services for performance and culture', q: 'Services: how do data and the knowledge graph support performance and culture?', ch: ['benefits', 'leadership', 'fluid', 'skills', 'collective'],
       o: ['Reports and dashboards, mainly used by HR.', 'Self-service: HR and business teams analyze workforce data, combined with their own data, to support their decisions.', 'Data is built into key decisions on performance and culture, such as staffing, succession or team engagement, with defined rules.', 'Proactive services: signals are detected early and turned into proposals, at team level for managers (engagement, workload, collaboration) and for the business (risks, dynamic staffing, emerging skills). People decide.'] },
@@ -842,8 +845,8 @@ const L = {
     skills:'Lifelong learning through missions: people build new skills by doing new work, at the pace of the business.',
     knowledge:'Missions mix generations in the same team, so experts transfer know-how on the job.',
     workplace:'Team rituals such as planning and debriefs give on-site days a collective reason.',
-    collective:'High-performing teamwork, with rituals of elite sport teams (hot and cold debriefs), counters the individualism trend.',
-    recog:'Recognize the how, not only the what: team results and collaboration count in reviews and rewards, next to individual performance.',
+    collective:'Team objectives and shared gains make the team, not the individual, the unit of performance.',
+    recog:'Team results count in reviews and rewards, and teams receive a share of the gains they generate.',
     network:'Missions across sites and functions create real ties that hold in hybrid work.',
     purpose:'A mission with a clear team goal shows each person why their work matters.',
     leadership:'Leaders build and bond teams, not only manage individuals one by one.'
@@ -865,8 +868,8 @@ const L = {
     workplace:'The redesigned flow shows which steps need people together, so on-site time is planned for them.',
     simplif:'Reinvent before automating: value stream mapping removes steps and hand-offs, then AI accelerates what remains.',
     benefits:'Tangible ROI: Focus starts where data is mature and change is simple, and value is proven before scaling.',
-    sovereignty:'Sovereign AI where needed: processes with critical data or know-how stay on AI the company controls.',
-    agility:'A skills-based organization: redesigned flows describe work by skills, not by job boxes, so people can move where needed.',
+    sovereignty:'The transformation decides what is core for the company. Core processes and know-how run on sovereign AI.',
+    agility:'Each job is assessed for AI impact, and people are upskilled or reskilled, so the organization adapts as AI changes the work.',
     skills:'The 2030 headlines show which skills the redesigned work needs. The gap becomes a learning plan.',
     recog:'The future process defines where human value lies, and recognizes it at individual and team level.',
     purpose:'AI augments human work. Admin time becomes human time, which gives work more purpose.',
@@ -877,12 +880,14 @@ const L = {
   },
   S4:{
     fluid:'Dynamic project staffing: the twin sees skills and availability, so teams form fast around new work.',
-    knowledge:'Data beyond HR (knowledge bases, collaboration patterns) shows where know-how sits and where it is at risk.',
-    benefits:'Strategic HR services with measurable business value: succession planning, project staffing, health and safety prevention.',
-    sovereignty:'Workforce data stays governed and transparent, under company control.',
-    agility:'Fly the plan: signals raise alerts, and corrective actions are simulated during the year, not once a year.',
+    knowledge:'Data beyond HR (projects, knowledge bases, communities) shows where know-how sits and where it is at risk.',
+    benefits:'Strategic HR services with measurable business value: job redesign with AI, workforce scenarios, team and organization risk prevention, organization design.',
+    sovereignty:'The knowledge graph is a competitive advantage. Workforce data stays governed and under company control, and knowledge capture and reuse run on sovereign AI.',
+    agility:'The plan is steered during the year: signals raise alerts, and corrective actions are simulated before deciding.',
     skills:'Emerging and declining skills are detected early. Upskilling, hiring, redeployment and AI agents are simulated before deciding.',
-    augmented:'Manager co-pilot and business expert AI agents support decisions. People decide.',
+    augmented:'The twin shows how AI changes each task, so people learn and grow instead of fearing AI. People decide.',
+    network:'Communities and contributions are part of the knowledge graph, so the twin sees the real network, not only the org chart.',
+    collective:'Team-level signals on engagement, workload and collaboration help managers act for the team, never on individuals.',
     leadership:'Managers receive team-level signals to coach their teams, not to control individuals.',
     growth:'Several scenarios instead of one forecast: uncertainty becomes something to explore, not to fear.',
     global:'The twin connects business, skills and people data. Leaders see the whole system and the impact of each decision.'
@@ -897,10 +902,10 @@ const K = {
   workplace:{s:'ok', sum:'Team rituals, on-site days redesigned for collective work, and flows that show which steps need people together.', risk:'A redesign optimized for individual remote productivity would empty the on-site days.', guard:'Redesigned flows explicitly mark the steps that need people together.'},
   simplif:{s:'warn', sum:'Moments that matter removes admin from reviews. LeanAI redesigns the whole flow.', risk:'Automating today’s review form without the redesign only accelerates a task without meaning.', guard:'Reinvent before you automate. No AI on a process that has not been redesigned.'},
   benefits:{s:'warn', sum:'Time saved, ROI proven before scaling, and strategic HR services.', risk:'If benefits are measured only as hours saved, the pressure is to cut human time, the opposite of what Moments that matter wants.', guard:'Count human time reinvested as a benefit, not only cost saved.'},
-  sovereignty:{s:'ok', sum:'LeanAI keeps critical processes on controlled AI. The twin keeps workforce data governed.', risk:'Data beyond HR can push toward more external platforms, against the sovereign AI choice.', guard:'One classification of critical data, shared by LeanAI and the twin.'},
-  collective:{s:'ok', sum:'Teamwork rituals and debriefs push in the same direction.', risk:'People reviews that look only at individual goals would keep individualism first.', guard:'Reviews assess both individual performance and the contribution to the team.'},
+  sovereignty:{s:'ok', sum:'LeanAI keeps core processes and know-how on sovereign AI. The twin keeps the knowledge graph under company control.', risk:'Data beyond HR can push toward more external platforms, against the sovereign AI choice.', guard:'One classification of critical data, shared by LeanAI and the twin.'},
+  collective:{s:'ok', sum:'Team objectives, shared gains, debriefs and team-level signals push in the same direction.', risk:'People reviews that look only at individual goals would keep individualism first.', guard:'Reviews assess both individual performance and the contribution to the team.'},
   recog:{s:'warn', sum:'Team recognition, reviews that become conversations, and human value defined in the redesigned flow.', risk:'If LeanAI recognizes human value only person by person, it works against the team recognition of Talented teams.', guard:'In every pillar, recognition combines individual and collective performance. No pillar recognizes only the individual.'},
-  network:{s:'warn', sum:'Missions across sites and real-life team moments build belonging.', risk:'LeanAI removes hand-offs. When these exchanges were also human contact, it weakens what Moments that matter builds.', guard:'The time freed by the redesign goes to collective moments. Simplify the transaction, elevate the moment.'},
+  network:{s:'warn', sum:'Missions across sites, real-life team moments and a knowledge graph that sees communities build belonging.', risk:'LeanAI removes hand-offs. When these exchanges were also human contact, it weakens what Moments that matter builds.', guard:'The time freed by the redesign goes to collective moments. Simplify the transaction, elevate the moment.'},
   purpose:{s:'ok', sum:'Clear team goals, a reason to come on site, and more human time in the work.', risk:'Automation could remove meaningful tasks, not only admin.', guard:'The Vision step names the human tasks that must stay human.'},
   leadership:{s:'warn', sum:'All four pillars act. Leaders bond teams, coach, guide the change and use team-level signals.', risk:'Twin dashboards can tempt managers to control individuals, the opposite of the coach posture.', guard:'The twin gives team-level signals to coach. Always aggregated, never individual.'},
   growth:{s:'warn', sum:'Debriefs, a shared vision and scenarios turn fear into learning.', risk:'If employees see the twin’s signals as surveillance, fear grows instead.', guard:'Trusted governance: transparent, aggregated, never individual, explained to employees.'},
@@ -990,7 +995,6 @@ function render(sel, fromPanel){
     h=`<div class="kind" style="color:${col(s)}">${T('Shift {n} · Episode {e}',{n:SIDS.indexOf(s)+1,e:P[s].ep})}</div><h2>${esc(P[s].full)}</h2>
       <p class="muted">${T('Addresses {p} productivity and {c} cultural challenges. {w} of them have a coherence watch-out.',{p:cs.filter(c=>C[c].g==='P').length,c:cs.filter(c=>C[c].g==='C').length,w})}</p>
       <ul class="contribs">${cs.map(c=>`<li style="--c:${col(s)}"><button data-s="${s}" data-c="${c}">${esc(C[c].n)}${K[c].s==='warn'?' <i class="dot"></i>':''}</button><br>${esc(L[s][c])}</li>`).join('')}</ul>`; }
-  h+=`<p class="note">${T('Draft for review. Contributions and checks are written from the episode content and should be validated pillar by pillar.')}</p>`;
   pn.innerHTML=h;
   pn.querySelectorAll('button[data-s]').forEach(b=>b.addEventListener('click',()=>select({type:'link',s:b.dataset.s,c:b.dataset.c},true)));
   // Keep the panel where the reader left it: same top position, or its top at the top of the screen
@@ -1317,6 +1321,7 @@ window.initMap=initMap;
   window.addEventListener('resize', scaleSheets);
   const siteHost = () => (location.protocol.startsWith('http') && !/claude|localhost|127\.0\.0\.1/.test(location.host)) ? location.host : 'your-site.netlify.app';
   const ARROW = ' <span aria-hidden="true">→</span>';
+  const BULB = '<svg class="bulb" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2V18h6v-1.3c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg>';
   const DOC = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 11v6"/><path d="M9.5 14.5 12 17l2.5-2.5"/></svg>';
   const nextBtn = (href, label) => `<div class="section no-print"><div class="row acts"><a class="btn p" href="${href}">${label}${ARROW}</a></div></div>`;
 
@@ -1324,6 +1329,8 @@ window.initMap=initMap;
   // Episode players: poster and play button first, the <video> is created on click (nothing is loaded before).
   const EPS = () => F.episodes || [];
   const epNum = e => Number(String(e.id).replace(/\D/g, '')) || EPS().indexOf(e) + 1;
+  const isBonus = e => e.shift === 'Bonus';
+  const SERIES_N = () => EPS().filter(e => !isBonus(e)).length;
   const PLAY_ICON = '<span class="pbtn" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>';
   function epFrame(e) {
     if (!e.poster_url && !e.video_url) return '';
@@ -1331,16 +1338,17 @@ window.initMap=initMap;
     const poster = e.poster_url ? `<img class="poster" src="${esc(e.poster_url)}" alt="" width="1280" height="720" loading="lazy" decoding="async">` : '';
     const dur = e.duration ? `<span class="dur"><span class="vh">${T('Duration:')} </span>${esc(e.duration)}</span>` : '';
     if (!e.video_url) return `<div class="vframe">${poster}${dur}</div>`;
-    return `<div class="vframe" data-ep="${esc(e.id)}"><button type="button" class="play" aria-label="${esc(T('Play episode {e}: {t}', { e: n, t: e.title }))}">${poster}${PLAY_ICON}${dur}</button></div>`;
+    const label = isBonus(e) ? T('Play the bonus episode: {t}', { t: e.title }) : T('Play episode {e}: {t}', { e: n, t: e.title });
+    return `<div class="vframe" data-ep="${esc(e.id)}"><button type="button" class="play" aria-label="${esc(label)}">${poster}${PLAY_ICON}${dur}</button></div>`;
   }
-  const epLink = e => e.linkedin_url ? `<p class="vlinks"><a href="${esc(e.linkedin_url)}" target="_blank" rel="noopener" aria-label="${esc(T('Comment on episode {e} on LinkedIn (opens in a new tab)', { e: epNum(e) }))}">${T('Comment on LinkedIn')}</a></p>` : '';
+  const epLink = e => e.linkedin_url ? `<p class="vlinks"><a href="${esc(e.linkedin_url)}" target="_blank" rel="noopener" aria-label="${esc(isBonus(e) ? T('Comment on the bonus episode on LinkedIn (opens in a new tab)') : T('Comment on episode {e} on LinkedIn (opens in a new tab)', { e: epNum(e) }))}">${T('Comment on LinkedIn')}</a></p>` : '';
   function playEpisode(frame) {
     const e = EPS().find(x => x.id === frame.dataset.ep); if (!e || !e.video_url) return;
     document.querySelectorAll('.vframe video').forEach(o => o.pause()); // one episode plays at a time
     const v = document.createElement('video');
     v.controls = true; v.playsInline = true; v.preload = 'none'; v.setAttribute('playsinline', '');
     if (e.poster_url) v.poster = e.poster_url;
-    v.setAttribute('aria-label', T('Episode {e}: {t}', { e: epNum(e), t: e.title }));
+    v.setAttribute('aria-label', isBonus(e) ? T('Bonus episode: {t}', { t: e.title }) : T('Episode {e}: {t}', { e: epNum(e), t: e.title }));
     const src = document.createElement('source'); src.src = e.video_url; src.type = 'video/mp4';
     src.addEventListener('error', () => { if (v.readyState > 0 || frame.querySelector('.vmsg')) return; const m = document.createElement('p'); m.className = 'vmsg'; m.setAttribute('role', 'status'); m.textContent = T('This video is not available.'); frame.appendChild(m); });
     v.appendChild(src);
@@ -1360,7 +1368,7 @@ window.initMap=initMap;
     const series = 'Why the Future of Work Needs a New Operating System';
     const intro = EPS().find(e => !e.shift);
     const introHtml = intro ? `<article class="vid ep-intro" style="--c:var(--accent)" aria-labelledby="ep-${esc(intro.id)}-t">${epFrame(intro)}
-        <div class="vmeta"><div class="k">${T('Episode {e}/{t} · Introduction', { e: epNum(intro), t: EPS().length })}</div>
+        <div class="vmeta"><div class="k">${T('Episode {e}/{t} · Introduction', { e: epNum(intro), t: SERIES_N() })}</div>
           <h3 id="ep-${esc(intro.id)}-t">${esc(intro.title)}</h3>
           ${intro.summary ? `<p class="ep-quote">${esc(T(intro.summary))}</p>` : ''}
           <p class="forces-l">${T('Four forces reshape work at the same time:')}</p>
@@ -1368,9 +1376,14 @@ window.initMap=initMap;
           <p class="closing">${T('Fragmented answers will not be enough. Work needs a new operating system.')}</p>${epLink(intro)}</div></article>` : '';
     const shiftCards = SIDS.map((s, i) => {
       const e = EPS().find(x => x.shift === s);
-      const k = e ? T('Shift {n} · Episode {e}/{t}', { n: i + 1, e: epNum(e), t: EPS().length }) : T('Shift {n}', { n: i + 1 });
+      const k = e ? T('Shift {n} · Episode {e}/{t}', { n: i + 1, e: epNum(e), t: SERIES_N() }) : T('Shift {n}', { n: i + 1 });
       return `<article class="card pillar vid" style="--c:${col(s)}" aria-labelledby="sh-${s}-t">${e ? epFrame(e) : ''}<div class="k">${k}</div><h3 id="sh-${s}-t">${esc(F.shifts[s].full)}</h3><p${e && e.summary ? ' class="ep-quote"' : ''}>${esc(e && e.summary ? T(e.summary) : F.shifts[s].line)}</p>${e ? epLink(e) : ''}</article>`;
     }).join('');
+    const bonus = EPS().find(isBonus);
+    const bonusHtml = bonus ? `<article class="vid ep-intro ep-bonus" style="--c:${col('S4')}" aria-labelledby="ep-${esc(bonus.id)}-t">${epFrame(bonus)}
+        <div class="vmeta"><div class="k">${T('Bonus episode · Shift {n}', { n: 4 })}</div>
+          <h3 id="ep-${esc(bonus.id)}-t">${esc(bonus.title)}</h3>
+          ${bonus.summary ? `<p class="ep-quote">${esc(T(bonus.summary))}</p>` : ''}${epLink(bonus)}</div></article>` : '';
     return `<div class="section home"><div class="hero"><div class="stack">
         <p class="series-line">${T('From the LinkedIn series {t}, by Vincent Dupuis', { t: `<a href="#model" data-scroll="model">${series}</a>` })}</p>
         <h1>${T('Measure the gap between your operating model and 2030')}</h1>
@@ -1380,9 +1393,10 @@ window.initMap=initMap;
       </div>
       <figure class="sample"><div class="sc-frame" aria-hidden="true">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>${T('Example front page of The News Fix for a fictional company. Lead story: “{t}”', { t: esc(SAMPLE.lead.headline) })}</figcaption></figure></div></div>
       <section class="section" id="model" aria-labelledby="h-model"><div class="stack"><div class="eyebrow">${T('The model · The LinkedIn series')}</div><h2 id="h-model">${T('Four shifts, one operating system')}</h2>
-        <p class="lede">${T('Five episodes of the series “{t}”. Episode 1 explains why. Episodes 2 to 5 present one shift each.', { t: series })}</p></div>
+        <p class="lede">${T('Five episodes of the series “{t}”. Episode 1 explains why. Episodes 2 to 5 present one shift each.', { t: series })}${bonus ? ' ' + T('A bonus episode shows workforce intelligence in practice.') : ''}</p></div>
         ${introHtml}
         <div class="shift-grid">${shiftCards}</div>
+        ${bonusHtml}
         <p class="lede">${T('Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.')}</p>
         <div class="and">${T('More human. More digital.')} <b>${T('Not a trade-off. AND.')}</b></div></section>
       <section class="section" aria-labelledby="h-journey"><div class="stack"><div class="eyebrow">${T('Your journey')}</div><h2 id="h-journey">${T('Three steps, three deliverables')}</h2>
@@ -1398,7 +1412,7 @@ window.initMap=initMap;
             <p>${T('Each priority becomes a 2030 interview: before, today, and what you did to get there.')}</p>
             <p class="get"><b>${T('You get')}</b>${T('Your 2030 front page, as an image to share on LinkedIn.')}</p></li>
         </ol>
-        <div class="optional"><p><b>${T('Optional, before you start.')}</b> ${T('The interactive map shows how each shift acts on the sixteen challenges, and where shifts could cancel each other out.')}</p><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div></section>
+        <div class="optional"><p>${BULB}<span>${T('Before you start, explore the interactive map, which shows how each shift acts on the sixteen challenges and where shifts could cancel each other out.')}</span></p><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div></section>
       <section class="section" aria-labelledby="h-author"><div class="author"><img class="author-photo" src="media/vincent.jpg" width="112" height="112" loading="lazy" alt="${T('Vincent Dupuis on stage, speaking about AI')}">
         <div class="author-txt"><div class="eyebrow">${T('The author')}</div><h3 id="h-author">Vincent Dupuis</h3>
         <p class="bio">${T('Engineer and innovator, with more than 25 years of experience and over 30 patents. Vincent makes breakthrough technology deliver real value: first in products, now in data and AI. He incubated a world-first product in startup mode and brought it to launch with a premium car maker. He then led Lean product development at very large scale. Since 2021, he applies the same discipline to data and AI: vision first, then reinvent the process before automating it, with value stream redesign and AI agents.')}</p>
@@ -1413,7 +1427,7 @@ window.initMap=initMap;
   // ---------- INTERACTIVE MAP (optional) ----------
   function mapView() {
     const lede = 'Each pillar contributes to the challenges it addresses. When several pillars act on the same challenge, their effects add up, but only if they all push in the same direction. Click a link, a pillar or a challenge to see its explanation.';
-    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', `<div class="eyebrow">${T('Optional · Interactive map')}</div>`)
+    const html = window.MAP_HTML.replace('<div class="eyebrow">Future of Work · 4 shifts</div>', `<div class="eyebrow">${T('Interactive map')}</div>`)
       .replace('<h1>Four pillars, sixteen challenges</h1>', `<h1>${T('Four pillars, sixteen challenges')}</h1>`)
       .replace(/<p class="lede">[^<]*<\/p>/, `<p class="lede">${T(lede)}</p>`)
       .replace('aria-label="Map of the four pillars and the challenges they address"', `aria-label="${T('Map of the four pillars and the challenges they address')}"`)
