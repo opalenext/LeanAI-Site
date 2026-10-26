@@ -59,7 +59,11 @@
     'Fragmented answers will not be enough. Work needs a new operating system.': 'Des réponses fragmentées ne suffiront pas. Le travail a besoin d’un nouveau système d’exploitation.',
     'Play episode {e}: {t}': 'Lire l’épisode {e} : {t}', 'Episode {e}: {t}': 'Épisode {e} : {t}', 'Duration:': 'Durée :',
     'This video is not available.': 'Cette vidéo n’est pas disponible.',
-    'Comment on LinkedIn': 'Commenter sur LinkedIn', 'Comment on episode {e} on LinkedIn (opens in a new tab)': 'Commenter l’épisode {e} sur LinkedIn (nouvel onglet)',
+    'Comment on LinkedIn': 'Commenter sur LinkedIn', 'Comment on the bonus episode on LinkedIn (opens in a new tab)': 'Commenter l’épisode bonus sur LinkedIn (nouvel onglet)',
+    'Play the bonus episode: {t}': 'Lire l’épisode bonus : {t}', 'Bonus episode: {t}': 'Épisode bonus : {t}', 'Bonus episode · Shift {n}': 'Épisode bonus · Shift {n}',
+    'A bonus episode shows workforce intelligence in practice.': 'Un épisode bonus montre la workforce intelligence en pratique.',
+    'One job, step by step: tasks, AI impact, job redesign, new skills. Then, at company scale, a workforce digital twin simulates the workforce each business scenario requires.':
+      'Un métier, pas à pas : tâches, impact de l’IA, refonte du poste, nouvelles compétences. Puis, à l’échelle de l’entreprise, un workforce digital twin simule les effectifs dont chaque scénario business a besoin.', 'Comment on episode {e} on LinkedIn (opens in a new tab)': 'Commenter l’épisode {e} sur LinkedIn (nouvel onglet)',
     'Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.':
       'Chaque shift répond à plusieurs défis de productivité et de culture à la fois. Leurs effets s’additionnent, à condition d’aller dans le même sens.',
     'Your journey': 'Votre parcours', 'Three steps, three deliverables': 'Trois étapes, trois livrables',

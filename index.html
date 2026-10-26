@@ -679,12 +679,14 @@ window.FOW = {
   // Episodes of the LinkedIn series, shown on the home page. Titles stay in English in every language.
   // video_url: MP4 file on this site (media/epN.mp4). Empty = poster only, no play button.
   // linkedin_url empty = no "Comment on LinkedIn" link. duration (m:ss) empty = no badge.
+  // shift: '' = introduction, S1 to S4 = the episode of that shift, 'Bonus' = bonus episode (not counted in the series).
   episodes: [
     { id: 'ep1', shift: '', title: 'Why the Future of Work Needs a New Operating System', summary: "Many companies are deploying AI to solve yesterday's problems. I believe we should start from tomorrow instead.", linkedin_url: 'https://www.linkedin.com/feed/update/urn:li:activity:7515286497734836225/', video_url: 'media/ep1.mp4', poster_url: 'media/ep1-poster.jpg', captions_url: 'media/ep1.en.vtt', duration: '2:04' },
     { id: 'ep2', shift: 'S1', title: 'From Talented Individuals to Talented Teams', summary: 'Our HR processes are built around individual talent. Yet work is done by teams.', linkedin_url: 'https://www.linkedin.com/posts/vincentdupuis_futureofwork-ai-leadership-activity-7516011174790975489-GsHB', video_url: 'media/ep2.mp4', poster_url: 'media/ep2-poster.jpg', captions_url: 'media/ep2.en.vtt', duration: '2:34' },
     { id: 'ep3', shift: 'S2', title: 'From Transactions to Moments that Matter', summary: 'Simplify the transaction. Elevate the moment. Let AI handle the admin, so people get back to what makes the difference.', linkedin_url: 'https://www.linkedin.com/posts/vincentdupuis_futureofwork-ai-leadership-activity-7516736059813122048-X4fN', video_url: 'media/ep3.mp4', poster_url: 'media/ep3-poster.jpg', captions_url: 'media/ep3.en.vtt', duration: '2:29' },
     { id: 'ep4', shift: 'S3', title: 'From Tech Magic to LeanAI Transformation', summary: 'The gap is not the technology. It is the method.', linkedin_url: '', video_url: 'media/ep4.mp4', poster_url: 'media/ep4-poster.jpg', captions_url: 'media/ep4.en.vtt', duration: '2:38' },
-    { id: 'ep5', shift: 'S4', title: 'From Resource Management to Workforce Digital Twin', summary: "What our HR systems currently see of an employee's life is just the tip of the iceberg.", linkedin_url: '', video_url: 'media/ep5.mp4', poster_url: 'media/ep5-poster.jpg', captions_url: 'media/ep5.en.vtt', duration: '2:49' }
+    { id: 'ep5', shift: 'S4', title: 'From Resource Management to Workforce Digital Twin', summary: "What our HR systems currently see of an employee's life is just the tip of the iceberg.", linkedin_url: '', video_url: 'media/ep5.mp4', poster_url: 'media/ep5-poster.jpg', captions_url: 'media/ep5.en.vtt', duration: '2:49' },
+    { id: 'ep6', shift: 'Bonus', title: 'Workforce intelligence in practice', summary: 'One job, step by step: tasks, AI impact, job redesign, new skills. Then, at company scale, a workforce digital twin simulates the workforce each business scenario requires.', linkedin_url: '', video_url: 'media/ep6.mp4', poster_url: 'media/ep6-poster.png', captions_url: 'media/ep6.en.vtt', duration: '2:37' }
   ],
   levels: ['Emerging', 'Developing', 'Advanced', 'Excellence · 2030-ready'],
   levelNote: 'Excellence · 2030-ready: the practice is embedded, continuously improved and shared across the organization.',
@@ -1324,6 +1326,8 @@ window.initMap=initMap;
   // Episode players: poster and play button first, the <video> is created on click (nothing is loaded before).
   const EPS = () => F.episodes || [];
   const epNum = e => Number(String(e.id).replace(/\D/g, '')) || EPS().indexOf(e) + 1;
+  const isBonus = e => e.shift === 'Bonus';
+  const SERIES_N = () => EPS().filter(e => !isBonus(e)).length;
   const PLAY_ICON = '<span class="pbtn" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>';
   function epFrame(e) {
     if (!e.poster_url && !e.video_url) return '';
@@ -1331,16 +1335,17 @@ window.initMap=initMap;
     const poster = e.poster_url ? `<img class="poster" src="${esc(e.poster_url)}" alt="" width="1280" height="720" loading="lazy" decoding="async">` : '';
     const dur = e.duration ? `<span class="dur"><span class="vh">${T('Duration:')} </span>${esc(e.duration)}</span>` : '';
     if (!e.video_url) return `<div class="vframe">${poster}${dur}</div>`;
-    return `<div class="vframe" data-ep="${esc(e.id)}"><button type="button" class="play" aria-label="${esc(T('Play episode {e}: {t}', { e: n, t: e.title }))}">${poster}${PLAY_ICON}${dur}</button></div>`;
+    const label = isBonus(e) ? T('Play the bonus episode: {t}', { t: e.title }) : T('Play episode {e}: {t}', { e: n, t: e.title });
+    return `<div class="vframe" data-ep="${esc(e.id)}"><button type="button" class="play" aria-label="${esc(label)}">${poster}${PLAY_ICON}${dur}</button></div>`;
   }
-  const epLink = e => e.linkedin_url ? `<p class="vlinks"><a href="${esc(e.linkedin_url)}" target="_blank" rel="noopener" aria-label="${esc(T('Comment on episode {e} on LinkedIn (opens in a new tab)', { e: epNum(e) }))}">${T('Comment on LinkedIn')}</a></p>` : '';
+  const epLink = e => e.linkedin_url ? `<p class="vlinks"><a href="${esc(e.linkedin_url)}" target="_blank" rel="noopener" aria-label="${esc(isBonus(e) ? T('Comment on the bonus episode on LinkedIn (opens in a new tab)') : T('Comment on episode {e} on LinkedIn (opens in a new tab)', { e: epNum(e) }))}">${T('Comment on LinkedIn')}</a></p>` : '';
   function playEpisode(frame) {
     const e = EPS().find(x => x.id === frame.dataset.ep); if (!e || !e.video_url) return;
     document.querySelectorAll('.vframe video').forEach(o => o.pause()); // one episode plays at a time
     const v = document.createElement('video');
     v.controls = true; v.playsInline = true; v.preload = 'none'; v.setAttribute('playsinline', '');
     if (e.poster_url) v.poster = e.poster_url;
-    v.setAttribute('aria-label', T('Episode {e}: {t}', { e: epNum(e), t: e.title }));
+    v.setAttribute('aria-label', isBonus(e) ? T('Bonus episode: {t}', { t: e.title }) : T('Episode {e}: {t}', { e: epNum(e), t: e.title }));
     const src = document.createElement('source'); src.src = e.video_url; src.type = 'video/mp4';
     src.addEventListener('error', () => { if (v.readyState > 0 || frame.querySelector('.vmsg')) return; const m = document.createElement('p'); m.className = 'vmsg'; m.setAttribute('role', 'status'); m.textContent = T('This video is not available.'); frame.appendChild(m); });
     v.appendChild(src);
@@ -1360,7 +1365,7 @@ window.initMap=initMap;
     const series = 'Why the Future of Work Needs a New Operating System';
     const intro = EPS().find(e => !e.shift);
     const introHtml = intro ? `<article class="vid ep-intro" style="--c:var(--accent)" aria-labelledby="ep-${esc(intro.id)}-t">${epFrame(intro)}
-        <div class="vmeta"><div class="k">${T('Episode {e}/{t} · Introduction', { e: epNum(intro), t: EPS().length })}</div>
+        <div class="vmeta"><div class="k">${T('Episode {e}/{t} · Introduction', { e: epNum(intro), t: SERIES_N() })}</div>
           <h3 id="ep-${esc(intro.id)}-t">${esc(intro.title)}</h3>
           ${intro.summary ? `<p class="ep-quote">${esc(T(intro.summary))}</p>` : ''}
           <p class="forces-l">${T('Four forces reshape work at the same time:')}</p>
@@ -1368,9 +1373,14 @@ window.initMap=initMap;
           <p class="closing">${T('Fragmented answers will not be enough. Work needs a new operating system.')}</p>${epLink(intro)}</div></article>` : '';
     const shiftCards = SIDS.map((s, i) => {
       const e = EPS().find(x => x.shift === s);
-      const k = e ? T('Shift {n} · Episode {e}/{t}', { n: i + 1, e: epNum(e), t: EPS().length }) : T('Shift {n}', { n: i + 1 });
+      const k = e ? T('Shift {n} · Episode {e}/{t}', { n: i + 1, e: epNum(e), t: SERIES_N() }) : T('Shift {n}', { n: i + 1 });
       return `<article class="card pillar vid" style="--c:${col(s)}" aria-labelledby="sh-${s}-t">${e ? epFrame(e) : ''}<div class="k">${k}</div><h3 id="sh-${s}-t">${esc(F.shifts[s].full)}</h3><p${e && e.summary ? ' class="ep-quote"' : ''}>${esc(e && e.summary ? T(e.summary) : F.shifts[s].line)}</p>${e ? epLink(e) : ''}</article>`;
     }).join('');
+    const bonus = EPS().find(isBonus);
+    const bonusHtml = bonus ? `<article class="vid ep-intro ep-bonus" style="--c:${col('S4')}" aria-labelledby="ep-${esc(bonus.id)}-t">${epFrame(bonus)}
+        <div class="vmeta"><div class="k">${T('Bonus episode · Shift {n}', { n: 4 })}</div>
+          <h3 id="ep-${esc(bonus.id)}-t">${esc(bonus.title)}</h3>
+          ${bonus.summary ? `<p class="ep-quote">${esc(T(bonus.summary))}</p>` : ''}${epLink(bonus)}</div></article>` : '';
     return `<div class="section home"><div class="hero"><div class="stack">
         <p class="series-line">${T('From the LinkedIn series {t}, by Vincent Dupuis', { t: `<a href="#model" data-scroll="model">${series}</a>` })}</p>
         <h1>${T('Measure the gap between your operating model and 2030')}</h1>
@@ -1380,9 +1390,10 @@ window.initMap=initMap;
       </div>
       <figure class="sample"><div class="sc-frame" aria-hidden="true">${shareCard(SAMPLE, SAMPLE.company, siteHost())}</div><figcaption>${T('Example front page of The News Fix for a fictional company. Lead story: “{t}”', { t: esc(SAMPLE.lead.headline) })}</figcaption></figure></div></div>
       <section class="section" id="model" aria-labelledby="h-model"><div class="stack"><div class="eyebrow">${T('The model · The LinkedIn series')}</div><h2 id="h-model">${T('Four shifts, one operating system')}</h2>
-        <p class="lede">${T('Five episodes of the series “{t}”. Episode 1 explains why. Episodes 2 to 5 present one shift each.', { t: series })}</p></div>
+        <p class="lede">${T('Five episodes of the series “{t}”. Episode 1 explains why. Episodes 2 to 5 present one shift each.', { t: series })}${bonus ? ' ' + T('A bonus episode shows workforce intelligence in practice.') : ''}</p></div>
         ${introHtml}
         <div class="shift-grid">${shiftCards}</div>
+        ${bonusHtml}
         <p class="lede">${T('Each shift addresses several productivity and cultural challenges at the same time. Their effects add up, but only if they push in the same direction.')}</p>
         <div class="and">${T('More human. More digital.')} <b>${T('Not a trade-off. AND.')}</b></div></section>
       <section class="section" aria-labelledby="h-journey"><div class="stack"><div class="eyebrow">${T('Your journey')}</div><h2 id="h-journey">${T('Three steps, three deliverables')}</h2>
