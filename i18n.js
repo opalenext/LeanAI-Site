@@ -34,8 +34,8 @@
     // Share card and newspaper
     'Serving the sky, the moon and the stars': 'Au service du ciel, de la lune et des étoiles', 'The human edition': 'Édition humaine',
     'The insiders’ view': 'Le regard de l’intérieur', 'Weather': 'Météo', 'Special edition': 'Édition spéciale', 'Special edition · No. 2030': 'Édition spéciale · N° 2030', '€3': '3 €', 'Page {p}': 'Page {p}', 'Editorial': 'Éditorial', 'Pun of the day': 'Le calembour du jour', 'contact Vincent Dupuis on LinkedIn ↗': 'contactez Vincent Dupuis sur LinkedIn ↗', 'Your front page is up to date with these answers and priorities. Change them to create a new one.': 'Votre Une est à jour avec ces réponses et ces priorités. Modifiez-les pour en créer une nouvelle.', 'Only one front page is left. To go further,': 'Il ne vous reste qu’une Une. Pour aller plus loin,', 'To go further,': 'Pour aller plus loin,', 'Your answers, priorities, organization name or language have changed since this front page.': 'Vos réponses, vos priorités, le nom de l’organisation ou la langue ont changé depuis cette Une.', 'Generate it again with my changes →': 'La générer à nouveau avec mes modifications →', 'The riddle': 'L’énigme', 'Answer:': 'Réponse :', 'Work horoscope': 'L’horoscope du travail', 'The editor-in-chief': 'La rédaction en chef', 'Portrait': 'Portrait', 'Explainer': 'Décryptage', 'Opinion': 'Point de vue', 'Our organization': 'Notre organisation', 'Interview': 'Interview',
-    'Also in this edition': 'Aussi dans cette édition', 'More human. More digital.': 'Plus humain. Plus digital.',
-    'Not a trade-off. AND.': 'Pas un compromis. ET.', 'Write your own 2030 front page': 'Écrivez votre Une 2030',
+    'Also in this edition': 'Aussi dans cette édition', 'More human. More digital.': 'Plus humain ET plus digital.',
+    'Not a trade-off. AND.': 'Pas un compromis.', 'Write your own 2030 front page': 'Écrivez votre Une 2030',
     // Introduction
     'From the LinkedIn series {t}, by Vincent Dupuis': 'Tiré de la série LinkedIn {t}, de Vincent Dupuis',
     'Measure the gap between your operating model and 2030': 'Mesurez l’écart entre votre modèle opérationnel et 2030',
@@ -75,9 +75,8 @@
     'A roadmap from 2027 to 2030, as a list or a Gantt chart.': 'Une feuille de route de 2027 à 2030, en liste ou en Gantt.',
     'Each priority becomes a 2030 interview: before, today, and what you did to get there.': 'Chaque priorité devient une interview de 2030 : avant, aujourd’hui, et ce que vous avez fait pour y arriver.',
     'Your 2030 front page, as an image to share on LinkedIn.': 'Votre Une 2030, en image à partager sur LinkedIn.',
-    'Optional, before you start.': 'Facultatif, avant de commencer.',
-    'The interactive map shows how each shift acts on the sixteen challenges, and where shifts could cancel each other out.':
-      'La carte interactive montre comment chaque shift agit sur les seize défis, et où des shifts pourraient s’annuler.',
+    'Before you start, explore the interactive map, which shows how each shift acts on the sixteen challenges and where shifts could cancel each other out.':
+      'Avant de commencer, parcourez la carte interactive qui montre comment chaque shift agit sur les seize défis, et où des shifts pourraient s’annuler.',
     'The author': 'L’auteur',
     'Engineer and innovator, with more than 25 years of experience and over 30 patents. Vincent makes breakthrough technology deliver real value: first in products, now in data and AI. He incubated a world-first product in startup mode and brought it to launch with a premium car maker. He then led Lean product development at very large scale. Since 2021, he applies the same discipline to data and AI: vision first, then reinvent the process before automating it, with value stream redesign and AI agents.': 'Ingénieur et innovateur, plus de 25 ans d’expérience et plus de 30 brevets. Vincent transforme les technologies de rupture en valeur réelle : d’abord dans les produits, aujourd’hui dans la data et l’IA. Il a incubé en mode startup un produit inédit au monde, jusqu’à son lancement avec un constructeur automobile premium. Il a ensuite dirigé le développement produit Lean à très grande échelle. Depuis 2021, il applique la même discipline à la data et à l’IA : la vision d’abord, puis réinventer le processus avant de l’automatiser, par la refonte des flux de valeur et des agents IA.',
     'Vincent Dupuis on stage, speaking about AI': 'Vincent Dupuis sur scène, en train de parler d’IA',
@@ -203,7 +202,7 @@
     'You can print {n} more front pages.': 'Vous pouvez encore imprimer {n} Unes.', 'You can print one more front page.': 'Vous pouvez encore imprimer une Une.',
     'You have printed your {n} front pages.': 'Vous avez imprimé vos {n} Unes.', 'See your 2030 vision →': 'Voir votre vision 2030 →',
     'To print more, contact Vincent Dupuis on LinkedIn ↗': 'Pour en imprimer d’autres, contactez Vincent Dupuis sur LinkedIn ↗', 'The road to 2030': 'La route vers 2030', 'From the 2026 diagnostic': 'Selon le diagnostic de 2026',
-    'Written with the Future of Work · 4 Shifts model': 'Écrit avec le modèle Future of Work · 4 Shifts', 'More human. More digital. Not a trade-off. AND.': 'Plus humain. Plus digital. Pas un compromis. ET.',
+    'Written with the Future of Work · 4 Shifts model': 'Écrit avec le modèle Future of Work · 4 Shifts', 'More human. More digital. Not a trade-off. AND.': 'Plus humain ET plus digital. Pas un compromis.',
     '← Back to your priorities and roadmap': '← Retour à vos priorités et à votre feuille de route',
     'The AI newsroom was not reachable, so the interviews were laid out directly from your diagnostic and roadmap, without AI.':
       'La rédaction IA n’était pas joignable : les interviews ont été mises en page directement à partir de votre diagnostic et de votre feuille de route, sans IA.',

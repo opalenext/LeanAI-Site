@@ -147,7 +147,8 @@ h3{font-size:19px}
 .journey .card p.get{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);color:var(--fg)}
 .get b{display:block;font:600 12px var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
 .optional{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;background:var(--soft);border-radius:14px;padding:14px 18px}
-.optional p{margin:0;max-width:70ch}
+.optional p{margin:0;max-width:70ch;display:flex;gap:10px;align-items:flex-start}
+.optional .bulb{flex:none;margin-top:2px;color:var(--accent)}
 .optional .btn{padding:10px 16px;font-size:14.5px}
 .author{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:20px;display:flex;align-items:flex-start;gap:20px}
 .author-photo{width:112px;height:112px;border-radius:50%;object-fit:cover;flex:0 0 auto}
@@ -1319,6 +1320,7 @@ window.initMap=initMap;
   window.addEventListener('resize', scaleSheets);
   const siteHost = () => (location.protocol.startsWith('http') && !/claude|localhost|127\.0\.0\.1/.test(location.host)) ? location.host : 'your-site.netlify.app';
   const ARROW = ' <span aria-hidden="true">→</span>';
+  const BULB = '<svg class="bulb" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2V18h6v-1.3c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg>';
   const DOC = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 11v6"/><path d="M9.5 14.5 12 17l2.5-2.5"/></svg>';
   const nextBtn = (href, label) => `<div class="section no-print"><div class="row acts"><a class="btn p" href="${href}">${label}${ARROW}</a></div></div>`;
 
@@ -1409,7 +1411,7 @@ window.initMap=initMap;
             <p>${T('Each priority becomes a 2030 interview: before, today, and what you did to get there.')}</p>
             <p class="get"><b>${T('You get')}</b>${T('Your 2030 front page, as an image to share on LinkedIn.')}</p></li>
         </ol>
-        <div class="optional"><p><b>${T('Optional, before you start.')}</b> ${T('The interactive map shows how each shift acts on the sixteen challenges, and where shifts could cancel each other out.')}</p><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div></section>
+        <div class="optional"><p>${BULB}<span>${T('Before you start, explore the interactive map, which shows how each shift acts on the sixteen challenges and where shifts could cancel each other out.')}</span></p><a class="btn s" href="#/map">${T('Explore the interactive map')}</a></div></section>
       <section class="section" aria-labelledby="h-author"><div class="author"><img class="author-photo" src="media/vincent.jpg" width="112" height="112" loading="lazy" alt="${T('Vincent Dupuis on stage, speaking about AI')}">
         <div class="author-txt"><div class="eyebrow">${T('The author')}</div><h3 id="h-author">Vincent Dupuis</h3>
         <p class="bio">${T('Engineer and innovator, with more than 25 years of experience and over 30 patents. Vincent makes breakthrough technology deliver real value: first in products, now in data and AI. He incubated a world-first product in startup mode and brought it to launch with a premium car maker. He then led Lean product development at very large scale. Since 2021, he applies the same discipline to data and AI: vision first, then reinvent the process before automating it, with value stream redesign and AI agents.')}</p>
