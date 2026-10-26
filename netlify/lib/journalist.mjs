@@ -154,7 +154,7 @@ export function material(input) {
   const num = (v) => (typeof v === 'number' && v >= 0 && v <= 1000 ? Math.round(v) : undefined);
   return {
     lang, company: s(input.company, 60) || (lang === 'fr' ? 'l’organisation' : 'the organization'), date: s(input.date, 60),
-    diagnostic_2026: { progress_to_2030_target_pct: num(c.progress), productivity_pct: num(c.productivity), culture_pct: num(c.culture), and_score_pct: num(c.and), initiatives: num(c.initiatives) },
+    diagnostic_2026: { progress_to_2030_target_pct: num(c.progress), productivity_pct: num(c.productivity), culture_pct: num(c.culture), initiatives: num(c.initiatives) },
     items: clean,
   };
 }

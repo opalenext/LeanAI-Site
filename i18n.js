@@ -130,9 +130,9 @@
     'Maturity is 0% when a practice is typical of today, and 100% when it matches the 2030 target state of the model.':
       'La maturité vaut 0 % quand une pratique est typique d’aujourd’hui, et 100 % quand elle atteint la cible 2030 du modèle.',
     'Of the way to the 2030 target state': 'Du chemin vers la cible 2030', '{v}% still to go': 'Encore {v} % à parcourir',
-    'Productivity maturity': 'Maturité productivité', 'Culture maturity': 'Maturité culture', 'AND score: the lower of the two': 'Score ET : le plus faible des deux',
-    'The AND score keeps the lower of productivity and culture. A strong result on one side does not make up for a weak one on the other.':
-      'Le score ET retient le plus faible de la productivité et de la culture. Un bon résultat d’un côté ne compense pas un résultat faible de l’autre.',
+    'Productivity maturity': 'Maturité productivité', 'Culture maturity': 'Maturité culture',
+    'Productivity and culture move together. A strong result on one side does not make up for a weak one on the other.':
+      'Productivité et culture avancent ensemble. Un bon résultat d’un côté ne compense pas un résultat faible de l’autre.',
     'Your maturity profile': 'Votre profil de maturité',
     'Your 14 practices, from Emerging to Excellence · 2030-ready. The dashed outer ring is the 2030 target.':
       'Vos 14 pratiques, d’Émergent à Excellence · prêt pour 2030. L’anneau extérieur en pointillés est la cible 2030.',
@@ -156,7 +156,7 @@
     'Organization name (optional)': 'Nom de l’organisation (facultatif)', 'Copy the summary': 'Copier la synthèse', '← Back to your report': '← Retour à votre rapport',
     'Our operating model is {v}% of the way to 2030': 'Notre modèle opérationnel a parcouru {v} % du chemin vers 2030',
     'Summary': 'Synthèse', 'Where we stand': 'Où nous en sommes', 'of the way to the 2030 target': 'du chemin vers la cible 2030',
-    'productivity maturity': 'maturité productivité', 'culture maturity': 'maturité culture', 'AND score, the lower of the two': 'score ET, le plus faible des deux',
+    'productivity maturity': 'maturité productivité', 'culture maturity': 'maturité culture',
     'Levels:': 'Niveaux :', 'Three proposed priorities': 'Trois priorités proposées', 'Maturity': 'Maturité', 'Shifts that address it': 'Shifts qui le traitent',
     'Contradictions to resolve': 'Contradictions à résoudre',
     'One practice pushes a challenge forward while another pushes it back, and the effects cancel out.':
@@ -190,7 +190,7 @@
     'A member of the leadership team': 'Un membre de l’équipe de direction',
     'No front page yet.': 'Pas encore de Une.', 'Back to your priorities': 'Retour à vos priorités', 'Your organization': 'Votre organisation',
     'of the way to the 2030 target in the 2026 diagnostic': 'du chemin vers la cible 2030 au diagnostic de 2026',
-    'AND score in 2026: the lower of productivity and culture': 'score ET en 2026 : le plus faible de la productivité et de la culture',
+    'productivity maturity in 2026': 'maturité productivité en 2026', 'culture maturity in 2026': 'maturité culture en 2026',
     'initiatives on the 2027–2030 roadmap': 'initiatives sur la feuille de route 2027–2030',
     'Step 3 · Your News Fix': 'Étape 3 · Votre News Fix', 'Your 2030 vision is on the front page': 'Votre vision 2030 fait la Une', 'Share it on LinkedIn': 'Partagez-la sur LinkedIn',
     'The image shows your 2030 headlines only. Your diagnostic figures stay private.': 'L’image ne montre que vos titres de 2030. Les chiffres de votre diagnostic restent privés.',
@@ -217,8 +217,8 @@
     'suggested': 'proposé',
     'productivity': 'productivité',
     'culture': 'culture',
-    'We suggest your largest gap in productivity, your largest gap in culture, and your second largest gap in {side}, because the AND score keeps the lower of the two sides.': 'Nous proposons votre plus grand écart en productivité, votre plus grand écart en culture et votre deuxième plus grand écart en {side}, car le score ET retient le plus faible des deux côtés.',
-    'We suggest your largest gap in productivity, your largest gap in culture, and your largest remaining gap, because the AND score keeps the lower of the two sides.': 'Nous proposons votre plus grand écart en productivité, votre plus grand écart en culture et votre plus grand écart restant, car le score ET retient le plus faible des deux côtés.',
+    'We suggest your largest gap in productivity, your largest gap in culture, and your second largest gap in {side}, because productivity and culture must move together.': 'Nous proposons votre plus grand écart en productivité, votre plus grand écart en culture et votre deuxième plus grand écart en {side}, car productivité et culture doivent avancer ensemble.',
+    'We suggest your largest gap in productivity, your largest gap in culture, and your largest remaining gap, because productivity and culture must move together.': 'Nous proposons votre plus grand écart en productivité, votre plus grand écart en culture et votre plus grand écart restant, car productivité et culture doivent avancer ensemble.',
     'Largest gap in productivity, largest gap in culture, then the second largest gap in {side}, the weaker side.': 'Plus grand écart en productivité, plus grand écart en culture, puis deuxième plus grand écart en {side}, le côté le plus faible.',
     'Largest gap in productivity, largest gap in culture, then the largest remaining gap.': 'Plus grand écart en productivité, plus grand écart en culture, puis plus grand écart restant.',
     // Sample front page on the home page

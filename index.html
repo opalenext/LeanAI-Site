@@ -442,8 +442,7 @@ h2[tabindex="-1"]:focus{outline:none}
 .b-sec h3{font:700 13px var(--display);letter-spacing:.12em;text-transform:uppercase;color:#12161C;border-bottom:1px solid #DADCD5;padding-bottom:6px;margin:0}
 .b-sec p{margin:0;color:#12161C}
 .b-muted{color:#5A6270}
-.b-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-@media (max-width:560px){.b-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.b-kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .b-kpis div{border:1.5px solid #DADCD5;border-radius:8px;padding:10px 12px}
 .b-kpis b{display:block;font:700 26px var(--display);font-variant-numeric:tabular-nums;color:#12161C}
 .b-kpis div:first-child b{color:#0F6E5D}
@@ -1147,7 +1146,7 @@ window.initMap=initMap;
     const avgOf = g => { const v = Object.keys(ch).filter(c => F.challenges[c].g === g && ch[c] != null).map(c => ch[c]); return v.reduce((t, x) => t + x, 0) / v.length; };
     const P = avgOf('P'), C = avgOf('C');
     const overall = F.questions.reduce((t, q) => t + m(a[q.id]), 0) / F.questions.length;
-    return { pillars, ch, P, C, and: Math.min(P, C), overall, distance: 100 - overall, flags: F.rules.filter(r => r.when(S.answers)) };
+    return { pillars, ch, P, C, overall, distance: 100 - overall, flags: F.rules.filter(r => r.when(S.answers)) };
   }
   const QBY = Object.fromEntries(F.questions.map(q => [q.id, q]));
   const IBY = Object.fromEntries(F.initiatives.map(i => [i.id, i]));
@@ -1483,9 +1482,9 @@ window.initMap=initMap;
       : `<div class="ok-box">${T('No contradiction detected between your practices. The shifts you invest in push in the same direction.')}</div>`;
     return `<div class="section"><div class="stack"><div class="eyebrow">${T('Step 1 · Your Diagnostic')}</div><h1>${T('Your operating model today, against the 2030 target')}</h1>
         <p class="lede">${T('Maturity is 0% when a practice is typical of today, and 100% when it matches the 2030 target state of the model.')}</p></div>
-        <div class="kpis">${[[r.overall, 'Of the way to the 2030 target state', 'main'], [r.P, 'Productivity maturity'], [r.C, 'Culture maturity'], [r.and, 'AND score: the lower of the two']].map(([v, t, c]) =>
+        <div class="kpis">${[[r.overall, 'Of the way to the 2030 target state', 'main'], [r.P, 'Productivity maturity'], [r.C, 'Culture maturity']].map(([v, t, c]) =>
           `<div class="kpi ${c || ''}"><b>${pc(v)}</b><span>${T(t)}</span><span class="kbar" aria-hidden="true"><i style="width:${Math.max(2, v)}%"></i></span><span class="kto">${T('{v}% still to go', { v: pct(100 - v) })}</span></div>`).join('')}</div>
-        <p class="note">${T('The AND score keeps the lower of productivity and culture. A strong result on one side does not make up for a weak one on the other.')}</p></div>
+        <p class="note">${T('Productivity and culture move together. A strong result on one side does not make up for a weak one on the other.')}</p></div>
       <div class="section"><div class="stack"><h2>${T('Your maturity profile')}</h2><p class="lede">${T('Your 14 practices, from Emerging to Excellence · 2030-ready. The dashed outer ring is the 2030 target.')}</p></div>
         <div class="profile"><div class="spider-wrap">${spider(false)}</div><div class="pr-list">${practiceList()}<p class="note">${esc(F.levelNote)}</p></div></div></div>
       <div class="section"><div class="stack"><h2>${T('Coherence check')}</h2><p class="lede">${T('Contradictions between your practices: one shift pushes a challenge forward while another pushes it back, and the effects cancel out.')}</p></div>${flags}</div>
@@ -1511,13 +1510,13 @@ window.initMap=initMap;
     const pl = (k, a, b) => k > 1 ? b : a;
     const summary = FRL ? [
       `${co} a parcouru ${pct(r.overall)} % du chemin vers la cible 2030 du modèle Future of Work. La maturité productivité est de ${pct(r.P)} % et la maturité culture de ${pct(r.C)} %.` +
-        (weaker ? ` ${weaker === 'productivity' ? 'La productivité' : 'La culture'} est la contrainte : le score ET retient le plus faible des deux, et un progrès d’un côté ne compense pas l’autre.` : ' Les deux côtés sont au même niveau, condition pour que les progrès s’additionnent.'),
+        (weaker ? ` ${weaker === 'productivity' ? 'La productivité' : 'La culture'} est la contrainte : un progrès d’un côté ne compense pas l’autre.` : ' Les deux côtés sont au même niveau, condition pour que les progrès s’additionnent.'),
       `Le shift le plus avancé est ${F.shifts[ranked[0]].n} (${pct(r.pillars[ranked[0]])} %). Le moins avancé est ${F.shifts[ranked[3]].n} (${pct(r.pillars[ranked[3]])} %).`,
       contra.length ? `${contra.length} contradiction${pl(contra.length, '', 's')} entre les pratiques actuelles ${pl(contra.length, 'annule', 'annulent')} une partie de l’effort, à commencer par : ${lc(contra[0].t)}.` : 'Aucune contradiction entre les pratiques actuelles : les shifts déjà engagés vont dans le même sens.',
       `Nous recommandons de se concentrer sur trois priorités, ${joinAnd(top.map(c => F.challenges[c].n.toLowerCase()))}, et de commencer en 2027 par ${first.length} initiative${pl(first.length, '', 's')}. ${theseThree(sys)}`
     ] : [
       `${co} is ${pct(r.overall)}% of the way to the 2030 target state of the Future of Work model. Productivity maturity is ${pct(r.P)}% and culture maturity is ${pct(r.C)}%.` +
-        (weaker ? ` ${weaker.charAt(0).toUpperCase() + weaker.slice(1)} is the constraint: the AND score keeps the lower of the two, so progress on one side does not make up for the other.` : ' Both sides are at the same level, which is the condition for progress to add up.'),
+        (weaker ? ` ${weaker.charAt(0).toUpperCase() + weaker.slice(1)} is the constraint: progress on one side does not make up for the other.` : ' Both sides are at the same level, which is the condition for progress to add up.'),
       `The most advanced shift is ${F.shifts[ranked[0]].n} (${pct(r.pillars[ranked[0]])}%). The least advanced is ${F.shifts[ranked[3]].n} (${pct(r.pillars[ranked[3]])}%).`,
       contra.length ? `${contra.length} contradiction${contra.length > 1 ? 's' : ''} between current practices cancel${contra.length > 1 ? '' : 's'} part of the effort, starting with: ${lc(contra[0].t)}.` : 'No contradiction was found between current practices: the shifts already in motion push in the same direction.',
       `We recommend focusing on three priorities, ${joinAnd(top.map(c => F.challenges[c].n.toLowerCase()))}, and starting in 2027 with ${first.length} initiative${first.length > 1 ? 's' : ''}. ${theseThree(sys)}`
@@ -1557,7 +1556,7 @@ window.initMap=initMap;
         <h2 class="b-title">${T('Our operating model is {v}% of the way to 2030', { v: pct(r.overall) })}</h2>
         <div class="b-sec"><h3>${T('Summary')}</h3>${b.summary.map(x => `<p>${esc(x)}</p>`).join('')}</div>
         <div class="b-sec"><h3>${T('Where we stand')}</h3>
-          <div class="b-kpis"><div><b>${pc(r.overall)}</b><span>${T('of the way to the 2030 target')}</span></div><div><b>${pc(r.P)}</b><span>${T('productivity maturity')}</span></div><div><b>${pc(r.C)}</b><span>${T('culture maturity')}</span></div><div><b>${pc(r.and)}</b><span>${T('AND score, the lower of the two')}</span></div></div>
+          <div class="b-kpis"><div><b>${pc(r.overall)}</b><span>${T('of the way to the 2030 target')}</span></div><div><b>${pc(r.P)}</b><span>${T('productivity maturity')}</span></div><div><b>${pc(r.C)}</b><span>${T('culture maturity')}</span></div></div>
           <div class="b-profile"><div class="b-spider">${spider(true)}</div><div class="b-bars">${bars}<p class="b-muted b-lv">${T('Levels:')} ${F.levels.map((l, k) => `${k + 1} ${esc(l)}`).join(' · ')}</p></div></div></div>
         <div class="b-sec"><h3>${T('Three proposed priorities')}</h3><table class="b-table"><thead><tr><th>${T('Challenge')}</th><th>${T('Maturity')}</th><th>${T('Shifts that address it')}</th></tr></thead><tbody>${gaps}</tbody></table></div>
         ${foot}</section>
@@ -1577,8 +1576,8 @@ window.initMap=initMap;
 
   // ---------- 2. YOUR PRIORITIES (selection, then the roadmap, updated live) ----------
   // Suggested priorities, one rule an ExCom can check: the largest gap in productivity, the largest gap in culture
-  // (the AND principle: one side does not make up for the other), then the second largest gap on the weaker side,
-  // the one that holds the AND score down. On equal gaps, the challenge whose roadmap shares the most initiatives
+  // (productivity and culture move together: one side does not make up for the other), then the second largest gap
+  // on the weaker side. On equal gaps, the challenge whose roadmap shares the most initiatives
   // with the ones already chosen wins (one effort serves several priorities), then the model order.
   // The lead story (first) is the largest gap of the three.
   const weakerSide = () => { const r = scores(), p = pct(r.P), c = pct(r.C); return p < c ? 'P' : c < p ? 'C' : null; };
@@ -1597,8 +1596,8 @@ window.initMap=initMap;
     const w = weakerSide(), side = w ? T(w === 'P' ? 'productivity' : 'culture') : '';
     if (brief) return w ? T('Largest gap in productivity, largest gap in culture, then the second largest gap in {side}, the weaker side.', { side })
       : T('Largest gap in productivity, largest gap in culture, then the largest remaining gap.');
-    return w ? T('We suggest your largest gap in productivity, your largest gap in culture, and your second largest gap in {side}, because the AND score keeps the lower of the two sides.', { side })
-      : T('We suggest your largest gap in productivity, your largest gap in culture, and your largest remaining gap, because the AND score keeps the lower of the two sides.');
+    return w ? T('We suggest your largest gap in productivity, your largest gap in culture, and your second largest gap in {side}, because productivity and culture must move together.', { side })
+      : T('We suggest your largest gap in productivity, your largest gap in culture, and your largest remaining gap, because productivity and culture must move together.');
   }
   function roadmapBlock() {
     const rm = roadmap(), pr = S.priorities;
@@ -1674,7 +1673,7 @@ window.initMap=initMap;
     const r = scores(), rm = roadmap();
     return { lang: window.LANG, company: S.company || (FRL ? 'l’organisation' : 'the organization'), date: paperDate(),
       items: S.priorities.map(c => Object.assign({ challenge: F.challenges[c].n, problem: F.challenges[c].d, example: F.challenges[c].ex }, interview(c, rm))),
-      context: { progress: pct(r.overall), distance: pct(r.distance), productivity: pct(r.P), culture: pct(r.C), and: pct(r.and), initiatives: rm.items.length } };
+      context: { progress: pct(r.overall), distance: pct(r.distance), productivity: pct(r.P), culture: pct(r.C), initiatives: rm.items.length } };
   }
   // Reads the Anthropic event stream forwarded by /api/newsfix and rebuilds the article (JSON) from the text deltas.
   // onWords shows the progress. Rejects with a short reason, kept to explain the front page without AI.
@@ -1767,7 +1766,7 @@ window.initMap=initMap;
   function newsfix() {
     const p = S.paper; if (!p || !p.lead || !(p.lead.qa || p.lead.sections)) return `<p>${T('No front page yet.')} <a href="#/priorities">${T('Back to your priorities')}</a>.</p>`;
     const co = S.company || T('Your organization'), ctx = S.paperContext || {}, ex = p.extras || {};
-    const nums = [[window.num(ctx.progress != null ? ctx.progress : 100 - ctx.distance), T('of the way to the 2030 target in the 2026 diagnostic')], [window.num(ctx.and), T('AND score in 2026: the lower of productivity and culture')], [String(ctx.initiatives), T('initiatives on the 2027–2030 roadmap')]]
+    const nums = [[window.num(ctx.progress != null ? ctx.progress : 100 - ctx.distance), T('of the way to the 2030 target in the 2026 diagnostic')], [window.num(ctx.productivity), T('productivity maturity in 2026')], [window.num(ctx.culture), T('culture maturity in 2026')], [String(ctx.initiatives), T('initiatives on the 2027–2030 roadmap')]]
       .filter(n => !/undefined/.test(n[0])).map(n => `<li><b>${esc(n[0])}</b><span>${esc(n[1])}</span></li>`).join('');
     const banner = paperStale()
       ? `<div class="regen no-print"><p><b>${T('Your answers, priorities, organization name or language have changed since this front page.')}</b></p>
