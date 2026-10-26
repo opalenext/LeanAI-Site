@@ -1079,8 +1079,8 @@ window.initMap=initMap;
   const leftNote = () => papersLeft() === 1 ? ` ${T('Only one front page is left. To go further,')} ${contactLink()}` : papersLeft() > 1 ? ` ${T('You can print {n} more front pages.', { n: papersLeft() })}` : '';
   const hasPrios = () => done() && Array.isArray(S.priorities) && S.priorities.length >= MINP;
   // anonymous usage counter: no cookie, no identifier, only the name of the step reached
-  // Usage events (brief printed, front page made, image downloaded): no counting endpoint for now.
-  const ping = () => {};
+  // Anonymous usage events for the audience count (tab events): event name and language only.
+  const ping = e => { try { fetch('/api/count', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ e, lang: window.LANG }), keepalive: true }).catch(() => {}); } catch (x) {} };
   // Anonymous statistics: a random id, the 14 levels, the priorities and the scores. No name, no organization.
   // The visitor ticks a box to accept them before seeing the report. A new id for each new set of answers.
   const shared = () => S.share === true;
@@ -1451,7 +1451,7 @@ window.initMap=initMap;
   }
   function bindQuestions() {
     document.querySelectorAll('.opt input').forEach(r => r.addEventListener('change', () => {
-      const q = F.questions[S.qi || 0]; S.answers[q.id] = +r.value; S.editing = true; save(); render();
+      const q = F.questions[S.qi || 0]; if (!Object.keys(S.answers).length) ping('start'); S.answers[q.id] = +r.value; S.editing = true; save(); render();
       document.getElementById('next')?.focus();
     }));
     document.getElementById('prev').onclick = () => { S.qi = Math.max(0, (S.qi || 0) - 1); save(); render(); };
@@ -1827,6 +1827,8 @@ window.initMap=initMap;
   }
 
   // ---------- RENDER ----------
+  // One visit per browser session (a reload or a change of page does not count again).
+  try { if (!sessionStorage.getItem('fow4_visit')) { sessionStorage.setItem('fow4_visit', '1'); ping('visit'); } } catch (x) {}
   function render() {
     let route = location.hash || '#/';
     const alias = { '#/vision': '#/priorities', '#/roadmap': '#/priorities', '#/report': '#/diagnostic' };
