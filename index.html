@@ -672,7 +672,7 @@ window.FOW = {
           line: 'AI takes the admin, on-site time is designed for collective work, and leaders act as coaches.' },
     S3: { n: 'LeanAI transformation', full: 'From tech magic to LeanAI transformation', ep: 4,
           line: 'Vision first, focus where value is ready, redesign the whole flow before automating it, and plan the human role.' },
-    S4: { n: 'Workforce digital twin', full: 'From resource management to workforce digital twin', ep: 5,
+    S4: { n: 'Workforce intelligence', full: 'From resource management to workforce intelligence', ep: 5,
           line: 'Trusted governance, a workforce knowledge graph, proactive services, and a plan steered during the year.' }
   },
   // Episodes of the LinkedIn series, shown on the home page. Titles stay in English in every language.
@@ -684,7 +684,7 @@ window.FOW = {
     { id: 'ep2', shift: 'S1', title: 'From Talented Individuals to Talented Teams', summary: 'Our HR processes are built around individual talent. Yet work is done by teams.', linkedin_url: 'https://www.linkedin.com/posts/vincentdupuis_futureofwork-ai-leadership-activity-7516011174790975489-GsHB', video_url: 'media/ep2.mp4', poster_url: 'media/ep2-poster.jpg', captions_url: 'media/ep2.en.vtt', duration: '2:34' },
     { id: 'ep3', shift: 'S2', title: 'From Transactions to Moments that Matter', summary: 'Simplify the transaction. Elevate the moment. Let AI handle the admin, so people get back to what makes the difference.', linkedin_url: 'https://www.linkedin.com/posts/vincentdupuis_futureofwork-ai-leadership-activity-7516736059813122048-X4fN', video_url: 'media/ep3.mp4', poster_url: 'media/ep3-poster.jpg', captions_url: 'media/ep3.en.vtt', duration: '2:29' },
     { id: 'ep4', shift: 'S3', title: 'From Tech Magic to LeanAI Transformation', summary: 'The gap is not the technology. It is the method.', linkedin_url: '', video_url: 'media/ep4.mp4', poster_url: 'media/ep4-poster.jpg', captions_url: 'media/ep4.en.vtt', duration: '2:38' },
-    { id: 'ep5', shift: 'S4', title: 'From Resource Management to Workforce Digital Twin', summary: "What our HR systems currently see of an employee's life is just the tip of the iceberg.", linkedin_url: '', video_url: 'media/ep5.mp4', poster_url: 'media/ep5-poster.jpg', captions_url: 'media/ep5.en.vtt', duration: '2:49' },
+    { id: 'ep5', shift: 'S4', title: 'From Resource Management to Workforce Intelligence', summary: "What our HR systems currently see of an employee's life is just the tip of the iceberg.", linkedin_url: '', video_url: 'media/ep5.mp4', poster_url: 'media/ep5-poster.jpg', captions_url: 'media/ep5.en.vtt', duration: '2:49' },
     { id: 'ep6', shift: 'Bonus', title: 'Workforce intelligence in practice', summary: 'One job, step by step: tasks, AI impact, job redesign, new skills. Then, at company scale, a workforce digital twin simulates the workforce each business scenario requires.', linkedin_url: '', video_url: 'media/ep6.mp4', poster_url: 'media/ep6-poster.png', captions_url: 'media/ep6.en.vtt', duration: '2:37' }
   ],
   levels: ['Emerging', 'Developing', 'Advanced', 'Excellence · 2030-ready'],
@@ -815,7 +815,7 @@ const P = {
   S1:{n:'Talented teams', full:'From talented individuals to talented teams', ep:2},
   S2:{n:'Moments that matter', full:'From HR transactions to moments that matter', ep:3},
   S3:{n:'LeanAI transformation', full:'From tech magic to LeanAI transformation', ep:4},
-  S4:{n:'Workforce digital twin', full:'From resource management to workforce digital twin', ep:5}
+  S4:{n:'Workforce intelligence', full:'From resource management to workforce intelligence', ep:5}
 };
 const C = {
   fluid:{g:'P', n:'Fluid teams', l:['Fluid','teams'], d:'Work moves faster than the org chart.'},
@@ -877,7 +877,7 @@ const L = {
     growth:'Vision first: shared 2030 headlines turn fear of AI into a future people want to build.'
   },
   S4:{
-    fluid:'Dynamic project staffing: the twin sees skills and availability, so teams form fast around new work.',
+    fluid:'Dynamic project staffing: the workforce digital twin sees skills and availability, so teams form fast around new work.',
     knowledge:'Data beyond HR (projects, knowledge bases, communities) shows where know-how sits and where it is at risk.',
     benefits:'Strategic HR services with measurable business value: job redesign with AI, workforce scenarios, team and organization risk prevention, organization design.',
     sovereignty:'The knowledge graph is a competitive advantage. Workforce data stays governed and under company control, and knowledge capture and reuse run on sovereign AI.',
@@ -893,7 +893,7 @@ const L = {
 };
 // Coherence check per challenge: combined effect, risk of opposite effects, guardrail
 const K = {
-  fluid:{s:'ok', sum:'Talented teams opens every team model and missions. The digital twin staffs them with data.', risk:'Staffing optimized by data alone could reshuffle people constantly and break the stable teams that Talented teams relies on.', guard:'The twin staffs teams, not only individuals. Team stability is a constraint in every simulation.'},
+  fluid:{s:'ok', sum:'Talented teams opens every team model and missions. Workforce intelligence staffs them with data.', risk:'Staffing optimized by data alone could reshuffle people constantly and break the stable teams that Talented teams relies on.', guard:'The twin staffs teams, not only individuals. Team stability is a constraint in every simulation.'},
   agility:{s:'ok', sum:'Three pillars act together: HR systems for every team model, a skills-based organization, and a plan corrected during the year.', risk:'A plan corrected every month has no effect if the redesigned flows still assume fixed job boxes.', guard:'One shared skills language for missions, process redesign and the twin.'},
   skills:{s:'ok', sum:'The twin detects the gap, LeanAI defines the skills the future work needs, missions build them on the job.', risk:'If simulations favor hiring or AI agents, they contradict the promise of growth through missions.', guard:'Every simulation includes the internal option (missions, upskilling) and compares it with the others.'},
   knowledge:{s:'warn', sum:'All four pillars act: transfer on the job, on-site days for transfer, AI knowledge capture, and a map of knowledge at risk. The strongest cumulative effect of the system.', risk:'If AI knowledge agents are used to replace transfer between people, the on-site transfer moments lose their reason.', guard:'Agents capture, people transfer. The agent supports the mentor, it does not replace the mentoring moment.'},
@@ -908,7 +908,7 @@ const K = {
   leadership:{s:'warn', sum:'All four pillars act. Leaders bond teams, coach, guide the change and use team-level signals.', risk:'Twin dashboards can tempt managers to control individuals, the opposite of the coach posture.', guard:'The twin gives team-level signals to coach. Always aggregated, never individual.'},
   growth:{s:'warn', sum:'Debriefs, a shared vision and scenarios turn fear into learning.', risk:'If employees see the twin’s signals as surveillance, fear grows instead.', guard:'Trusted governance: transparent, aggregated, never individual, explained to employees.'},
   augmented:{s:'warn', sum:'LeanAI puts people at the core of the redesign. The twin gives AI agents to managers and experts.', risk:'When simulations offer AI agents as an option next to hiring, they can read as replacement, the opposite of augmentation.', guard:'AI agents are framed as capacity added to teams. People keep the decision.'},
-  global:{s:'single', sum:'Only the digital twin addresses this challenge.', risk:'No conflict between pillars, but no cumulative effect either. If the twin is late, nothing else covers it.', guard:'Consider which other pillar could contribute, for example missions across sites and functions.'}
+  global:{s:'single', sum:'Only workforce intelligence addresses this challenge.', risk:'No conflict between pillars, but no cumulative effect either. If the twin is late, nothing else covers it.', guard:'Consider which other pillar could contribute, for example missions across sites and functions.'}
 };
 window.I18N_MAP(P,C,L,K);
 const ORDER = ['fluid','agility','skills','knowledge','workplace','simplif','benefits','sovereignty','collective','recog','network','purpose','leadership','growth','augmented','global'];
