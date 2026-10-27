@@ -10,7 +10,7 @@ import { SYSTEM_PROMPT, SCHEMA, material } from '../lib/journalist.mjs';
 const MAX_SIZE = 40_000;
 const env = (k) => (globalThis.Netlify && Netlify.env.get(k)) || '';
 const MODEL = env('NEWSFIX_MODEL') || 'claude-opus-5-5';
-const PER_HOUR = Number(env('NEWSFIX_PER_HOUR')) || 3;
+const PER_HOUR = Number(env('NEWSFIX_PER_HOUR')) || 2;
 
 const json = (body, status = 200, headers = {}) => new Response(JSON.stringify(body), {
   status,
